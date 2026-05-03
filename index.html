@@ -821,33 +821,32 @@
         <span class="tbadge">CLI</span>
         <span class="tbadge">AMM Mechanics</span>
       </div>
-      <a href="#" class="pcard-link">View on GitHub <span>→</span></a>
+      <a href="https://github.com/DanDo385/eth-amm-sim" target="_blank" rel="noopener noreferrer" class="pcard-link">View on GitHub <span>→</span></a>
     </div>
 
     <!-- Project 3 -->
     <div class="pcard reveal">
       <div class="pcard-head">
-        <h3 class="pcard-name">Ethereum RPC Monitor</h3>
+        <h3 class="pcard-name">Eth-L2: Fraud Proof Simulation War Game</h3>
         <div class="pcard-tags">
           <span class="tag tag-infra">Infrastructure</span>
+          <span class="tag tag-solidity">Solidity</span>
           <span class="tag tag-evm">EVM</span>
-          <span class="tag tag-go">Go</span>
-          <span class="tag tag-operations">Operations</span>
-          <span class="tag tag-cli">CLI</span>
+          <span class="tag tag-l2">L2</span>
         </div>
       </div>
       <p class="pcard-problem">
-        RPC reliability is the invisible dependency behind every dApp and DeFi protocol. When your node provider degrades, you need to know before users start filing tickets. I built a real-time monitoring tool that tracks latency, block freshness, and error rates across multiple Ethereum JSON-RPC endpoints concurrently, the kind of observability layer that production infrastructure teams actually need.
+        Simulating the fraud proof war game: a deep dive into what happens when an optimistic rollup is challenged. It provides a transparent sandbox to test the game theoretic bounds of optimistic rollups and the cryptographic verifiability of Layer 2 settlement.
       </p>
       <div class="pcard-grid">
         <div class="pcard-block">
           <div class="pcard-block-label">Architecture &amp; Approach</div>
           <div class="pcard-block-body">
             <ul>
-              <li>Concurrent health checks via goroutines with context cancellation</li>
-              <li>JSON-RPC method coverage (eth_blockNumber, eth_call, etc.)</li>
-              <li>Configurable alerting thresholds and polling intervals</li>
-              <li>Structured logging for monitoring stack integration</li>
+              <li>On-chain resolution logic for disputed state transitions</li>
+              <li>State root commitments and multi-round interactive challenges</li>
+              <li>EVM execution stepping and trace verification</li>
+              <li>Penalty models and bond slashing mechanics</li>
             </ul>
           </div>
         </div>
@@ -855,23 +854,20 @@
           <div class="pcard-block-label">Decisions &amp; Tradeoffs</div>
           <div class="pcard-block-body">
             <ul>
-              <li>Go concurrency model ideal for parallel endpoint polling</li>
-              <li>Context-based timeouts vs. rigid deadline approach</li>
-              <li>YAML config for operator ergonomics over env-var-only setup</li>
-              <li>Stateless design: no database dependency for deployment simplicity</li>
+              <li>Native Solidity implementation vs off-chain state verifiers</li>
+              <li>Optimization of trace verification for gas limits</li>
+              <li>Modular challenge models to isolate fault vectors</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="pcard-tech">
-        <span class="tbadge">Go</span>
-        <span class="tbadge">Goroutines</span>
-        <span class="tbadge">JSON-RPC</span>
-        <span class="tbadge">Ethereum</span>
-        <span class="tbadge">CLI</span>
-        <span class="tbadge">Monitoring</span>
+        <span class="tbadge">Solidity</span>
+        <span class="tbadge">EVM Tracing</span>
+        <span class="tbadge">Fraud Proofs</span>
+        <span class="tbadge">Rollups</span>
       </div>
-      <a href="#" class="pcard-link">View on GitHub <span>→</span></a>
+      <a href="https://github.com/dando385/eth-l2" target="_blank" rel="noopener noreferrer" class="pcard-link">View on GitHub <span>→</span></a>
     </div>
 
   </div>
