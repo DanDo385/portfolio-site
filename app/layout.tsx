@@ -24,7 +24,21 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: SITE.name,
   description: SITE.description,
+  metadataBase: new URL(SITE.url),
+  alternates: { canonical: '/' },
   icons: { icon: '/favicon.svg' },
+  openGraph: {
+    type: 'profile',
+    url: SITE.url,
+    title: SITE.name,
+    description: SITE.description,
+    siteName: 'magro.dev',
+  },
+  twitter: {
+    card: 'summary',
+    title: SITE.name,
+    description: SITE.description,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

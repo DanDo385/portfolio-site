@@ -271,11 +271,11 @@ section { padding-top: var(--gap-section); }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(26, 37, 64, 0.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26, 37, 64, 0.28) 1px, transparent 1px);
+    linear-gradient(rgba(42, 58, 96, 0.48) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 58, 96, 0.48) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 38%, black 5%, transparent 72%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 38%, black 5%, transparent 72%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 38%, black 18%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 38%, black 18%, transparent 78%);
   z-index: 0;
 }
 
@@ -294,6 +294,11 @@ section { padding-top: var(--gap-section); }
   margin-bottom: 24px;
   animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.1s;
   opacity: 0;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-light);
 }
 
 .hero-identity {

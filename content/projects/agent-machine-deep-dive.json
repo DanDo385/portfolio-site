@@ -5,10 +5,10 @@
   "status": "complete",
   "featured": false,
   "tags": ["AI", "Agents", "LLM Systems", "Interactive"],
-  "summary": "An interactive single-page deep dive into the anatomy of an AI agent: the loop of perception, planning, memory, tool use, and action, made observable step by step. TODO(dan): confirm the components the explainer actually covers.",
-  "techBadges": ["TODO(dan): confirm (HTML, JS, LLM APIs, etc.)"],
+  "summary": "An interactive single-page deep dive into the anatomy of an AI agent: the loop of perception, planning, memory, tool use, and action, made observable step by step with ASCII art diagrams.",
+  "techBadges": ["HTML", "CSS", "ASCII Art Diagrams"],
   "githubUrl": "https://github.com/DanDo385/agent-machine-deep-dive",
-  "demoUrl": null,
+  "demoUrl": "https://dando385.github.io/agent-machine-deep-dive/",
   "loomUrl": null,
   "screenshots": [],
   "relatedWriting": null

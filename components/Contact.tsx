@@ -97,7 +97,7 @@ export function Contact() {
                   <div className="c-link-ico"><GitHubIcon /></div>
                   GitHub
                 </a>
-                <a href="https://linkedin.com/in/daniel-magro-2323941a2" className="c-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/dmagro" className="c-link" target="_blank" rel="noopener noreferrer">
                   <div className="c-link-ico"><LinkedInIcon /></div>
                   LinkedIn
                 </a>
@@ -112,7 +112,7 @@ export function Contact() {
                 <div className="signals-head">At a Glance</div>
                 <div className="sig-row">
                   <span className="sig-label">Institutional experience</span>
-                  <span className="sig-val">13 years</span>
+                  <span className="sig-val">15 years</span>
                 </div>
                 <div className="sig-row">
                   <span className="sig-label">Building with</span>
