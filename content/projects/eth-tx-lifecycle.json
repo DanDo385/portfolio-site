@@ -1,0 +1,15 @@
+{
+  "title": "Ethereum Transaction Lifecycle Visualizer",
+  "slug": "eth-tx-lifecycle",
+  "date": "2025-08-20",
+  "status": "complete",
+  "featured": false,
+  "tags": ["Infrastructure", "DeFi", "Go", "TypeScript"],
+  "summary": "Full-stack visualization of what happens between clicking send and a transaction becoming irreversible: execution and consensus layers, MEV, builder auctions, and finality.",
+  "techBadges": ["Go", "Next.js", "TypeScript", "JSON-RPC", "Beacon API", "MEV Detection"],
+  "githubUrl": "https://github.com/DanDo385/eth-tx-lifecycle",
+  "demoUrl": null,
+  "loomUrl": null,
+  "screenshots": [],
+  "relatedWriting": null
+}

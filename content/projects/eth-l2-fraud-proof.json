@@ -1,0 +1,15 @@
+{
+  "title": "Eth-L2 Fraud Proof Simulation War Game",
+  "slug": "eth-l2-fraud-proof",
+  "date": "2025-11-15",
+  "status": "complete",
+  "featured": false,
+  "tags": ["Infrastructure", "Solidity", "EVM", "L2"],
+  "summary": "A transparent sandbox simulating the fraud proof war game: what happens when an optimistic rollup is challenged, testing game-theoretic bounds and cryptographic verifiability of L2 settlement.",
+  "techBadges": ["Solidity", "EVM Tracing", "Fraud Proofs", "Rollups"],
+  "githubUrl": "https://github.com/DanDo385/eth-l2",
+  "demoUrl": null,
+  "loomUrl": null,
+  "screenshots": [],
+  "relatedWriting": null
+}
