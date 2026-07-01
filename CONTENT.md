@@ -1,6 +1,8 @@
 # Content authoring
 
-Add projects and articles by dropping a single file into the right folder. Run `npm run build` to regenerate the site. New items sort to the top automatically by `date` (newest first).
+Add projects and articles by dropping a single file into the right folder. Run `npm run dev` to preview locally, or `npm run build` to generate the static site. New items sort to the top automatically by `date` (newest first).
+
+The site is a **Next.js App Router** project. Pages live under `app/`, components under `components/`, and content under `content/`.
 
 ## Projects
 
@@ -71,7 +73,7 @@ Second paragraph here.
 | Field | Required | Notes |
 |-------|----------|-------|
 | `title` | yes | Display name |
-| `slug` | yes | URL path: `/writing/your-slug/` |
+| `slug` | yes | URL path: `/writing/your-slug` |
 | `date` | yes | ISO date. Drives sort order |
 | `status` | yes | `draft` (hidden) or `published` (live) |
 | `category` | yes | Small label on the card |
@@ -87,11 +89,28 @@ Drafts never appear on the homepage or as routes. Set `status: published` when r
 
 The thesis article lives at `content/writing/operating-thesis.md` as a draft. Send final prose and flip `status` to `published`.
 
-## Build
+## Development
 
 ```bash
 npm install
-npm run build
+npm run dev      # http://localhost:3000
+npm run build    # production build (.next/)
 ```
 
-Output: `index.html` at the repo root, plus `writing/<slug>/index.html` for each published article.
+## Project structure
+
+```
+app/
+  layout.tsx          # Root layout, fonts, metadata
+  page.tsx            # Homepage
+  globals.css         # Site styles
+  writing/[slug]/     # Article pages
+components/           # React UI components
+content/
+  projects/           # One JSON file per project
+  writing/            # One Markdown file per article
+lib/
+  content.ts          # Content loaders
+  constants.ts        # Site constants
+public/               # Static assets (resume PDF, favicon)
+```
