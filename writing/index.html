@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing | Capital Meets Code | Daniel Magro</title>
+<meta name="description" content="Capital Meets Code: Daniel Magro's writing pipeline at the center of AI, finance, and markets: AI infrastructure finance, AI-native financial rails, on-chain credit, and market structure.">
+<link rel="canonical" href="https://magro.dev/writing/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://magro.dev/writing/">
+<meta property="og:title" content="Capital Meets Code | Writing by Daniel Magro">
+<meta property="og:description" content="Essays, research notes, Substack pieces, and X threads on AI infrastructure finance, AI-native financial rails, tokenized credit, DeFi market structure, and modern market infrastructure.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capital Meets Code | Writing by Daniel Magro">
+<meta name="twitter:description" content="AI infrastructure finance, AI-native financial rails, tokenized credit, DeFi market structure, and modern market infrastructure.">
+<style>
+:root {
+  --bg: #05070a;
+  --panel: #0d1117;
+  --panel-2: #111823;
+  --text: #f2efe7;
+  --muted: #9ba7b4;
+  --line: rgba(255,255,255,0.12);
+  --gold: #d7b46a;
+  --blue: #6aa8ff;
+  --green: #6bd6a8;
+  --violet: #a98cff;
+  --max: 1050px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(215,180,106,0.12), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(106,168,255,0.10), transparent 28%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; }
+.container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+.nav { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.brand { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+.nav a:hover { color: var(--text); }
+.hero { padding: 72px 0 42px; }
+.kicker { color: var(--gold); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 18px; }
+h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(42px, 8vw, 86px); line-height: .95; margin: 0 0 22px; max-width: 900px; }
+.lede { max-width: 850px; font-size: clamp(18px, 2.2vw, 23px); color: #d7dde5; }
+.note { max-width: 860px; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 36px 0; }
+.card { border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)); border-radius: 18px; padding: 24px; }
+.card h2, .card h3 { margin-top: 0; line-height: 1.2; }
+.card h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: 25px; }
+.card h3 { font-size: 18px; }
+.label { display: inline-flex; gap: 6px; align-items: center; color: var(--gold); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+.status { color: var(--green); }
+.pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; }
+.pill { border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 7px 10px; font-size: 12px; }
+.section { padding: 42px 0; border-top: 1px solid var(--line); }
+.section h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 36px; font-weight: 400; margin: 0 0 18px; }
+.pipeline { display: grid; gap: 14px; }
+.item { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: rgba(17,24,35,.72); }
+.item-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.item-title { font-size: 18px; font-weight: 650; }
+.item-meta { white-space: nowrap; color: var(--gold); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.item p { margin: 10px 0 0; color: var(--muted); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.button { border: 1px solid var(--line); border-radius: 999px; padding: 11px 15px; text-decoration: none; color: var(--text); background: rgba(255,255,255,.035); }
+.button.primary { border-color: rgba(215,180,106,.6); color: var(--gold); }
+.footer { color: var(--muted); padding: 36px 0 52px; border-top: 1px solid var(--line); }
+@media (max-width: 800px) { .grid { grid-template-columns: 1fr; } .item-head { display:block; } .item-meta { margin-top:6px; } }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Capital Meets Code</div>
+      <a href="/">← Back to magro.dev</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="kicker">Writing hub</div>
+        <h1>Operating at the center of AI, finance, and markets.</h1>
+        <p class="lede">This is the home base for essays, Substack pieces, and X threads on financing the AI infrastructure buildout, using AI to modernize financial rails, and translating market structure between TradFi and crypto-native systems.</p>
+        <p class="note">The operating model is simple: publish the canonical long-form piece on magro.dev, cross-post or adapt to Substack, then distill the argument into X threads that point back to the full research. The voice is operator-led: capital markets judgment, technical curiosity, and useful explanations.</p>
+        <div class="cta">
+          <a class="button primary" href="mailto:dan@magro.dev">Discuss a role or mandate</a>
+          <a class="button" href="https://twitter.com/DanQB13" target="_blank" rel="noopener noreferrer">Follow on X</a>
+          <span class="button">Substack: coming soon</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid">
+        <article class="card">
+          <div class="label">Spear tip</div>
+          <h2>AI infrastructure finance</h2>
+          <p>GPU-backed lending, datacenter project finance, compute-backed collateral, stablecoin funding rails, and the legal plumbing that decides whether tokenized credit is real credit or just a wrapper.</p>
+        </article>
+        <article class="card">
+          <div class="label">Rails layer</div>
+          <h2>AI-native financial rails</h2>
+          <p>Research agents, underwriting workflows, reporting automation, risk tooling, and client-facing infrastructure that compress manual work without pretending judgment has been automated away.</p>
+        </article>
+        <article class="card">
+          <div class="label">Markets layer</div>
+          <h2>TradFi → DeFi market structure</h2>
+          <p>Liquidity, funding, collateral, settlement, market microstructure, and risk language translated between institutional finance and crypto-native systems.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Publishing pipeline</h2>
+        <div class="pipeline">
+          <article class="item" id="infrafin-datacenter-debt">
+            <div class="item-head">
+              <div class="item-title">InfraFi is Datacenter Debt in a Hoodie</div>
+              <div class="item-meta">Drafting</div>
+            </div>
+            <p>What on-chain GPU credit can and cannot replicate from traditional project finance: SPVs, collateral control, UCC/security-interest mechanics, stablecoin funding, and the transparency gap between on-chain assets and off-chain enforceability.</p>
+          </article>
+          <article class="item" id="liquidity-is-not-volume">
+            <div class="item-head">
+              <div class="item-title">Liquidity is Not Volume</div>
+              <div class="item-meta">Queued</div>
+            </div>
+            <p>A fixed-income trader's lesson on executable liquidity, funding costs, and collateral stress, applied to AMMs, DEX routing, and DeFi market structure.</p>
+          </article>
+          <article class="item" id="ai-financial-rails">
+            <div class="item-head">
+              <div class="item-title">AI-Native Financial Rails</div>
+              <div class="item-meta">Queued</div>
+            </div>
+            <p>How AI agents, programmable settlement, and better data plumbing can modernize research, underwriting, risk, reporting, reconciliation, and client workflows across institutional finance.</p>
+          </article>
+          <article class="item" id="ai-infrastructure-financing-stack">
+            <div class="item-head">
+              <div class="item-title">The AI Infrastructure Financing Stack</div>
+              <div class="item-meta">Queued</div>
+            </div>
+            <p>From GPU-backed private credit and datacenter ABS to tokenized credit markets: who owns the asset, who controls cash flows, who bears depreciation, and who is actually senior.</p>
+          </article>
+          <article class="item" id="rates-trader-amm">
+            <div class="item-head">
+              <div class="item-title">What a Rates Trader Sees in an AMM</div>
+              <div class="item-meta">Queued</div>
+            </div>
+            <p>How curve intuition, carry, convexity, liquidity preference, and inventory risk map onto AMM mechanics without forcing false analogies.</p>
+          </article>
+          <article class="item" id="ai-agents-financial-research">
+            <div class="item-head">
+              <div class="item-title">AI Agents as Junior Research Analysts: Useful, Dangerous, or Both?</div>
+              <div class="item-meta">Queued</div>
+            </div>
+            <p>Where agentic systems create leverage in finance, where they hallucinate risk, and what a human-in-the-loop research stack should actually verify.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Daniel Magro · magro.dev · Capital Meets Code</div>
+  </footer>
+</body>
+</html>
