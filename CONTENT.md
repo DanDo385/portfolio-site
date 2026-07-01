@@ -1,0 +1,97 @@
+# Content authoring
+
+Add projects and articles by dropping a single file into the right folder. Run `npm run build` to regenerate the site. New items sort to the top automatically by `date` (newest first).
+
+## Projects
+
+Create `content/projects/your-slug.json`:
+
+```json
+{
+  "title": "Project Title",
+  "slug": "your-slug",
+  "date": "2026-07-01",
+  "status": "complete",
+  "featured": false,
+  "tags": ["AI", "Go"],
+  "summary": "One or two lines describing the project.",
+  "techBadges": ["Go", "TypeScript"],
+  "githubUrl": "https://github.com/DanDo385/your-repo",
+  "demoUrl": null,
+  "loomUrl": null,
+  "screenshots": [],
+  "relatedWriting": null
+}
+```
+
+**Fields**
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `title` | yes | Display name |
+| `slug` | yes | URL-safe identifier |
+| `date` | yes | ISO date (`YYYY-MM-DD`). Drives sort order |
+| `status` | yes | `complete` or `in-progress` |
+| `tags` | yes | Badge labels on the card |
+| `summary` | yes | Short description (1-2 lines) |
+| `techBadges` | yes | Tech stack chips |
+| `githubUrl` | no | GitHub repo link |
+| `demoUrl` | no | Live demo iframe URL |
+| `loomUrl` | no | Loom share URL for video embed |
+| `screenshots` | no | Array of image URLs for the carousel |
+| `relatedWriting` | no | Slug of a published article to cross-link |
+| `featured` | no | When `true`, pins above date sort |
+
+Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.
+
+## Articles
+
+Create `content/writing/your-slug.md`:
+
+```markdown
+---
+title: Article Title
+slug: your-slug
+date: 2026-07-01
+status: published
+category: AI x Finance
+excerpt: One-line summary for the writing list.
+coverImage: null
+loomUrl: null
+relatedProject: null
+---
+
+Your article body in Markdown.
+
+Second paragraph here.
+```
+
+**Fields**
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `title` | yes | Display name |
+| `slug` | yes | URL path: `/writing/your-slug/` |
+| `date` | yes | ISO date. Drives sort order |
+| `status` | yes | `draft` (hidden) or `published` (live) |
+| `category` | yes | Small label on the card |
+| `excerpt` | yes | One-line summary |
+| `coverImage` | no | Reserved for future use |
+| `loomUrl` | no | Optional embedded video |
+| `relatedProject` | no | Project slug to cross-link |
+| body | yes | Markdown below the frontmatter |
+
+Drafts never appear on the homepage or as routes. Set `status: published` when ready to ship.
+
+## Operating thesis
+
+The thesis article lives at `content/writing/operating-thesis.md` as a draft. Send final prose and flip `status` to `published`.
+
+## Build
+
+```bash
+npm install
+npm run build
+```
+
+Output: `index.html` at the repo root, plus `writing/<slug>/index.html` for each published article.
