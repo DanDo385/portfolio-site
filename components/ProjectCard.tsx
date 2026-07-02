@@ -2,7 +2,6 @@ import Link from 'next/link';
 import type { Article, Project } from '@/lib/types';
 import {
   getProjectMediaLinks,
-  hasProjectPreview,
   projectAnchorId,
   projectPath,
   tagClass,
@@ -21,12 +20,11 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
     project.relatedWriting && writingBySlug[project.relatedWriting]?.status === 'published'
       ? writingBySlug[project.relatedWriting]
       : null;
-  const showPreview = hasProjectPreview(project);
   const mediaLinks = getProjectMediaLinks(project);
 
   const card = (
     <article className="pcard" id={projectAnchorId(project.slug)}>
-      <div className={`pcard-layout${showPreview ? '' : ' pcard-layout-single'}`}>
+      <div className="pcard-layout">
         <div className="pcard-main">
           <div className="pcard-head">
             <div>
@@ -85,11 +83,9 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
             </p>
           )}
         </div>
-        {showPreview && (
-          <div className="pcard-media">
-            <ProjectPreview project={project} />
-          </div>
-        )}
+        <div className="pcard-media">
+          <ProjectPreview project={project} />
+        </div>
       </div>
     </article>
   );

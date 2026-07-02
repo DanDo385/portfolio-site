@@ -18,5 +18,9 @@ export function ProjectPreview({ project }: ProjectPreviewProps) {
     return <AgentJsonPreview />;
   }
 
-  return null;
+  return (
+    <div className="media-placeholder" role="img" aria-label={`Preview pending for ${project.title}`}>
+      Preview pending
+    </div>
+  );
 }

@@ -820,23 +820,20 @@ section { padding-top: var(--gap-section); }
 }
 
 .firm-logo {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.65;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
   transition: opacity 0.2s;
 }
 
 .firm-logo:hover { opacity: 1; }
 
-.firm-todo {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--text-muted);
-  margin-bottom: 24px;
+.firm-logo img {
+  display: block;
+  height: 28px;
+  width: auto;
+  max-width: 148px;
+  object-fit: contain;
 }
 
 .history-details summary {

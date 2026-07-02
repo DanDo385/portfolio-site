@@ -63,10 +63,6 @@ export function validScreenshots(screenshots?: string[]): string[] {
   return screenshots.filter((s) => s && !s.includes('TODO(dan)'));
 }
 
-export function hasProjectPreview(project: Project): boolean {
-  return validScreenshots(project.screenshots).length > 0 || project.previewType === 'agent-json';
-}
-
 export function getProjectMediaLinks(project: Project): Array<{ label: string; href: string }> {
   const links: Array<{ label: string; href: string }> = [];
   if (isValidUrl(project.demoUrl)) links.push({ label: 'Live demo', href: project.demoUrl! });
