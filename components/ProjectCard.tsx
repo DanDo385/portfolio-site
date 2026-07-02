@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import type { Article, Project } from '@/lib/types';
-import { isValidUrl, loomEmbedUrl, projectAnchorId, projectPath, tagClass, validScreenshots } from '@/lib/utils';
+import { isValidUrl, projectAnchorId, projectPath, tagClass } from '@/lib/utils';
+import { ProjectPreview } from './ProjectPreview';
 import { Reveal } from './Reveal';
-import { ScreenshotCarousel } from './ScreenshotCarousel';
 
 interface ProjectCardProps {
   project: Project;
@@ -11,8 +11,6 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCardProps) {
-  const screenshots = validScreenshots(project.screenshots);
-  const loomEmbed = loomEmbedUrl(project.loomUrl);
   const related =
     project.relatedWriting && writingBySlug[project.relatedWriting]?.status === 'published'
       ? writingBySlug[project.relatedWriting]
@@ -79,21 +77,7 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
           )}
         </div>
         <div className="pcard-media">
-          <ScreenshotCarousel title={project.title} screenshots={screenshots} />
-          {isValidUrl(project.demoUrl) && (
-            <div className="demo-embed">
-              <iframe
-                src={project.demoUrl!}
-                loading="lazy"
-                title={`${project.title} live demo`}
-              />
-            </div>
-          )}
-          {loomEmbed && (
-            <div className="loom-embed">
-              <iframe src={loomEmbed} loading="lazy" allowFullScreen title="Project demo video" />
-            </div>
-          )}
+          <ProjectPreview project={project} />
         </div>
       </div>
     </article>

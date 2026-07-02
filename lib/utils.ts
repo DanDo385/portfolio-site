@@ -1,3 +1,5 @@
+import type { Project } from './types';
+
 export const RECENT_WINDOW_DAYS = 7;
 const CONTENT_TIMEZONE = 'America/New_York';
 
@@ -28,6 +30,7 @@ export function projectAnchorId(slug: string): string {
 export function projectPath(slug: string): string {
   return `/projects/${slug}`;
 }
+
 
 const TAG_CLASS: Record<string, string> = {
   AI: 'tag-ai',
@@ -76,4 +79,14 @@ export function loomEmbedUrl(url?: string | null): string | null {
 
 export function isValidUrl(url?: string | null): boolean {
   return Boolean(url && !String(url).includes('TODO(dan)'));
+}
+
+export function shouldEmbedDemo(
+  demoUrl: string | null | undefined,
+  previewType?: Project['previewType']
+): boolean {
+  if (!isValidUrl(demoUrl)) return false;
+  if (previewType === 'agent-json') return false;
+  if (previewType === 'iframe') return true;
+  return demoUrl!.startsWith('http://') || demoUrl!.startsWith('https://');
 }

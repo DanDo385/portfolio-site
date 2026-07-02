@@ -1,5 +1,6 @@
 export type ProjectStatus = 'complete' | 'in-progress';
 export type ArticleStatus = 'draft' | 'published';
+export type ProjectPreviewType = 'agent-json' | 'iframe';
 
 export interface Project {
   title: string;
@@ -14,6 +15,7 @@ export interface Project {
   demoUrl?: string | null;
   loomUrl?: string | null;
   screenshots?: string[];
+  previewType?: ProjectPreviewType | null;
   relatedWriting?: string | null;
 }
 

@@ -11,5 +11,6 @@
   "demoUrl": "/agent",
   "loomUrl": null,
   "screenshots": [],
+  "previewType": "agent-json",
   "relatedWriting": "agent-mode-and-the-inference-tax"
 }
