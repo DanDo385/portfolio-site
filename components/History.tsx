@@ -13,7 +13,7 @@ export function History() {
         <Reveal delay={80}>
           <div className="history-block">
             <p className="history-summary">
-              <strong>15 years</strong> across institutional fixed income sales, trading, and
+              <strong>13 years</strong> across institutional fixed income sales, trading, and
               portfolio management: rates, macro, and cross-asset. Merrill Lynch, Nomura,
               PointState Capital, and Prudential (PGIM).
             </p>

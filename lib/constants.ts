@@ -6,6 +6,6 @@ export const RESUME_PDF = '/Daniel%20Magro%20Resume.pdf';
 export const SITE = {
   name: 'Daniel Magro | AI, Finance & Markets',
   description:
-    '15-year institutional rates and macro veteran operating at the center of AI, finance, and markets: AI infrastructure finance, modern financial rails, and programmable systems.',
+    '13-year institutional rates and macro veteran operating at the center of AI, finance, and markets: AI infrastructure finance, modern financial rails, and programmable systems.',
   url: 'https://magro.dev',
 };

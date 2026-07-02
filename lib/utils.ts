@@ -87,6 +87,7 @@ export function shouldEmbedDemo(
 ): boolean {
   if (!isValidUrl(demoUrl)) return false;
   if (previewType === 'agent-json') return false;
+  if (demoUrl!.includes('github.io')) return false;
   if (previewType === 'iframe') return true;
   return demoUrl!.startsWith('http://') || demoUrl!.startsWith('https://');
 }
