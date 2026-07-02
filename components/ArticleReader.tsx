@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { SITE } from '@/lib/constants';
+import { printArticlePdf } from '@/lib/articlePrint';
 import {
   DEFAULT_READING_PREFS,
   READING_FONTS,
@@ -12,7 +13,6 @@ import {
   getFontFamily,
   loadReadingPrefs,
   markdownToPlainText,
-  readingProseCss,
   saveReadingPrefs,
   type ReadingPrefs,
 } from '@/lib/reading';
@@ -49,7 +49,6 @@ export function ArticleReader({
   const [readingOpen, setReadingOpen] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [shareNote, setShareNote] = useState('');
-  const [pendingExport, setPendingExport] = useState(false);
   const readingContentRef = useRef<HTMLDivElement>(null);
   const articleUrl = `${SITE.url}/writing/${slug}/`;
 
@@ -137,47 +136,15 @@ export function ArticleReader({
   }, []);
 
   const exportPdf = useCallback(() => {
-    const content = readingContentRef.current;
-    if (!content) return;
-
-    const family = getFontFamily(prefs.fontId);
-    const printWindow = window.open('', '_blank', 'noopener,noreferrer');
-    if (!printWindow) return;
-
-    printWindow.document.write(`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>${title}</title>
-  <style>${readingProseCss(family, prefs.foreground, prefs.background)}</style>
-</head>
-<body>${content.innerHTML}</body>
-</html>`);
-    printWindow.document.close();
-    printWindow.focus();
-    printWindow.onload = () => {
-      printWindow.print();
-    };
-  }, [prefs, title]);
-
-  useEffect(() => {
-    if (!pendingExport || !readingOpen) return;
-    const frame = requestAnimationFrame(() => {
-      if (!readingContentRef.current) return;
-      exportPdf();
-      setPendingExport(false);
+    printArticlePdf({
+      title,
+      excerpt,
+      body,
+      fontId: prefs.fontId,
+      foreground: prefs.foreground,
+      background: prefs.background,
     });
-    return () => cancelAnimationFrame(frame);
-  }, [pendingExport, readingOpen, exportPdf]);
-
-  const requestExportPdf = useCallback(() => {
-    if (readingOpen && readingContentRef.current) {
-      exportPdf();
-      return;
-    }
-    openReading();
-    setPendingExport(true);
-  }, [exportPdf, openReading, readingOpen]);
+  }, [body, excerpt, prefs, title]);
 
   const readingStyle = {
     backgroundColor: prefs.background,
@@ -203,7 +170,7 @@ export function ArticleReader({
         <button type="button" className="btn" onClick={toggleSpeech}>
           {speaking ? 'Stop audio' : 'Play audio'}
         </button>
-        <button type="button" className="btn" onClick={requestExportPdf}>
+        <button type="button" className="btn" onClick={exportPdf}>
           Export PDF
         </button>
         <button type="button" className="btn" onClick={shareArticle}>

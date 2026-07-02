@@ -28,6 +28,18 @@ export function getFontFamily(fontId: string): string {
   return READING_FONTS.find((f) => f.id === fontId)?.family ?? READING_FONTS[0].family;
 }
 
+const PRINT_FONT_FAMILIES: Record<string, string> = {
+  display: '"Newsreader", Georgia, serif',
+  body: '"Source Sans 3", -apple-system, sans-serif',
+  mono: '"JetBrains Mono", ui-monospace, monospace',
+  georgia: 'Georgia, "Times New Roman", serif',
+  system: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+};
+
+export function getPrintFontFamily(fontId: string): string {
+  return PRINT_FONT_FAMILIES[fontId] ?? PRINT_FONT_FAMILIES.georgia;
+}
+
 export function loadReadingPrefs(): ReadingPrefs {
   if (typeof window === 'undefined') return DEFAULT_READING_PREFS;
   try {
@@ -69,6 +81,9 @@ export function readingProseCss(family: string, foreground: string, background: 
     ul, ol { margin: 0 0 1.1rem 1.25rem; }
     li { margin-bottom: 0.35rem; }
     a { color: inherit; text-decoration: underline; }
+    pre { margin: 0 0 1.1rem; padding: 12px 14px; overflow-x: auto; border-radius: 6px; background: color-mix(in srgb, ${foreground} 8%, ${background}); }
+    code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.9em; }
+    pre code { font-size: 0.85em; }
     table { width: 100%; border-collapse: collapse; margin: 0 0 1.25rem; font-size: 0.92rem; }
     th, td { border: 1px solid color-mix(in srgb, ${foreground} 20%, transparent); padding: 8px 10px; text-align: left; }
     @media print { body { padding: 24px; } }
