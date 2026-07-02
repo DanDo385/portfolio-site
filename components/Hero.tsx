@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-export function Hero() {
+interface HeroProps {
+  showRecent?: boolean;
+}
+
+export function Hero({ showRecent = false }: HeroProps) {
   return (
     <section className="hero" id="top">
       <div className="hero-glow" aria-hidden="true" />
@@ -22,7 +26,12 @@ export function Hero() {
           stablecoins, RWA infrastructure, and better data systems.
         </p>
         <div className="hero-cta">
-          <Link href="#projects" className="btn btn-primary">
+          {showRecent && (
+            <Link href="#recent" className="btn btn-primary">
+              Recent
+            </Link>
+          )}
+          <Link href="#projects" className={`btn${showRecent ? '' : ' btn-primary'}`}>
             Work
           </Link>
           <Link href="#writing" className="btn">

@@ -1,6 +1,32 @@
+export const RECENT_WINDOW_DAYS = 7;
+const CONTENT_TIMEZONE = 'America/New_York';
+
 export function formatDate(iso: string): string {
   const d = new Date(iso + 'T12:00:00');
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function todayInTimezone(): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: CONTENT_TIMEZONE }).format(new Date());
+}
+
+function calendarDaysBetween(isoDate: string, todayIso: string): number {
+  const item = new Date(`${isoDate}T12:00:00`);
+  const today = new Date(`${todayIso}T12:00:00`);
+  return Math.floor((today.getTime() - item.getTime()) / 86_400_000);
+}
+
+export function isWithinRecentDays(isoDate: string, days = RECENT_WINDOW_DAYS): boolean {
+  const elapsed = calendarDaysBetween(isoDate, todayInTimezone());
+  return elapsed >= 0 && elapsed < days;
+}
+
+export function projectAnchorId(slug: string): string {
+  return `project-${slug}`;
+}
+
+export function projectPath(slug: string): string {
+  return `/projects/${slug}`;
 }
 
 const TAG_CLASS: Record<string, string> = {

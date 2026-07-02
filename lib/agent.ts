@@ -1,5 +1,6 @@
 import { SITE } from './constants';
 import { getProjects, getPublishedWriting } from './content';
+import { projectPath } from './utils';
 
 const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
@@ -17,7 +18,7 @@ export function getAgentManifest() {
     tags: project.tags,
     tech: project.techBadges,
     urls: {
-      canonical: `${SITE.url}/#projects`,
+      canonical: `${SITE.url}${projectPath(project.slug)}/`,
       github: project.githubUrl ?? null,
       demo: project.demoUrl ? new URL(project.demoUrl, SITE.url).toString() : null,
       relatedWriting: project.relatedWriting
@@ -35,7 +36,7 @@ export function getAgentManifest() {
     urls: {
       canonical: `${SITE.url}/writing/${article.slug}/`,
       relatedProject: article.relatedProject
-        ? `${SITE.url}/#projects`
+        ? `${SITE.url}${projectPath(article.relatedProject)}/`
         : null,
     },
   }));

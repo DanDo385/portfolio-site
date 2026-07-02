@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { Article, Project, TimelineItem } from './types';
+import { isWithinRecentDays, projectPath } from './utils';
+import type { Article, Project, RecentItem, TimelineItem } from './types';
 
 const CONTENT = path.join(process.cwd(), 'content');
 
@@ -53,6 +54,43 @@ export function getArticleBySlug(slug: string): Article | undefined {
 
 export function getArticleSlugs(): string[] {
   return getPublishedWriting().map((a) => a.slug);
+}
+
+export function getProjectSlugs(): string[] {
+  return getProjects().map((p) => p.slug);
+}
+
+export function getRecentItems(): RecentItem[] {
+  const projects: RecentItem[] = getProjects()
+    .filter((project) => isWithinRecentDays(project.date))
+    .map((project) => ({
+      type: 'project',
+      title: project.title,
+      slug: project.slug,
+      date: project.date,
+      summary: project.summary,
+      href: projectPath(project.slug),
+    }));
+
+  const writing: RecentItem[] = getPublishedWriting()
+    .filter((article) => isWithinRecentDays(article.date))
+    .map((article) => ({
+      type: 'writing',
+      title: article.title,
+      slug: article.slug,
+      date: article.date,
+      summary: article.excerpt,
+      href: `/writing/${article.slug}`,
+      category: article.category,
+    }));
+
+  return [...projects, ...writing].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+}
+
+export function hasRecentContent(): boolean {
+  return getRecentItems().length > 0;
 }
 
 export const TIMELINE: TimelineItem[] = [

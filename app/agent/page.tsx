@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/Footer';
-import { Nav } from '@/components/Nav';
+import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
 import { getAgentManifest } from '@/lib/agent';
 import { SITE } from '@/lib/constants';
@@ -19,7 +19,7 @@ export default function AgentPage() {
 
   return (
     <>
-      <Nav />
+      <SiteNav />
       <main className="agent-page">
         <div className="container">
           <Reveal>

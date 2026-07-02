@@ -3,10 +3,10 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Footer } from '@/components/Footer';
-import { Nav } from '@/components/Nav';
+import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
 import { getArticleBySlug, getArticleSlugs, getProjectBySlug } from '@/lib/content';
-import { categoryClass, formatDate, loomEmbedUrl } from '@/lib/utils';
+import { categoryClass, formatDate, loomEmbedUrl, projectPath } from '@/lib/utils';
 
 export function generateStaticParams() {
   return getArticleSlugs().map((slug) => ({ slug }));
@@ -34,7 +34,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <Nav />
+      <SiteNav />
       <main className="article-page">
         <div className="container">
           <Link href="/#writing" className="article-back">
@@ -66,7 +66,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </Reveal>
           {relatedProject && (
             <p className="article-related">
-              Related project: <Link href="/#projects">{relatedProject.title}</Link>
+              Related project:{' '}
+              <Link href={projectPath(relatedProject.slug)}>{relatedProject.title}</Link>
             </p>
           )}
         </div>

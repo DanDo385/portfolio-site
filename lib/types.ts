@@ -36,3 +36,15 @@ export interface TimelineItem {
   org: string;
   note: string;
 }
+
+export type RecentItemType = 'project' | 'writing';
+
+export interface RecentItem {
+  type: RecentItemType;
+  title: string;
+  slug: string;
+  date: string;
+  summary: string;
+  href: string;
+  category?: string;
+}
