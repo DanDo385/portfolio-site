@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Footer } from '@/components/Footer';
 import { Nav } from '@/components/Nav';
 import { Reveal } from '@/components/Reveal';
@@ -60,7 +61,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           )}
           <Reveal delay={100}>
             <div className="article-body prose">
-              <ReactMarkdown>{article.body}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.body}</ReactMarkdown>
             </div>
           </Reveal>
           {relatedProject && (

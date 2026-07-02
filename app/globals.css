@@ -1130,6 +1130,34 @@ section { padding-top: var(--gap-section); }
 .article-body.prose ul, .article-body.prose ol { margin: 0 0 18px 1.25rem; }
 .article-body.prose li { margin-bottom: 6px; }
 
+.article-body.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 24px;
+  font-size: 14px;
+}
+
+.article-body.prose th,
+.article-body.prose td {
+  border: 1px solid var(--border-subtle);
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.article-body.prose th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+}
+
+.article-body.prose td {
+  color: var(--text-secondary);
+}
+
 .article-related { margin-top: 48px; font-size: 14px; color: var(--text-muted); }
 .article-related a { color: var(--accent); text-decoration: none; }
 .article-related a:hover { text-decoration: underline; }

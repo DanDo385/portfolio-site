@@ -38,7 +38,7 @@ export default function AgentPage() {
                 <a href="/llms.txt" className="agent-action">
                   llms.txt
                 </a>
-                <Link href="/writing/the-web-needs-an-agent-mode" className="agent-action muted">
+                <Link href="/writing/agent-mode-and-the-inference-tax" className="agent-action muted">
                   Read the essay
                 </Link>
               </div>

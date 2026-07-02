@@ -60,7 +60,7 @@ export function getAgentManifest() {
         `${SITE.url}/agent/`,
         `${SITE.url}/agent.json`,
         `${SITE.url}/llms.txt`,
-        `${SITE.url}/writing/the-web-needs-an-agent-mode/`,
+        `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
       ],
       principles: PRINCIPLES,
     },
