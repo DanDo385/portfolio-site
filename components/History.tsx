@@ -25,7 +25,7 @@ export function History() {
               ))}
             </div>
             <p className="firm-todo">
-              TODO(dan): supply logo assets, or use text wordmarks if licensing is a concern.
+              Text wordmarks used intentionally to avoid unlicensed logo usage.
             </p>
             <details className="history-details">
               <summary>Full history</summary>

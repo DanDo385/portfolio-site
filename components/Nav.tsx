@@ -42,6 +42,11 @@ export function Nav() {
             </Link>
           </li>
         ))}
+        <li>
+          <Link href="/agent" className="nav-scroll nav-agent" onClick={handleNavClick}>
+            Agent Mode
+          </Link>
+        </li>
       </ul>
 
       <button

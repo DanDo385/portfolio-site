@@ -22,6 +22,11 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return getProjects().find((p) => p.slug === slug);
 }
 
+function normalizeContentDate(value: unknown): string {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value);
+}
+
 export function getAllWriting(): Article[] {
   const dir = path.join(CONTENT, 'writing');
   if (!fs.existsSync(dir)) return [];
@@ -29,7 +34,8 @@ export function getAllWriting(): Article[] {
   return files.map((f) => {
     const raw = fs.readFileSync(path.join(dir, f), 'utf8');
     const { data, content } = matter(raw);
-    return { ...(data as Omit<Article, 'body'>), body: content.trim() };
+    const article = data as Omit<Article, 'body'>;
+    return { ...article, date: normalizeContentDate(article.date), body: content.trim() };
   });
 }
 

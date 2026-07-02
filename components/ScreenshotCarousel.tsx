@@ -31,8 +31,8 @@ export function ScreenshotCarousel({ title, screenshots }: ScreenshotCarouselPro
 
   if (screenshots.length === 0) {
     return (
-      <div className="media-placeholder" role="img" aria-label={`Screenshot placeholder for ${title}`}>
-        TODO(dan): screenshots
+      <div className="media-placeholder" role="img" aria-label={`Preview pending for ${title}`}>
+        Preview pending
       </div>
     );
   }

@@ -1,0 +1,15 @@
+{
+  "title": "Portfolio Agent Mode",
+  "slug": "portfolio-agent-mode",
+  "date": "2026-07-02",
+  "status": "complete",
+  "featured": true,
+  "tags": ["AI", "Agents", "Infrastructure", "TypeScript"],
+  "summary": "A minimal agent-readable layer for magro.dev: /agent for humans, /agent.json for structured context, and /llms.txt as a low-noise router for AI systems.",
+  "techBadges": ["Next.js", "TypeScript", "Structured Metadata", "llms.txt"],
+  "githubUrl": "https://github.com/DanDo385/portfolio-site",
+  "demoUrl": "/agent",
+  "loomUrl": null,
+  "screenshots": [],
+  "relatedWriting": "the-web-needs-an-agent-mode"
+}
