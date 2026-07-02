@@ -63,6 +63,19 @@ export function validScreenshots(screenshots?: string[]): string[] {
   return screenshots.filter((s) => s && !s.includes('TODO(dan)'));
 }
 
+export function hasProjectPreview(project: Project): boolean {
+  return validScreenshots(project.screenshots).length > 0 || project.previewType === 'agent-json';
+}
+
+export function getProjectMediaLinks(project: Project): Array<{ label: string; href: string }> {
+  const links: Array<{ label: string; href: string }> = [];
+  if (isValidUrl(project.demoUrl)) links.push({ label: 'Live demo', href: project.demoUrl! });
+  if (isValidUrl(project.loomUrl)) links.push({ label: 'Loom', href: project.loomUrl! });
+  if (isValidUrl(project.youtubeUrl)) links.push({ label: 'YouTube', href: project.youtubeUrl! });
+  if (isValidUrl(project.zoomUrl)) links.push({ label: 'Zoom', href: project.zoomUrl! });
+  return links;
+}
+
 export function loomEmbedUrl(url?: string | null): string | null {
   if (!url || url.includes('TODO(dan)')) return null;
   try {
@@ -79,15 +92,4 @@ export function loomEmbedUrl(url?: string | null): string | null {
 
 export function isValidUrl(url?: string | null): boolean {
   return Boolean(url && !String(url).includes('TODO(dan)'));
-}
-
-export function shouldEmbedDemo(
-  demoUrl: string | null | undefined,
-  previewType?: Project['previewType']
-): boolean {
-  if (!isValidUrl(demoUrl)) return false;
-  if (previewType === 'agent-json') return false;
-  if (demoUrl!.includes('github.io')) return false;
-  if (previewType === 'iframe') return true;
-  return demoUrl!.startsWith('http://') || demoUrl!.startsWith('https://');
 }

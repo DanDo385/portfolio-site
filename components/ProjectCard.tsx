@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import type { Article, Project } from '@/lib/types';
-import { isValidUrl, projectAnchorId, projectPath, tagClass } from '@/lib/utils';
+import {
+  getProjectMediaLinks,
+  hasProjectPreview,
+  projectAnchorId,
+  projectPath,
+  tagClass,
+} from '@/lib/utils';
 import { ProjectPreview } from './ProjectPreview';
 import { Reveal } from './Reveal';
 
@@ -15,10 +21,12 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
     project.relatedWriting && writingBySlug[project.relatedWriting]?.status === 'published'
       ? writingBySlug[project.relatedWriting]
       : null;
+  const showPreview = hasProjectPreview(project);
+  const mediaLinks = getProjectMediaLinks(project);
 
   const card = (
     <article className="pcard" id={projectAnchorId(project.slug)}>
-      <div className="pcard-layout">
+      <div className={`pcard-layout${showPreview ? '' : ' pcard-layout-single'}`}>
         <div className="pcard-main">
           <div className="pcard-head">
             <div>
@@ -58,16 +66,17 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
                 GitHub <span>&rarr;</span>
               </a>
             )}
-            {isValidUrl(project.demoUrl) && (
+            {mediaLinks.map((link) => (
               <a
-                href={project.demoUrl!}
+                key={link.label}
+                href={link.href}
                 className="pcard-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Live demo <span>&rarr;</span>
+                {link.label} <span>&rarr;</span>
               </a>
-            )}
+            ))}
           </div>
           {related && (
             <p className="pcard-related">
@@ -76,9 +85,11 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
             </p>
           )}
         </div>
-        <div className="pcard-media">
-          <ProjectPreview project={project} />
-        </div>
+        {showPreview && (
+          <div className="pcard-media">
+            <ProjectPreview project={project} />
+          </div>
+        )}
       </div>
     </article>
   );

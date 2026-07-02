@@ -21,7 +21,10 @@ Create `content/projects/your-slug.json`:
   "githubUrl": "https://github.com/DanDo385/your-repo",
   "demoUrl": null,
   "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
   "screenshots": [],
+  "previewType": null,
   "relatedWriting": null
 }
 ```
@@ -38,9 +41,12 @@ Create `content/projects/your-slug.json`:
 | `summary` | yes | Short description (1-2 lines) |
 | `techBadges` | yes | Tech stack chips |
 | `githubUrl` | no | GitHub repo link |
-| `demoUrl` | no | Live demo iframe URL |
-| `loomUrl` | no | Loom share URL for video embed |
-| `screenshots` | no | Array of image URLs for the carousel |
+| `demoUrl` | no | Live demo link (not embedded) |
+| `loomUrl` | no | Loom walkthrough link |
+| `youtubeUrl` | no | YouTube video link |
+| `zoomUrl` | no | Zoom recording link |
+| `screenshots` | no | One carousel preview when set (first preview wins) |
+| `previewType` | no | Set to `agent-json` for structured JSON preview; otherwise use `screenshots` |
 | `relatedWriting` | no | Slug of a published article to cross-link |
 | `featured` | no | When `true`, pins above date sort |
 

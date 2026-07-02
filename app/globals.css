@@ -438,6 +438,10 @@ section { padding-top: var(--gap-section); }
   align-items: start;
 }
 
+.pcard-layout-single {
+  grid-template-columns: 1fr;
+}
+
 .pcard-head {
   display: flex;
   justify-content: space-between;
