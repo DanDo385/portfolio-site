@@ -2,7 +2,7 @@ import { Bridge } from '@/components/Bridge';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
-import { History } from '@/components/History';
+import { About } from '@/components/About';
 import { Projects } from '@/components/Projects';
 import { Recent } from '@/components/Recent';
 import { SiteNav } from '@/components/SiteNav';
@@ -33,7 +33,7 @@ export default function HomePage() {
         <Bridge />
         <Writing articles={articles} projectsBySlug={projectsBySlug} />
         <Bridge />
-        <History />
+        <About />
         <Bridge />
         <Contact />
       </main>

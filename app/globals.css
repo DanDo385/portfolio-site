@@ -790,7 +790,71 @@ section { padding-top: var(--gap-section); }
 .writing-excerpt { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
 .writing-empty { color: var(--text-muted); font-size: 15px; padding: 8px 0; }
 
-/* ═══════ HISTORY ═══════ */
+/* ═══════ ABOUT ═══════ */
+.about-block {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  padding: 40px 44px;
+  box-shadow: var(--shadow-card);
+}
+
+.about-intro {
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  max-width: 760px;
+}
+
+.about-intro:last-of-type {
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-track + .about-track {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.about-track-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+}
+
+.about-track-summary {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  max-width: 720px;
+}
+
+.about-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.about-theme {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: rgba(15, 21, 36, 0.45);
+}
+
 .history-block {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
@@ -1579,6 +1643,7 @@ footer {
   .reading-content { padding: 28px 20px 40px; font-size: 17px; }
   .pcard-head { flex-direction: column; }
   .pcard-tags { justify-content: flex-start; }
+  .about-block,
   .history-block { padding: 28px 24px; }
 }
 

@@ -116,15 +116,15 @@ export function Contact() {
                 </div>
                 <div className="sig-row">
                   <span className="sig-label">Building with</span>
-                  <span className="sig-val">Go · Solidity · EVM · AI</span>
+                  <span className="sig-val">Go · Solidity · EVM · AI · Hermes</span>
                 </div>
                 <div className="sig-row">
                   <span className="sig-label">Education</span>
-                  <span className="sig-val">Penn State (Magna) · CS50 · Cyfrin</span>
+                  <span className="sig-val">Penn State, Magna Cum Laude</span>
                 </div>
                 <div className="sig-row">
-                  <span className="sig-label">Certifications</span>
-                  <span className="sig-val">CFA Level I</span>
+                  <span className="sig-label">Technical study</span>
+                  <span className="sig-val">CS50 · boot.dev · Cyfrin</span>
                 </div>
               </div>
             </Reveal>

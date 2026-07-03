@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 const BASE_SECTIONS = [
   { id: 'projects', label: 'Work' },
   { id: 'writing', label: 'Writing' },
-  { id: 'history', label: 'History' },
+  { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ];
 
