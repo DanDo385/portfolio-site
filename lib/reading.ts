@@ -1,5 +1,6 @@
 export interface ReadingPrefs {
   fontId: string;
+  pdfFontId: string;
   foreground: string;
   background: string;
 }
@@ -15,11 +16,11 @@ export const READING_FONTS = [
 ] as const;
 
 export const READING_PRESETS: Array<ReadingPrefs & { id: string; label: string }> = [
-  { id: 'warm', label: 'Warm paper', fontId: 'georgia', foreground: '#1f1a14', background: '#f4eedc' },
-  { id: 'light', label: 'Clean light', fontId: 'body', foreground: '#121212', background: '#ffffff' },
-  { id: 'dark', label: 'Dark focus', fontId: 'display', foreground: '#e8ecf4', background: '#0a0e18' },
-  { id: 'contrast', label: 'High contrast', fontId: 'body', foreground: '#ffffff', background: '#000000' },
-  { id: 'sage', label: 'Sage', fontId: 'display', foreground: '#1a261a', background: '#e8ede3' },
+  { id: 'warm', label: 'Warm paper', fontId: 'georgia', pdfFontId: 'georgia', foreground: '#1f1a14', background: '#f4eedc' },
+  { id: 'light', label: 'Clean light', fontId: 'body', pdfFontId: 'body', foreground: '#121212', background: '#ffffff' },
+  { id: 'dark', label: 'Dark focus', fontId: 'display', pdfFontId: 'display', foreground: '#e8ecf4', background: '#0a0e18' },
+  { id: 'contrast', label: 'High contrast', fontId: 'body', pdfFontId: 'body', foreground: '#ffffff', background: '#000000' },
+  { id: 'sage', label: 'Sage', fontId: 'display', pdfFontId: 'display', foreground: '#1a261a', background: '#e8ede3' },
 ];
 
 export const DEFAULT_READING_PREFS: ReadingPrefs = READING_PRESETS[0];
@@ -45,8 +46,15 @@ export function loadReadingPrefs(): ReadingPrefs {
   try {
     const raw = localStorage.getItem(READING_STORAGE_KEY);
     if (!raw) return DEFAULT_READING_PREFS;
-    const parsed = JSON.parse(raw) as ReadingPrefs;
-    if (parsed.fontId && parsed.foreground && parsed.background) return parsed;
+    const parsed = JSON.parse(raw) as Partial<ReadingPrefs>;
+    if (parsed.fontId && parsed.foreground && parsed.background) {
+      return {
+        fontId: parsed.fontId,
+        pdfFontId: parsed.pdfFontId ?? parsed.fontId,
+        foreground: parsed.foreground,
+        background: parsed.background,
+      };
+    }
   } catch {
     /* use default */
   }

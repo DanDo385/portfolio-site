@@ -88,6 +88,7 @@ export function ArticleReader({
     (preset: (typeof READING_PRESETS)[number]) => {
       updatePrefs({
         fontId: preset.fontId,
+        pdfFontId: preset.pdfFontId,
         foreground: preset.foreground,
         background: preset.background,
       });
@@ -140,7 +141,7 @@ export function ArticleReader({
       title,
       excerpt,
       body,
-      fontId: prefs.fontId,
+      fontId: prefs.pdfFontId,
       foreground: prefs.foreground,
       background: prefs.background,
     });
@@ -170,6 +171,20 @@ export function ArticleReader({
         <button type="button" className="btn" onClick={toggleSpeech}>
           {speaking ? 'Stop audio' : 'Play audio'}
         </button>
+        <label className="article-pdf-font">
+          <span>PDF font</span>
+          <select
+            value={prefs.pdfFontId}
+            onChange={(e) => updatePrefs({ ...prefs, pdfFontId: e.target.value })}
+            aria-label="PDF font"
+          >
+            {READING_FONTS.map((font) => (
+              <option key={font.id} value={font.id}>
+                {font.label}
+              </option>
+            ))}
+          </select>
+        </label>
         <button type="button" className="btn" onClick={exportPdf}>
           Export PDF
         </button>
@@ -236,10 +251,23 @@ export function ArticleReader({
 
               <div className="reading-fields">
                 <label className="reading-field">
-                  <span>Font</span>
+                  <span>Reading font</span>
                   <select
                     value={prefs.fontId}
                     onChange={(e) => updatePrefs({ ...prefs, fontId: e.target.value })}
+                  >
+                    {READING_FONTS.map((font) => (
+                      <option key={font.id} value={font.id}>
+                        {font.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="reading-field">
+                  <span>PDF font</span>
+                  <select
+                    value={prefs.pdfFontId}
+                    onChange={(e) => updatePrefs({ ...prefs, pdfFontId: e.target.value })}
                   >
                     {READING_FONTS.map((font) => (
                       <option key={font.id} value={font.id}>
