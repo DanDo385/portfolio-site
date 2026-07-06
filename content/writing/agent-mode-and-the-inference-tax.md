@@ -4,7 +4,7 @@ slug: agent-mode-and-the-inference-tax
 date: 2026-07-02
 status: published
 category: Web for Agents
-excerpt: "Light mode is for human eyes. Agent Mode is for machine context. The gap between them is measured in tokens, and the economics already justify structured surfaces."
+excerpt: "Agents spend most of their token budget decoding HTML before they read substance. Structured surfaces recover that context for actual reasoning."
 coverImage: null
 loomUrl: null
 relatedProject: portfolio-agent-mode
