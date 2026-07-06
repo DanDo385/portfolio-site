@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { ThemeToggle } from './ThemeToggle';
 
 const BASE_SECTIONS = [
   { id: 'projects', label: 'Work' },
@@ -56,18 +57,21 @@ export function Nav({ showRecent = false }: NavProps) {
         </li>
       </ul>
 
-      <button
-        type="button"
-        className={`nav-hamburger${open ? ' open' : ''}`}
-        id="hamburgerBtn"
-        aria-label="Toggle menu"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
+      <div className="nav-end">
+        <ThemeToggle />
+        <button
+          type="button"
+          className={`nav-hamburger${open ? ' open' : ''}`}
+          id="hamburgerBtn"
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </nav>
   );
 }

@@ -45,7 +45,11 @@ Create `content/projects/your-slug.json`:
 | `loomUrl` | no | Loom walkthrough link |
 | `youtubeUrl` | no | YouTube video link |
 | `zoomUrl` | no | Zoom recording link |
-| `screenshots` | no | Screenshot carousel in the preview box when set |
+| `previewGif` | no | GIF in the preview box (first preview wins) |
+| `previewVideo` | no | MP4 link when not embedded; embeds in preview if no `previewGif` |
+| `shortClipUrl` | no | Short MP4 clip link |
+| `recordingUrl` | no | Long-form screen recording link |
+| `screenshots` | no | Screenshot carousel when no GIF or video preview is set |
 | `previewType` | no | Set to `agent-json` for structured JSON preview; otherwise use `screenshots`. Cards always show a preview box; empty projects display "Preview pending". |
 | `relatedWriting` | no | Slug of a published article to cross-link |
 | `featured` | no | When `true`, pins above date sort |

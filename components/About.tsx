@@ -13,11 +13,11 @@ const BUILDER_THEMES = [
   'E-commerce automation',
   'Python',
   'APIs',
-  'Permissionless systems',
+  'Permissionless protocols',
   'Sentiment & signals',
-  'Strategy design',
-  'Developer networks',
-  'Market microstructure',
+  'Strategy',
+  'Builder networks',
+  'Market structure',
   'Creative execution',
   'Cross-border arbitrage',
 ];
@@ -73,13 +73,13 @@ export function About() {
             </div>
 
             <div className="about-track">
-              <h3 className="about-track-title">Builder & operator track</h3>
+              <h3 className="about-track-title">Building & operating</h3>
               <p className="about-track-summary">
-                Between institutional roles and full-time building, I ran independent e-commerce
-                operations, automated supply-constrained markets with Python, studied permissionless
-                systems with elite developer communities, and worked problems at the intersection of
-                strategy, sentiment, APIs, tax-aware cross-border execution, and creative market
-                structure.
+                Alongside institutional work, I ran independent e-commerce operations and built Python
+                systems for supply-constrained markets with real execution pressure. I studied
+                permissionless protocols with developer communities and worked problems where
+                strategy, sentiment, APIs, and tax-aware cross-border logistics all connect back to
+                the same discipline from the desk: read the structure, then move with intent.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

@@ -96,15 +96,15 @@ export function hasRecentContent(): boolean {
 export const TIMELINE: TimelineItem[] = [
   {
     era: '2024 – 2025',
-    role: 'Product & Web3 Platform Contributor',
+    role: 'Product & Platform Contributor',
     org: 'RAMM.ai, New York, NY',
-    note: 'Iterated across the full stack of development: smart contracts, frontend, and backend implementations. Translated user and partner requirements into product, API, and smart-contract constraints.',
+    note: 'Shipped across the stack—smart contracts, frontend, and backend—and translated partner requirements into product, API, and on-chain constraints.',
   },
   {
     era: '2019 – 2022',
-    role: 'Independent E-Commerce Operator',
+    role: 'Independent Operator',
     org: 'Self-Employed',
-    note: 'Built Python-based automation to monitor supply-constrained e-commerce markets and optimize execution across competitive retail and payments platforms.',
+    note: 'Built Python automation to track supply-constrained retail markets and optimize execution across competitive platforms and payment rails.',
   },
   {
     era: '2017 – 2019',

@@ -16,6 +16,10 @@ export interface Project {
   loomUrl?: string | null;
   youtubeUrl?: string | null;
   zoomUrl?: string | null;
+  previewGif?: string | null;
+  previewVideo?: string | null;
+  shortClipUrl?: string | null;
+  recordingUrl?: string | null;
   screenshots?: string[];
   previewType?: ProjectPreviewType | null;
   relatedWriting?: string | null;

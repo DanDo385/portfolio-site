@@ -34,7 +34,7 @@ export function projectPath(slug: string): string {
 
 const TAG_CLASS: Record<string, string> = {
   AI: 'tag-ai',
-  Agents: 'tag-ai',
+  Agents: 'tag-agents',
   'LLM Systems': 'tag-llm',
   Interactive: 'tag-interactive',
   Infrastructure: 'tag-infra',
@@ -48,7 +48,7 @@ const TAG_CLASS: Record<string, string> = {
 };
 
 export function tagClass(tag: string): string {
-  return TAG_CLASS[tag] ?? 'tag-infra';
+  return TAG_CLASS[tag] ?? 'tag-default';
 }
 
 export function categoryClass(category: string): string {
@@ -69,6 +69,9 @@ export function getProjectMediaLinks(project: Project): Array<{ label: string; h
   if (isValidUrl(project.loomUrl)) links.push({ label: 'Loom', href: project.loomUrl! });
   if (isValidUrl(project.youtubeUrl)) links.push({ label: 'YouTube', href: project.youtubeUrl! });
   if (isValidUrl(project.zoomUrl)) links.push({ label: 'Zoom', href: project.zoomUrl! });
+  if (isValidUrl(project.shortClipUrl)) links.push({ label: 'Short clip', href: project.shortClipUrl! });
+  if (isValidUrl(project.previewVideo)) links.push({ label: 'MP4', href: project.previewVideo! });
+  if (isValidUrl(project.recordingUrl)) links.push({ label: 'Long clip', href: project.recordingUrl! });
   return links;
 }
 

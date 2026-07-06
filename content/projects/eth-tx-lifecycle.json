@@ -10,6 +10,19 @@
   "githubUrl": "https://github.com/DanDo385/eth-tx-lifecycle",
   "demoUrl": null,
   "loomUrl": null,
-  "screenshots": [],
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": "/eth-tx-lifecycle/gif/screenshot-rotation-20260703.gif",
+  "previewVideo": null,
+  "shortClipUrl": "/eth-tx-lifecycle/mp4/screenshot-rotation-20260703.mp4",
+  "recordingUrl": null,
+  "screenshots": [
+    "/eth-tx-lifecycle/screenshots/Screenshot%202026-07-03%20at%205.18.38%E2%80%AFPM.png",
+    "/eth-tx-lifecycle/screenshots/Screenshot%202026-07-03%20at%205.19.18%E2%80%AFPM.png",
+    "/eth-tx-lifecycle/screenshots/Screenshot%202026-07-03%20at%205.19.52%E2%80%AFPM.png",
+    "/eth-tx-lifecycle/screenshots/Screenshot%202026-07-03%20at%205.20.31%E2%80%AFPM.png",
+    "/eth-tx-lifecycle/screenshots/Screenshot%202026-07-03%20at%205.20.54%E2%80%AFPM.png",
+    "/eth-tx-lifecycle/screenshots/Screenshot%202026-07-03%20at%205.23.10%E2%80%AFPM.png"
+  ],
   "relatedWriting": null
 }
