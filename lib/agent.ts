@@ -1,6 +1,7 @@
-import { SITE } from './constants';
+import { IPFS_URL, RESUME_PDF, SITE } from './constants';
 import { getProjects, getPublishedWriting } from './content';
-import { projectPath } from './utils';
+import { isValidUrl, projectPath } from './utils';
+import type { Project } from './types';
 
 const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
@@ -9,22 +10,50 @@ const PRINCIPLES = [
   'The portfolio is positioned around AI infrastructure finance, AI-native financial rails, and market-structure translation.',
 ];
 
+function siteUrl(path?: string | null): string | null {
+  if (!isValidUrl(path)) return null;
+  if (path!.startsWith('http://') || path!.startsWith('https://')) return path!;
+  return new URL(path!, SITE.url).toString();
+}
+
+function projectUrls(project: Project) {
+  const media: Record<string, string> = {};
+  const previewGif = siteUrl(project.previewGif);
+  const shortClip = siteUrl(project.shortClipUrl);
+  const recording = siteUrl(project.recordingUrl);
+  const previewVideo = siteUrl(project.previewVideo);
+
+  if (previewGif) media.previewGif = previewGif;
+  if (shortClip) media.shortClip = shortClip;
+  if (recording) media.recording = recording;
+  if (previewVideo) media.previewVideo = previewVideo;
+
+  return {
+    canonical: `${SITE.url}${projectPath(project.slug)}/`,
+    github: project.githubUrl ?? null,
+    demo: siteUrl(project.demoUrl),
+    loom: siteUrl(project.loomUrl),
+    youtube: siteUrl(project.youtubeUrl),
+    zoom: siteUrl(project.zoomUrl),
+    relatedWriting: project.relatedWriting
+      ? `${SITE.url}/writing/${project.relatedWriting}/`
+      : null,
+    media: Object.keys(media).length > 0 ? media : null,
+  };
+}
+
 export function getAgentManifest() {
   const projects = getProjects().map((project) => ({
     title: project.title,
     slug: project.slug,
+    date: project.date,
     status: project.status,
+    featured: Boolean(project.featured),
     summary: project.summary,
     tags: project.tags,
     tech: project.techBadges,
-    urls: {
-      canonical: `${SITE.url}${projectPath(project.slug)}/`,
-      github: project.githubUrl ?? null,
-      demo: project.demoUrl ? new URL(project.demoUrl, SITE.url).toString() : null,
-      relatedWriting: project.relatedWriting
-        ? `${SITE.url}/writing/${project.relatedWriting}/`
-        : null,
-    },
+    previewType: project.previewType ?? null,
+    urls: projectUrls(project),
   }));
 
   const writing = getPublishedWriting().map((article) => ({
@@ -42,7 +71,7 @@ export function getAgentManifest() {
   }));
 
   return {
-    schema: 'https://magro.dev/agent.json',
+    schema: `${SITE.url}/agent.json`,
     schemaVersion: '0.1',
     site: {
       name: SITE.name,
@@ -57,6 +86,11 @@ export function getAgentManifest() {
     agentMode: {
       purpose:
         'Expose canonical, structured context for AI agents so they do not have to infer meaning from decorative HTML.',
+      endpoints: {
+        overview: `${SITE.url}/agent/`,
+        manifest: `${SITE.url}/agent.json`,
+        router: `${SITE.url}/llms.txt`,
+      },
       preferredEntryPoints: [
         `${SITE.url}/agent/`,
         `${SITE.url}/agent.json`,
@@ -64,6 +98,29 @@ export function getAgentManifest() {
         `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
       ],
       principles: PRINCIPLES,
+    },
+    navigation: [
+      { id: 'recent', label: 'Recent', href: `${SITE.url}/#recent` },
+      { id: 'projects', label: 'Work', href: `${SITE.url}/#projects` },
+      { id: 'writing', label: 'Writing', href: `${SITE.url}/#writing` },
+      { id: 'about', label: 'About', href: `${SITE.url}/#about` },
+      { id: 'contact', label: 'Contact', href: `${SITE.url}/#contact` },
+    ],
+    about: {
+      institutionalExperienceYears: 13,
+      education: 'Penn State, Magna Cum Laude',
+      technicalStudy: ['CS50', 'boot.dev', 'Cyfrin'],
+      buildingWith: ['Go', 'Solidity', 'EVM', 'AI', 'Hermes'],
+      summary:
+        'Former institutional rates and macro trader and portfolio manager now building at the intersection of AI infrastructure finance, programmable financial rails, and market-structure translation.',
+    },
+    contact: {
+      email: 'dan@magro.dev',
+      github: 'https://github.com/DanDo385',
+      linkedin: 'https://linkedin.com/in/dmagro',
+      twitter: 'https://twitter.com/DanQB13',
+      resume: `${SITE.url}${RESUME_PDF}`,
+      resumeIpfs: IPFS_URL,
     },
     canonicalTopics: [
       'AI infrastructure finance',
@@ -80,14 +137,87 @@ export function getAgentManifest() {
   };
 }
 
+function llmsLink(label: string, href: string, note?: string): string {
+  return note ? `- [${label}](${href}): ${note}` : `- [${label}](${href})`;
+}
+
 export function getLlmsTxt(): string {
   const manifest = getAgentManifest();
+
+  const agentLines = [
+    llmsLink('Agent overview', manifest.agentMode.endpoints.overview, 'Human-readable contract and endpoint map'),
+    llmsLink('JSON manifest', manifest.agentMode.endpoints.manifest, 'Structured projects, writing, topics, and links'),
+    llmsLink('LLM router', manifest.agentMode.endpoints.router, 'This file; compact markdown router for language models'),
+    llmsLink(
+      'Agent Mode essay',
+      `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
+      'Why structured agent surfaces matter'
+    ),
+  ].join('\n');
+
   const projectLines = manifest.projects
-    .map((project) => `- ${project.title}: ${project.summary} (${project.urls.demo ?? project.urls.github ?? project.urls.canonical})`)
-    .join('\n');
-  const writingLines = manifest.writing
-    .map((article) => `- ${article.title}: ${article.excerpt} (${article.urls.canonical})`)
+    .map((project) => {
+      const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
+      return llmsLink(project.title, href, project.summary);
+    })
     .join('\n');
 
-  return `# ${SITE.name}\n\n${SITE.description}\n\n## Agent Mode\n\nThis site exposes structured context for AI agents. Prefer these endpoints before scraping decorative HTML:\n\n- Agent overview: ${SITE.url}/agent/\n- JSON manifest: ${SITE.url}/agent.json\n- LLM router: ${SITE.url}/llms.txt\n\n## Canonical Positioning\n\nDaniel Magro works at the intersection of AI infrastructure finance, capital markets, programmable financial rails, and market-structure translation. The site is a proof-of-work hub, not a generic software portfolio.\n\n## Use Guidelines\n\n${PRINCIPLES.map((principle) => `- ${principle}`).join('\n')}\n\n## Projects\n\n${projectLines}\n\n## Writing\n\n${writingLines || '- Published writing appears at /writing/<slug>/.'}\n\n## Contact\n\n- Website: ${SITE.url}\n- Email: dan@magro.dev\n- GitHub: https://github.com/DanDo385\n`;
+  const writingLines = manifest.writing
+    .map((article) => llmsLink(article.title, article.urls.canonical, article.excerpt))
+    .join('\n');
+
+  const siteLines = [
+    llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
+    llmsLink('About', `${SITE.url}/#about`, 'Professional history and builder track'),
+    llmsLink('Contact', `${SITE.url}/#contact`, 'Email, resume, and social links'),
+  ].join('\n');
+
+  const optionalLines = [
+    llmsLink('Resume PDF', manifest.contact.resume, 'Downloadable resume'),
+    llmsLink('Resume on IPFS', manifest.contact.resumeIpfs, 'Immutable resume copy'),
+    llmsLink('GitHub', manifest.contact.github, 'Code repositories'),
+    llmsLink('LinkedIn', manifest.contact.linkedin),
+    llmsLink('X / Twitter', manifest.contact.twitter),
+    ...manifest.projects
+      .filter((project) => project.urls.media)
+      .flatMap((project) => {
+        const media = project.urls.media!;
+        return Object.entries(media).map(([kind, href]) =>
+          llmsLink(`${project.title} ${kind}`, href, 'Project media artifact')
+        );
+      }),
+  ].join('\n');
+
+  return [
+    `# ${SITE.name}`,
+    `> ${SITE.description}`,
+    '',
+    manifest.about.summary,
+    '',
+    '## Agent Mode',
+    '',
+    agentLines,
+    '',
+    '## Site',
+    '',
+    siteLines,
+    '',
+    '## Projects',
+    '',
+    projectLines,
+    '',
+    '## Writing',
+    '',
+    writingLines || '- Published writing appears at /writing/<slug>/.',
+    '',
+    '## Contact',
+    '',
+    `- Email: dan@magro.dev`,
+    `- Website: ${SITE.url}`,
+    '',
+    '## Optional',
+    '',
+    optionalLines,
+    '',
+  ].join('\n');
 }

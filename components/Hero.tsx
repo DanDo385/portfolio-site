@@ -37,6 +37,9 @@ export function Hero({ showRecent = false }: HeroProps) {
           <Link href="#writing" className="btn">
             Writing
           </Link>
+          <Link href="#about" className="btn">
+            About Me
+          </Link>
           <Link href="#resume" className="btn">
             Resume
           </Link>

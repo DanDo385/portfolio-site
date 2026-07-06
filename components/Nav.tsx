@@ -50,14 +50,12 @@ export function Nav({ showRecent = false }: NavProps) {
             </Link>
           </li>
         ))}
-        <li>
-          <Link href="/agent" className="nav-scroll nav-agent" onClick={handleNavClick}>
-            Agent Mode
-          </Link>
-        </li>
       </ul>
 
       <div className="nav-end">
+        <Link href="/agent" className="nav-agent-link" onClick={handleNavClick}>
+          Agent Mode
+        </Link>
         <ThemeToggle />
         <button
           type="button"
