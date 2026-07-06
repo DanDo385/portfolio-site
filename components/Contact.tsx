@@ -72,7 +72,7 @@ export function Contact() {
           <Reveal>
             <div className="section-label">Contact</div>
           </Reveal>
-          <div className="contact-grid">
+          <div className="contact-main">
             <Reveal className="contact-text">
               <div className="resume-section" id="resume">
                 <div className="resume-label">Resume</div>
@@ -107,28 +107,28 @@ export function Contact() {
                 </a>
               </div>
             </Reveal>
-            <Reveal delay={100}>
-              <div className="signals-panel">
-                <div className="signals-head">At a Glance</div>
-                <div className="sig-row">
-                  <span className="sig-label">Institutional experience</span>
-                  <span className="sig-val">13 years</span>
-                </div>
-                <div className="sig-row">
-                  <span className="sig-label">Building with</span>
-                  <span className="sig-val">Go · Solidity · EVM · AI · Hermes</span>
-                </div>
-                <div className="sig-row">
-                  <span className="sig-label">Education</span>
-                  <span className="sig-val">Penn State, Magna Cum Laude</span>
-                </div>
-                <div className="sig-row">
-                  <span className="sig-label">Technical study</span>
-                  <span className="sig-val">CS50 · boot.dev · Cyfrin</span>
-                </div>
-              </div>
-            </Reveal>
           </div>
+          <Reveal delay={100} className="contact-glance">
+            <div className="signals-panel">
+              <div className="signals-head">At a Glance</div>
+              <div className="sig-row">
+                <span className="sig-label">Institutional experience</span>
+                <span className="sig-val">13 years</span>
+              </div>
+              <div className="sig-row">
+                <span className="sig-label">Building with</span>
+                <span className="sig-val">Go · Solidity · EVM · AI · Hermes</span>
+              </div>
+              <div className="sig-row">
+                <span className="sig-label">Education</span>
+                <span className="sig-val">Penn State, Magna Cum Laude</span>
+              </div>
+              <div className="sig-row">
+                <span className="sig-label">Technical study</span>
+                <span className="sig-val">CS50 · boot.dev · Cyfrin</span>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
