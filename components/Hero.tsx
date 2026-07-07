@@ -32,19 +32,10 @@ export function Hero({ showRecent = false }: HeroProps) {
             </Link>
           )}
           <Link href="#projects" className={`btn${showRecent ? '' : ' btn-primary'}`}>
-            Work
+            Projects
           </Link>
           <Link href="#writing" className="btn">
             Writing
-          </Link>
-          <Link href="#about" className="btn">
-            About Me
-          </Link>
-          <Link href="#resume" className="btn">
-            Resume
-          </Link>
-          <Link href="#contact" className="btn">
-            Contact
           </Link>
         </div>
       </div>

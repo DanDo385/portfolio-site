@@ -8,7 +8,7 @@
   "summary": "Full-stack visualization of what happens between clicking send and a transaction becoming irreversible: execution and consensus layers, MEV, builder auctions, and finality.",
   "techBadges": ["Go", "Next.js", "TypeScript", "JSON-RPC", "Beacon API", "MEV Detection"],
   "githubUrl": "https://github.com/DanDo385/eth-tx-lifecycle",
-  "demoUrl": null,
+  "demoUrl": "/projects/eth-tx-lifecycle",
   "loomUrl": null,
   "youtubeUrl": null,
   "zoomUrl": null,

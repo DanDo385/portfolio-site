@@ -4,6 +4,7 @@
   "date": "2025-05-10",
   "status": "complete",
   "featured": false,
+  "listed": false,
   "tags": ["DeFi", "Go", "TypeScript", "Simulation"],
   "summary": "Simulation engine for AMM economics: impermanent loss under volatility regimes, fee accrual dynamics, and concentrated liquidity, modeled the way a rates trader would run scenarios.",
   "techBadges": ["Go", "TypeScript", "Fixed-Point Math", "Monte Carlo", "CLI"],

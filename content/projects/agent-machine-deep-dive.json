@@ -8,7 +8,7 @@
   "summary": "An interactive single-page deep dive into the anatomy of an AI agent: the loop of perception, planning, memory, tool use, and action, made observable step by step with ASCII art diagrams.",
   "techBadges": ["HTML", "CSS", "ASCII Art Diagrams"],
   "githubUrl": "https://github.com/DanDo385/agent-machine-deep-dive",
-  "demoUrl": null,
+  "demoUrl": "/projects/agent-machine-deep-dive",
   "loomUrl": null,
   "youtubeUrl": null,
   "zoomUrl": null,

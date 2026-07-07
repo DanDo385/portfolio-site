@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const BASE_SECTIONS = [
-  { id: 'projects', label: 'Work' },
+  { id: 'projects', label: 'Projects' },
   { id: 'writing', label: 'Writing' },
-  { id: 'about', label: 'About' },
+  { id: 'about', label: 'About me' },
   { id: 'contact', label: 'Contact' },
 ];
 

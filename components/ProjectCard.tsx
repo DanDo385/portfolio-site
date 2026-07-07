@@ -64,17 +64,23 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
                 GitHub <span>&rarr;</span>
               </a>
             )}
-            {mediaLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="pcard-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label} <span>&rarr;</span>
-              </a>
-            ))}
+            {mediaLinks.map((link) =>
+              link.internal ? (
+                <Link key={link.label} href={link.href} className="pcard-link">
+                  {link.label} <span>&rarr;</span>
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="pcard-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label} <span>&rarr;</span>
+                </a>
+              )
+            )}
           </div>
           {related && (
             <p className="pcard-related">

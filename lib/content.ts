@@ -19,6 +19,10 @@ export function getProjects(): Project[] {
   });
 }
 
+export function getListedProjects(): Project[] {
+  return getProjects().filter((project) => project.listed !== false);
+}
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return getProjects().find((p) => p.slug === slug);
 }
@@ -61,7 +65,7 @@ export function getProjectSlugs(): string[] {
 }
 
 export function getRecentItems(): RecentItem[] {
-  const projects: RecentItem[] = getProjects()
+  const projects: RecentItem[] = getListedProjects()
     .filter((project) => isWithinRecentDays(project.date))
     .map((project) => ({
       type: 'project',
@@ -98,7 +102,7 @@ export const TIMELINE: TimelineItem[] = [
     era: '2024 – 2025',
     role: 'Product & Platform Contributor',
     org: 'RAMM.ai, New York, NY',
-    note: 'Shipped across the stack—smart contracts, frontend, and backend—and translated partner requirements into product, API, and on-chain constraints.',
+    note: 'Shipped across the stack (smart contracts, frontend, and backend) and translated partner requirements into product, API, and on-chain constraints.',
   },
   {
     era: '2019 – 2022',

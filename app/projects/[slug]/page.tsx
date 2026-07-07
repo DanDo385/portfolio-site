@@ -39,7 +39,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <main className="article-page">
         <div className="container">
           <Link href="/#projects" className="article-back">
-            &larr; Work
+            &larr; Projects
           </Link>
           <Reveal>
             <ProjectCard project={project} writingBySlug={writingBySlug} reveal={false} />

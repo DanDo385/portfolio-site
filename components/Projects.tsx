@@ -12,7 +12,7 @@ export function Projects({ projects, writingBySlug }: ProjectsProps) {
     <section id="projects">
       <div className="container">
         <Reveal>
-          <div className="section-label">Work</div>
+          <div className="section-label">Projects</div>
         </Reveal>
         {projects.map((project) => (
           <ProjectCard

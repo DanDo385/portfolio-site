@@ -4,6 +4,7 @@
   "date": "2026-07-07",
   "status": "complete",
   "featured": true,
+  "listed": false,
   "tags": ["Infrastructure", "Solidity", "EVM", "L2", "Interactive"],
   "summary": "A transparent EVM sandbox for optimistic rollup disputes, tracing how challenged state roots move through proof, bond, and settlement logic.",
   "techBadges": ["Solidity", "Go", "EVM Tracing", "Fraud Proofs", "Cloudflare Tunnel"],

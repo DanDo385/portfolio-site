@@ -63,15 +63,26 @@ export function validScreenshots(screenshots?: string[]): string[] {
   return screenshots.filter((s) => s && !s.includes('TODO(dan)'));
 }
 
-export function getProjectMediaLinks(project: Project): Array<{ label: string; href: string }> {
-  const links: Array<{ label: string; href: string }> = [];
-  if (isValidUrl(project.demoUrl)) links.push({ label: 'Live demo', href: project.demoUrl! });
-  if (isValidUrl(project.loomUrl)) links.push({ label: 'Loom', href: project.loomUrl! });
-  if (isValidUrl(project.youtubeUrl)) links.push({ label: 'YouTube', href: project.youtubeUrl! });
-  if (isValidUrl(project.zoomUrl)) links.push({ label: 'Zoom', href: project.zoomUrl! });
-  if (isValidUrl(project.shortClipUrl)) links.push({ label: 'Short clip', href: project.shortClipUrl! });
-  if (isValidUrl(project.previewVideo)) links.push({ label: 'MP4', href: project.previewVideo! });
-  if (isValidUrl(project.recordingUrl)) links.push({ label: 'Long clip', href: project.recordingUrl! });
+export interface ProjectMediaLink {
+  label: string;
+  href: string;
+  internal: boolean;
+}
+
+export function getProjectMediaLinks(project: Project): ProjectMediaLink[] {
+  const links: ProjectMediaLink[] = [];
+  const push = (label: string, url?: string | null) => {
+    if (!isValidUrl(url)) return;
+    const href = url!;
+    links.push({ label, href, internal: href.startsWith('/') });
+  };
+  push('Live demo', project.demoUrl);
+  push('Loom', project.loomUrl);
+  push('YouTube', project.youtubeUrl);
+  push('Zoom', project.zoomUrl);
+  push('Short clip', project.shortClipUrl);
+  push('MP4', project.previewVideo);
+  push('Long clip', project.recordingUrl);
   return links;
 }
 

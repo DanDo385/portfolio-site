@@ -7,10 +7,10 @@ import { Projects } from '@/components/Projects';
 import { Recent } from '@/components/Recent';
 import { SiteNav } from '@/components/SiteNav';
 import { Writing } from '@/components/Writing';
-import { getProjects, getPublishedWriting, getRecentItems, hasRecentContent } from '@/lib/content';
+import { getListedProjects, getPublishedWriting, getRecentItems, hasRecentContent } from '@/lib/content';
 
 export default function HomePage() {
-  const projects = getProjects();
+  const projects = getListedProjects();
   const articles = getPublishedWriting();
   const recentItems = getRecentItems();
   const showRecent = hasRecentContent();

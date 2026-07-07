@@ -1,5 +1,5 @@
 import { IPFS_URL, RESUME_PDF, SITE } from './constants';
-import { getProjects, getPublishedWriting } from './content';
+import { getListedProjects, getPublishedWriting } from './content';
 import { isValidUrl, projectPath } from './utils';
 import { DEMO_CONFIGS } from './demos';
 import type { Project } from './types';
@@ -44,7 +44,7 @@ function projectUrls(project: Project) {
 }
 
 export function getAgentManifest() {
-  const projects = getProjects().map((project) => ({
+  const projects = getListedProjects().map((project) => ({
     title: project.title,
     slug: project.slug,
     date: project.date,
@@ -102,9 +102,9 @@ export function getAgentManifest() {
     },
     navigation: [
       { id: 'recent', label: 'Recent', href: `${SITE.url}/#recent` },
-      { id: 'projects', label: 'Work', href: `${SITE.url}/#projects` },
+      { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
       { id: 'writing', label: 'Writing', href: `${SITE.url}/#writing` },
-      { id: 'about', label: 'About', href: `${SITE.url}/#about` },
+      { id: 'about', label: 'About me', href: `${SITE.url}/#about` },
       { id: 'contact', label: 'Contact', href: `${SITE.url}/#contact` },
     ],
     about: {
@@ -133,15 +133,17 @@ export function getAgentManifest() {
       'agent-readable web infrastructure',
       'capital markets translation for technical systems',
     ],
-    demos: Object.values(DEMO_CONFIGS).map((config) => ({
-      slug: config.slug,
-      name: config.name,
-      project: `${SITE.url}${projectPath(config.projectSlug)}/`,
-      healthProbe: `${SITE.url}/api/demos/${config.slug}/health`,
-      stagingApi: config.defaultApiBaseUrl,
-      runtime: 'Go service on MBP via Cloudflare Tunnel',
-      status: 'staging',
-    })),
+    demos: Object.values(DEMO_CONFIGS)
+      .filter((config) => projects.some((project) => project.slug === config.projectSlug))
+      .map((config) => ({
+        slug: config.slug,
+        name: config.name,
+        project: `${SITE.url}${projectPath(config.projectSlug)}/`,
+        healthProbe: `${SITE.url}/api/demos/${config.slug}/health`,
+        stagingApi: config.defaultApiBaseUrl,
+        runtime: 'Go service on MBP via Cloudflare Tunnel',
+        status: 'staging',
+      })),
     projects,
     writing,
   };

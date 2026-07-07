@@ -23,6 +23,7 @@ export interface Project {
   screenshots?: string[];
   previewType?: ProjectPreviewType | null;
   relatedWriting?: string | null;
+  listed?: boolean;
 }
 
 export interface Article {

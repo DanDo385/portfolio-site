@@ -1,0 +1,27 @@
+{
+  "title": "Ethereum RPC Monitor",
+  "slug": "eth-rpc-monitor",
+  "date": "2026-07-06",
+  "status": "complete",
+  "featured": false,
+  "tags": ["Infrastructure", "Go", "TypeScript", "Monitoring"],
+  "summary": "A live observability tool for Ethereum JSON-RPC endpoints: tracks latency, block height divergence, and error rates across providers so a node operator can see which upstream is lying or falling behind.",
+  "techBadges": ["Go", "TypeScript", "JSON-RPC", "Latency Tracking", "Consensus Checks"],
+  "githubUrl": "https://github.com/DanDo385/eth-rpc-monitor",
+  "demoUrl": "/projects/eth-rpc-monitor",
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": "/project-assets/eth-rpc-monitor/gif/preview.gif",
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [
+    "/project-assets/eth-rpc-monitor/screenshots/image1.png",
+    "/project-assets/eth-rpc-monitor/screenshots/image2.png",
+    "/project-assets/eth-rpc-monitor/screenshots/image3.png",
+    "/project-assets/eth-rpc-monitor/screenshots/image4.png",
+    "/project-assets/eth-rpc-monitor/screenshots/image5.png"
+  ],
+  "relatedWriting": null
+}
