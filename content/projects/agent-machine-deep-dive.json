@@ -10,6 +10,22 @@
   "githubUrl": "https://github.com/DanDo385/agent-machine-deep-dive",
   "demoUrl": null,
   "loomUrl": null,
-  "screenshots": [],
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [
+    "/project-assets/agent-machine-deep-dive/screenshots/image1.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image2.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image3.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image4.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image5.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image6.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image7.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image8.png",
+    "/project-assets/agent-machine-deep-dive/screenshots/image9.png"
+  ],
   "relatedWriting": null
 }

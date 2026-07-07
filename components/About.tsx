@@ -2,11 +2,11 @@ import { TIMELINE } from '@/lib/content';
 import { Reveal } from './Reveal';
 
 const FIRMS = [
-  { name: 'Merrill Lynch', logo: '/merrill.png' },
-  { name: 'Jefferies', logo: '/jefferies.png' },
-  { name: 'Nomura', logo: '/nomura.png' },
-  { name: 'PointState', logo: '/pointstate.png' },
-  { name: 'Prudential', logo: '/pgim.png' },
+  { name: 'Merrill Lynch', logo: '/company-logos/merrill.png' },
+  { name: 'Jefferies', logo: '/company-logos/jefferies.png' },
+  { name: 'Nomura', logo: '/company-logos/nomura.png' },
+  { name: 'PointState', logo: '/company-logos/pointstate.png' },
+  { name: 'Prudential', logo: '/company-logos/pgim.png' },
 ];
 
 const BUILDER_THEMES = [

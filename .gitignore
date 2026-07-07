@@ -5,4 +5,5 @@ node_modules/
 out/
 .vercel
 .env*
-public/eth-tx-lifecycle/long-recording/
+public/project-assets/**/long-recording/
+public/project-assets/eth-tx-lifecycle/short-recording/
