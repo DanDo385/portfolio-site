@@ -1,6 +1,7 @@
 import { IPFS_URL, RESUME_PDF, SITE } from './constants';
 import { getProjects, getPublishedWriting } from './content';
 import { isValidUrl, projectPath } from './utils';
+import { DEMO_CONFIGS } from './demos';
 import type { Project } from './types';
 
 const PRINCIPLES = [
@@ -132,6 +133,15 @@ export function getAgentManifest() {
       'agent-readable web infrastructure',
       'capital markets translation for technical systems',
     ],
+    demos: Object.values(DEMO_CONFIGS).map((config) => ({
+      slug: config.slug,
+      name: config.name,
+      project: `${SITE.url}${projectPath(config.projectSlug)}/`,
+      healthProbe: `${SITE.url}/api/demos/${config.slug}/health`,
+      stagingApi: config.defaultApiBaseUrl,
+      runtime: 'Go service on MBP via Cloudflare Tunnel',
+      status: 'staging',
+    })),
     projects,
     writing,
   };
@@ -164,6 +174,16 @@ export function getLlmsTxt(): string {
 
   const writingLines = manifest.writing
     .map((article) => llmsLink(article.title, article.urls.canonical, article.excerpt))
+    .join('\n');
+
+  const demoLines = manifest.demos
+    .map((demo) =>
+      llmsLink(
+        demo.name,
+        demo.project,
+        `Interactive demo. Backend runs at ${demo.stagingApi}; probe status at ${demo.healthProbe}.`
+      )
+    )
     .join('\n');
 
   const siteLines = [
@@ -209,6 +229,10 @@ export function getLlmsTxt(): string {
     '## Writing',
     '',
     writingLines || '- Published writing appears at /writing/<slug>/.',
+    '',
+    '## Interactive Demos',
+    '',
+    demoLines || '- Interactive demos are linked from individual project pages.',
     '',
     '## Contact',
     '',

@@ -107,6 +107,32 @@ npm run dev      # http://localhost:3000
 npm run build    # production build (.next/)
 ```
 
+## Interactive demos
+
+The site supports project-specific interactive demos from the existing project routes.
+`eth-l2-fraud-proof` renders an additional client panel below its project card and checks
+the staging Go backend through a same-origin Next.js route:
+
+```text
+/projects/eth-l2-fraud-proof
+/api/demos/eth-l2/health
+```
+
+Configure the public staging origin with:
+
+```env
+NEXT_PUBLIC_API_URL=https://api-staging-eth-l2.magro.dev
+```
+
+The current default points to the same URL so local previews still work without secrets.
+The health proxy probes `/health`, `/api/health`, and `/status` on the backend. It does
+not assume a scenario endpoint yet. When the MBP Cloudflare Tunnel is offline, the page
+shows an explicit offline state and remains useful as a static walkthrough.
+
+To add another interactive demo, add a config entry in `lib/demos.ts`, add a focused
+component under `components/`, and branch in `app/projects/[slug]/page.tsx` for that
+project slug. Use server-side API routes for calls that need credentials or CORS control.
+
 ## Project structure
 
 ```

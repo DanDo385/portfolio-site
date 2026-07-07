@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/Footer';
+import { EthL2FraudProofInteractive } from '@/components/EthL2FraudProofInteractive';
 import { ProjectCard } from '@/components/ProjectCard';
 import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
@@ -43,6 +44,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <Reveal>
             <ProjectCard project={project} writingBySlug={writingBySlug} reveal={false} />
           </Reveal>
+          {project.slug === 'eth-l2-fraud-proof' && (
+            <Reveal>
+              <EthL2FraudProofInteractive />
+            </Reveal>
+          )}
         </div>
       </main>
       <Footer />

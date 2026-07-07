@@ -5,5 +5,8 @@ node_modules/
 out/
 .vercel
 .env*
+!.env.example
+.playwright-mcp/
+tsconfig.tsbuildinfo
 public/project-assets/**/long-recording/
 public/project-assets/eth-tx-lifecycle/short-recording/
