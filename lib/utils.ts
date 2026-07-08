@@ -118,14 +118,14 @@ export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
 
   const demoLinks: ProjectMediaLink[] = [];
 
-  const shortDemo =
-    projectMediaLink('Short demo', project.shortClipUrl) ??
-    projectMediaLink('Short demo', project.previewVideo);
+  const shortHref = project.shortClipUrl ?? project.previewVideo;
+  const shortDemo = projectMediaLink('Short demo', shortHref);
   if (shortDemo) demoLinks.push(shortDemo);
 
-  const fullDemo =
-    projectMediaLink('Full demo', project.youtubeUrl) ??
-    projectMediaLink('Full demo', project.recordingUrl);
+  const fullHref =
+    project.recordingUrl ??
+    (project.youtubeUrl && project.youtubeUrl !== shortHref ? project.youtubeUrl : null);
+  const fullDemo = projectMediaLink('Full demo', fullHref);
   if (fullDemo) demoLinks.push(fullDemo);
 
   for (const extra of [

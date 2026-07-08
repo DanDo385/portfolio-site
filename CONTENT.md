@@ -43,12 +43,12 @@ Create `content/projects/your-slug.json`:
 | `githubUrl` | no | GitHub repo link |
 | `demoUrl` | no | Interactive demo hosted on magro.dev (`/projects/<slug>` or `/agent`) |
 | `loomUrl` | no | Loom walkthrough link |
-| `youtubeUrl` | no | Full project demo (YouTube) |
+| `youtubeUrl` | no | Full project demo on YouTube when distinct from `shortClipUrl` |
 | `zoomUrl` | no | Zoom recording link |
 | `previewGif` | no | GIF in the preview box (first preview wins) |
 | `previewVideo` | no | Short demo MP4 fallback when `shortClipUrl` is unset |
-| `shortClipUrl` | no | Short demo link (YouTube or MP4) |
-| `recordingUrl` | no | Full demo fallback when `youtubeUrl` is unset |
+| `shortClipUrl` | no | Short demo on YouTube or MP4 |
+| `recordingUrl` | no | Full project demo on YouTube or long recording |
 | `screenshots` | no | Screenshot carousel when no GIF or video preview is set |
 | `previewType` | no | Set to `agent-json` for structured JSON preview; otherwise use `screenshots`. Cards always show a preview box; empty projects display "Preview pending". |
 | `relatedWriting` | no | Slug of a published article to cross-link |
