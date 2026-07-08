@@ -12,7 +12,11 @@ const NAV_SECTIONS = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export function Nav() {
+interface NavProps {
+  showRecent?: boolean;
+}
+
+export function Nav({ showRecent = false }: NavProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -27,6 +31,9 @@ export function Nav() {
 
   const handleNavClick = () => setOpen(false);
   const sectionHref = (id: string) => (onHome ? `#${id}` : `/#${id}`);
+  const sections = showRecent
+    ? [{ id: 'recent', label: 'Recent', emphasis: true }, ...NAV_SECTIONS.map((s) => ({ ...s, emphasis: false }))]
+    : NAV_SECTIONS.map((s) => ({ ...s, emphasis: false }));
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
@@ -36,9 +43,13 @@ export function Nav() {
       </Link>
 
       <ul className={`nav-links${open ? ' mobile-open' : ''}`} id="navMenu">
-        {NAV_SECTIONS.map(({ id, label }) => (
+        {sections.map(({ id, label, emphasis }) => (
           <li key={id}>
-            <Link href={sectionHref(id)} className="nav-scroll" onClick={handleNavClick}>
+            <Link
+              href={sectionHref(id)}
+              className={`nav-scroll${emphasis ? ' nav-recent' : ''}`}
+              onClick={handleNavClick}
+            >
               {label}
             </Link>
           </li>

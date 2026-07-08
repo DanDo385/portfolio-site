@@ -1,5 +1,5 @@
 import { IPFS_URL, RESUME_PDF, SITE } from './constants';
-import { getListedProjects, getPublishedWriting } from './content';
+import { getListedProjects, getPublishedWriting, hasRecentContent } from './content';
 import { isValidUrl, projectPath } from './utils';
 import { DEMO_CONFIGS } from './demos';
 import type { Project } from './types';
@@ -101,6 +101,9 @@ export function getAgentManifest() {
       principles: PRINCIPLES,
     },
     navigation: [
+      ...(hasRecentContent()
+        ? [{ id: 'recent', label: 'Recent', href: `${SITE.url}/#recent` }]
+        : []),
       { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
       { id: 'writing', label: 'Writing', href: `${SITE.url}/#writing` },
       { id: 'about', label: 'About me', href: `${SITE.url}/#about` },

@@ -69,21 +69,63 @@ export interface ProjectMediaLink {
   internal: boolean;
 }
 
+export interface ProjectLinkSection {
+  title: string;
+  links: ProjectMediaLink[];
+}
+
+function projectMediaLink(label: string, url?: string | null): ProjectMediaLink | null {
+  if (!isValidUrl(url)) return null;
+  const href = url!;
+  return { label, href, internal: href.startsWith('/') };
+}
+
+export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
+  const sections: ProjectLinkSection[] = [];
+
+  const sourceLinks = [projectMediaLink('GitHub', project.githubUrl)].filter(
+    (link): link is ProjectMediaLink => link !== null
+  );
+  if (sourceLinks.length > 0) {
+    sections.push({ title: 'Source', links: sourceLinks });
+  }
+
+  const interactiveLinks = [projectMediaLink('Live demo', project.demoUrl)].filter(
+    (link): link is ProjectMediaLink => link !== null
+  );
+  if (interactiveLinks.length > 0) {
+    sections.push({ title: 'Interactive', links: interactiveLinks });
+  }
+
+  const demoLinks: ProjectMediaLink[] = [];
+
+  const shortDemo =
+    projectMediaLink('Short demo', project.shortClipUrl) ??
+    projectMediaLink('Short demo', project.previewVideo);
+  if (shortDemo) demoLinks.push(shortDemo);
+
+  const fullDemo =
+    projectMediaLink('Full demo', project.youtubeUrl) ??
+    projectMediaLink('Full demo', project.recordingUrl);
+  if (fullDemo) demoLinks.push(fullDemo);
+
+  for (const extra of [
+    projectMediaLink('Loom', project.loomUrl),
+    projectMediaLink('Zoom', project.zoomUrl),
+  ]) {
+    if (extra) demoLinks.push(extra);
+  }
+
+  if (demoLinks.length > 0) {
+    sections.push({ title: 'Demos', links: demoLinks });
+  }
+
+  return sections;
+}
+
+/** @deprecated Use getProjectLinkSections for structured project cards. */
 export function getProjectMediaLinks(project: Project): ProjectMediaLink[] {
-  const links: ProjectMediaLink[] = [];
-  const push = (label: string, url?: string | null) => {
-    if (!isValidUrl(url)) return;
-    const href = url!;
-    links.push({ label, href, internal: href.startsWith('/') });
-  };
-  push('Live demo', project.demoUrl);
-  push('Loom', project.loomUrl);
-  push('YouTube', project.youtubeUrl);
-  push('Zoom', project.zoomUrl);
-  push('Short clip', project.shortClipUrl);
-  push('MP4', project.previewVideo);
-  push('Long clip', project.recordingUrl);
-  return links;
+  return getProjectLinkSections(project).flatMap((section) => section.links);
 }
 
 export function loomEmbedUrl(url?: string | null): string | null {

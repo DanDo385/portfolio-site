@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import type { Article, Project } from '@/lib/types';
 import {
-  getProjectMediaLinks,
+  getProjectLinkSections,
   projectAnchorId,
   projectPath,
   tagClass,
 } from '@/lib/utils';
+import { ProjectCardLinks } from './ProjectCardLinks';
 import { ProjectPreview } from './ProjectPreview';
 import { Reveal } from './Reveal';
 
@@ -20,7 +21,7 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
     project.relatedWriting && writingBySlug[project.relatedWriting]?.status === 'published'
       ? writingBySlug[project.relatedWriting]
       : null;
-  const mediaLinks = getProjectMediaLinks(project);
+  const linkSections = getProjectLinkSections(project);
 
   const card = (
     <article className="pcard" id={projectAnchorId(project.slug)}>
@@ -53,35 +54,7 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
               </span>
             ))}
           </div>
-          <div className="pcard-links">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                className="pcard-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub <span>&rarr;</span>
-              </a>
-            )}
-            {mediaLinks.map((link) =>
-              link.internal ? (
-                <Link key={link.label} href={link.href} className="pcard-link">
-                  {link.label} <span>&rarr;</span>
-                </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="pcard-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {link.label} <span>&rarr;</span>
-                </a>
-              )
-            )}
-          </div>
+          <ProjectCardLinks sections={linkSections} />
           {related && (
             <p className="pcard-related">
               Essay:{' '}

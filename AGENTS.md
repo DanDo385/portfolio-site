@@ -28,7 +28,7 @@ These pull from content loaders at build/request time. No manual list edits need
 
 When the site changes, check and update these in **`lib/agent.ts`** (and related files if copy/UI changed):
 
-1. **`navigation`** — must match `components/Nav.tsx` section ids and labels (Projects, Writing, About me, Contact).
+1. **`navigation`** — must match `components/Nav.tsx` section ids and labels. When recent content exists, **Recent** is listed first (bold in the UI); otherwise omit it.
 2. **`about`** — education, technical study, building stack, summary if About section copy changes.
 3. **`contact`** — email, social links, resume paths if Contact or `lib/constants.ts` changes.
 4. **`canonicalTopics`** — when positioning or focus areas change.

@@ -267,6 +267,11 @@ html[data-theme='light'] .nav-agent-link:hover {
 
 .nav-links a:hover::after { width: 100%; }
 
+.nav-links a.nav-recent {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
 .nav-hamburger {
   display: none;
   cursor: pointer;
@@ -716,6 +721,34 @@ html[data-theme='light'] .tag-default {
 .tbadge:hover { color: var(--text-secondary); border-color: var(--border); }
 
 .pcard-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+
+.pcard-link-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.pcard-link-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pcard-link-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.pcard-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+}
 
 .pcard-link {
   display: inline-flex;
