@@ -1,0 +1,40 @@
+# The 5-Part Agent Machine Loop with Tools
+
+This static explainer maps a standard tool-using agent runtime loop across NousResearch/hermes-agent and openclaw/openclaw.
+
+## Canonical Loop
+
+1. Platform input: normalize an inbound platform event into a stable session identity.
+2. Session hydration: assemble the prompt, message history, compaction summaries, and memory context.
+3. Agent loop: run the model turn, enforce iteration or stop policy, and decide whether more tool work is needed.
+4. Tool dispatch: resolve tool schemas, apply tool policy, execute calls, and return tool results to the loop.
+5. Persistence: append the transcript, tool results, summaries, and memory-bearing state for the next turn.
+
+Inbound event and outbound response are the outer rails around this five-part machine.
+
+## Implementations
+
+- Hermes Agent: Python gateway + AIAgent + tools.registry + SQLite session DB.
+- OpenClaw: TypeScript ACP/session layer + CoreAgentHarness + agentLoop + JSONL session tree.
+
+## Hermes Agent Source Anchors
+
+- run_agent.py: AIAgent, persistence hooks, tool-call forwarding.
+- agent/conversation_loop.py: max-iteration loop and provider calls.
+- agent/tool_executor.py: sequential/concurrent tool execution.
+- tools/registry.py: self-registering tool schemas and dispatch.
+- gateway/session.py: SessionSource identity.
+- gateway/platforms/base.py: platform adapter boundary.
+
+## OpenClaw Source Anchors
+
+- packages/agent-core/src/agent-loop.ts: core LLM/tool loop.
+- packages/agent-core/src/harness/agent-harness.ts: session hydration, hooks, persistence.
+- packages/agent-core/src/harness/session/session.ts: context assembly from session branch.
+- packages/agent-core/src/harness/session/jsonl-storage.ts: append-only JSONL storage.
+- packages/acp-core/src/session.ts: ACP session store.
+- packages/acp-core/src/runtime/types.ts: runtime session and turn contracts.
+
+## Machine-Readable Map
+
+JSON export: ./agent-runtime-map.json

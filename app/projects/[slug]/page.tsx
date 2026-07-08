@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/Footer';
+import { AgentMachineInteractive } from '@/components/AgentMachineInteractive';
 import { EthL2FraudProofInteractive } from '@/components/EthL2FraudProofInteractive';
 import { ProjectCard } from '@/components/ProjectCard';
 import { SiteNav } from '@/components/SiteNav';
@@ -47,6 +48,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {project.slug === 'eth-l2-fraud-proof' && (
             <Reveal>
               <EthL2FraudProofInteractive />
+            </Reveal>
+          )}
+          {project.slug === 'agent-machine-deep-dive' && (
+            <Reveal>
+              <AgentMachineInteractive />
             </Reveal>
           )}
         </div>
