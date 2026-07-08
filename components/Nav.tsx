@@ -5,18 +5,14 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
-const BASE_SECTIONS = [
+const NAV_SECTIONS = [
   { id: 'projects', label: 'Projects' },
   { id: 'writing', label: 'Writing' },
   { id: 'about', label: 'About me' },
   { id: 'contact', label: 'Contact' },
 ];
 
-interface NavProps {
-  showRecent?: boolean;
-}
-
-export function Nav({ showRecent = false }: NavProps) {
+export function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -31,9 +27,6 @@ export function Nav({ showRecent = false }: NavProps) {
 
   const handleNavClick = () => setOpen(false);
   const sectionHref = (id: string) => (onHome ? `#${id}` : `/#${id}`);
-  const sections = showRecent
-    ? [{ id: 'recent', label: 'Recent' }, ...BASE_SECTIONS]
-    : BASE_SECTIONS;
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
@@ -43,7 +36,7 @@ export function Nav({ showRecent = false }: NavProps) {
       </Link>
 
       <ul className={`nav-links${open ? ' mobile-open' : ''}`} id="navMenu">
-        {sections.map(({ id, label }) => (
+        {NAV_SECTIONS.map(({ id, label }) => (
           <li key={id}>
             <Link href={sectionHref(id)} className="nav-scroll" onClick={handleNavClick}>
               {label}

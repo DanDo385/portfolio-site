@@ -84,10 +84,6 @@ html[data-theme='light'] ::selection {
   color: var(--text-primary);
 }
 
-html[data-theme='light'] .tag-infra {
-  border-color: rgba(47, 94, 92, 0.14);
-}
-
 html[data-theme='light'] .hero-grid {
   background-image:
     linear-gradient(rgba(120, 110, 95, 0.14) 1px, transparent 1px),
@@ -618,6 +614,84 @@ section { padding-top: var(--gap-section); }
 .tag-ts { background: var(--signal-blue-dim); color: var(--signal-blue); }
 .tag-simulation { background: var(--signal-rose-dim); color: var(--signal-rose); }
 .tag-default { background: rgba(148, 163, 184, 0.12); color: #94a3b8; }
+
+html[data-theme='light'] .tag-infra {
+  background: rgba(47, 94, 92, 0.12);
+  color: #1f4f4d;
+  border-color: rgba(47, 94, 92, 0.22);
+}
+
+html[data-theme='light'] .tag-ai {
+  background: rgba(91, 33, 182, 0.1);
+  color: #5b21b6;
+  border-color: rgba(91, 33, 182, 0.2);
+}
+
+html[data-theme='light'] .tag-agents {
+  background: rgba(162, 28, 175, 0.1);
+  color: #86198f;
+  border-color: rgba(162, 28, 175, 0.2);
+}
+
+html[data-theme='light'] .tag-llm {
+  background: rgba(67, 56, 202, 0.1);
+  color: #4338ca;
+  border-color: rgba(67, 56, 202, 0.2);
+}
+
+html[data-theme='light'] .tag-interactive {
+  background: rgba(14, 116, 144, 0.1);
+  color: #0e7490;
+  border-color: rgba(14, 116, 144, 0.2);
+}
+
+html[data-theme='light'] .tag-solidity {
+  background: rgba(194, 65, 12, 0.1);
+  color: #c2410c;
+  border-color: rgba(194, 65, 12, 0.2);
+}
+
+html[data-theme='light'] .tag-evm {
+  background: rgba(77, 124, 15, 0.1);
+  color: #4d7c0f;
+  border-color: rgba(77, 124, 15, 0.2);
+}
+
+html[data-theme='light'] .tag-l2 {
+  background: rgba(71, 85, 105, 0.1);
+  color: #475569;
+  border-color: rgba(71, 85, 105, 0.2);
+}
+
+html[data-theme='light'] .tag-defi {
+  background: rgba(15, 118, 110, 0.1);
+  color: #0f766e;
+  border-color: rgba(15, 118, 110, 0.2);
+}
+
+html[data-theme='light'] .tag-go {
+  background: rgba(21, 128, 61, 0.1);
+  color: #15803d;
+  border-color: rgba(21, 128, 61, 0.2);
+}
+
+html[data-theme='light'] .tag-ts {
+  background: rgba(29, 78, 216, 0.1);
+  color: #1d4ed8;
+  border-color: rgba(29, 78, 216, 0.2);
+}
+
+html[data-theme='light'] .tag-simulation {
+  background: rgba(190, 24, 93, 0.1);
+  color: #be185d;
+  border-color: rgba(190, 24, 93, 0.2);
+}
+
+html[data-theme='light'] .tag-default {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+  border-color: rgba(100, 116, 139, 0.2);
+}
 
 .pcard-summary {
   color: var(--text-secondary);

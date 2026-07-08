@@ -25,19 +25,13 @@ export function Hero({ showRecent = false }: HeroProps) {
           workflows, or modernizing institutional rails with programmable assets,
           stablecoins, RWA infrastructure, and better data systems.
         </p>
-        <div className="hero-cta">
-          {showRecent && (
+        {showRecent && (
+          <div className="hero-cta">
             <Link href="#recent" className="btn btn-primary">
               Recent
             </Link>
-          )}
-          <Link href="#projects" className={`btn${showRecent ? '' : ' btn-primary'}`}>
-            Projects
-          </Link>
-          <Link href="#writing" className="btn">
-            Writing
-          </Link>
-        </div>
+          </div>
+        )}
       </div>
       <div className="hero-scroll" aria-hidden="true">
         <div className="bar" />

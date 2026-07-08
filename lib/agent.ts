@@ -101,7 +101,6 @@ export function getAgentManifest() {
       principles: PRINCIPLES,
     },
     navigation: [
-      { id: 'recent', label: 'Recent', href: `${SITE.url}/#recent` },
       { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
       { id: 'writing', label: 'Writing', href: `${SITE.url}/#writing` },
       { id: 'about', label: 'About me', href: `${SITE.url}/#about` },
