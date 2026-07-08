@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Footer } from '@/components/Footer';
 import { AgentMachineInteractive } from '@/components/AgentMachineInteractive';
 import { EthL2FraudProofInteractive } from '@/components/EthL2FraudProofInteractive';
+import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
 import { ProjectCard } from '@/components/ProjectCard';
 import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
@@ -53,6 +54,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {project.slug === 'agent-machine-deep-dive' && (
             <Reveal>
               <AgentMachineInteractive />
+            </Reveal>
+          )}
+          {project.slug === 'eth-tx-lifecycle' && (
+            <Reveal>
+              <EthTxLifecycleInteractive />
             </Reveal>
           )}
         </div>
