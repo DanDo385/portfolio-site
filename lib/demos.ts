@@ -34,3 +34,7 @@ export function joinApiUrl(baseUrl: string, path: string): string {
   const suffix = path.startsWith('/') ? path : `/${path}`;
   return `${base}${suffix}`;
 }
+
+export function projectHasStagingBackend(projectSlug: string): boolean {
+  return Object.values(DEMO_CONFIGS).some((config) => config.projectSlug === projectSlug);
+}

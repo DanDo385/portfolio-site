@@ -41,7 +41,7 @@ Create `content/projects/your-slug.json`:
 | `summary` | yes | Short description (1-2 lines) |
 | `techBadges` | yes | Tech stack chips |
 | `githubUrl` | no | GitHub repo link |
-| `demoUrl` | no | Interactive demo on magro.dev (project page or `/agent`) |
+| `demoUrl` | no | Interactive demo hosted on magro.dev (`/projects/<slug>` or `/agent`) |
 | `loomUrl` | no | Loom walkthrough link |
 | `youtubeUrl` | no | Full project demo (YouTube) |
 | `zoomUrl` | no | Zoom recording link |

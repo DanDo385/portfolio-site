@@ -1,4 +1,5 @@
 import type { Project } from './types';
+import { projectHasStagingBackend } from './demos';
 
 export const RECENT_WINDOW_DAYS = 7;
 const CONTENT_TIMEZONE = 'America/New_York';
@@ -72,6 +73,8 @@ export interface ProjectMediaLink {
 export interface ProjectLinkSection {
   title: string;
   links: ProjectMediaLink[];
+  note?: string;
+  emphasis?: boolean;
 }
 
 function projectMediaLink(label: string, url?: string | null): ProjectMediaLink | null {
@@ -80,21 +83,37 @@ function projectMediaLink(label: string, url?: string | null): ProjectMediaLink 
   return { label, href, internal: href.startsWith('/') };
 }
 
+function interactNote(project: Project): string {
+  if (projectHasStagingBackend(project.slug)) {
+    return 'Deployed on magro.dev. Go backends and Anvil chains connect through a staging tunnel when the MBP service is online.';
+  }
+  return 'Deployed on magro.dev. Open the project page and interact in your browser.';
+}
+
 export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
   const sections: ProjectLinkSection[] = [];
+
+  const demo = projectMediaLink('Open on magro.dev', project.demoUrl);
+  if (demo?.internal) {
+    sections.push({
+      title: 'Interact',
+      links: [demo],
+      note: interactNote(project),
+      emphasis: true,
+    });
+  } else if (demo) {
+    sections.push({
+      title: 'Interact',
+      links: [demo],
+      note: 'External interactive demo.',
+    });
+  }
 
   const sourceLinks = [projectMediaLink('GitHub', project.githubUrl)].filter(
     (link): link is ProjectMediaLink => link !== null
   );
   if (sourceLinks.length > 0) {
     sections.push({ title: 'Source', links: sourceLinks });
-  }
-
-  const interactiveLinks = [projectMediaLink('Live demo', project.demoUrl)].filter(
-    (link): link is ProjectMediaLink => link !== null
-  );
-  if (interactiveLinks.length > 0) {
-    sections.push({ title: 'Interactive', links: interactiveLinks });
   }
 
   const demoLinks: ProjectMediaLink[] = [];

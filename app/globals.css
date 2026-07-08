@@ -750,6 +750,26 @@ html[data-theme='light'] .tag-default {
   gap: 16px 20px;
 }
 
+.pcard-link-group-emphasis {
+  padding: 16px 18px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+}
+
+.pcard-link-note {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 46ch;
+}
+
+.pcard-interact-btn {
+  margin-top: 2px;
+  font-size: 12px;
+  padding: 10px 16px;
+}
+
 .pcard-link {
   display: inline-flex;
   align-items: center;
