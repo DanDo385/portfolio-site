@@ -5,7 +5,7 @@
   "status": "complete",
   "featured": false,
   "tags": ["Infrastructure", "DeFi", "Go", "TypeScript"],
-  "summary": "Full-stack visualization of what happens between clicking send and a transaction becoming irreversible: execution and consensus layers, MEV, builder auctions, and finality.",
+  "summary": "Full-stack visualization of what happens between clicking send and a transaction becoming irreversible: execution and consensus layers, MEV, builder auctions, and finality. UI on Vercel at eth-tx-lifecycle.vercel.app; live data via MacBook Go backend through Cloudflare Tunnel.",
   "techBadges": ["Go", "Next.js", "TypeScript", "JSON-RPC", "Beacon API", "MEV Detection"],
   "githubUrl": "https://github.com/DanDo385/eth-tx-lifecycle",
   "demoUrl": "/demos/eth-tx-lifecycle",

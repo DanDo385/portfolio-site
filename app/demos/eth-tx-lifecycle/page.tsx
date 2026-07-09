@@ -20,7 +20,7 @@ export default function EthTxLifecycleDemoPage() {
     >
       <ExternalDemoFrame
         src={DEMO_SRC}
-        title="Ethereum transaction lifecycle visualizer"
+        title="Ethereum transaction lifecycle visualizer on eth-tx-lifecycle.vercel.app"
         loading="eager"
         variant="shell"
       />
