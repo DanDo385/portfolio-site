@@ -1693,6 +1693,51 @@ html[data-theme='light'] .tag-default {
   border: none;
 }
 
+.project-video-demos {
+  margin-top: 40px;
+}
+
+.project-video-grid {
+  display: grid;
+  gap: 28px;
+}
+
+.project-video-item,
+.project-interactive {
+  scroll-margin-top: 96px;
+}
+
+.project-video-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.project-video-embed {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-deep);
+  aspect-ratio: 16 / 9;
+}
+
+.project-video-embed iframe,
+.project-video-mp4 {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
 /* ═══════ RECENT ═══════ */
 .recent-list { display: flex; flex-direction: column; gap: 12px; }
 

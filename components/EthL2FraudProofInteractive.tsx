@@ -126,7 +126,7 @@ export function EthL2FraudProofInteractive() {
   const backendMessage = clientError || health?.message || 'Click the status check to query the staging backend.';
 
   return (
-    <section className="l2-detail" aria-labelledby="l2-detail-title">
+    <section id="interactive" className="l2-detail project-interactive" aria-labelledby="l2-detail-title">
       <div className="l2-hero">
         <div>
           <p className="l2-kicker">Interactive Technical Demo</p>

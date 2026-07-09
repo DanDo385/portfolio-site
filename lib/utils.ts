@@ -83,17 +83,42 @@ function projectMediaLink(label: string, url?: string | null): ProjectMediaLink 
   return { label, href, internal: href.startsWith('/') };
 }
 
+const PROJECT_PAGE_INTERACTIVE_SLUGS = new Set([
+  'agent-machine-deep-dive',
+  'eth-tx-lifecycle',
+  'eth-l2-fraud-proof',
+]);
+
+export function projectHasPageInteractive(slug: string): boolean {
+  return PROJECT_PAGE_INTERACTIVE_SLUGS.has(slug);
+}
+
+export function projectInteractHref(project: Project): string | null {
+  const base = project.demoUrl ?? projectPath(project.slug);
+  if (!isValidUrl(base)) return null;
+  if (projectHasPageInteractive(project.slug) && base === projectPath(project.slug)) {
+    return `${base}#interactive`;
+  }
+  return base;
+}
+
 function interactNote(project: Project): string {
   if (projectHasStagingBackend(project.slug)) {
     return 'Deployed on magro.dev. Go backends and Anvil chains connect through a staging tunnel when the MBP service is online.';
   }
-  return 'Deployed on magro.dev. Open the project page and interact in your browser.';
+  if (project.demoUrl === '/agent') {
+    return 'Deployed on magro.dev. Opens the agent-readable layer.';
+  }
+  if (projectHasPageInteractive(project.slug)) {
+    return 'Deployed on magro.dev. Scrolls to the interactive walkthrough on the project page.';
+  }
+  return 'Deployed on magro.dev. Opens the project page.';
 }
 
 export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
   const sections: ProjectLinkSection[] = [];
 
-  const demo = projectMediaLink('Open on magro.dev', project.demoUrl);
+  const demo = projectMediaLink('Open on magro.dev', projectInteractHref(project));
   if (demo?.internal) {
     sections.push({
       title: 'Interact',
@@ -118,15 +143,13 @@ export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
 
   const demoLinks: ProjectMediaLink[] = [];
 
-  const shortHref = project.shortClipUrl ?? project.previewVideo;
-  const shortDemo = projectMediaLink('Short demo', shortHref);
-  if (shortDemo) demoLinks.push(shortDemo);
-
-  const fullHref =
-    project.recordingUrl ??
-    (project.youtubeUrl && project.youtubeUrl !== shortHref ? project.youtubeUrl : null);
-  const fullDemo = projectMediaLink('Full demo', fullHref);
-  if (fullDemo) demoLinks.push(fullDemo);
+  for (const videoDemo of getProjectVideoDemos(project)) {
+    demoLinks.push({
+      label: videoDemo.label,
+      href: `${projectPath(project.slug)}#${videoDemo.id}`,
+      internal: true,
+    });
+  }
 
   for (const extra of [
     projectMediaLink('Loom', project.loomUrl),
@@ -136,7 +159,11 @@ export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
   }
 
   if (demoLinks.length > 0) {
-    sections.push({ title: 'Demos', links: demoLinks });
+    sections.push({
+      title: 'Demos',
+      links: demoLinks,
+      note: 'Short and full walkthroughs play inline on the project page.',
+    });
   }
 
   return sections;
@@ -159,6 +186,90 @@ export function loomEmbedUrl(url?: string | null): string | null {
     return null;
   }
   return url;
+}
+
+export function youtubeVideoId(url?: string | null): string | null {
+  if (!isValidUrl(url)) return null;
+  try {
+    const u = new URL(url!);
+    if (u.hostname === 'youtu.be') {
+      const id = u.pathname.split('/').filter(Boolean)[0];
+      return id || null;
+    }
+    if (u.hostname.includes('youtube.com') || u.hostname.includes('youtube-nocookie.com')) {
+      const fromQuery = u.searchParams.get('v');
+      if (fromQuery) return fromQuery;
+      const parts = u.pathname.split('/').filter(Boolean);
+      const embedIndex = parts.indexOf('embed');
+      if (embedIndex >= 0 && parts[embedIndex + 1]) return parts[embedIndex + 1];
+      if (parts[0] === 'shorts' && parts[1]) return parts[1];
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+export function youtubeEmbedUrl(url?: string | null): string | null {
+  const id = youtubeVideoId(url);
+  return id ? `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1` : null;
+}
+
+export type ProjectVideoDemoKind = 'youtube' | 'mp4';
+
+export interface ProjectVideoDemo {
+  id: string;
+  label: string;
+  kind: ProjectVideoDemoKind;
+  src: string;
+  watchUrl?: string | null;
+}
+
+export function getProjectVideoDemos(project: Project): ProjectVideoDemo[] {
+  const demos: ProjectVideoDemo[] = [];
+  const shortHref = project.shortClipUrl ?? project.previewVideo;
+  const shortYoutube = youtubeEmbedUrl(shortHref);
+
+  if (shortYoutube && shortHref) {
+    demos.push({
+      id: 'demo-short',
+      label: 'Short demo',
+      kind: 'youtube',
+      src: shortYoutube,
+      watchUrl: shortHref,
+    });
+  } else if (isValidUrl(shortHref) && shortHref!.startsWith('/')) {
+    demos.push({
+      id: 'demo-short',
+      label: 'Short demo',
+      kind: 'mp4',
+      src: shortHref!,
+    });
+  }
+
+  const fullHref =
+    project.recordingUrl ??
+    (project.youtubeUrl && project.youtubeUrl !== shortHref ? project.youtubeUrl : null);
+  const fullYoutube = youtubeEmbedUrl(fullHref);
+
+  if (fullYoutube && fullHref) {
+    demos.push({
+      id: 'demo-full',
+      label: 'Full demo',
+      kind: 'youtube',
+      src: fullYoutube,
+      watchUrl: fullHref,
+    });
+  } else if (isValidUrl(fullHref) && fullHref!.startsWith('/')) {
+    demos.push({
+      id: 'demo-full',
+      label: 'Full demo',
+      kind: 'mp4',
+      src: fullHref!,
+    });
+  }
+
+  return demos;
 }
 
 export function isValidUrl(url?: string | null): boolean {

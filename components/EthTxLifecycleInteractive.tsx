@@ -178,7 +178,7 @@ export function EthTxLifecycleInteractive() {
   );
 
   return (
-    <section className="etx-detail" aria-labelledby="etx-detail-title">
+    <section id="interactive" className="etx-detail project-interactive" aria-labelledby="etx-detail-title">
       <div className="etx-hero">
         <div>
           <p className="etx-kicker">Interactive Technical Demo</p>

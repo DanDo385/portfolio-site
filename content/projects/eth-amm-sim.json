@@ -9,7 +9,7 @@
   "summary": "Simulation engine for AMM economics: impermanent loss under volatility regimes, fee accrual dynamics, and concentrated liquidity, modeled the way a rates trader would run scenarios.",
   "techBadges": ["Go", "TypeScript", "Fixed-Point Math", "Monte Carlo", "CLI"],
   "githubUrl": "https://github.com/DanDo385/eth-amm-sim",
-  "demoUrl": null,
+  "demoUrl": "/projects/eth-amm-sim",
   "loomUrl": null,
   "screenshots": [],
   "relatedWriting": null

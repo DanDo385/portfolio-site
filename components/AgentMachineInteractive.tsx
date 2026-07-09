@@ -5,7 +5,7 @@ const JSON_URL = '/project-assets/agent-machine-deep-dive/demo/agent-runtime-map
 
 export function AgentMachineInteractive() {
   return (
-    <section className="amd-detail" aria-labelledby="amd-detail-title">
+    <section id="interactive" className="amd-detail project-interactive" aria-labelledby="amd-detail-title">
       <p className="section-label">Interactive Demo</p>
 
       <div className="amd-hero">

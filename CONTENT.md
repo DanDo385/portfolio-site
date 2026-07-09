@@ -47,8 +47,8 @@ Create `content/projects/your-slug.json`:
 | `zoomUrl` | no | Zoom recording link |
 | `previewGif` | no | GIF in the preview box (first preview wins) |
 | `previewVideo` | no | Short demo MP4 fallback when `shortClipUrl` is unset |
-| `shortClipUrl` | no | Short demo on YouTube or MP4 |
-| `recordingUrl` | no | Full project demo on YouTube or long recording |
+| `shortClipUrl` | no | Short demo on YouTube or MP4; embeds on the project page |
+| `recordingUrl` | no | Full project demo on YouTube or long recording; embeds on the project page |
 | `screenshots` | no | Screenshot carousel when no GIF or video preview is set |
 | `previewType` | no | Set to `agent-json` for structured JSON preview; otherwise use `screenshots`. Cards always show a preview box; empty projects display "Preview pending". |
 | `relatedWriting` | no | Slug of a published article to cross-link |

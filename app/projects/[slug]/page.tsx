@@ -5,6 +5,7 @@ import { AgentMachineInteractive } from '@/components/AgentMachineInteractive';
 import { EthL2FraudProofInteractive } from '@/components/EthL2FraudProofInteractive';
 import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
 import { ProjectCard } from '@/components/ProjectCard';
+import { ProjectVideoDemos } from '@/components/ProjectVideoDemos';
 import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
 import {
@@ -45,6 +46,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </Link>
           <Reveal>
             <ProjectCard project={project} writingBySlug={writingBySlug} reveal={false} />
+          </Reveal>
+          <Reveal>
+            <ProjectVideoDemos project={project} />
           </Reveal>
           {project.slug === 'eth-l2-fraud-proof' && (
             <Reveal>
