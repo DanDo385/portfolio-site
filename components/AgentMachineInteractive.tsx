@@ -63,7 +63,7 @@ export function AgentMachineInteractive() {
         <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
           View source on GitHub <span>&rarr;</span>
         </a>
-        <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer" className="amd-link">
+        <a href="/demos/agent-machine-deep-dive" className="amd-link">
           Open demo fullscreen <span>&rarr;</span>
         </a>
       </div>

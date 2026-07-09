@@ -1,5 +1,4 @@
 import type { Project } from './types';
-import { projectHasStagingBackend } from './demos';
 
 export const RECENT_WINDOW_DAYS = 7;
 const CONTENT_TIMEZONE = 'America/New_York';
@@ -68,13 +67,13 @@ export interface ProjectMediaLink {
   label: string;
   href: string;
   internal: boolean;
+  newTab?: boolean;
 }
 
 export interface ProjectLinkSection {
   title: string;
   links: ProjectMediaLink[];
   note?: string;
-  emphasis?: boolean;
 }
 
 function projectMediaLink(label: string, url?: string | null): ProjectMediaLink | null {
@@ -83,17 +82,36 @@ function projectMediaLink(label: string, url?: string | null): ProjectMediaLink 
   return { label, href, internal: href.startsWith('/') };
 }
 
+/** Projects with a dedicated fullscreen demo route at /demos/<slug>. */
+const FULLSCREEN_DEMO_SLUGS = new Set([
+  'agent-machine-deep-dive',
+  'eth-tx-lifecycle',
+]);
+
+/** Projects that still mount an interactive panel on /projects/<slug>. */
 const PROJECT_PAGE_INTERACTIVE_SLUGS = new Set([
   'agent-machine-deep-dive',
   'eth-tx-lifecycle',
   'eth-l2-fraud-proof',
 ]);
 
+export function projectDemoPath(slug: string): string {
+  return `/demos/${slug}`;
+}
+
+export function projectHasFullscreenDemo(slug: string): boolean {
+  return FULLSCREEN_DEMO_SLUGS.has(slug);
+}
+
 export function projectHasPageInteractive(slug: string): boolean {
   return PROJECT_PAGE_INTERACTIVE_SLUGS.has(slug);
 }
 
 export function projectInteractHref(project: Project): string | null {
+  if (projectHasFullscreenDemo(project.slug)) {
+    return projectDemoPath(project.slug);
+  }
+
   const base = project.demoUrl ?? projectPath(project.slug);
   if (!isValidUrl(base)) return null;
   if (projectHasPageInteractive(project.slug) && base === projectPath(project.slug)) {
@@ -102,35 +120,22 @@ export function projectInteractHref(project: Project): string | null {
   return base;
 }
 
-function interactNote(project: Project): string {
-  if (projectHasStagingBackend(project.slug)) {
-    return 'Deployed on magro.dev. Go backends and Anvil chains connect through a staging tunnel when the MBP service is online.';
-  }
-  if (project.demoUrl === '/agent') {
-    return 'Deployed on magro.dev. Opens the agent-readable layer.';
-  }
-  if (projectHasPageInteractive(project.slug)) {
-    return 'Deployed on magro.dev. Scrolls to the interactive walkthrough on the project page.';
-  }
-  return 'Deployed on magro.dev. Opens the project page.';
-}
-
 export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
   const sections: ProjectLinkSection[] = [];
 
-  const demo = projectMediaLink('Open on magro.dev', projectInteractHref(project));
-  if (demo?.internal) {
+  const interactHref = projectInteractHref(project);
+  if (interactHref?.startsWith('/')) {
     sections.push({
       title: 'Interact',
-      links: [demo],
-      note: interactNote(project),
-      emphasis: true,
+      links: [
+        { label: 'Go to Page', href: interactHref, internal: true },
+        { label: 'Open in New Tab', href: interactHref, internal: true, newTab: true },
+      ],
     });
-  } else if (demo) {
+  } else if (isValidUrl(interactHref)) {
     sections.push({
       title: 'Interact',
-      links: [demo],
-      note: 'External interactive demo.',
+      links: [{ label: 'Open in New Tab', href: interactHref!, internal: false }],
     });
   }
 

@@ -9,26 +9,24 @@ function ProjectLink({
   label,
   href,
   internal,
-  emphasis = false,
+  newTab = false,
 }: {
   label: string;
   href: string;
   internal: boolean;
-  emphasis?: boolean;
+  newTab?: boolean;
 }) {
-  const className = emphasis ? 'btn btn-primary pcard-interact-btn' : 'pcard-link';
-
-  if (internal) {
+  if (internal && !newTab) {
     return (
-      <Link href={href} className={className}>
-        {label} {!emphasis && <span>&rarr;</span>}
+      <Link href={href} className="pcard-link">
+        {label} <span>&rarr;</span>
       </Link>
     );
   }
 
   return (
-    <a href={href} className={className} target="_blank" rel="noopener noreferrer">
-      {label} {!emphasis && <span>&rarr;</span>}
+    <a href={href} className="pcard-link" target="_blank" rel="noopener noreferrer">
+      {label} <span>&rarr;</span>
     </a>
   );
 }
@@ -39,20 +37,17 @@ export function ProjectCardLinks({ sections }: ProjectCardLinksProps) {
   return (
     <div className="pcard-link-sections">
       {sections.map((section) => (
-        <div
-          key={section.title}
-          className={`pcard-link-group${section.emphasis ? ' pcard-link-group-emphasis' : ''}`}
-        >
+        <div key={section.title} className="pcard-link-group">
           <div className="pcard-link-label">{section.title}</div>
           {section.note && <p className="pcard-link-note">{section.note}</p>}
           <div className="pcard-link-row">
             {section.links.map((link) => (
               <ProjectLink
-                key={`${section.title}-${link.label}-${link.href}`}
+                key={`${section.title}-${link.label}-${link.href}-${link.newTab ? 'new' : 'same'}`}
                 label={link.label}
                 href={link.href}
                 internal={link.internal}
-                emphasis={section.emphasis}
+                newTab={link.newTab}
               />
             ))}
           </div>
