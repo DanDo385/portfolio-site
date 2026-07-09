@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import { DemoShell } from '@/components/DemoShell';
-import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
+import { ExternalDemoFrame } from '@/components/ExternalDemoFrame';
+
+const DEMO_SRC = 'https://eth-tx-lifecycle.vercel.app';
 
 export const metadata: Metadata = {
   title: 'Ethereum Transaction Lifecycle Demo | Daniel Magro',
   description:
-    'Fullscreen interactive walkthrough of the Ethereum transaction lifecycle on magro.dev.',
+    'Fullscreen interactive Ethereum transaction lifecycle visualizer on magro.dev.',
 };
 
 export default function EthTxLifecycleDemoPage() {
@@ -13,8 +15,14 @@ export default function EthTxLifecycleDemoPage() {
     <DemoShell
       title="Ethereum Transaction Lifecycle"
       projectHref="/projects/eth-tx-lifecycle"
+      wide
     >
-      <EthTxLifecycleInteractive />
+      <ExternalDemoFrame
+        src={DEMO_SRC}
+        title="Ethereum transaction lifecycle visualizer"
+        loading="eager"
+        variant="shell"
+      />
     </DemoShell>
   );
 }

@@ -1,4 +1,4 @@
-export type DemoSlug = 'eth-l2';
+export type DemoSlug = 'eth-l2' | 'eth-tx';
 
 export interface DemoConfig {
   slug: DemoSlug;
@@ -17,6 +17,14 @@ export const DEMO_CONFIGS: Record<DemoSlug, DemoConfig> = {
     apiBaseEnv: 'NEXT_PUBLIC_API_URL',
     defaultApiBaseUrl: 'https://api-staging-eth-l2.magro.dev',
     healthPaths: ['/health', '/api/health', '/status'],
+  },
+  'eth-tx': {
+    slug: 'eth-tx',
+    projectSlug: 'eth-tx-lifecycle',
+    name: 'Ethereum Transaction Lifecycle',
+    apiBaseEnv: 'NEXT_PUBLIC_ETH_TX_API_URL',
+    defaultApiBaseUrl: 'https://api-staging-eth-tx.magro.dev',
+    healthPaths: ['/api/health', '/api/health/live', '/api/health/ready'],
   },
 };
 

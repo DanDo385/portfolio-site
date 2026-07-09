@@ -109,29 +109,32 @@ npm run build    # production build (.next/)
 
 ## Interactive demos
 
-The site supports project-specific interactive demos from the existing project routes.
-`eth-l2-fraud-proof` renders an additional client panel below its project card and checks
-the staging Go backend through a same-origin Next.js route:
+Interactive apps prefer fullscreen routes under `/demos/<slug>` with a thin DemoShell
+navbar. MBP-backed demos iframe the live Vercel frontend; health is checked through
+same-origin Next.js proxies:
 
 ```text
-/projects/eth-l2-fraud-proof
-/api/demos/eth-l2/health
+/demos/eth-tx-lifecycle          → iframe https://eth-tx-lifecycle.vercel.app
+/demos/eth-l2-fraud-proof        → iframe https://eth-l2.vercel.app
+/api/demos/eth-tx/health         → https://api-staging-eth-tx.magro.dev
+/api/demos/eth-l2/health         → https://api-staging-eth-l2.magro.dev
 ```
 
-Configure the public staging origin with:
+Configure public staging origins with:
 
 ```env
 NEXT_PUBLIC_API_URL=https://api-staging-eth-l2.magro.dev
+NEXT_PUBLIC_ETH_TX_API_URL=https://api-staging-eth-tx.magro.dev
 ```
 
-The current default points to the same URL so local previews still work without secrets.
-The health proxy probes `/health`, `/api/health`, and `/status` on the backend. It does
-not assume a scenario endpoint yet. When the MBP Cloudflare Tunnel is offline, the page
-shows an explicit offline state and remains useful as a static walkthrough.
+Defaults match those URLs so local previews work without secrets. When a tunnel is
+offline, the Vercel UI still loads as an explainer and the portfolio status line
+reports the outage.
 
-To add another interactive demo, add a config entry in `lib/demos.ts`, add a focused
-component under `components/`, and branch in `app/projects/[slug]/page.tsx` for that
-project slug. Use server-side API routes for calls that need credentials or CORS control.
+Register MBP-backed demos in `lib/demos.ts`, add `/demos/<slug>/page.tsx`, set
+`demoUrl` to `/demos/<slug>`, and add the project slug to `FULLSCREEN_DEMO_SLUGS` in
+`lib/utils.ts`. Interact only appears for fullscreen demos or an explicit `demoUrl`
+(never a bare project page fallback).
 
 ## Project structure
 

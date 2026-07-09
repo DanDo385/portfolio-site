@@ -1528,6 +1528,47 @@ html[data-theme='light'] .tag-default {
   font-size: 14px;
 }
 
+.demo-backend-status {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-muted);
+}
+
+.demo-backend-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.demo-backend-status-copy {
+  margin: 0 0 6px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.demo-backend-origin {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.demo-backend-origin strong {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.demo-backend-check {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
 .amd-links {
   display: flex;
   flex-wrap: wrap;
@@ -2433,12 +2474,10 @@ html[data-theme='light'] .tag-default {
   padding: 0;
 }
 
-.demo-shell-wide .etx-detail,
 .demo-shell-wide .amd-detail {
   margin-top: 0;
 }
 
-.demo-shell-main .etx-detail,
 .demo-shell-main .amd-detail {
   margin-top: 0;
 }

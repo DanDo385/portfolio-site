@@ -86,6 +86,7 @@ function projectMediaLink(label: string, url?: string | null): ProjectMediaLink 
 const FULLSCREEN_DEMO_SLUGS = new Set([
   'agent-machine-deep-dive',
   'eth-tx-lifecycle',
+  'eth-l2-fraud-proof',
 ]);
 
 /** Projects that still mount an interactive panel on /projects/<slug>. */
@@ -107,13 +108,18 @@ export function projectHasPageInteractive(slug: string): boolean {
   return PROJECT_PAGE_INTERACTIVE_SLUGS.has(slug);
 }
 
+/**
+ * Interact only for real interactive targets (fullscreen demo or explicit demoUrl).
+ * Never fall back to the bare project page — that incorrectly adds Interact to
+ * CLI/video-only cards like eth-rpc-monitor.
+ */
 export function projectInteractHref(project: Project): string | null {
   if (projectHasFullscreenDemo(project.slug)) {
     return projectDemoPath(project.slug);
   }
 
-  const base = project.demoUrl ?? projectPath(project.slug);
-  if (!isValidUrl(base)) return null;
+  if (!isValidUrl(project.demoUrl)) return null;
+  const base = project.demoUrl!;
   if (projectHasPageInteractive(project.slug) && base === projectPath(project.slug)) {
     return `${base}#interactive`;
   }
