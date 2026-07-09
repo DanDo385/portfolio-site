@@ -7,6 +7,11 @@ interface ExternalDemoFrameProps {
   variant?: 'shell' | 'embed';
 }
 
+/**
+ * Embed a live Vercel app the same way agent-machine embeds its static demo:
+ * full-bleed iframe with no sandbox. Sandboxing breaks cross-origin Next.js
+ * apps (module scripts, RSC, storage) when the origin differs from magro.dev.
+ */
 export function ExternalDemoFrame({
   src,
   title,
@@ -25,8 +30,6 @@ export function ExternalDemoFrame({
         loading={loading}
         referrerPolicy="strict-origin-when-cross-origin"
         allow="clipboard-write; fullscreen"
-        // Next apps need scripts + same-origin; forms for interactive controls.
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
       />
     </div>
   );

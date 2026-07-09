@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DemoShell } from '@/components/DemoShell';
 import { ExternalDemoFrame } from '@/components/ExternalDemoFrame';
 
+/** Live Vercel frontend; Go backend on MBP via api-staging-eth-l2.magro.dev */
 const DEMO_SRC = 'https://eth-l2.vercel.app';
 
 export const metadata: Metadata = {
