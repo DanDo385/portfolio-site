@@ -5,12 +5,39 @@
   "status": "complete",
   "featured": true,
   "listed": true,
-  "tags": ["Infrastructure", "Solidity", "EVM", "L2", "Interactive"],
+  "tags": [
+    "Infrastructure",
+    "Solidity",
+    "EVM",
+    "L2",
+    "Interactive"
+  ],
   "summary": "A transparent EVM sandbox for optimistic rollup disputes, tracing how challenged state roots move through proof, bond, and settlement logic.",
-  "techBadges": ["Solidity", "Go", "EVM Tracing", "Fraud Proofs", "Cloudflare Tunnel"],
+  "techBadges": [
+    "Solidity",
+    "Go",
+    "EVM Tracing",
+    "Fraud Proofs",
+    "Cloudflare Tunnel"
+  ],
   "githubUrl": "https://github.com/DanDo385/eth-l2",
   "demoUrl": "/demos/eth-l2-fraud-proof",
   "loomUrl": null,
-  "screenshots": [],
-  "relatedWriting": null
+  "screenshots": [
+    "/project-assets/eth-l2-fraud-proof/screenshots/image1.png",
+    "/project-assets/eth-l2-fraud-proof/screenshots/image2.png",
+    "/project-assets/eth-l2-fraud-proof/screenshots/image3.png",
+    "/project-assets/eth-l2-fraud-proof/screenshots/image4.png",
+    "/project-assets/eth-l2-fraud-proof/screenshots/image5.png",
+    "/project-assets/eth-l2-fraud-proof/screenshots/image6.png",
+    "/project-assets/eth-l2-fraud-proof/screenshots/image7.png",
+    "/project-assets/eth-l2-fraud-proof/screenshots/image8.png"
+  ],
+  "relatedWriting": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=3Rrlpz-vEFE",
+  "zoomUrl": null,
+  "previewGif": "/project-assets/eth-l2-fraud-proof/gif/preview.gif",
+  "previewVideo": null,
+  "shortClipUrl": "https://www.youtube.com/watch?v=3Rrlpz-vEFE",
+  "recordingUrl": "https://www.youtube.com/watch?v=SEpEn8fTjmk"
 }
