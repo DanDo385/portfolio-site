@@ -13,23 +13,36 @@ export function EthL2FraudProofInteractive() {
 
       <div className="amd-hero">
         <div>
-          <p className="amd-kicker">Live simulator</p>
-          <h2 id="l2-detail-title">Fraud-proof settlement, made inspectable.</h2>
+          <p className="amd-kicker">Live lab</p>
+          <h2 id="l2-detail-title">Rollup Mechanics Lab</h2>
           <p>
-            Optimistic rollup disputes as settlement infrastructure: assertions, challenge
-            windows, bisection, and one-step proofs. The UI runs on Vercel; the Go/Anvil
-            staging stack runs on the MBP behind a Cloudflare Tunnel and fails closed when
-            offline.
+            One app, one backend, two focused labs:{' '}
+            <a href={`${DEMO_SRC}/op`} target="_blank" rel="noopener noreferrer">
+              /op
+            </a>{' '}
+            for optimistic fraud proofs and{' '}
+            <a href={`${DEMO_SRC}/zk`} target="_blank" rel="noopener noreferrer">
+              /zk
+            </a>{' '}
+            for validity proofs. The UI is hosted at{' '}
+            <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer">
+              eth-l2.vercel.app
+            </a>
+            ; live simulation uses the MacBook Go backend through Cloudflare Tunnel.
           </p>
         </div>
         <div className="amd-runtime">
           <div className="amd-runtime-row">
-            <span>Frontend</span>
-            <strong>Vercel · eth-l2.vercel.app</strong>
+            <span>Live app</span>
+            <strong>
+              <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer">
+                eth-l2.vercel.app
+              </a>
+            </strong>
           </div>
           <div className="amd-runtime-row">
             <span>Backend</span>
-            <strong>MBP Go service via Cloudflare Tunnel</strong>
+            <strong>MBP via api-staging-eth-l2.magro.dev</strong>
           </div>
           <div className="amd-runtime-row">
             <span>Fullscreen</span>
@@ -44,24 +57,30 @@ export function EthL2FraudProofInteractive() {
 
       <ExternalDemoFrame
         src={DEMO_SRC}
-        title="L2 fraud proof settlement simulator"
+        title="Rollup Mechanics Lab on eth-l2.vercel.app"
         loading="lazy"
         variant="embed"
       />
 
       <noscript>
         <p className="amd-noscript">
-          The embedded simulator needs JavaScript inside the iframe. The project summary,
-          preview media, and GitHub link above remain available without it.
+          The embedded lab needs JavaScript inside the iframe. Open{' '}
+          <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer">
+            eth-l2.vercel.app
+          </a>{' '}
+          directly, or use the project summary and GitHub link above.
         </p>
       </noscript>
 
       <div className="amd-links">
-        <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
-          View source on GitHub <span>&rarr;</span>
+        <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer" className="amd-link">
+          Open eth-l2.vercel.app <span>&rarr;</span>
         </a>
         <a href={DEMO_PATH} className="amd-link">
           Open demo fullscreen <span>&rarr;</span>
+        </a>
+        <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
+          View source on GitHub <span>&rarr;</span>
         </a>
       </div>
     </section>

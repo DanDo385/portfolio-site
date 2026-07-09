@@ -6,21 +6,21 @@ import { ExternalDemoFrame } from '@/components/ExternalDemoFrame';
 const DEMO_SRC = 'https://eth-l2.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'L2 Fraud Proof Settlement Demo | Daniel Magro',
+  title: 'Rollup Mechanics Lab Demo | Daniel Magro',
   description:
-    'Fullscreen interactive optimistic rollup fraud-proof simulator on magro.dev.',
+    'Fullscreen Rollup Mechanics Lab: optimistic and ZK rollup labs on magro.dev.',
 };
 
 export default function EthL2FraudProofDemoPage() {
   return (
     <DemoShell
-      title="L2 Fraud Proof Settlement Simulator"
+      title="Rollup Mechanics Lab"
       projectHref="/projects/eth-l2-fraud-proof"
       wide
     >
       <ExternalDemoFrame
         src={DEMO_SRC}
-        title="L2 fraud proof settlement simulator"
+        title="Rollup Mechanics Lab on eth-l2.vercel.app"
         loading="eager"
         variant="shell"
       />

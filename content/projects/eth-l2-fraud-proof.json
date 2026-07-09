@@ -1,5 +1,5 @@
 {
-  "title": "L2 Fraud Proof Settlement Simulator",
+  "title": "Rollup Mechanics Lab",
   "slug": "eth-l2-fraud-proof",
   "date": "2026-07-07",
   "status": "complete",
@@ -12,7 +12,7 @@
     "L2",
     "Interactive"
   ],
-  "summary": "A transparent EVM sandbox for optimistic rollup disputes, tracing how challenged state roots move through proof, bond, and settlement logic.",
+  "summary": "One app, one backend, two focused labs: optimistic fraud proofs (/op) and ZK validity proofs (/zk). UI on Vercel at eth-l2.vercel.app; live simulation via MacBook Go backend through Cloudflare Tunnel.",
   "techBadges": [
     "Solidity",
     "Go",
