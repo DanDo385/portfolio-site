@@ -8,7 +8,7 @@
   "summary": "Production-grade Ethereum RPC monitoring CLI with block inspection, mempool snapshotting, and real-time transaction tracing.",
   "techBadges": ["Go", "Cobra", "JSON-RPC", "Ethereum"],
   "githubUrl": "https://github.com/DanDo385/eth-rpc-monitor",
-  "demoUrl": "/projects/eth-rpc-monitor",
+  "demoUrl": null,
   "loomUrl": null,
   "youtubeUrl": "https://www.youtube.com/watch?v=ImELGZtDT4c",
   "zoomUrl": null,
