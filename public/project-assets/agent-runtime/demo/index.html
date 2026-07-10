@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The 5-Part Agent Machine Loop with Tools</title>
+<title>Agent Runtime</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
 
@@ -553,7 +553,7 @@
 </head>
 <body>
 <nav>
-  <div class="logo">5-Part Machine<br>Loop + Tools</div>
+  <div class="logo">Agent Runtime<br>Loop + Tools</div>
   <div class="nav-section">Overview</div>
   <a href="#overview">Runtime Model</a>
   <a href="#sources">Source Anchors</a>
@@ -572,8 +572,8 @@
     <div class="top-actions" aria-label="Page tools">
       <div class="agent-mode" aria-label="Agent-readable exports">
         <span class="agent-mode-label">Agent mode</span>
-        <a href="llms.txt" title="Open llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>
-        <a href="agent-runtime-map.json" title="Open JSON runtime map" target="_blank" rel="noopener noreferrer">.json</a>
+        <a href="llms.txt" title="Open llms.txt">llms.txt</a>
+        <a href="agent-runtime-map.json" title="Open JSON runtime map">.json</a>
       </div>
       <div class="display-mode">
         <span class="display-mode-label">Display</span>
@@ -583,7 +583,7 @@
         </div>
       </div>
     </div>
-    <h1>The 5-Part Agent Machine Loop with Tools</h1>
+    <h1>Agent Runtime</h1>
     <p class="subtitle">// Platform input -> session hydration -> agent loop -> tool dispatch -> persistence.</p>
   </header>
 
@@ -1129,7 +1129,7 @@ export class JsonlSessionStorage extends BaseSessionStorage {
     </table>
 
     <div class="callout">
-      <strong>Key difference:</strong> Hermes is a Python product runtime with many pragmatic gateway protections in one large agent surface. OpenClaw factors the same machine into reusable TypeScript packages, so the harness/session/loop contracts are easier to isolate and test.
+      <strong>Key difference:</strong> Hermes is a Python product runtime with many pragmatic gateway protections in one large agent surface. OpenClaw factors the same runtime into reusable TypeScript packages, so the harness/session/loop contracts are easier to isolate and test.
     </div>
   </section>
 </main>

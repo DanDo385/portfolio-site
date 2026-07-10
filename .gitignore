@@ -11,4 +11,4 @@ tsconfig.tsbuildinfo
 public/project-assets/**/long-recording/
 public/project-assets/eth-tx-lifecycle/short-recording/
 
-public/project-assets/eth-l2-fraud-proof/short-recording/
+public/project-assets/eth-l2/short-recording/

@@ -1,24 +1,24 @@
 import type { Metadata } from 'next';
 import { DemoShell } from '@/components/DemoShell';
 
-const DEMO_SRC = '/project-assets/agent-machine-deep-dive/demo/index.html';
+const DEMO_SRC = '/project-assets/agent-runtime/demo/index.html';
 
 export const metadata: Metadata = {
-  title: 'Agent Machine Deep Dive Demo | Daniel Magro',
+  title: 'Agent Runtime Demo | Daniel Magro',
   description:
-    'Fullscreen interactive walkthrough of the AI agent machine loop on magro.dev.',
+    'Fullscreen interactive walkthrough of the AI agent runtime loop on magro.dev.',
 };
 
-export default function AgentMachineDemoPage() {
+export default function AgentRuntimeDemoPage() {
   return (
     <DemoShell
-      title="Agent Machine Deep Dive"
-      projectHref="/projects/agent-machine-deep-dive"
+      title="Agent Runtime"
+      projectHref="/projects/agent-runtime"
       wide
     >
       <div className="demo-shell-frame-wrap">
         <iframe
-          title="Agent machine deep dive interactive walkthrough"
+          title="Agent Runtime interactive walkthrough"
           src={DEMO_SRC}
           className="demo-shell-frame"
           loading="eager"

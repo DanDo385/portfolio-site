@@ -1,4 +1,4 @@
-# The 5-Part Agent Machine Loop with Tools
+# Agent Runtime
 
 This static explainer maps a standard tool-using agent runtime loop across NousResearch/hermes-agent and openclaw/openclaw.
 
@@ -10,7 +10,7 @@ This static explainer maps a standard tool-using agent runtime loop across NousR
 4. Tool dispatch: resolve tool schemas, apply tool policy, execute calls, and return tool results to the loop.
 5. Persistence: append the transcript, tool results, summaries, and memory-bearing state for the next turn.
 
-Inbound event and outbound response are the outer rails around this five-part machine.
+Inbound event and outbound response are the outer rails around this five-part runtime.
 
 ## Implementations
 

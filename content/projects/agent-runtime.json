@@ -1,0 +1,31 @@
+{
+  "title": "Agent Runtime",
+  "slug": "agent-runtime",
+  "date": "2026-06-01",
+  "status": "complete",
+  "featured": false,
+  "tags": ["AI", "Agents", "LLM Systems", "Interactive"],
+  "summary": "An interactive single-page walkthrough of a tool-using agent runtime: platform input, session hydration, the agent loop, tool dispatch, and persistence, made observable step by step with ASCII art diagrams.",
+  "techBadges": ["HTML", "CSS", "ASCII Art Diagrams"],
+  "githubUrl": "https://github.com/DanDo385/agent-runtime",
+  "demoUrl": "/demos/agent-runtime",
+  "loomUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=lVwUmltuX0A",
+  "zoomUrl": null,
+  "previewGif": "/project-assets/agent-runtime/gif/preview.gif",
+  "previewVideo": null,
+  "shortClipUrl": "https://www.youtube.com/watch?v=lVwUmltuX0A",
+  "recordingUrl": "https://www.youtube.com/watch?v=pqcSllMfdCo",
+  "screenshots": [
+    "/project-assets/agent-runtime/screenshots/image1.png",
+    "/project-assets/agent-runtime/screenshots/image2.png",
+    "/project-assets/agent-runtime/screenshots/image3.png",
+    "/project-assets/agent-runtime/screenshots/image4.png",
+    "/project-assets/agent-runtime/screenshots/image5.png",
+    "/project-assets/agent-runtime/screenshots/image6.png",
+    "/project-assets/agent-runtime/screenshots/image7.png",
+    "/project-assets/agent-runtime/screenshots/image8.png",
+    "/project-assets/agent-runtime/screenshots/image9.png"
+  ],
+  "relatedWriting": null
+}

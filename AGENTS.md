@@ -52,7 +52,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 - [ ] New or updated **article** → `content/writing/<slug>.md` published if it should appear in manifest.
 - [ ] **Nav / homepage sections** changed → `lib/agent.ts` → `navigation` matches `components/Nav.tsx`.
 - [ ] **About or Contact** changed → `lib/agent.ts` → `about` and `contact` blocks reviewed.
-- [ ] **Interactive demo** added → prefer `/demos/<slug>` fullscreen route; register fullscreen slug in `lib/utils.ts` (`FULLSCREEN_DEMO_SLUGS`); register in `lib/demos.ts` if MBP-backed; set `demoUrl` to `/demos/<slug>`; optional env in `.env.example`; demo appears in manifest when project is listed.
+- [ ] **Interactive demo** added → follow **Interact rules** below (CLI = no Interact; in-site = `/demos/<slug>`; hosted apps = external Vercel `demoUrl`).
 - [ ] **`portfolio-agent-mode.json`** still accurately describes Agent Mode endpoints and purpose.
 - [ ] **`/agent/` page** copy still matches live endpoints and principles.
 - [ ] Build passes: `npm run build`.
@@ -64,78 +64,117 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 - Writing: `content/writing/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
 
+## Interact rules (project cards)
+
+Decide Interact from the project type. Never invent Interact by falling back to
+`/projects/<slug>` — that incorrectly adds Interact to CLI/video-only cards.
+
+| Kind | Examples | Interact | Where the app lives |
+|------|----------|----------|---------------------|
+| **CLI / non-interactive** | `eth-rpc-monitor` | **No Interact section** | Source + YouTube/video demos only |
+| **Renders fully on magro.dev** | `agent-runtime`, `portfolio-agent-mode` | Internal `/demos/<slug>` or `/agent` | Same-origin magro.dev subdirectory |
+| **Hosted on its own Vercel app** | `eth-l2`, `eth-tx-lifecycle` | External Vercel URL | Separate Vercel project; magro.dev links out |
+
+### Rules
+
+1. **CLI projects** — set `demoUrl` to `null`. Do not register them in
+   `FULLSCREEN_DEMO_SLUGS`. Cards keep Source and video demos only.
+2. **In-site interactive** — ship a fullscreen route under `/demos/<slug>` (or
+   `/agent` for Agent Mode), register the slug in `FULLSCREEN_DEMO_SLUGS`, set
+   `demoUrl` to that path. Interact uses Go to Page / Open in New Tab on magro.dev.
+3. **External Vercel apps** (eth-l2, eth-tx-lifecycle) — set `demoUrl` to the
+   production Vercel URL (e.g. `https://eth-l2.vercel.app`). Do **not** iframe
+   those apps as the Interact destination. magro.dev project pages may explain
+   the stack and link out; live UI stays on the Vercel hostname.
+4. Keep `/projects/<slug>` as the write-up surface (card, screenshots, YouTube).
+
+Canonical external apps today:
+
+- eth-l2 → `https://eth-l2.vercel.app` (backend: `https://api-staging-eth-l2.magro.dev` → MBP `127.0.0.1:8080`)
+- eth-tx-lifecycle → `https://eth-tx-lifecycle.vercel.app` (backend: `https://api-staging-eth-tx.magro.dev` → MBP `127.0.0.1:8081`)
+
+Each app owns `config/ports.json` as the source of truth (frontend + backend bind). eth-tx uses **8081** so it can coexist with eth-l2 on **8080**. Cloudflare Tunnel ingress must match those binds. eth-tx keeps the Go API durable via launchd (`com.danmagro.eth-tx-lifecycle.backend`); do not put loopback ports in Agent Mode JSON or public UI copy — only the `api-staging-*.magro.dev` hostnames.
+
 ## Interactive demos and MBP backends
 
 Portfolio project pages (`/projects/<slug>`) are the write-up surface: card, media, and
-embedded video demos. Interactive experiences that should feel like separately deployed
-apps belong on dedicated demo routes.
+embedded video demos. Experiences that render entirely on magro.dev use `/demos/<slug>`.
+Full-stack apps with their own Vercel frontend link out; their Go backends stay on the MBP.
 
 ### Preferred surfaces
 
 | Surface | Path | Purpose |
 |---------|------|---------|
 | Project write-up | `/projects/<slug>` | Card, summary, screenshots/GIF, inline video demos |
-| Fullscreen demo | `/demos/<slug>` | Minimal chrome + full-viewport interactive |
-| Same-origin proxy | `/api/demos/<slug>/*` | Health checks and backend calls from the browser |
+| In-site fullscreen demo | `/demos/<slug>` | Minimal chrome + full-viewport interactive **on magro.dev** |
+| External hosted app | `https://<app>.vercel.app` | Separate Vercel UI (eth-l2, eth-tx-lifecycle) |
+| Same-origin health probe | `/api/demos/<slug>/health` | Optional status check for MBP-backed apps |
 | Public tunnel hostname | `https://api-staging-<name>.magro.dev` | Cloudflare Tunnel to the MBP service |
 
-**Interact** links on project cards should point at the fullscreen demo when one exists:
-
-- **Go to Page** → `/demos/<slug>` (same tab; browser back returns to the card)
-- **Open in New Tab** → same URL in a new tab
-
-Keep `/projects/<slug>` as the documentation/media page. Do not make Interact dump users
-into a long project page when a dedicated demo route is available.
-
-### Architecture
+### Architecture (in-site demos)
 
 ```text
 Visitor browser
    │
    ▼
-magro.dev/demos/<slug>          ← Next.js UI on Vercel (fullscreen demo shell)
+magro.dev/demos/<slug>          ← Next.js UI on portfolio Vercel
    │
    ▼
-magro.dev/api/demos/<slug>/*    ← same-origin Next.js API proxy / health probe
+(optional) static assets or same-origin APIs on magro.dev
+```
+
+### Architecture (external Vercel + MBP backend)
+
+```text
+Visitor browser
    │
-   ▼
-api-staging-<name>.magro.dev    ← Cloudflare Tunnel hostname
+   ├─ magro.dev/projects/<slug>     ← write-up + link out
    │
-   ▼
-Go / Anvil / service on MBP
+   └─ <app>.vercel.app              ← live UI (separate Vercel project)
+         │
+         ▼
+      api-staging-<name>.magro.dev  ← Cloudflare Tunnel
+         │
+         ▼
+      Go / Anvil / service on MBP
 ```
 
 | Layer | Where it runs | Job |
 |-------|---------------|-----|
-| Demo UI | Vercel (`/demos/<slug>`) | Fullscreen interactive frontend |
-| Proxy / health | Vercel (`/api/demos/<slug>/*`) | CORS-safe calls, status checks, no LAN exposure |
+| Portfolio write-up | magro.dev `/projects/<slug>` | Card, media, links |
+| In-site demo UI | magro.dev `/demos/<slug>` | Fullscreen interactive that belongs on the portfolio |
+| External app UI | Separate Vercel project | Live eth-l2 / eth-tx (and similar) frontends |
+| Health probe | magro.dev `/api/demos/<slug>/health` | Optional tunnel status on the write-up |
 | Backend | MBP via Cloudflare Tunnel | Long-running compute, chain, RPC, simulation |
 
 ### Demo types
 
-1. **Frontend-only** (no MBP needed)
-   - Examples: browser walkthroughs, static HTML embeds
-   - Ship UI at `/demos/<slug>`
+1. **In-site / frontend-only** (renders on magro.dev)
+   - Examples: `agent-runtime` static walkthrough
+   - Ship UI at `/demos/<slug>`; register `FULLSCREEN_DEMO_SLUGS`; `demoUrl` = `/demos/<slug>`
    - No tunnel required
 
-2. **Next.js UI + MBP backend**
-   - Examples: eth-l2 fraud-proof staging; future live RPC / simulation demos
-   - UI on Vercel at `/demos/<slug>`
+2. **External Vercel UI + MBP backend**
+   - Examples: eth-l2 (`eth-l2.vercel.app`), eth-tx-lifecycle (`eth-tx-lifecycle.vercel.app`)
+   - UI on its own Vercel project; `demoUrl` = that production URL
    - Backend on MBP (`localhost:PORT`) exposed as `https://api-staging-<name>.magro.dev`
-   - Browser calls same-origin magro.dev routes when possible:
-     - `fetch('/api/demos/<slug>/health')`
-     - `fetch('/api/demos/<slug>/...')`
-   - Prefer proxying through Next.js over calling the tunnel hostname directly from the browser
+   - Portfolio Interact links out; do not use magro.dev `/demos/<slug>` as the primary Interact target
+   - Optional: register health in `lib/demos.ts` and show status on the project page
 
-### Adding a backend-backed demo
+### Adding an in-site demo
 
-1. Register the demo in `lib/demos.ts` (slug, projectSlug, env key, default tunnel URL, health paths).
-2. Add `app/demos/<slug>/page.tsx` with minimal chrome (title + back link + full-viewport interactive).
-3. Add or extend `app/api/demos/<slug>/...` routes for health and any browser-facing API calls.
-4. Point project `demoUrl` / Interact hrefs at `/demos/<slug>`.
-5. Document the public tunnel hostname in `.env.example` (never LAN IPs).
-6. Confirm Agent Mode: listed projects expose demo URLs; demos from `lib/demos.ts` appear in the manifest when the linked project is listed.
-7. Degrade gracefully when the MBP/tunnel is offline: keep the page useful as an explainer and show an explicit offline/status state.
+1. Add `app/demos/<slug>/page.tsx` with DemoShell (title + back link + full-viewport interactive).
+2. Register the slug in `lib/utils.ts` (`FULLSCREEN_DEMO_SLUGS`).
+3. Set project `demoUrl` to `/demos/<slug>`.
+4. Confirm Agent Mode lists the demo URL when the project is listed.
+
+### Adding an external Vercel + MBP demo
+
+1. Deploy the app on its own Vercel project; document the public URL.
+2. Set project `demoUrl` to that `https://…vercel.app` URL (Interact links out).
+3. Register the tunnel in `lib/demos.ts` if the write-up shows backend health.
+4. Document the public tunnel hostname in `.env.example` (never LAN IPs).
+5. Degrade gracefully when the MBP/tunnel is offline: portfolio page still useful; live app fails closed.
 
 ### Constraints
 
@@ -145,6 +184,7 @@ Go / Anvil / service on MBP
 - Assume the MBP can be offline; demos must fail closed without breaking the portfolio page.
 - One tunnel hostname per backend service keeps ops simple.
 - When demo entry URLs change, update `demoUrl`, Interact wiring, and `agentMode.preferredEntryPoints` if the demo is a high-value agent entry.
+- Never add Interact to CLI-only projects.
 
 ## Principles
 
@@ -162,8 +202,9 @@ lib/constants.ts          # Site URL, description, resume
 app/agent/page.tsx        # Human Agent Mode page
 app/agent.json/route.ts   # Serves getAgentManifest()
 app/llms.txt/route.ts     # Serves getLlmsTxt()
-app/demos/                # Fullscreen interactive demo routes (preferred Interact target)
-app/api/demos/            # Same-origin health/proxy routes to MBP tunnels
+app/demos/                # In-site fullscreen demos (e.g. agent-runtime)
+app/api/demos/            # Optional health/proxy routes to MBP tunnels
+lib/utils.ts              # FULLSCREEN_DEMO_SLUGS + Interact href rules
 components/AgentJsonPreview.tsx
 content/projects/portfolio-agent-mode.json
 ```

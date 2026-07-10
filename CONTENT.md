@@ -109,16 +109,24 @@ npm run build    # production build (.next/)
 
 ## Interactive demos
 
-Interactive apps prefer fullscreen routes under `/demos/<slug>` with a thin DemoShell
-navbar. MBP-backed demos iframe the live Vercel frontend; health is checked through
-same-origin Next.js proxies:
+Follow **Interact rules** in `AGENTS.md`:
+
+| Kind | Interact |
+|------|----------|
+| CLI (e.g. eth-rpc-monitor) | No Interact — Source + YouTube only |
+| In-site (e.g. agent-runtime) | `/demos/<slug>` on magro.dev |
+| External Vercel (eth-l2, eth-tx-lifecycle) | Link to `https://….vercel.app` |
 
 ```text
-/demos/eth-tx-lifecycle          → iframe https://eth-tx-lifecycle.vercel.app
-/demos/eth-l2-fraud-proof        → iframe https://eth-l2.vercel.app
-/api/demos/eth-tx/health         → https://api-staging-eth-tx.magro.dev
-/api/demos/eth-l2/health         → https://api-staging-eth-l2.magro.dev
+/demos/agent-runtime             → in-site fullscreen on magro.dev
+Interact eth-l2                  → https://eth-l2.vercel.app
+Interact eth-tx-lifecycle        → https://eth-tx-lifecycle.vercel.app
+/api/demos/eth-l2/health         → https://api-staging-eth-l2.magro.dev  (MBP :8080)
+/api/demos/eth-tx/health         → https://api-staging-eth-tx.magro.dev  (MBP :8081)
 ```
+
+Each external app’s `config/ports.json` owns local binds (eth-l2 **8080**, eth-tx **8081**).
+eth-tx staging API is kept up with launchd (`com.danmagro.eth-tx-lifecycle.backend`).
 
 Configure public staging origins with:
 
@@ -127,14 +135,11 @@ NEXT_PUBLIC_API_URL=https://api-staging-eth-l2.magro.dev
 NEXT_PUBLIC_ETH_TX_API_URL=https://api-staging-eth-tx.magro.dev
 ```
 
-Defaults match those URLs so local previews work without secrets. When a tunnel is
-offline, the Vercel UI still loads as an explainer and the portfolio status line
-reports the outage.
-
-Register MBP-backed demos in `lib/demos.ts`, add `/demos/<slug>/page.tsx`, set
-`demoUrl` to `/demos/<slug>`, and add the project slug to `FULLSCREEN_DEMO_SLUGS` in
-`lib/utils.ts`. Interact only appears for fullscreen demos or an explicit `demoUrl`
-(never a bare project page fallback).
+Register MBP health probes in `lib/demos.ts` when the write-up shows backend status.
+In-site demos: add `/demos/<slug>/page.tsx`, set `demoUrl` to `/demos/<slug>`, add slug to
+`FULLSCREEN_DEMO_SLUGS`. External apps: set `demoUrl` to the Vercel production URL.
+Interact only appears for fullscreen demos or an explicit `demoUrl` (never a bare project
+page fallback).
 
 ## Project structure
 

@@ -1,5 +1,5 @@
 {
-  "title": "The 5-Part Agent Machine Loop with Tools",
+  "title": "Agent Runtime",
   "description": "A standardized explainer for the common tool-using agent runtime loop, mapped to Hermes Agent and OpenClaw source-shaped code examples.",
   "outerRails": {
     "inbound": "Inbound event",

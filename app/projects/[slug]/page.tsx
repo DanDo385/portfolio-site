@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/Footer';
-import { AgentMachineInteractive } from '@/components/AgentMachineInteractive';
-import { EthL2FraudProofInteractive } from '@/components/EthL2FraudProofInteractive';
+import { AgentRuntimeInteractive } from '@/components/AgentRuntimeInteractive';
+import { EthL2Interactive } from '@/components/EthL2Interactive';
 import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
 import { ProjectCard } from '@/components/ProjectCard';
 import { ProjectVideoDemos } from '@/components/ProjectVideoDemos';
@@ -47,17 +47,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <Reveal>
             <ProjectCard project={project} writingBySlug={writingBySlug} reveal={false} />
           </Reveal>
-          <Reveal>
-            <ProjectVideoDemos project={project} />
-          </Reveal>
-          {project.slug === 'eth-l2-fraud-proof' && (
+          {project.slug === 'eth-l2' && (
             <Reveal>
-              <EthL2FraudProofInteractive />
+              <EthL2Interactive />
             </Reveal>
           )}
-          {project.slug === 'agent-machine-deep-dive' && (
+          {project.slug === 'agent-runtime' && (
             <Reveal>
-              <AgentMachineInteractive />
+              <AgentRuntimeInteractive />
             </Reveal>
           )}
           {project.slug === 'eth-tx-lifecycle' && (
@@ -65,6 +62,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <EthTxLifecycleInteractive />
             </Reveal>
           )}
+          <Reveal>
+            <ProjectVideoDemos project={project} />
+          </Reveal>
         </div>
       </main>
       <Footer />

@@ -82,18 +82,16 @@ function projectMediaLink(label: string, url?: string | null): ProjectMediaLink 
   return { label, href, internal: href.startsWith('/') };
 }
 
-/** Projects with a dedicated fullscreen demo route at /demos/<slug>. */
+/** Projects with a dedicated fullscreen demo route at /demos/<slug> on magro.dev. */
 const FULLSCREEN_DEMO_SLUGS = new Set([
-  'agent-machine-deep-dive',
-  'eth-tx-lifecycle',
-  'eth-l2-fraud-proof',
+  'agent-runtime',
 ]);
 
-/** Projects that still mount an interactive panel on /projects/<slug>. */
+/** Projects that mount an interactive / launch panel on /projects/<slug>. */
 const PROJECT_PAGE_INTERACTIVE_SLUGS = new Set([
-  'agent-machine-deep-dive',
+  'agent-runtime',
   'eth-tx-lifecycle',
-  'eth-l2-fraud-proof',
+  'eth-l2',
 ]);
 
 export function projectDemoPath(slug: string): string {
@@ -109,9 +107,11 @@ export function projectHasPageInteractive(slug: string): boolean {
 }
 
 /**
- * Interact only for real interactive targets (fullscreen demo or explicit demoUrl).
- * Never fall back to the bare project page — that incorrectly adds Interact to
- * CLI/video-only cards like eth-rpc-monitor.
+ * Interact only for real interactive targets:
+ * - in-site fullscreen demos (`FULLSCREEN_DEMO_SLUGS` → `/demos/<slug>`)
+ * - explicit `demoUrl` (internal path or external Vercel URL)
+ * Never fall back to the bare project page — CLI/video-only cards (e.g. eth-rpc-monitor)
+ * must not get an Interact section.
  */
 export function projectInteractHref(project: Project): string | null {
   if (projectHasFullscreenDemo(project.slug)) {

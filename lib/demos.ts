@@ -12,7 +12,7 @@ export interface DemoConfig {
 export const DEMO_CONFIGS: Record<DemoSlug, DemoConfig> = {
   'eth-l2': {
     slug: 'eth-l2',
-    projectSlug: 'eth-l2-fraud-proof',
+    projectSlug: 'eth-l2',
     name: 'Eth-L2 Fraud Proof Simulation',
     apiBaseEnv: 'NEXT_PUBLIC_API_URL',
     defaultApiBaseUrl: 'https://api-staging-eth-l2.magro.dev',
@@ -24,7 +24,7 @@ export const DEMO_CONFIGS: Record<DemoSlug, DemoConfig> = {
     name: 'Ethereum Transaction Lifecycle',
     apiBaseEnv: 'NEXT_PUBLIC_ETH_TX_API_URL',
     defaultApiBaseUrl: 'https://api-staging-eth-tx.magro.dev',
-    healthPaths: ['/api/health', '/api/health/live', '/api/health/ready'],
+    healthPaths: ['/api/health/ready', '/api/health', '/api/health/live'],
   },
 };
 
