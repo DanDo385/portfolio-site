@@ -44,7 +44,7 @@ export function HermesXrayInteractive() {
 
       <div className="amd-frame-wrap">
         <iframe
-          title="Hermes Runtime X-Ray interactive walkthrough"
+          title="hermes-xray interactive walkthrough"
           src={DEMO_SRC}
           className="amd-frame"
           loading="lazy"

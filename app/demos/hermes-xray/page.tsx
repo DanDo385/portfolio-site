@@ -4,7 +4,7 @@ import { DemoShell } from '@/components/DemoShell';
 const DEMO_SRC = '/project-assets/hermes-xray/demo/index.html';
 
 export const metadata: Metadata = {
-  title: 'Hermes Runtime X-Ray Demo | Daniel Magro',
+  title: 'hermes-xray Demo | Daniel Magro',
   description:
     'Fullscreen browser observability walkthrough for a Hermes-style tool-using agent.',
 };
@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 export default function HermesXrayDemoPage() {
   return (
     <DemoShell
-      title="Hermes Runtime X-Ray"
+      title="hermes-xray"
       projectHref="/projects/hermes-xray"
       wide
     >
       <div className="demo-shell-frame-wrap">
         <iframe
-          title="Hermes Runtime X-Ray interactive walkthrough"
+          title="hermes-xray interactive walkthrough"
           src={DEMO_SRC}
           className="demo-shell-frame"
           loading="eager"
