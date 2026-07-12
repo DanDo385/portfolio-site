@@ -1,6 +1,8 @@
 export type ProjectStatus = 'complete' | 'in-progress';
 export type ArticleStatus = 'draft' | 'published';
 export type ProjectPreviewType = 'agent-json';
+/** Visual weight on the homepage. Foundations sit under primary flagships. */
+export type ProjectTier = 'primary' | 'foundations';
 
 export interface Project {
   title: string;
@@ -8,6 +10,8 @@ export interface Project {
   date: string;
   status: ProjectStatus;
   featured?: boolean;
+  /** Defaults to primary when omitted. */
+  tier?: ProjectTier;
   tags: string[];
   summary: string;
   techBadges: string[];

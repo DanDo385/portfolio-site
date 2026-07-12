@@ -60,7 +60,7 @@ export function DemoBackendStatus({ demoSlug, defaultOrigin }: DemoBackendStatus
   }, [checkHealth]);
 
   const message =
-    clientError || health?.message || 'Click check to query the MBP staging backend.';
+    clientError || health?.message || 'Click check to query the staging backend.';
 
   return (
     <div className="demo-backend-status">

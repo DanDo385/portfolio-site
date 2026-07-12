@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { IPFS_URL, RESUME_PDF } from '@/lib/constants';
+import { RESUME_PDF } from '@/lib/constants';
 import { Reveal } from './Reveal';
 
 function MailIcon() {
@@ -82,9 +82,6 @@ export function Contact() {
                   </button>
                   <a href={RESUME_PDF} download="Daniel-Magro-Resume.pdf" className="btn">
                     Download
-                  </a>
-                  <a href={IPFS_URL} className="btn" target="_blank" rel="noopener noreferrer">
-                    IPFS
                   </a>
                 </div>
               </div>

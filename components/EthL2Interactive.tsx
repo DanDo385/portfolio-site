@@ -3,6 +3,7 @@ import { DemoBackendStatus } from '@/components/DemoBackendStatus';
 const DEMO_SRC = 'https://eth-l2.vercel.app';
 const GITHUB_URL = 'https://github.com/DanDo385/eth-l2';
 const API_ORIGIN = 'https://api-staging-eth-l2.magro.dev';
+const LLMS_URL = '/project-assets/eth-l2/llms.txt';
 
 export function EthL2Interactive() {
   return (
@@ -26,7 +27,7 @@ export function EthL2Interactive() {
             <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer">
               eth-l2.vercel.app
             </a>
-            ; simulation uses the MacBook Go backend through Cloudflare Tunnel.
+            ; simulation uses a staging Go backend through Cloudflare Tunnel.
           </p>
         </div>
         <div className="amd-runtime">
@@ -40,11 +41,19 @@ export function EthL2Interactive() {
           </div>
           <div className="amd-runtime-row">
             <span>Backend</span>
-            <strong>MBP via api-staging-eth-l2.magro.dev</strong>
+            <strong>api-staging-eth-l2.magro.dev</strong>
           </div>
           <div className="amd-runtime-row">
             <span>Interact</span>
             <strong>Opens the Vercel app (not an in-site /demos route)</strong>
+          </div>
+          <div className="amd-runtime-row">
+            <span>Agent brief</span>
+            <strong>
+              <a href={LLMS_URL} target="_blank" rel="noopener noreferrer">
+                llms.txt
+              </a>
+            </strong>
           </div>
         </div>
       </div>
@@ -60,6 +69,9 @@ export function EthL2Interactive() {
         </a>
         <a href={`${DEMO_SRC}/zk`} target="_blank" rel="noopener noreferrer" className="amd-link">
           ZK lab (/zk) <span>&rarr;</span>
+        </a>
+        <a href={LLMS_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
+          Project llms.txt <span>&rarr;</span>
         </a>
         <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
           View source on GitHub <span>&rarr;</span>

@@ -1,5 +1,7 @@
+import fs from 'fs';
+import path from 'path';
 import { IPFS_URL, RESUME_PDF, SITE } from './constants';
-import { getListedProjects, getPublishedResearch, getPublishedWriting, hasRecentContent } from './content';
+import { getListedProjects, getPublishedResearch, getPublishedWriting, hasRecentContent, projectTier } from './content';
 import { isValidUrl, projectPath } from './utils';
 import { DEMO_CONFIGS } from './demos';
 import type { Project } from './types';
@@ -8,13 +10,26 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'The portfolio is positioned around AI infrastructure finance, AI-native financial rails, and market-structure translation.',
+  'The portfolio is positioned around open source contribution, smart contract security, EVM infrastructure, and markets-literate systems engineering.',
 ];
 
-function siteUrl(path?: string | null): string | null {
-  if (!isValidUrl(path)) return null;
-  if (path!.startsWith('http://') || path!.startsWith('https://')) return path!;
-  return new URL(path!, SITE.url).toString();
+function siteUrl(pathOrUrl?: string | null): string | null {
+  if (!isValidUrl(pathOrUrl)) return null;
+  if (pathOrUrl!.startsWith('http://') || pathOrUrl!.startsWith('https://')) return pathOrUrl!;
+  return new URL(pathOrUrl!, SITE.url).toString();
+}
+
+/** Portfolio-domain project briefs: /project-assets/<slug>/llms.txt or .../demo/llms.txt */
+export function projectLlmsTxtPath(slug: string): string | null {
+  const candidates = [
+    `/project-assets/${slug}/llms.txt`,
+    `/project-assets/${slug}/demo/llms.txt`,
+  ];
+  for (const candidate of candidates) {
+    const absolute = path.join(process.cwd(), 'public', candidate.replace(/^\//, ''));
+    if (fs.existsSync(absolute)) return candidate;
+  }
+  return null;
 }
 
 function projectUrls(project: Project) {
@@ -23,6 +38,7 @@ function projectUrls(project: Project) {
   const shortClip = siteUrl(project.shortClipUrl);
   const recording = siteUrl(project.recordingUrl);
   const previewVideo = siteUrl(project.previewVideo);
+  const llmsTxt = siteUrl(projectLlmsTxtPath(project.slug));
 
   if (previewGif) media.previewGif = previewGif;
   if (shortClip) media.shortClip = shortClip;
@@ -39,6 +55,7 @@ function projectUrls(project: Project) {
     relatedWriting: project.relatedWriting
       ? `${SITE.url}/writing/${project.relatedWriting}/`
       : null,
+    llmsTxt,
     media: Object.keys(media).length > 0 ? media : null,
   };
 }
@@ -50,6 +67,7 @@ export function getAgentManifest() {
     date: project.date,
     status: project.status,
     featured: Boolean(project.featured),
+    tier: projectTier(project),
     summary: project.summary,
     tags: project.tags,
     tech: project.techBadges,
@@ -93,7 +111,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'AI infrastructure finance, capital markets, and programmable financial systems',
+        role: 'Open source, smart contract security, and EVM systems engineering',
       },
     },
     agentMode: {
@@ -129,7 +147,7 @@ export function getAgentManifest() {
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin'],
       buildingWith: ['Go', 'Solidity', 'EVM', 'AI', 'Hermes'],
       summary:
-        'Former institutional rates and macro trader and portfolio manager now building at the intersection of AI infrastructure finance, programmable financial rails, and market-structure translation.',
+        'Former institutional rates and macro trader and portfolio manager now building open source EVM infrastructure, agent-readable systems, and security-minded protocol work — with markets literacy as a force multiplier.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -137,16 +155,16 @@ export function getAgentManifest() {
       linkedin: 'https://linkedin.com/in/dmagro',
       twitter: 'https://twitter.com/DanQB13',
       resume: `${SITE.url}${RESUME_PDF}`,
-      resumeIpfs: IPFS_URL,
+      ...(IPFS_URL ? { resumeIpfs: IPFS_URL } : {}),
     },
     canonicalTopics: [
-      'AI infrastructure finance',
-      'compute and GPU markets',
-      'datacenter debt and collateral',
-      'AI-native financial rails',
-      'stablecoins and programmable settlement',
-      'DeFi market structure',
+      'open source contribution',
+      'smart contract security',
+      'EVM infrastructure',
       'agent-readable web infrastructure',
+      'DeFi market structure',
+      'rollup and fraud-proof mechanics',
+      'AI-native financial rails',
       'capital markets translation for technical systems',
     ],
     demos: Object.values(DEMO_CONFIGS)
@@ -157,7 +175,7 @@ export function getAgentManifest() {
         project: `${SITE.url}${projectPath(config.projectSlug)}/`,
         healthProbe: `${SITE.url}/api/demos/${config.slug}/health`,
         stagingApi: config.defaultApiBaseUrl,
-        runtime: 'Go service on MBP via Cloudflare Tunnel',
+        runtime: 'Staging Go service via Cloudflare Tunnel',
         status: 'staging',
       })),
     projects,
@@ -184,11 +202,30 @@ export function getLlmsTxt(): string {
     ),
   ].join('\n');
 
-  const projectLines = manifest.projects
-    .map((project) => {
-      const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
-      return llmsLink(project.title, href, project.summary);
-    })
+  const projectLines = [
+    ...manifest.projects
+      .filter((project) => project.tier !== 'foundations')
+      .map((project) => {
+        const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
+        return llmsLink(project.title, href, project.summary);
+      }),
+    ...manifest.projects
+      .filter((project) => project.tier === 'foundations')
+      .map((project) => {
+        const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
+        return llmsLink(`${project.title} (Foundations)`, href, project.summary);
+      }),
+  ].join('\n');
+
+  const projectLlmsLines = manifest.projects
+    .filter((project) => project.urls.llmsTxt)
+    .map((project) =>
+      llmsLink(
+        `${project.title} llms.txt`,
+        project.urls.llmsTxt!,
+        'Project-specific agent brief on magro.dev'
+      )
+    )
     .join('\n');
 
   const writingLines = manifest.writing
@@ -217,7 +254,9 @@ export function getLlmsTxt(): string {
 
   const optionalLines = [
     llmsLink('Resume PDF', manifest.contact.resume, 'Downloadable resume'),
-    llmsLink('Resume on IPFS', manifest.contact.resumeIpfs, 'Immutable resume copy'),
+    ...(manifest.contact.resumeIpfs
+      ? [llmsLink('Resume on IPFS', manifest.contact.resumeIpfs, 'Immutable resume copy')]
+      : []),
     llmsLink('GitHub', manifest.contact.github, 'Code repositories'),
     llmsLink('LinkedIn', manifest.contact.linkedin),
     llmsLink('X / Twitter', manifest.contact.twitter),
@@ -248,6 +287,11 @@ export function getLlmsTxt(): string {
     '## Projects',
     '',
     projectLines,
+    '',
+    '## Project llms.txt',
+    '',
+    projectLlmsLines ||
+      '- Project-specific briefs live under /project-assets/<slug>/llms.txt when present.',
     '',
     '## My Writing',
     '',

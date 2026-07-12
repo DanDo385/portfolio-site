@@ -3,6 +3,7 @@ import { DemoBackendStatus } from '@/components/DemoBackendStatus';
 const DEMO_SRC = 'https://eth-tx-lifecycle.vercel.app';
 const GITHUB_URL = 'https://github.com/DanDo385/eth-tx-lifecycle';
 const API_ORIGIN = 'https://api-staging-eth-tx.magro.dev';
+const LLMS_URL = '/project-assets/eth-tx-lifecycle/llms.txt';
 
 export function EthTxLifecycleInteractive() {
   return (
@@ -19,7 +20,7 @@ export function EthTxLifecycleInteractive() {
             <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer">
               eth-tx-lifecycle.vercel.app
             </a>
-            ; mempool, relay, and tracker data come from the MacBook Go backend through
+            ; mempool, relay, and tracker data come from a staging Go backend through
             Cloudflare Tunnel. If the tunnel is offline, the Vercel UI still loads in
             degraded mode.
           </p>
@@ -35,11 +36,19 @@ export function EthTxLifecycleInteractive() {
           </div>
           <div className="amd-runtime-row">
             <span>Backend</span>
-            <strong>MBP via api-staging-eth-tx.magro.dev</strong>
+            <strong>api-staging-eth-tx.magro.dev</strong>
           </div>
           <div className="amd-runtime-row">
             <span>Interact</span>
             <strong>Opens the Vercel app (not an in-site /demos route)</strong>
+          </div>
+          <div className="amd-runtime-row">
+            <span>Agent brief</span>
+            <strong>
+              <a href={LLMS_URL} target="_blank" rel="noopener noreferrer">
+                llms.txt
+              </a>
+            </strong>
           </div>
         </div>
       </div>
@@ -49,6 +58,9 @@ export function EthTxLifecycleInteractive() {
       <div className="amd-links">
         <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer" className="amd-link">
           Open eth-tx-lifecycle.vercel.app <span>&rarr;</span>
+        </a>
+        <a href={LLMS_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
+          Project llms.txt <span>&rarr;</span>
         </a>
         <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
           View source on GitHub <span>&rarr;</span>

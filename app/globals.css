@@ -797,6 +797,69 @@ html[data-theme='light'] .tag-default {
 .pcard-related a { color: var(--accent); text-decoration: none; }
 .pcard-related a:hover { text-decoration: underline; }
 
+.projects-foundations {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.projects-foundations > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  user-select: none;
+}
+
+.projects-foundations > summary::-webkit-details-marker { display: none; }
+
+.projects-foundations-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.projects-foundations-label::after {
+  content: '+';
+  font-size: 15px;
+  opacity: 0.7;
+  color: var(--accent);
+}
+
+.projects-foundations[open] .projects-foundations-label::after { content: '−'; }
+
+.projects-foundations-note {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 42rem;
+  line-height: 1.5;
+}
+
+.projects-foundations-list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0.88;
+}
+
+.projects-foundations-list .pcard {
+  padding: 22px 20px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.projects-foundations-list .pcard:hover {
+  transform: none;
+}
+
 .pcard-status {
   display: inline-block;
   font-family: var(--font-mono);

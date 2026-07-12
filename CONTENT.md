@@ -15,6 +15,8 @@ Create `content/projects/your-slug.json`:
   "date": "2026-07-01",
   "status": "complete",
   "featured": false,
+  "listed": true,
+  "tier": "primary",
   "tags": ["AI", "Go"],
   "summary": "One or two lines describing the project.",
   "techBadges": ["Go", "TypeScript"],
@@ -53,6 +55,8 @@ Create `content/projects/your-slug.json`:
 | `previewType` | no | Set to `agent-json` for structured JSON preview; otherwise use `screenshots`. Cards always show a preview box; empty projects display "Preview pending". |
 | `relatedWriting` | no | Slug of a published article to cross-link |
 | `featured` | no | When `true`, pins above date sort |
+| `tier` | no | `primary` (default) or `foundations`. Foundations render in a collapsed homepage tier under the flagships and are labeled in Agent Mode |
+| `listed` | no | When `false`, hidden from homepage and agent project lists |
 
 Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.
 
@@ -176,6 +180,18 @@ In-site demos: add `/demos/<slug>/page.tsx`, set `demoUrl` to `/demos/<slug>`, a
 Interact only appears for fullscreen demos or an explicit `demoUrl` (never a bare project
 page fallback).
 
+### Project `llms.txt` (same domain)
+
+Ship a short agent brief on magro.dev so project context is searchable without leaving the portfolio:
+
+| Kind | Path |
+|------|------|
+| In-site demo | `public/project-assets/<slug>/demo/llms.txt` |
+| External Vercel app | `public/project-assets/<slug>/llms.txt` |
+
+`lib/agent.ts` auto-discovers either path and exposes `urls.llmsTxt` in `/agent.json` plus a
+**Project llms.txt** section in site `/llms.txt`. Link it from the project Interact panel.
+
 ## Project structure
 
 ```
@@ -193,5 +209,5 @@ content/
 lib/
   content.ts          # Content loaders
   constants.ts        # Site constants
-public/               # Static assets (resume PDF, favicon)
+public/               # Static assets (resume PDF, favicon, project-assets/*/llms.txt)
 ```

@@ -34,8 +34,9 @@ export function About() {
             <p className="about-intro">
               I spent thirteen years in institutional fixed income before stepping off the desk to
               build. Since then I have been on a deliberate learning run: Python automation, smart
-              contracts, APIs, e-commerce systems, and the permissionless stacks where finance and
-              software meet.
+              contracts, APIs, EVM internals, and the permissionless stacks where finance and
+              software meet. The current thrust is open source contribution and smart contract
+              security — content before container.
             </p>
             <p className="about-intro">
               This site is where I assemble that work in public: essays, projects, and experiments.

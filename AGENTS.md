@@ -66,6 +66,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 - Writing: `content/writing/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Research: `content/agent-research/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
+- Foundations projects (`"tier": "foundations"`) stay listed but render under a collapsed **Foundations** block on the homepage and are labeled in `/llms.txt`
 
 ## Interact rules (project cards)
 
@@ -88,8 +89,15 @@ Decide Interact from the project type. Never invent Interact by falling back to
 3. **External Vercel apps** (eth-l2, eth-tx-lifecycle) — set `demoUrl` to the
    production Vercel URL (e.g. `https://eth-l2.vercel.app`). Do **not** iframe
    those apps as the Interact destination. magro.dev project pages may explain
-   the stack and link out; live UI stays on the Vercel hostname.
+   the stack and link out; live UI stays on the Vercel hostname. Ship a
+   portfolio-domain agent brief at `public/project-assets/<slug>/llms.txt`
+   so search/agents find project context on magro.dev (auto-linked from
+   `/agent.json` and site `/llms.txt`).
 4. Keep `/projects/<slug>` as the write-up surface (card, screenshots, YouTube).
+5. **Per-project `llms.txt`** — required for in-site demos (under `demo/`) and
+   external Vercel apps (under `public/project-assets/<slug>/llms.txt`). Optional
+   for CLI/video-only cards. Site `/llms.txt` remains the router; project files
+   are deeper briefs on the same domain.
 
 Canonical external apps today:
 
@@ -109,6 +117,7 @@ Full-stack apps with their own Vercel frontend link out; their Go backends stay 
 | Surface | Path | Purpose |
 |---------|------|---------|
 | Project write-up | `/projects/<slug>` | Card, summary, screenshots/GIF, inline video demos |
+| Project llms.txt | `/project-assets/<slug>/llms.txt` (or `.../demo/llms.txt`) | Same-domain agent brief for the project |
 | In-site fullscreen demo | `/demos/<slug>` | Minimal chrome + full-viewport interactive **on magro.dev** |
 | External hosted app | `https://<app>.vercel.app` | Separate Vercel UI (eth-l2, eth-tx-lifecycle) |
 | Same-origin health probe | `/api/demos/<slug>/health` | Optional status check for MBP-backed apps |
@@ -162,6 +171,7 @@ Visitor browser
    - UI on its own Vercel project; `demoUrl` = that production URL
    - Backend on MBP (`localhost:PORT`) exposed as `https://api-staging-<name>.magro.dev`
    - Portfolio Interact links out; do not use magro.dev `/demos/<slug>` as the primary Interact target
+   - Ship `public/project-assets/<slug>/llms.txt` on magro.dev for agent search/context
    - Optional: register health in `lib/demos.ts` and show status on the project page
 
 ### Adding an in-site demo

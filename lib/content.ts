@@ -41,6 +41,18 @@ export function getListedProjects(): Project[] {
   return getProjects().filter((project) => project.listed !== false);
 }
 
+export function projectTier(project: Project): 'primary' | 'foundations' {
+  return project.tier === 'foundations' ? 'foundations' : 'primary';
+}
+
+export function getPrimaryProjects(): Project[] {
+  return getListedProjects().filter((project) => projectTier(project) === 'primary');
+}
+
+export function getFoundationsProjects(): Project[] {
+  return getListedProjects().filter((project) => projectTier(project) === 'foundations');
+}
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return getProjects().find((p) => p.slug === slug);
 }

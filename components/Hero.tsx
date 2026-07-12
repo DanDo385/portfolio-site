@@ -11,19 +11,17 @@ export function Hero({ showRecent = false }: HeroProps) {
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <h1>
-          Operating at the center of <em>AI, finance, and markets</em>
+          Building at the edge of <em>open source, security, and markets</em>
         </h1>
         <p className="hero-identity">
-          Former institutional rates and macro trader and portfolio manager. Now focused on
-          the market structure questions AI is forcing into the open: how the AI
-          infrastructure buildout gets financed, and how AI can modernize the rails finance
-          runs on.
+          Former institutional rates and macro trader and portfolio manager. Now writing and
+          shipping EVM infrastructure, agent-readable systems, and security-minded protocol work
+          in public — with a learning arc from storage and AMM mechanics to fraud-proof simulation.
         </p>
         <p className="hero-positioning">
-          Available for solutions architecture, capital markets, market strategy, and
-          technical BD with teams financing AI infrastructure, building AI-native financial
-          workflows, or modernizing institutional rails with programmable assets,
-          stablecoins, RWA infrastructure, and better data systems.
+          Looking for open source contribution, smart contract security, and systems engineering
+          roles where markets literacy is a force multiplier. Still fluent in capital-markets
+          translation when teams need that bridge.
         </p>
         {showRecent && (
           <div className="hero-cta">
