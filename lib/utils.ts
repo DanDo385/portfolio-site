@@ -85,11 +85,13 @@ function projectMediaLink(label: string, url?: string | null): ProjectMediaLink 
 /** Projects with a dedicated fullscreen demo route at /demos/<slug> on magro.dev. */
 const FULLSCREEN_DEMO_SLUGS = new Set([
   'agent-runtime',
+  'hermes-xray',
 ]);
 
 /** Projects that mount an interactive / launch panel on /projects/<slug>. */
 const PROJECT_PAGE_INTERACTIVE_SLUGS = new Set([
   'agent-runtime',
+  'hermes-xray',
   'eth-tx-lifecycle',
   'eth-l2',
 ]);

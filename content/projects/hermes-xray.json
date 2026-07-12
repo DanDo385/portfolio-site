@@ -1,0 +1,31 @@
+{
+  "title": "Hermes Runtime X-Ray",
+  "slug": "hermes-xray",
+  "date": "2026-07-12",
+  "status": "complete",
+  "featured": false,
+  "tags": [
+    "AI",
+    "Agents",
+    "Observability",
+    "Interactive"
+  ],
+  "summary": "A standalone browser observability lab inspired by Agent Runtime: enter a simple prompt and inspect model-visible context, loop stages, tool events, token estimates, verification, and persistence boundaries.",
+  "techBadges": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Agent Observability"
+  ],
+  "githubUrl": "https://github.com/DanDo385/hermes-xray",
+  "demoUrl": "/demos/hermes-xray",
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": null
+}

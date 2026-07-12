@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/Footer';
 import { AgentRuntimeInteractive } from '@/components/AgentRuntimeInteractive';
+import { HermesXrayInteractive } from '@/components/HermesXrayInteractive';
 import { EthL2Interactive } from '@/components/EthL2Interactive';
 import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
 import { ProjectCard } from '@/components/ProjectCard';
@@ -55,6 +56,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {project.slug === 'agent-runtime' && (
             <Reveal>
               <AgentRuntimeInteractive />
+            </Reveal>
+          )}
+          {project.slug === 'hermes-xray' && (
+            <Reveal>
+              <HermesXrayInteractive />
             </Reveal>
           )}
           {project.slug === 'eth-tx-lifecycle' && (
