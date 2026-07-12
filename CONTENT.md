@@ -56,9 +56,9 @@ Create `content/projects/your-slug.json`:
 
 Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.
 
-## Articles
+## Articles (My Writing)
 
-Create `content/writing/your-slug.md`:
+Homepage section id: `my-writing`. Create `content/writing/your-slug.md`:
 
 ```markdown
 ---
@@ -94,6 +94,41 @@ Second paragraph here.
 | body | yes | Markdown below the frontmatter |
 
 Drafts never appear on the homepage or as routes. Set `status: published` when ready to ship.
+
+## Agent Research
+
+Homepage section id: `agent-research`. Long-form research papers from deep research runs.
+
+Create `content/agent-research/your-slug.md`:
+
+```markdown
+---
+title: Research Paper Title
+slug: your-slug
+date: 2026-07-11
+status: published
+category: Agentic Systems
+excerpt: One-line summary for the research list.
+subtitle: Optional longer subtitle
+---
+
+Your research body in Markdown.
+```
+
+**Fields**
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `title` | yes | Display name |
+| `slug` | yes | URL path: `/agent-research/your-slug` |
+| `date` | yes | ISO date. Drives sort order |
+| `status` | yes | `draft` (hidden) or `published` (live) |
+| `category` | yes | Small label on the card |
+| `excerpt` | yes | One-line summary |
+| `subtitle` | no | Shown under the title |
+| body | yes | Markdown below the frontmatter |
+
+Source material can live outside the repo (e.g. `~/AI Research/*.docx`); convert to markdown before publishing.
 
 ## Operating thesis
 
@@ -148,11 +183,13 @@ app/
   layout.tsx          # Root layout, fonts, metadata
   page.tsx            # Homepage
   globals.css         # Site styles
-  writing/[slug]/     # Article pages
+  writing/[slug]/     # My Writing article pages
+  agent-research/[slug]/  # Agent Research paper pages
 components/           # React UI components
 content/
   projects/           # One JSON file per project
   writing/            # One Markdown file per article
+  agent-research/     # One Markdown file per research paper
 lib/
   content.ts          # Content loaders
   constants.ts        # Site constants

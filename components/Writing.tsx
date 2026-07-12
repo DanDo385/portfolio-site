@@ -10,10 +10,10 @@ interface WritingProps {
 
 export function Writing({ articles, projectsBySlug }: WritingProps) {
   return (
-    <section id="writing">
+    <section id="my-writing">
       <div className="container">
         <Reveal>
-          <div className="section-label">Writing</div>
+          <div className="section-label">My Writing</div>
         </Reveal>
         <div className="writing-list">
           {articles.length === 0 ? (

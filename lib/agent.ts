@@ -1,5 +1,5 @@
 import { IPFS_URL, RESUME_PDF, SITE } from './constants';
-import { getListedProjects, getPublishedWriting, hasRecentContent } from './content';
+import { getListedProjects, getPublishedResearch, getPublishedWriting, hasRecentContent } from './content';
 import { isValidUrl, projectPath } from './utils';
 import { DEMO_CONFIGS } from './demos';
 import type { Project } from './types';
@@ -71,6 +71,18 @@ export function getAgentManifest() {
     },
   }));
 
+  const research = getPublishedResearch().map((paper) => ({
+    title: paper.title,
+    slug: paper.slug,
+    date: paper.date,
+    category: paper.category,
+    excerpt: paper.excerpt,
+    subtitle: paper.subtitle ?? null,
+    urls: {
+      canonical: `${SITE.url}/agent-research/${paper.slug}/`,
+    },
+  }));
+
   return {
     schema: `${SITE.url}/agent.json`,
     schemaVersion: '0.1',
@@ -97,6 +109,7 @@ export function getAgentManifest() {
         `${SITE.url}/agent.json`,
         `${SITE.url}/llms.txt`,
         `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
+        `${SITE.url}/agent-research/octopus-agentic-systems/`,
       ],
       principles: PRINCIPLES,
     },
@@ -105,7 +118,8 @@ export function getAgentManifest() {
         ? [{ id: 'recent', label: 'Recent', href: `${SITE.url}/#recent` }]
         : []),
       { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
-      { id: 'writing', label: 'Writing', href: `${SITE.url}/#writing` },
+      { id: 'my-writing', label: 'My Writing', href: `${SITE.url}/#my-writing` },
+      { id: 'agent-research', label: 'Agent Research', href: `${SITE.url}/#agent-research` },
       { id: 'about', label: 'About me', href: `${SITE.url}/#about` },
       { id: 'contact', label: 'Contact', href: `${SITE.url}/#contact` },
     ],
@@ -148,6 +162,7 @@ export function getAgentManifest() {
       })),
     projects,
     writing,
+    research,
   };
 }
 
@@ -160,7 +175,7 @@ export function getLlmsTxt(): string {
 
   const agentLines = [
     llmsLink('Agent overview', manifest.agentMode.endpoints.overview, 'Human-readable contract and endpoint map'),
-    llmsLink('JSON manifest', manifest.agentMode.endpoints.manifest, 'Structured projects, writing, topics, and links'),
+    llmsLink('JSON manifest', manifest.agentMode.endpoints.manifest, 'Structured projects, writing, research, topics, and links'),
     llmsLink('LLM router', manifest.agentMode.endpoints.router, 'This file; compact markdown router for language models'),
     llmsLink(
       'Agent Mode essay',
@@ -178,6 +193,10 @@ export function getLlmsTxt(): string {
 
   const writingLines = manifest.writing
     .map((article) => llmsLink(article.title, article.urls.canonical, article.excerpt))
+    .join('\n');
+
+  const researchLines = manifest.research
+    .map((paper) => llmsLink(paper.title, paper.urls.canonical, paper.excerpt))
     .join('\n');
 
   const demoLines = manifest.demos
@@ -230,9 +249,13 @@ export function getLlmsTxt(): string {
     '',
     projectLines,
     '',
-    '## Writing',
+    '## My Writing',
     '',
     writingLines || '- Published writing appears at /writing/<slug>/.',
+    '',
+    '## Agent Research',
+    '',
+    researchLines || '- Published research appears at /agent-research/<slug>/.',
     '',
     '## Interactive Demos',
     '',

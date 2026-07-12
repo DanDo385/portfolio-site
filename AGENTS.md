@@ -21,6 +21,7 @@ These pull from content loaders at build/request time. No manual list edits need
 
 - **Projects** in `agent.json` / `llms.txt`: from `getListedProjects()` (`content/projects/*.json`, `listed !== false`)
 - **Writing** in `agent.json` / `llms.txt`: from `getPublishedWriting()` (`content/writing/*.md`, `status: published`)
+- **Research** in `agent.json` / `llms.txt`: from `getPublishedResearch()` (`content/agent-research/*.md`, `status: published`)
 - **Project URLs** (canonical, github, demo, media): derived in `lib/agent.ts` → `projectUrls()`
 - **Interactive demos** in manifest: from `lib/demos.ts` when the linked project is listed
 
@@ -50,6 +51,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 
 - [ ] New or updated **project** → `content/projects/<slug>.json` exists; `listed` set intentionally; `demoUrl` / media paths valid.
 - [ ] New or updated **article** → `content/writing/<slug>.md` published if it should appear in manifest.
+- [ ] New or updated **research paper** → `content/agent-research/<slug>.md` published if it should appear in manifest.
 - [ ] **Nav / homepage sections** changed → `lib/agent.ts` → `navigation` matches `components/Nav.tsx`.
 - [ ] **About or Contact** changed → `lib/agent.ts` → `about` and `contact` blocks reviewed.
 - [ ] **Interactive demo** added → follow **Interact rules** below (CLI = no Interact; in-site = `/demos/<slug>`; hosted apps = external Vercel `demoUrl`).
@@ -62,6 +64,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 
 - Projects: `content/projects/*.json` — see `CONTENT.md`
 - Writing: `content/writing/*.md` — drafts (`status: draft`) are excluded from Agent Mode
+- Research: `content/agent-research/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
 
 ## Interact rules (project cards)

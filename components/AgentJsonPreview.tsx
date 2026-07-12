@@ -20,6 +20,10 @@ function getCardPreviewManifest() {
       title: article.title,
       slug: article.slug,
     })),
+    research: manifest.research.map((paper) => ({
+      title: paper.title,
+      slug: paper.slug,
+    })),
   };
 }
 

@@ -2,9 +2,27 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { isWithinRecentDays, projectPath } from './utils';
-import type { Article, Project, RecentItem, TimelineItem } from './types';
+import type { Article, Project, RecentItem, ResearchPaper, TimelineItem } from './types';
 
 const CONTENT = path.join(process.cwd(), 'content');
+
+function loadMarkdownDocuments<T extends { date: string; slug: string }>(
+  folder: string
+): Array<T & { body: string }> {
+  const dir = path.join(CONTENT, folder);
+  if (!fs.existsSync(dir)) return [];
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+  return files.map((f) => {
+    const raw = fs.readFileSync(path.join(dir, f), 'utf8');
+    const { data, content } = matter(raw);
+    const doc = data as Omit<T, 'body'> & { date: unknown };
+    return {
+      ...(doc as Omit<T, 'body'>),
+      date: normalizeContentDate(doc.date),
+      body: content.trim(),
+    } as T & { body: string };
+  });
+}
 
 export function getProjects(): Project[] {
   const dir = path.join(CONTENT, 'projects');
@@ -33,15 +51,7 @@ function normalizeContentDate(value: unknown): string {
 }
 
 export function getAllWriting(): Article[] {
-  const dir = path.join(CONTENT, 'writing');
-  if (!fs.existsSync(dir)) return [];
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
-  return files.map((f) => {
-    const raw = fs.readFileSync(path.join(dir, f), 'utf8');
-    const { data, content } = matter(raw);
-    const article = data as Omit<Article, 'body'>;
-    return { ...article, date: normalizeContentDate(article.date), body: content.trim() };
-  });
+  return loadMarkdownDocuments<Article>('writing');
 }
 
 export function getPublishedWriting(): Article[] {
@@ -58,6 +68,26 @@ export function getArticleBySlug(slug: string): Article | undefined {
 
 export function getArticleSlugs(): string[] {
   return getPublishedWriting().map((a) => a.slug);
+}
+
+export function getAllResearch(): ResearchPaper[] {
+  return loadMarkdownDocuments<ResearchPaper>('agent-research');
+}
+
+export function getPublishedResearch(): ResearchPaper[] {
+  return getAllResearch()
+    .filter((paper) => paper.status === 'published')
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getResearchBySlug(slug: string): ResearchPaper | undefined {
+  const paper = getAllResearch().find((item) => item.slug === slug);
+  if (!paper || paper.status !== 'published') return undefined;
+  return paper;
+}
+
+export function getResearchSlugs(): string[] {
+  return getPublishedResearch().map((paper) => paper.slug);
 }
 
 export function getProjectSlugs(): string[] {
@@ -88,7 +118,19 @@ export function getRecentItems(): RecentItem[] {
       category: article.category,
     }));
 
-  return [...projects, ...writing].sort(
+  const research: RecentItem[] = getPublishedResearch()
+    .filter((paper) => isWithinRecentDays(paper.date))
+    .map((paper) => ({
+      type: 'research',
+      title: paper.title,
+      slug: paper.slug,
+      date: paper.date,
+      summary: paper.excerpt,
+      href: `/agent-research/${paper.slug}`,
+      category: paper.category,
+    }));
+
+  return [...projects, ...writing, ...research].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }

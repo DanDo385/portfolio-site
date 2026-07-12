@@ -35,8 +35,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <SiteNav />
       <main className="article-page">
         <div className="container">
-          <Link href="/#writing" className="article-back">
-            &larr; Writing
+          <Link href="/#my-writing" className="article-back">
+            &larr; My Writing
           </Link>
           <ArticleReader
             title={article.title}
@@ -45,6 +45,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             date={article.date}
             slug={article.slug}
             body={article.body}
+            canonicalPath={`/writing/${article.slug}/`}
             loomEmbed={loomEmbed}
             relatedProject={
               relatedProject

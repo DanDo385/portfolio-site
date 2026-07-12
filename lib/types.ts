@@ -39,6 +39,17 @@ export interface Article {
   body: string;
 }
 
+export interface ResearchPaper {
+  title: string;
+  slug: string;
+  date: string;
+  status: ArticleStatus;
+  category: string;
+  excerpt: string;
+  subtitle?: string | null;
+  body: string;
+}
+
 export interface TimelineItem {
   era: string;
   role: string;
@@ -46,7 +57,7 @@ export interface TimelineItem {
   note: string;
 }
 
-export type RecentItemType = 'project' | 'writing';
+export type RecentItemType = 'project' | 'writing' | 'research';
 
 export interface RecentItem {
   type: RecentItemType;

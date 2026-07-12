@@ -3,15 +3,23 @@ import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
+import { AgentResearch } from '@/components/AgentResearch';
 import { Projects } from '@/components/Projects';
 import { Recent } from '@/components/Recent';
 import { SiteNav } from '@/components/SiteNav';
 import { Writing } from '@/components/Writing';
-import { getListedProjects, getPublishedWriting, getRecentItems, hasRecentContent } from '@/lib/content';
+import {
+  getListedProjects,
+  getPublishedResearch,
+  getPublishedWriting,
+  getRecentItems,
+  hasRecentContent,
+} from '@/lib/content';
 
 export default function HomePage() {
   const projects = getListedProjects();
   const articles = getPublishedWriting();
+  const research = getPublishedResearch();
   const recentItems = getRecentItems();
   const showRecent = hasRecentContent();
   const writingBySlug = Object.fromEntries(articles.map((a) => [a.slug, a]));
@@ -33,11 +41,12 @@ export default function HomePage() {
         <Bridge />
         <Writing articles={articles} projectsBySlug={projectsBySlug} />
         <Bridge />
+        <AgentResearch papers={research} />
+        <Bridge />
         <About />
         <Bridge />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }

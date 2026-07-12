@@ -22,7 +22,11 @@ export function Recent({ items }: RecentProps) {
               <Link href={item.href} className="recent-item">
                 <div className="recent-meta">
                   <span className={`recent-type recent-type-${item.type}`}>
-                    {item.type === 'project' ? 'Project' : 'Essay'}
+                    {item.type === 'project'
+                      ? 'Project'
+                      : item.type === 'research'
+                        ? 'Research'
+                        : 'Essay'}
                   </span>
                   {item.category && (
                     <span className={`writing-cat ${categoryClass(item.category)}`}>

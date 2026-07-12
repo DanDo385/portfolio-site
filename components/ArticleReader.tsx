@@ -31,6 +31,8 @@ interface ArticleReaderProps {
   date: string;
   slug: string;
   body: string;
+  canonicalPath?: string;
+  subtitle?: string | null;
   relatedProject?: RelatedProject;
   loomEmbed?: string | null;
 }
@@ -42,6 +44,8 @@ export function ArticleReader({
   date,
   slug,
   body,
+  canonicalPath,
+  subtitle,
   relatedProject,
   loomEmbed,
 }: ArticleReaderProps) {
@@ -50,7 +54,7 @@ export function ArticleReader({
   const [speaking, setSpeaking] = useState(false);
   const [shareNote, setShareNote] = useState('');
   const readingContentRef = useRef<HTMLDivElement>(null);
-  const articleUrl = `${SITE.url}/writing/${slug}/`;
+  const articleUrl = `${SITE.url}${canonicalPath ?? `/writing/${slug}/`}`;
 
   useEffect(() => {
     setPrefs(loadReadingPrefs());
@@ -161,6 +165,7 @@ export function ArticleReader({
           <time dateTime={date}>{formatDate(date)}</time>
         </div>
         <h1>{title}</h1>
+        {subtitle && <p className="article-subtitle">{subtitle}</p>}
         <p className="article-excerpt">{excerpt}</p>
       </header>
 
@@ -312,6 +317,7 @@ export function ArticleReader({
             <div className="reading-scroll" style={readingStyle}>
               <div ref={readingContentRef} className="reading-content prose">
                 <h1>{title}</h1>
+                {subtitle && <p className="reading-subtitle">{subtitle}</p>}
                 <p className="reading-excerpt">{excerpt}</p>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
               </div>

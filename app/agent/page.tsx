@@ -59,8 +59,8 @@ export default function AgentPage() {
                 <span className="agent-card-label">02</span>
                 <h2>/agent.json</h2>
                 <p>
-                  Structured context: owner, positioning, canonical topics, projects, writing, and
-                  action-oriented links in one stable JSON surface.
+                  Structured context: owner, positioning, canonical topics, projects, writing,
+                  research, and action-oriented links in one stable JSON surface.
                 </p>
               </article>
               <article className="agent-card">

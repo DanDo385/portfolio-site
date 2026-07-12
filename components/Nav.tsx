@@ -7,7 +7,8 @@ import { ThemeToggle } from './ThemeToggle';
 
 const NAV_SECTIONS = [
   { id: 'projects', label: 'Projects' },
-  { id: 'writing', label: 'Writing' },
+  { id: 'my-writing', label: 'My Writing' },
+  { id: 'agent-research', label: 'Agent Research' },
   { id: 'about', label: 'About me' },
   { id: 'contact', label: 'Contact' },
 ];

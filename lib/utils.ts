@@ -53,8 +53,8 @@ export function tagClass(tag: string): string {
 
 export function categoryClass(category: string): string {
   const c = category.toLowerCase();
+  if (c.includes('agent') || c.includes('system')) return 'c-sys';
   if (c.includes('ai') || c.includes('finance')) return 'c-infra';
-  if (c.includes('system')) return 'c-sys';
   return 'c-fin';
 }
 
