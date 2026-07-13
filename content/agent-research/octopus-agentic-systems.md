@@ -4,7 +4,7 @@ slug: octopus-agentic-systems
 date: 2026-07-11
 status: published
 category: Agentic Systems
-excerpt: Centralize intent, decentralize execution: what octopuses teach about embodied, hierarchical agent architectures.
+excerpt: "Centralize intent, decentralize execution: what octopuses teach about embodied, hierarchical agent architectures."
 subtitle: Embodied Cognition, Distributed Control, Neuromorphic Computation, and Heterogeneous Coordination
 ---
 
