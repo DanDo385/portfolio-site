@@ -80,7 +80,9 @@ Current LLM multi-agent systems often rely on a central orchestrator that decomp
 
 The octopus suggests that the solution is not equal autonomy for every agent. Different layers should possess different authority. Peripheral agents should be free to resolve routine local conditions, but global goals, resource limits, identity, and safety constraints should remain coherent across the system.
 
-*Figure 1. A proposed octopus-inspired agent architecture.*
+![Figure 1. Octopus arm neuroanatomy: axial nerve cords and oral intramuscular nerve cords (INCs) linking arms two positions apart.](/research-assets/octopus-agentic-systems/figure-1.webp)
+
+*Figure 1. Octopus arm connectivity — axial nerve cords (gray) via the nerve ring, and oral intramuscular nerve cords (colored) that link each arm to another two positions away. This peripheral fabric is a biological precedent for lateral coordination without routing every signal through a central controller.*
 
 ## 4. What Octopuses Teach Us About Agentic AI
 
