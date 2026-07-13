@@ -10,7 +10,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'The portfolio is positioned around open source contribution, smart contract security, EVM infrastructure, and markets-literate systems engineering.',
+  'The portfolio is positioned around AI infrastructure finance, AI-native financial rails, and market-structure translation.',
 ];
 
 function siteUrl(pathOrUrl?: string | null): string | null {
@@ -111,7 +111,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'Open source, smart contract security, and EVM systems engineering',
+        role: 'AI infrastructure finance, capital markets, and programmable financial systems',
       },
     },
     agentMode: {
@@ -147,7 +147,7 @@ export function getAgentManifest() {
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin'],
       buildingWith: ['Go', 'Solidity', 'EVM', 'AI', 'Hermes'],
       summary:
-        'Former institutional rates and macro trader and portfolio manager now building open source EVM infrastructure, agent-readable systems, and security-minded protocol work — with markets literacy as a force multiplier.',
+        'Former institutional rates and macro trader and portfolio manager now building at the intersection of AI infrastructure finance, programmable financial rails, and market-structure translation.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -158,13 +158,13 @@ export function getAgentManifest() {
       ...(IPFS_URL ? { resumeIpfs: IPFS_URL } : {}),
     },
     canonicalTopics: [
-      'open source contribution',
-      'smart contract security',
-      'EVM infrastructure',
-      'agent-readable web infrastructure',
-      'DeFi market structure',
-      'rollup and fraud-proof mechanics',
+      'AI infrastructure finance',
+      'compute and GPU markets',
+      'datacenter debt and collateral',
       'AI-native financial rails',
+      'stablecoins and programmable settlement',
+      'DeFi market structure',
+      'agent-readable web infrastructure',
       'capital markets translation for technical systems',
     ],
     demos: Object.values(DEMO_CONFIGS)

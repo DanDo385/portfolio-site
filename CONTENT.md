@@ -99,6 +99,8 @@ Second paragraph here.
 
 Drafts never appear on the homepage or as routes. Set `status: published` when ready to ship.
 
+**Style:** Never use em dashes (—). Prefer commas, periods, colons, or parentheses.
+
 ## Agent Research
 
 Homepage section id: `agent-research`. Long-form research papers from deep research runs.
@@ -133,6 +135,8 @@ Your research body in Markdown.
 | body | yes | Markdown below the frontmatter |
 
 Source material can live outside the repo (e.g. `~/AI Research/*.docx`); convert to markdown before publishing.
+
+**Style:** Never use em dashes (—). Prefer commas, periods, colons, or parentheses.
 
 ## Operating thesis
 

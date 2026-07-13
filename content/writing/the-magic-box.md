@@ -4,7 +4,7 @@ slug: the-magic-box
 date: 2026-07-13
 status: published
 category: AI Strategy
-excerpt: "When every company opens the same magic box, intelligence converges — and competitive advantage compresses."
+excerpt: "When every company opens the same magic box, intelligence converges, and competitive advantage compresses."
 coverImage: null
 loomUrl: null
 relatedProject: null

@@ -4,6 +4,10 @@ This repo powers **magro.dev**. It includes **Portfolio Agent Mode**, a first-cl
 
 **Always keep Agent Mode up to date when you change the site or add content.** Treat it as part of the same change, not a follow-up.
 
+## Writing style (non-negotiable)
+
+**Never use em dashes (—) in any writing.** This includes `content/writing/*.md`, `content/agent-research/*.md`, excerpts, titles, and any other prose published on the site. Prefer commas, periods, colons, parentheses, or a plain hyphenated phrase instead. Do not "improve" copy by inserting em dashes.
+
 ## Agent Mode surfaces
 
 | Surface | Path | Source |

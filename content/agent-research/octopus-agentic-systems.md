@@ -4,7 +4,7 @@ slug: octopus-agentic-systems
 date: 2026-07-11
 status: published
 category: Agentic Systems
-excerpt: Centralize intent, decentralize execution — what octopuses teach about embodied, hierarchical agent architectures.
+excerpt: Centralize intent, decentralize execution: what octopuses teach about embodied, hierarchical agent architectures.
 subtitle: Embodied Cognition, Distributed Control, Neuromorphic Computation, and Heterogeneous Coordination
 ---
 
@@ -82,7 +82,7 @@ The octopus suggests that the solution is not equal autonomy for every agent. Di
 
 ![Figure 1. Octopus arm neuroanatomy: axial nerve cords and oral intramuscular nerve cords (INCs) linking arms two positions apart.](/research-assets/octopus-agentic-systems/figure-1.webp)
 
-*Figure 1. Octopus arm connectivity — axial nerve cords (gray) via the nerve ring, and oral intramuscular nerve cords (colored) that link each arm to another two positions away. This peripheral fabric is a biological precedent for lateral coordination without routing every signal through a central controller.*
+*Figure 1. Octopus arm connectivity: axial nerve cords (gray) via the nerve ring, and oral intramuscular nerve cords (colored) that link each arm to another two positions away. This peripheral fabric is a biological precedent for lateral coordination without routing every signal through a central controller.*
 
 ## 4. What Octopuses Teach Us About Agentic AI
 
