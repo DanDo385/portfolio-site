@@ -22,6 +22,7 @@ Create `content/projects/your-slug.json`:
   "techBadges": ["Go", "TypeScript"],
   "githubUrl": "https://github.com/DanDo385/your-repo",
   "demoUrl": null,
+  "externalDemoUrl": null,
   "loomUrl": null,
   "youtubeUrl": null,
   "zoomUrl": null,
@@ -39,11 +40,12 @@ Create `content/projects/your-slug.json`:
 | `slug` | yes | URL-safe identifier |
 | `date` | yes | ISO date (`YYYY-MM-DD`). Drives sort order |
 | `status` | yes | `complete` or `in-progress` |
-| `tags` | yes | Badge labels on the card |
+| `tags` | yes | The only badges on the project card. Mix domain + distinctive stack (e.g. `Fraud Proofs`, `MEV`, `JSON-RPC`). Keep to ~4–5. |
 | `summary` | yes | Short description (1-2 lines) |
-| `techBadges` | yes | Tech stack chips |
+| `techBadges` | yes | Fuller stack list for Agent Mode (`agent.json` / `llms.txt`) only. Not shown on cards. |
 | `githubUrl` | no | GitHub repo link |
-| `demoUrl` | no | Interactive demo hosted on magro.dev (`/projects/<slug>` or `/agent`) |
+| `demoUrl` | no | In-window Interact target: `/demos/<slug>`, `/agent`, or external Vercel URL |
+| `externalDemoUrl` | no | Optional. When set, Interact → Open in New Tab uses this URL (e.g. standalone Vercel app) while Go to Page keeps `demoUrl` |
 | `loomUrl` | no | Loom walkthrough link |
 | `youtubeUrl` | no | Full project demo on YouTube when distinct from `shortClipUrl` |
 | `zoomUrl` | no | Zoom recording link |
@@ -157,11 +159,13 @@ Follow **Interact rules** in `AGENTS.md`:
 | Kind | Interact |
 |------|----------|
 | CLI (e.g. eth-rpc-monitor) | No Interact — Source + YouTube only |
-| In-site (e.g. agent-runtime) | `/demos/<slug>` on magro.dev |
+| In-site (e.g. agent-runtime, hermes-xray) | Go to Page → `/demos/<slug>` on magro.dev; Open in New Tab → `externalDemoUrl` when set |
 | External Vercel (eth-l2, eth-tx-lifecycle) | Link to `https://….vercel.app` |
 
 ```text
-/demos/agent-runtime             → in-site fullscreen on magro.dev
+/demos/agent-runtime             → in-site fullscreen on magro.dev (Go to Page)
+Open in New Tab agent-runtime    → https://agent-runtime-rho.vercel.app
+Open in New Tab hermes-xray      → https://hermes-xray.vercel.app
 Interact eth-l2                  → https://eth-l2.vercel.app
 Interact eth-tx-lifecycle        → https://eth-tx-lifecycle.vercel.app
 /api/demos/eth-l2/health         → https://api-staging-eth-l2.magro.dev  (MBP :8080)

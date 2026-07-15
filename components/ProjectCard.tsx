@@ -47,13 +47,6 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
             </div>
           </div>
           <p className="pcard-summary">{project.summary}</p>
-          <div className="pcard-tech">
-            {project.techBadges.map((badge) => (
-              <span key={badge} className="tbadge">
-                {badge}
-              </span>
-            ))}
-          </div>
           <ProjectCardLinks sections={linkSections} />
           {related && (
             <p className="pcard-related">

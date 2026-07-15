@@ -4,11 +4,21 @@
   "date": "2026-06-01",
   "status": "complete",
   "featured": false,
-  "tags": ["AI", "Agents", "LLM Systems", "Interactive"],
+  "tags": [
+    "AI",
+    "Agents",
+    "LLM Systems",
+    "Interactive"
+  ],
   "summary": "An interactive single-page walkthrough of a tool-using agent runtime: platform input, session hydration, the agent loop, tool dispatch, and persistence, made observable step by step with ASCII art diagrams.",
-  "techBadges": ["HTML", "CSS", "ASCII Art Diagrams"],
+  "techBadges": [
+    "HTML",
+    "CSS",
+    "ASCII Art Diagrams"
+  ],
   "githubUrl": "https://github.com/DanDo385/agent-runtime",
   "demoUrl": "/demos/agent-runtime",
+  "externalDemoUrl": "https://agent-runtime-rho.vercel.app",
   "loomUrl": null,
   "youtubeUrl": "https://www.youtube.com/watch?v=lVwUmltuX0A",
   "zoomUrl": null,

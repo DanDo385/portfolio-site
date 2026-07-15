@@ -45,7 +45,7 @@ Also update when relevant:
 
 - **`lib/constants.ts`** — `SITE.name`, `SITE.description`, `SITE.url` flow into manifest and `llms.txt`.
 - **`app/agent/page.tsx`** — human-readable Agent Mode page if endpoints, principles, or explanation change.
-- **`content/projects/portfolio-agent-mode.json`** — summary, tech badges, `relatedWriting`, `demoUrl` (`/agent`) if the feature scope changes.
+- **`content/projects/portfolio-agent-mode.json`** — summary, tags, tech badges (Agent Mode only), `relatedWriting`, `demoUrl` (`/agent`) if the feature scope changes.
 - **`components/AgentJsonPreview.tsx`** — card preview manifest shape if `agent.json` schema meaningfully changes.
 - **`CONTENT.md`** — document new content or demo patterns that affect agent surfaces.
 
@@ -71,6 +71,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 - Research: `content/agent-research/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
 - Foundations projects (`"tier": "foundations"`) stay listed but render under a collapsed **Foundations** block on the homepage and are labeled in `/llms.txt`
+- Project cards show **`tags` only**. `techBadges` stay in the JSON for Agent Mode (`agent.json` / `llms.txt`) and are not rendered on the card.
 
 ## Interact rules (project cards)
 
@@ -89,7 +90,8 @@ Decide Interact from the project type. Never invent Interact by falling back to
    `FULLSCREEN_DEMO_SLUGS`. Cards keep Source and video demos only.
 2. **In-site interactive** — ship a fullscreen route under `/demos/<slug>` (or
    `/agent` for Agent Mode), register the slug in `FULLSCREEN_DEMO_SLUGS`, set
-   `demoUrl` to that path. Interact uses Go to Page / Open in New Tab on magro.dev.
+   `demoUrl` to that path. Interact → Go to Page stays on magro.dev. Optionally set
+   `externalDemoUrl` to a standalone Vercel URL so Open in New Tab leaves magro.dev.
 3. **External Vercel apps** (eth-l2, eth-tx-lifecycle) — set `demoUrl` to the
    production Vercel URL (e.g. `https://eth-l2.vercel.app`). Do **not** iframe
    those apps as the Interact destination. magro.dev project pages may explain

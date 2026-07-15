@@ -17,6 +17,8 @@ export interface Project {
   techBadges: string[];
   githubUrl?: string | null;
   demoUrl?: string | null;
+  /** Optional standalone Vercel (or other) URL for Interact → Open in New Tab. */
+  externalDemoUrl?: string | null;
   loomUrl?: string | null;
   youtubeUrl?: string | null;
   zoomUrl?: string | null;

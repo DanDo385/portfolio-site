@@ -36,15 +36,22 @@ const TAG_CLASS: Record<string, string> = {
   AI: 'tag-ai',
   Agents: 'tag-agents',
   'LLM Systems': 'tag-llm',
+  Observability: 'tag-observability',
   Interactive: 'tag-interactive',
   Infrastructure: 'tag-infra',
   Solidity: 'tag-solidity',
   EVM: 'tag-evm',
   L2: 'tag-l2',
+  'Fraud Proofs': 'tag-fraud',
   DeFi: 'tag-defi',
+  MEV: 'tag-mev',
   Go: 'tag-go',
   TypeScript: 'tag-ts',
+  'Next.js': 'tag-next',
+  'JSON-RPC': 'tag-rpc',
+  CLI: 'tag-cli',
   Simulation: 'tag-simulation',
+  'llms.txt': 'tag-llms',
 };
 
 export function tagClass(tag: string): string {
@@ -132,12 +139,20 @@ export function getProjectLinkSections(project: Project): ProjectLinkSection[] {
   const sections: ProjectLinkSection[] = [];
 
   const interactHref = projectInteractHref(project);
+  const externalNewTab = isValidUrl(project.externalDemoUrl) ? project.externalDemoUrl! : null;
+
   if (interactHref?.startsWith('/')) {
+    const newTabHref = externalNewTab ?? interactHref;
     sections.push({
       title: 'Interact',
       links: [
         { label: 'Go to Page', href: interactHref, internal: true },
-        { label: 'Open in New Tab', href: interactHref, internal: true, newTab: true },
+        {
+          label: 'Open in New Tab',
+          href: newTabHref,
+          internal: newTabHref.startsWith('/'),
+          newTab: true,
+        },
       ],
     });
   } else if (isValidUrl(interactHref)) {

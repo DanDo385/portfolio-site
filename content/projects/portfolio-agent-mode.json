@@ -4,9 +4,19 @@
   "date": "2026-07-02",
   "status": "complete",
   "featured": true,
-  "tags": ["AI", "Agents", "Infrastructure", "TypeScript"],
+  "tags": [
+    "AI",
+    "Agents",
+    "Next.js",
+    "llms.txt"
+  ],
   "summary": "A minimal agent-readable layer for magro.dev: /agent for humans, /agent.json for structured context, and /llms.txt as a low-noise router for AI systems.",
-  "techBadges": ["Next.js", "TypeScript", "Structured Metadata", "llms.txt"],
+  "techBadges": [
+    "Next.js",
+    "TypeScript",
+    "Structured Metadata",
+    "llms.txt"
+  ],
   "githubUrl": "https://github.com/DanDo385/portfolio-site",
   "demoUrl": "/agent",
   "loomUrl": null,

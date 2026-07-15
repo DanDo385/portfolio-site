@@ -4,9 +4,19 @@
   "date": "2026-06-15",
   "status": "complete",
   "featured": false,
-  "tags": ["Infrastructure", "Go", "Ethereum", "CLI"],
+  "tags": [
+    "Infrastructure",
+    "Go",
+    "JSON-RPC",
+    "CLI"
+  ],
   "summary": "Production-grade Ethereum RPC monitoring CLI with block inspection, mempool snapshotting, and real-time transaction tracing.",
-  "techBadges": ["Go", "Cobra", "JSON-RPC", "Ethereum"],
+  "techBadges": [
+    "Go",
+    "Cobra",
+    "JSON-RPC",
+    "Ethereum"
+  ],
   "githubUrl": "https://github.com/DanDo385/eth-rpc-monitor",
   "demoUrl": null,
   "loomUrl": null,

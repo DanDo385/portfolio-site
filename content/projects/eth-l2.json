@@ -7,9 +7,9 @@
   "listed": true,
   "tags": [
     "Infrastructure",
-    "Solidity",
-    "EVM",
     "L2",
+    "Fraud Proofs",
+    "Go",
     "Interactive"
   ],
   "summary": "One app, one backend, two focused labs: optimistic fraud proofs (/op) and ZK validity proofs (/zk). UI on Vercel at eth-l2.vercel.app; live simulation via a staging Go backend through Cloudflare Tunnel.",
