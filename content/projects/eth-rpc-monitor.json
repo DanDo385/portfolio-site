@@ -18,20 +18,18 @@
     "Ethereum"
   ],
   "githubUrl": "https://github.com/DanDo385/eth-rpc-monitor",
+  "resourceSource": {
+    "ref": "main",
+    "required": true
+  },
   "demoUrl": null,
   "loomUrl": null,
-  "youtubeUrl": "https://www.youtube.com/watch?v=ImELGZtDT4c",
+  "youtubeUrl": null,
   "zoomUrl": null,
-  "previewGif": "/project-assets/eth-rpc-monitor/gif/preview.gif",
+  "previewGif": null,
   "previewVideo": null,
-  "shortClipUrl": "https://www.youtube.com/watch?v=ImELGZtDT4c",
-  "recordingUrl": "https://www.youtube.com/watch?v=6G0NcTw6Z64",
-  "screenshots": [
-    "/project-assets/eth-rpc-monitor/screenshots/image1.png",
-    "/project-assets/eth-rpc-monitor/screenshots/image2.png",
-    "/project-assets/eth-rpc-monitor/screenshots/image3.png",
-    "/project-assets/eth-rpc-monitor/screenshots/image4.png",
-    "/project-assets/eth-rpc-monitor/screenshots/image5.png"
-  ],
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
   "relatedWriting": null
 }

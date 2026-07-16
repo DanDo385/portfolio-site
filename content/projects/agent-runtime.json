@@ -17,25 +17,19 @@
     "ASCII Art Diagrams"
   ],
   "githubUrl": "https://github.com/DanDo385/agent-runtime",
+  "resourceSource": {
+    "ref": "main",
+    "required": true
+  },
   "demoUrl": "/demos/agent-runtime",
   "externalDemoUrl": "https://agent-runtime-rho.vercel.app",
   "loomUrl": null,
-  "youtubeUrl": "https://www.youtube.com/watch?v=lVwUmltuX0A",
+  "youtubeUrl": null,
   "zoomUrl": null,
-  "previewGif": "/project-assets/agent-runtime/gif/preview.gif",
+  "previewGif": null,
   "previewVideo": null,
-  "shortClipUrl": "https://www.youtube.com/watch?v=lVwUmltuX0A",
-  "recordingUrl": "https://www.youtube.com/watch?v=pqcSllMfdCo",
-  "screenshots": [
-    "/project-assets/agent-runtime/screenshots/image1.png",
-    "/project-assets/agent-runtime/screenshots/image2.png",
-    "/project-assets/agent-runtime/screenshots/image3.png",
-    "/project-assets/agent-runtime/screenshots/image4.png",
-    "/project-assets/agent-runtime/screenshots/image5.png",
-    "/project-assets/agent-runtime/screenshots/image6.png",
-    "/project-assets/agent-runtime/screenshots/image7.png",
-    "/project-assets/agent-runtime/screenshots/image8.png",
-    "/project-assets/agent-runtime/screenshots/image9.png"
-  ],
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
   "relatedWriting": null
 }

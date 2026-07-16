@@ -18,15 +18,19 @@
     "Agent Observability"
   ],
   "githubUrl": "https://github.com/DanDo385/hermes-xray",
+  "resourceSource": {
+    "ref": "main",
+    "required": true
+  },
   "demoUrl": "/demos/hermes-xray",
   "externalDemoUrl": "https://hermes-xray.vercel.app",
   "loomUrl": null,
-  "youtubeUrl": "https://www.youtube.com/watch?v=mmAUx7zuQaM",
+  "youtubeUrl": null,
   "zoomUrl": null,
-  "previewGif": "/project-assets/hermes-xray/gif/preview.gif",
+  "previewGif": null,
   "previewVideo": null,
-  "shortClipUrl": "https://www.youtube.com/watch?v=mmAUx7zuQaM",
-  "recordingUrl": "https://www.youtube.com/watch?v=uBvXQIz2MS4",
+  "shortClipUrl": null,
+  "recordingUrl": null,
   "screenshots": [],
   "relatedWriting": null
 }

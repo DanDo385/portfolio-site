@@ -3,12 +3,15 @@ export type ArticleStatus = 'draft' | 'published';
 export type ProjectPreviewType = 'agent-json';
 /** Visual weight on the homepage. Foundations sit under primary flagships. */
 export type ProjectTier = 'primary' | 'foundations';
+export type ProjectResourceFamily = 'gif' | 'screenshots' | 'demo' | 'llms' | 'media';
 
 export interface ProjectResourceSource {
   /** Git ref fetched during predev/prebuild. Defaults to main. */
   ref?: string;
   /** Fail the build when the source repo does not publish canonical resources. */
   required?: boolean;
+  /** Canonical families that must all exist when required is true. */
+  families?: ProjectResourceFamily[];
 }
 
 export interface Project {

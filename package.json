@@ -4,7 +4,7 @@
   "scripts": {
     "predev": "npm run sync:project-resources",
     "dev": "next dev",
-    "dev:clean": "rm -rf .next && next dev",
+    "dev:clean": "npm run sync:project-resources && rm -rf .next && next dev",
     "prebuild": "npm run sync:project-resources",
     "build": "next build",
     "start": "next start",

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { afterEach, test } from 'node:test';
-import { mkdtemp, mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, readdir, rm, stat, symlink, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -9,9 +9,84 @@ import {
   parseGitHubRepo,
   syncPortfolioResources,
   syncProjectResources,
+  writeJsonAtomic,
 } from '../scripts/project-resources-lib.mjs';
 
 const temporaryRoots = [];
+
+test('rejects symlinked canonical resources instead of publishing host files', async () => {
+  const { sourceRoot, destinationRoot } = await fixture();
+  const hostSecret = await put(sourceRoot, '../host-secret.txt', 'must-not-publish');
+  await mkdir(path.join(sourceRoot, 'public'), { recursive: true });
+  await symlink(hostSecret, path.join(sourceRoot, 'public/llms.txt'));
+
+  await assert.rejects(
+    syncProjectResources({
+      project: { slug: 'safe-project' },
+      sourceRoot,
+      destinationRoot,
+    }),
+    /symlink/i,
+  );
+  await assert.rejects(stat(path.join(destinationRoot, 'llms.txt')));
+});
+
+test('rejects a symlinked canonical root', async () => {
+  const { sourceRoot, destinationRoot } = await fixture();
+  const externalRoot = path.join(path.dirname(sourceRoot), 'external-public');
+  await put(externalRoot, 'llms.txt', 'outside-root');
+  await symlink(externalRoot, path.join(sourceRoot, 'public'));
+
+  await assert.rejects(
+    syncProjectResources({
+      project: { slug: 'safe-project' },
+      sourceRoot,
+      destinationRoot,
+    }),
+    /symlink/i,
+  );
+  await assert.rejects(stat(path.join(destinationRoot, 'llms.txt')));
+});
+
+test('rejects symlinked destination families before replacement', async () => {
+  const { sourceRoot, destinationRoot } = await fixture();
+  const outside = path.join(path.dirname(destinationRoot), 'outside-destination');
+  await put(sourceRoot, 'public/screenshots/00-home.png', 'new-image');
+  await put(outside, 'keep.txt', 'outside-must-survive');
+  await symlink(outside, path.join(destinationRoot, 'screenshots'));
+
+  await assert.rejects(
+    syncProjectResources({
+      project: { slug: 'safe-project' },
+      sourceRoot,
+      destinationRoot,
+    }),
+    /symlink/i,
+  );
+  assert.equal(await readFile(path.join(outside, 'keep.txt'), 'utf8'), 'outside-must-survive');
+  await assert.rejects(stat(path.join(outside, '00-home.png')));
+});
+
+test('rejects project slugs that can escape the project-assets root', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'portfolio-slug-escape-'));
+  temporaryRoots.push(root);
+  const portfolioRoot = path.join(root, 'portfolio-site');
+  const sourceRoot = path.join(root, 'source');
+  await put(portfolioRoot, 'content/projects/escape.json', JSON.stringify({
+    slug: '../escaped',
+    githubUrl: 'https://github.com/DanDo385/escaped',
+  }));
+  await put(sourceRoot, 'public/screenshots/00-host.png', 'escaped-write');
+
+  await assert.rejects(
+    syncPortfolioResources({
+      portfolioRoot,
+      resolveSource: async () => sourceRoot,
+    }),
+    /invalid project slug/i,
+  );
+  await assert.rejects(stat(path.join(portfolioRoot, 'public/escaped/screenshots/00-host.png')));
+});
 
 async function fixture() {
   const root = await mkdtemp(path.join(os.tmpdir(), 'portfolio-resources-'));
@@ -194,4 +269,143 @@ test('demo and llms resources sync while recordings and macOS junk stay out', as
   await assert.rejects(stat(path.join(destinationRoot, 'demo/walkthrough.mp4')));
   await assert.rejects(stat(path.join(destinationRoot, 'screenshots/.DS_Store')));
   assert.deepEqual(result.ownership.sort(), ['demo', 'llms']);
+});
+
+test('preserves prior family overrides when an optional upstream family disappears', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'portfolio-family-fallback-'));
+  temporaryRoots.push(root);
+  const portfolioRoot = path.join(root, 'portfolio-site');
+  const sourceRoot = path.join(root, 'source');
+  await put(portfolioRoot, 'content/projects/project.json', JSON.stringify({
+    slug: 'project',
+    githubUrl: 'https://github.com/DanDo385/project',
+  }));
+  await put(sourceRoot, 'public/gif/preview.gif', 'gif');
+  await put(sourceRoot, 'public/screenshots/00-home.png', 'home');
+
+  await syncPortfolioResources({ portfolioRoot, resolveSource: async () => sourceRoot });
+  await rm(path.join(sourceRoot, 'public/screenshots'), { recursive: true });
+  const second = await syncPortfolioResources({ portfolioRoot, resolveSource: async () => sourceRoot });
+
+  assert.deepEqual(second.overrides.project, {
+    previewGif: '/project-assets/project/gif/preview.gif',
+    screenshots: ['/project-assets/project/screenshots/00-home.png'],
+  });
+  assert.equal(await readFile(
+    path.join(portfolioRoot, 'public/project-assets/project/screenshots/00-home.png'),
+    'utf8',
+  ), 'home');
+});
+
+test('strict projects fail when any declared resource family disappears', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'portfolio-required-families-'));
+  temporaryRoots.push(root);
+  const portfolioRoot = path.join(root, 'portfolio-site');
+  const sourceRoot = path.join(root, 'source');
+  await put(portfolioRoot, 'content/projects/project.json', JSON.stringify({
+    slug: 'project',
+    githubUrl: 'https://github.com/DanDo385/project',
+    resourceSource: {
+      required: true,
+      families: ['gif', 'screenshots', 'media'],
+    },
+  }));
+  await put(sourceRoot, 'public/gif/preview.gif', 'gif');
+  await put(sourceRoot, 'public/screenshots/00-home.png', 'home');
+  await put(sourceRoot, 'public/media.json', '{}');
+
+  await syncPortfolioResources({ portfolioRoot, resolveSource: async () => sourceRoot });
+  await rm(path.join(sourceRoot, 'public/screenshots'), { recursive: true });
+  await assert.rejects(
+    syncPortfolioResources({ portfolioRoot, resolveSource: async () => sourceRoot }),
+    /missing required resource families: screenshots/i,
+  );
+});
+
+test('canonical media explicitly clears missing legacy video fields', async () => {
+  const { sourceRoot, destinationRoot } = await fixture();
+  await put(sourceRoot, 'public/media.json', JSON.stringify({
+    longClip: { youtubeUrl: 'https://www.youtube.com/watch?v=long-id' },
+  }));
+
+  const result = await syncProjectResources({
+    project: { slug: 'media-project' },
+    sourceRoot,
+    destinationRoot,
+  });
+
+  assert.deepEqual(result.overrides, {
+    youtubeUrl: null,
+    shortClipUrl: null,
+    recordingUrl: 'https://www.youtube.com/watch?v=long-id',
+  });
+});
+
+test('canonical media rejects non-YouTube URLs', async () => {
+  const { sourceRoot, destinationRoot } = await fixture();
+  await put(sourceRoot, 'public/media.json', JSON.stringify({
+    shortClip: { youtubeUrl: 'https://example.com/not-youtube' },
+  }));
+
+  await assert.rejects(
+    syncProjectResources({
+      project: { slug: 'media-project' },
+      sourceRoot,
+      destinationRoot,
+    }),
+    /invalid YouTube URL/i,
+  );
+});
+
+test('atomic JSON publication leaves a complete document and no temp files', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'portfolio-atomic-json-'));
+  temporaryRoots.push(root);
+  const target = path.join(root, 'generated/state.json');
+  await Promise.all([
+    writeJsonAtomic(target, { generation: 1, payload: 'a'.repeat(1000) }),
+    writeJsonAtomic(target, { generation: 2, payload: 'b'.repeat(1000) }),
+  ]);
+
+  const parsed = JSON.parse(await readFile(target, 'utf8'));
+  assert.ok(parsed.generation === 1 || parsed.generation === 2);
+  assert.equal((await readdir(path.dirname(target))).filter((name) => name.endsWith('.tmp')).length, 0);
+});
+
+test('self-repository matching is owner-aware and case-insensitive', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'portfolio-self-repo-'));
+  temporaryRoots.push(root);
+  const portfolioRoot = path.join(root, 'portfolio-site');
+  const sourceBase = path.join(root, 'sources');
+  await put(portfolioRoot, 'content/projects/self.json', JSON.stringify({
+    slug: 'self',
+    githubUrl: 'https://github.com/dando385/PORTFOLIO-SITE',
+  }));
+  await put(portfolioRoot, 'content/projects/fork.json', JSON.stringify({
+    slug: 'fork',
+    githubUrl: 'https://github.com/OtherOwner/portfolio-site',
+  }));
+  await put(sourceBase, 'portfolio-site/public/gif/preview.gif', 'fork-gif');
+  let resolved = 0;
+
+  const result = await syncPortfolioResources({
+    portfolioRoot,
+    portfolioOwner: 'DanDo385',
+    portfolioRepo: 'portfolio-site',
+    resolveSource: async ({ repo }) => {
+      resolved += 1;
+      return path.join(sourceBase, repo.toLowerCase());
+    },
+  });
+
+  assert.equal(resolved, 1);
+  assert.deepEqual(result.overrides, {
+    fork: { previewGif: '/project-assets/fork/gif/preview.gif' },
+  });
+});
+
+test('dev:clean synchronizes project resources before starting Next.js', async () => {
+  const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+  const command = packageJson.scripts['dev:clean'];
+  assert.match(command, /^npm run sync:project-resources && /);
+  assert.ok(command.indexOf('sync:project-resources') < command.indexOf('next dev'));
 });

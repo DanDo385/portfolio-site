@@ -21,23 +21,18 @@
     "MEV Detection"
   ],
   "githubUrl": "https://github.com/DanDo385/eth-tx-lifecycle",
+  "resourceSource": {
+    "ref": "main",
+    "required": true
+  },
   "demoUrl": "https://eth-tx-lifecycle.vercel.app",
   "loomUrl": null,
-  "youtubeUrl": "https://www.youtube.com/watch?v=z1ayISs-XNc",
+  "youtubeUrl": null,
   "zoomUrl": null,
-  "previewGif": "/project-assets/eth-tx-lifecycle/gif/preview.gif",
+  "previewGif": null,
   "previewVideo": null,
   "shortClipUrl": null,
-  "recordingUrl": "https://www.youtube.com/watch?v=z1ayISs-XNc",
-  "screenshots": [
-    "/project-assets/eth-tx-lifecycle/screenshots/image1.png",
-    "/project-assets/eth-tx-lifecycle/screenshots/image2.png",
-    "/project-assets/eth-tx-lifecycle/screenshots/image3.png",
-    "/project-assets/eth-tx-lifecycle/screenshots/image4.png",
-    "/project-assets/eth-tx-lifecycle/screenshots/image5.png",
-    "/project-assets/eth-tx-lifecycle/screenshots/image6.png",
-    "/project-assets/eth-tx-lifecycle/screenshots/image7.png",
-    "/project-assets/eth-tx-lifecycle/screenshots/image8.png"
-  ],
+  "recordingUrl": null,
+  "screenshots": [],
   "relatedWriting": null
 }

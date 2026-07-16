@@ -67,13 +67,15 @@ Every card with a canonical GitHub `githubUrl` is inspected automatically. Optio
   "githubUrl": "https://github.com/DanDo385/example-project",
   "resourceSource": {
     "ref": "main",
-    "required": true
+    "required": true,
+    "families": ["gif", "screenshots", "media"]
   }
 }
 ```
 
 - `ref` selects the Git branch or tag. It defaults to `main`.
-- `required: true` fails the build when GitHub cannot be fetched or the repository has no canonical resources.
+- `families` declares the exact ownership contract for a strict cutover. Supported values are `gif`, `screenshots`, `demo`, `llms`, and `media`.
+- `required: true` fails the build when GitHub cannot be fetched or any declared family is absent. Without `families`, it retains the legacy check that at least one canonical family exists.
 - Omit `required` during migration. Existing portfolio assets remain as a legacy fallback until the source repository publishes that resource family.
 
 The portfolio's own project card is skipped to avoid recursively importing `portfolio-site` into itself.
@@ -82,7 +84,9 @@ The portfolio's own project card is skipped to avoid recursively importing `port
 
 Ownership is family-based: `gif`, `screenshots`, `demo`, `llms`, and `media`.
 
-A family transfers to the project repository only when canonical source files exist. When a screenshot family transfers, the generated destination mirror is replaced with the current natural-sorted source set. Source-repository screenshots are never deleted. Missing families are left untouched, which keeps incomplete resource jobs from breaking live cards.
+A family transfers to the project repository only when canonical source files exist. When a screenshot family transfers, the generated destination mirror is replaced with the current natural-sorted source set. Source-repository screenshots are never deleted. Optional projects retain the prior generated override and files when an upstream family disappears. Strict projects fail the build when any declared family disappears.
+
+Canonical roots, fixed resources, nested demo content, and destination paths reject symlinks. Project slugs must be lowercase kebab-case and every destination is constrained beneath `public/project-assets`. Generated override and provenance JSON files are published with atomic rename so a running dev server never observes a partially written document.
 
 Portfolio-local video files may be moved to macOS Trash only after the corresponding card field contains a real YouTube URL and the YouTube record resolves. Require one-to-one evidence for each recording. A second local clip is not covered by a URL whose title identifies it as Walkthrough 1. Keep unverified recordings and never delete screenshots as part of video cleanup.
 

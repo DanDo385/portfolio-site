@@ -22,8 +22,18 @@
     "CLI"
   ],
   "githubUrl": "https://github.com/DanDo385/eth-amm-sim",
+  "resourceSource": {
+    "ref": "main",
+    "required": true
+  },
   "demoUrl": null,
   "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
   "screenshots": [],
   "relatedWriting": null
 }

@@ -23,7 +23,12 @@
   "githubUrl": "https://github.com/DanDo385/eth-l2",
   "resourceSource": {
     "ref": "main",
-    "required": true
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "media"
+    ]
   },
   "demoUrl": "https://eth-l2.vercel.app",
   "loomUrl": null,
