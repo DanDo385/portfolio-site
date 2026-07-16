@@ -180,8 +180,7 @@ nav.scrolled {
   user-select: none;
 }
 
-.theme-toggle,
-.nav-agent-toggle {
+.theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -196,8 +195,7 @@ nav.scrolled {
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.theme-toggle:hover,
-.nav-agent-toggle:hover {
+.theme-toggle:hover {
   color: var(--text-primary);
   border-color: var(--border-active);
   background: var(--bg-card-hover);
@@ -208,32 +206,35 @@ nav.scrolled {
   height: 16px;
 }
 
-.nav-agent-emoji {
-  font-size: 15px;
-  line-height: 1;
-  transform: translateY(0.5px);
-  transition: transform 0.25s ease;
+/* Small utility link, deliberately understated relative to primary human nav. */
+.nav-agent-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: var(--surface-muted);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.nav-agent-toggle:hover .nav-agent-emoji {
-  transform: translateY(0.5px) scale(1.08) rotate(-6deg);
+.nav-agent-link:hover {
+  color: var(--text-primary);
+  border-color: var(--border-active);
+  background: var(--bg-card-hover);
 }
 
-.nav-agent-toggle.active {
+.nav-agent-link.active {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--accent-dim);
-  box-shadow: 0 0 0 1px var(--accent-dim);
-}
-
-.nav-agent-toggle.active:hover {
-  color: var(--accent-light);
-  border-color: var(--accent);
-  background: rgba(201, 147, 58, 0.18);
-}
-
-html[data-theme='light'] .nav-agent-toggle.active:hover {
-  background: rgba(47, 94, 92, 0.14);
 }
 
 .nav-id {
@@ -288,11 +289,6 @@ html[data-theme='light'] .nav-agent-toggle.active:hover {
 }
 
 .nav-links a:hover::after { width: 100%; }
-
-.nav-links a.nav-recent {
-  font-weight: 700;
-  color: var(--text-primary);
-}
 
 .nav-hamburger {
   display: none;
@@ -3032,8 +3028,6 @@ footer {
   .hero h1, .hero-identity, .hero-positioning, .hero-cta, .hero-scroll { animation: none; opacity: 1; }
   .carousel-slide { transition: none; }
   .footer-dot { animation: none; }
-  .nav-agent-emoji,
-  .nav-agent-toggle:hover .nav-agent-emoji { transform: none; transition: none; }
 }
 
 /* ═══════ RESPONSIVE ═══════ */

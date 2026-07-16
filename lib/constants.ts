@@ -7,8 +7,8 @@ export const IPFS_URL: string | null = null;
 export const RESUME_PDF = '/resume/Daniel%20Magro%20Resume.pdf';
 
 export const SITE = {
-  name: 'Daniel Magro | AI, Finance & Markets',
+  name: 'Daniel Magro | Market Infrastructure, Programmable Finance, AI Systems',
   description:
-    '13-year institutional rates and macro veteran operating at the center of AI, finance, and markets: AI infrastructure finance, modern financial rails, and programmable systems.',
+    'Former institutional rates and macro trader and portfolio manager building systems at the intersection of market infrastructure, programmable finance, and AI agents. Thirteen years in liquidity, collateral, execution, and risk, paired with hands-on work in Go, Solidity, Ethereum infrastructure, APIs, and agent systems.',
   url: 'https://magro.dev',
 };

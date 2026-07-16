@@ -1,37 +1,41 @@
 import Link from 'next/link';
+import { RESUME_PDF } from '@/lib/constants';
 
-interface HeroProps {
-  showRecent?: boolean;
-}
-
-export function Hero({ showRecent = false }: HeroProps) {
+export function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <h1>
-          Operating at the center of <em>AI, finance, and markets</em>
+          Building at the intersection of{' '}
+          <em>market infrastructure, programmable finance, and AI systems</em>
         </h1>
         <p className="hero-identity">
-          Former institutional rates and macro trader and portfolio manager. Now focused on
-          the market structure questions AI is forcing into the open: how the AI
-          infrastructure buildout gets financed, and how AI can modernize the rails finance
-          runs on.
+          Former institutional rates and macro trader and portfolio manager building
+          inspectable systems for financial infrastructure and AI agents.
+        </p>
+        <p className="hero-identity">
+          I combine thirteen years of experience in liquidity, collateral, execution, and
+          risk with hands-on work in Go, Solidity, Ethereum infrastructure, APIs, and agent
+          systems.
         </p>
         <p className="hero-positioning">
-          Available for solutions architecture, capital markets, market strategy, and
-          technical BD with teams financing AI infrastructure, building AI-native financial
-          workflows, or modernizing institutional rails with programmable assets,
-          stablecoins, RWA infrastructure, and better data systems.
+          Seeking solutions architecture, technical strategy, and technical business
+          development roles across digital assets, financial infrastructure, and AI-enabled
+          workflows.
         </p>
-        {showRecent && (
-          <div className="hero-cta">
-            <Link href="#recent" className="btn btn-primary">
-              Recent
-            </Link>
-          </div>
-        )}
+        <div className="hero-cta">
+          <Link href="#projects" className="btn btn-primary">
+            View selected work
+          </Link>
+          <a href={RESUME_PDF} target="_blank" rel="noopener noreferrer" className="btn">
+            View resume
+          </a>
+          <Link href="#contact" className="btn">
+            Contact
+          </Link>
+        </div>
       </div>
       <div className="hero-scroll" aria-hidden="true">
         <div className="bar" />

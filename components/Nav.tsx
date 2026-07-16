@@ -7,9 +7,9 @@ import { ThemeToggle } from './ThemeToggle';
 
 const NAV_SECTIONS = [
   { id: 'projects', label: 'Projects' },
-  { id: 'my-writing', label: 'My Writing' },
-  { id: 'agent-research', label: 'Agent Research' },
-  { id: 'about', label: 'About me' },
+  { id: 'about', label: 'Experience' },
+  { id: 'my-writing', label: 'Writing' },
+  { id: 'agent-research', label: 'Research' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -23,11 +23,7 @@ function currentLocation() {
   return `${window.location.pathname}${window.location.search}${window.location.hash}`;
 }
 
-interface NavProps {
-  showRecent?: boolean;
-}
-
-export function Nav({ showRecent = false }: NavProps) {
+export function Nav() {
   const pathname = usePathname();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
@@ -71,9 +67,6 @@ export function Nav({ showRecent = false }: NavProps) {
   };
 
   const sectionHref = (id: string) => (onHome ? `#${id}` : `/#${id}`);
-  const sections = showRecent
-    ? [{ id: 'recent', label: 'Recent', emphasis: true }, ...NAV_SECTIONS.map((s) => ({ ...s, emphasis: false }))]
-    : NAV_SECTIONS.map((s) => ({ ...s, emphasis: false }));
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
@@ -83,13 +76,9 @@ export function Nav({ showRecent = false }: NavProps) {
       </Link>
 
       <ul className={`nav-links${open ? ' mobile-open' : ''}`} id="navMenu">
-        {sections.map(({ id, label, emphasis }) => (
+        {NAV_SECTIONS.map(({ id, label }) => (
           <li key={id}>
-            <Link
-              href={sectionHref(id)}
-              className={`nav-scroll${emphasis ? ' nav-recent' : ''}`}
-              onClick={handleNavClick}
-            >
+            <Link href={sectionHref(id)} className="nav-scroll" onClick={handleNavClick}>
               {label}
             </Link>
           </li>
@@ -97,21 +86,15 @@ export function Nav({ showRecent = false }: NavProps) {
       </ul>
 
       <div className="nav-end">
-        <div className="nav-control" role="group" aria-label="Agent Mode">
-          <span className="nav-control-label">Agent Mode</span>
-          <Link
-            href={onAgent ? agentReturnTo : '/agent'}
-            className={`nav-agent-toggle${onAgent ? ' active' : ''}`}
-            aria-label={onAgent ? 'Exit Agent Mode' : 'Enter Agent Mode'}
-            aria-pressed={onAgent}
-            title={onAgent ? 'Exit Agent Mode' : 'Enter Agent Mode'}
-            onClick={handleAgentModeClick}
-          >
-            <span className="nav-agent-emoji" aria-hidden="true">
-              🤖
-            </span>
-          </Link>
-        </div>
+        <Link
+          href={onAgent ? agentReturnTo : '/agent'}
+          className={`nav-agent-link${onAgent ? ' active' : ''}`}
+          aria-label={onAgent ? 'Exit Agent Mode' : 'View the agent-readable version of this site'}
+          aria-pressed={onAgent}
+          onClick={handleAgentModeClick}
+        >
+          Agent view
+        </Link>
         <div className="nav-control" role="group" aria-label="Display">
           <span className="nav-control-label">Display</span>
           <ThemeToggle />

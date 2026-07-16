@@ -10,16 +10,11 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'E-commerce automation',
-  'Python',
-  'APIs',
-  'Permissionless protocols',
-  'Sentiment & signals',
-  'Strategy',
-  'Builder networks',
   'Market structure',
-  'Creative execution',
-  'Cross-border arbitrage',
+  'Financial infrastructure',
+  'Agent systems',
+  'APIs and automation',
+  'Technical strategy',
 ];
 
 export function About() {
@@ -27,20 +22,20 @@ export function About() {
     <section id="about">
       <div className="container">
         <Reveal>
-          <div className="section-label">About Me</div>
+          <div className="section-label">Experience &amp; Differentiators</div>
         </Reveal>
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              I spent thirteen years in institutional fixed income before stepping off the desk to
-              build. Since then I have been on a deliberate learning run: Python automation, smart
-              contracts, APIs, e-commerce systems, and the permissionless stacks where finance and
-              software meet.
+              I spent thirteen years in institutional fixed income across sales, proprietary
+              trading, macro execution, and portfolio management. Since leaving the desk, I have
+              built open-source simulations, monitoring tools, smart contracts, and agent-facing
+              systems that make complex infrastructure easier to inspect and explain.
             </p>
             <p className="about-intro">
-              This site is where I assemble that work in public: essays, projects, and experiments.
-              The longer goal is a real platform where readers explore articles and run interactive
-              programs to learn AI, finance, and market technology hands-on.
+              My advantage is not simply knowing finance or writing code. It is understanding how
+              technical architecture, liquidity, incentives, collateral, execution, and
+              operational risk interact inside a real market.
             </p>
 
             <div className="about-track">
