@@ -19,7 +19,13 @@
   "githubUrl": "https://github.com/DanDo385/agent-runtime",
   "resourceSource": {
     "ref": "main",
-    "required": true
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "demo",
+      "media"
+    ]
   },
   "demoUrl": "/demos/agent-runtime",
   "externalDemoUrl": "https://agent-runtime-rho.vercel.app",

@@ -24,7 +24,12 @@
   "githubUrl": "https://github.com/DanDo385/eth-amm-sim",
   "resourceSource": {
     "ref": "main",
-    "required": true
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "media"
+    ]
   },
   "demoUrl": null,
   "loomUrl": null,

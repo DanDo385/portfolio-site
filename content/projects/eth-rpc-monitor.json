@@ -20,7 +20,12 @@
   "githubUrl": "https://github.com/DanDo385/eth-rpc-monitor",
   "resourceSource": {
     "ref": "main",
-    "required": true
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "media"
+    ]
   },
   "demoUrl": null,
   "loomUrl": null,

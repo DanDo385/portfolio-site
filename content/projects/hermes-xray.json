@@ -20,7 +20,13 @@
   "githubUrl": "https://github.com/DanDo385/hermes-xray",
   "resourceSource": {
     "ref": "main",
-    "required": true
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "demo",
+      "media"
+    ]
   },
   "demoUrl": "/demos/hermes-xray",
   "externalDemoUrl": "https://hermes-xray.vercel.app",

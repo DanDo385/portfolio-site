@@ -23,7 +23,13 @@
   "githubUrl": "https://github.com/DanDo385/eth-tx-lifecycle",
   "resourceSource": {
     "ref": "main",
-    "required": true
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "llms",
+      "media"
+    ]
   },
   "demoUrl": "https://eth-tx-lifecycle.vercel.app",
   "loomUrl": null,
