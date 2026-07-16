@@ -107,7 +107,7 @@ export function Contact() {
                   >
                     View
                   </button>
-                  <a href={RESUME_PDF} download="Daniel-Magro-Resume.pdf" className="btn">
+                  <a href={RESUME_PDF} download="Daniel_Magro_Resume.pdf" className="btn">
                     Download
                   </a>
                 </div>

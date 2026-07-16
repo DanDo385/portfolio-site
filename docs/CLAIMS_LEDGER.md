@@ -1,10 +1,28 @@
 # Claims ledger
 
 Structured inventory of meaningful professional and quantitative claims currently used on
-the resume (`public/resume/Daniel Magro Resume.pdf`), the site, or Agent Mode. This is an
+the resume (`public/resume/Daniel_Magro_Resume.pdf`), the site, or Agent Mode. This is an
 internal review document, not published copy. It does not invent evidence: every entry
 below is transcribed from the current resume PDF or site content, with a plain note on what
 independent verification this agent could or could not perform.
+
+> **Update (July 16, 2026):** Daniel replaced the resume PDF with a rewritten version
+> (`Daniel_Magro_Resume.pdf`). "Exact wording currently used" quotes below were transcribed
+> from the prior PDF; the substance of every quantitative claim (Sharpe ratios, dollar
+> figures, production numbers) is unchanged in the new version, with these wording updates:
+>
+> - Claim 3 (e-commerce): "average annual profits" is now "annual profits"; same figures.
+> - Claim 5 (RAMM.ai): now "Built EVM smart contracts, the product frontend, and the public
+>   website" plus "Served as the technical translation layer across product, contracts,
+>   partners, and users." No backend ownership is claimed, which resolves the resume side of
+>   the scope mismatch; the site TIMELINE in `lib/content.ts` still says "shipped across the
+>   stack ... backend" and still needs Daniel's confirmation.
+> - Claim 6 (Primary Dealer): now "supported Jefferies' Primary Dealer designation process,"
+>   which is softer than the previous "contributing to" wording and stays interview-safe.
+>   The "worked with the Federal Reserve and other regulators" phrase was removed.
+> - Claim 8 (open-source language): resolved. The new resume uses "SELECTED TECHNICAL
+>   PROJECTS" and no longer describes Daniel's own repositories as "open source" work in the
+>   summary or section header.
 
 Template used for each entry:
 

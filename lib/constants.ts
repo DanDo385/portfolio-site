@@ -4,7 +4,7 @@
  */
 export const IPFS_URL: string | null = null;
 
-export const RESUME_PDF = '/resume/Daniel%20Magro%20Resume.pdf';
+export const RESUME_PDF = '/resume/Daniel_Magro_Resume.pdf';
 
 export const SITE = {
   name: 'Daniel Magro | Market Infrastructure, Programmable Finance, AI Systems',

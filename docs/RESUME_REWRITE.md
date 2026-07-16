@@ -1,6 +1,17 @@
 # Resume rewrite recommendation
 
-`public/resume/Daniel Magro Resume.pdf` exists in this repository only as a compiled PDF.
+> **Status: applied (July 16, 2026).** Daniel rewrote the resume outside this repository and
+> replaced the PDF with `public/resume/Daniel_Magro_Resume.pdf` (the old
+> `Daniel Magro Resume.pdf` was removed). `RESUME_PDF` in `lib/constants.ts` now points at
+> the new filename. The new version adopts the substance of this document's recommendations
+> (positioning-first summary, "Selected Technical Projects" instead of "Projects & Open
+> Source," "Education and Technical Training" heading) with Daniel's own structural choices:
+> five projects grouped into AI/Agent Systems and Blockchain/DeFi categories rather than
+> exactly three flagships. Quantitative claims (Sharpe ratios, dollar figures, Primary
+> Dealer language) remain as inventoried in `docs/CLAIMS_LEDGER.md`. The rest of this
+> document is kept as the historical recommendation.
+
+`public/resume/Daniel Magro Resume.pdf` existed in this repository only as a compiled PDF.
 There is no editable source (no `.docx`, `.tex`, `.md`, or generator script) checked in, so
 this agent cannot safely regenerate the PDF without risking layout breakage. Per the task
 instructions, the PDF is left unchanged and this document contains the exact recommended

@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Old resume filename (with spaces) was published in agent.json/llms.txt
+        // before the July 2026 rewrite replaced it with Daniel_Magro_Resume.pdf.
+        source: '/resume/Daniel%20Magro%20Resume.pdf',
+        destination: '/resume/Daniel_Magro_Resume.pdf',
+        permanent: true,
+      },
+      {
         source: '/projects/eth-l2-fraud-proof',
         destination: '/projects/eth-l2',
         permanent: true,
