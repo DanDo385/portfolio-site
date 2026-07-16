@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (function () {
+      try {
+        var embed =
+          new URLSearchParams(location.search).get("embed") === "1" ||
+          window.self !== window.top;
+        if (embed) document.documentElement.dataset.embed = "1";
+      } catch (e) {
+        if (window.self !== window.top) document.documentElement.dataset.embed = "1";
+      }
+    })();
+  </script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agent Runtime</title>
 <style>
+
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+  html[data-embed="1"] .top-actions {
+    display: none !important;
+  }
 
   :root {
     --bg: #0a0c0f;
@@ -573,7 +591,8 @@
       <div class="agent-mode" aria-label="Agent-readable exports">
         <span class="agent-mode-label">Agent mode</span>
         <a href="llms.txt" title="Open llms.txt">llms.txt</a>
-        <a href="agent-runtime-map.json" title="Open JSON runtime map">.json</a>
+        <a href="agent.json" title="Open agent.json">agent.json</a>
+        <a href="agent-runtime-map.json" title="Open JSON runtime map">map.json</a>
       </div>
       <div class="display-mode">
         <span class="display-mode-label">Display</span>

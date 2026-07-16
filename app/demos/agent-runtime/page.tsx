@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { DemoShell } from '@/components/DemoShell';
 
-const DEMO_SRC = '/project-assets/agent-runtime/demo/index.html';
+const DEMO_SRC = '/project-assets/agent-runtime/demo/index.html?embed=1';
 
 export const metadata: Metadata = {
   title: 'Agent Runtime Demo | Daniel Magro',

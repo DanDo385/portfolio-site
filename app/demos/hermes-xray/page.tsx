@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { DemoShell } from '@/components/DemoShell';
 
-const DEMO_SRC = '/project-assets/hermes-xray/demo/index.html';
+const DEMO_SRC = '/project-assets/hermes-xray/demo/index.html?embed=1';
 
 export const metadata: Metadata = {
   title: 'Hermes X-Ray Demo | Daniel Magro',

@@ -1,119 +1,65 @@
 ---
-title: The Magic Box
+title: The Magic Box, Part I
 slug: the-magic-box
 date: 2026-07-13
 status: published
 category: AI Strategy
-excerpt: "When every company opens the same magic box, intelligence converges, and competitive advantage compresses."
+excerpt: "You open the magic box, watch the gains pile up, then realize every competitor is plugged into the same intelligence."
 coverImage: null
 loomUrl: null
 relatedProject: null
 ---
 
-Figma is a useful example, not because it proves this thesis, but because it illustrates the instinct.
+Figma is one of the clearest examples of what happens when a successful software company recognizes the power of AI and decides it cannot afford to stand still.
 
-As generative AI advanced from ChatGPT and GPT-3.5 Turbo to GPT-4o, Figma recognized that something fundamental was happening. It began weaving AI directly into the design workflow, introducing tools for generating interfaces, rewriting content, automating repetitive tasks, searching visually, and eventually turning prompts into functional prototypes.
+As ChatGPT entered the mainstream and models such as GPT-3.5 Turbo and GPT-4o made increasingly visible leaps, the strategic pressure became obvious. This was going to be big. Companies such as Figma began connecting themselves to the magic box and integrating AI directly into their products.
 
-The message was clear: connect the product to the magic box before somebody else does.
+Now imagine that you are an executive at a massive consumer-products conglomerate. The specific industry does not matter, but it helps to have something visual in mind, so picture a company like Johnson & Johnson, with hundreds of brands, divisions, suppliers, advertising relationships, and operational systems.
 
-Now imagine that you run a sprawling consumer-products conglomerate. The specific products do not matter. Perhaps your company owns dozens of brands across healthcare, household goods, advertising, chemicals, and packaged products.
+One day, you get a call from an old colleague at a competing company, Procter & Gamble. He tells you that his organization is aggressively implementing AI. Employees are worried about layoffs. Management is pressuring teams to use the new tools. AI adoption is becoming a central corporate priority.
 
-One afternoon, you receive a call from an old colleague at a rival company such as Procter & Gamble. He tells you that management is aggressively pushing AI adoption. Teams are being instructed to use it. Employees are worried about layoffs. Executives are reorganizing workflows around it. AI has clearly become a corporate priority.
-
-You do not know whether any of it will work.
+You still do not know whether any of this will work.
 
 But what if it does?
 
-What if your competitor becomes faster, leaner, and more profitable while your company is left behind?
+What if your competitor figures it out first and leaves you behind?
 
-You begin taking meetings. You call your chief technology officer, bring in consultants, and ask several vendors to demonstrate what their systems can do.
+You decide that you should at least take a few meetings. You make some calls and sit down with your head of technology. That is when they present it to you.
 
-Then they present it.
+It is the magic box.
 
-The magic box.
+You are flabbergasted. It feels as though you are staring directly into the future. The board is going to sing your praises. The magic box practically sells itself. You can deploy AI agents across the organization, automate repetitive work, analyze internal data, improve decision-making, and produce productivity gains in dozens of departments.
 
-You are flabbergasted. It feels as though someone has opened a window into the future. The box can write advertising copy, generate product concepts, analyze customer behavior, redesign internal processes, produce software, summarize research, monitor supply chains, and deploy agents across the organization.
+You have heard that AI is dangerous for software companies, but perhaps that is because software production is becoming a solved problem. Maybe traditional software stocks really are going to zero.
 
-It practically sells itself.
+At least, that is what you begin to think.
 
-You imagine presenting it to the board. You can already hear the praise. You will be the executive who modernized the company before the competition did.
-
-Perhaps the warnings about AI destroying software companies were correct. Perhaps software production is becoming a solved problem. Perhaps many of the expensive systems your company purchases can now be generated, modified, or replaced almost instantly.
-
-At least, that is what you begin to believe.
-
-Months pass, and the results look extraordinary.
-
-Projects move faster. Reports arrive instantly. Fewer employees are required for certain workflows. Marketing campaigns are produced in days instead of weeks. Internal software is built without the usual procurement cycles. Agents monitor operations around the clock and recommend improvements before managers even know there is a problem.
-
-Productivity rises. Costs fall. Results improve.
+A few months pass, and you are killing it. You need fewer employees. Results are improving. Costs are falling. Projects are moving faster.
 
 Pop the champagne.
 
-Then something subtler begins to happen.
+Then something else happens.
 
-The small operational problems that once consumed enormous amounts of management attention begin disappearing. The awkward handoffs, broken spreadsheets, regional inconsistencies, and strange little business exceptions are quietly patched by the magic box.
+All those tiny operational problems that once required constant attention begin to disappear. The obscure exceptions, strange workflows, and niche problems that employees had patched together with band-aids are suddenly being handled by the system.
 
-Things simply run better.
+You sit back and watch your agent dashboard deliver reports from various areas of the business. The results are pretty good.
 
-You even have an embodied AI assistant roaming the office on tank treads, presenting charts that document the extraordinary gains achieved under your leadership.
+Then you speak to your old colleague from P&G again.
 
-Then you call your old colleague at Procter & Gamble again.
+Strangely enough, his company has implemented many of the same changes as yours. He rants and raves about the efficiency gains and the stock price. You know it is not professional to get into specifics, but the opaque way he describes what is happening seems eerily similar.
 
-He describes many of the same improvements.
+Something else just seems off.
 
-Their agents are optimizing marketing. Their software is being generated faster. Their supply chains are becoming more efficient. Their reports are produced automatically. Their management layers are shrinking. Their magic box is finding the same inefficiencies that yours found.
+You speak to a web designer and ask for the Figma presentation on an app that is being launched. Then you notice Claude Design.
 
-You begin looking more closely at the market.
+You realize that Claude ate Figma.
 
-A niche specialty-chemical operation in Eastern Europe has stopped growing. Several previously differentiated consumer businesses now produce almost identical margins. Marketing performance is converging. Supply-chain efficiency is converging. Product-development timelines are converging.
+You scramble around researching the contracts you have signed. You realize that you are locked in and connected to this magic box, which learns about you and from the thousands of inquiries your employees have sent it.
 
-Across the industry, the charts begin to look strangely similar.
+You are now sharing intelligence with your competitors!
 
-The weakest divisions are automated. The strongest divisions are copied. Any genuinely innovative opportunity is attacked by startups built from the beginning around the same AI capabilities, without your company’s legacy systems, internal politics, or cost structure.
+This seems awful. Is it?
 
-The conglomerates become more efficient, but also more alike.
+And what's next?
 
-That is the trap hidden inside the magic box.
-
-AI may eliminate inefficiency, but inefficiency is not the only thing separating one company from another. Competitive advantage also comes from judgment, institutional memory, unusual processes, proprietary relationships, creative disagreement, and the small pieces of knowledge that are difficult to measure or explain.
-
-When every company connects itself to the same underlying systems, uses similar models, hires the same consultants, and deploys agents trained to identify the same patterns, intelligence begins to converge.
-
-The magic box does not need to steal your confidential information to weaken your advantage. It only needs to make your competitors capable of producing many of the same decisions.
-
-You believed you were purchasing intelligence. Over time, you may discover that you were standardizing it.
-
-This does not mean companies should reject AI. Refusing to adopt it may be even more dangerous. The question is who retains control over the intelligence that matters.
-
-Which decisions can be delegated safely?
-
-Which knowledge must remain proprietary?
-
-Which models should be trained around the company’s unique experience?
-
-Which forms of judgment should never be reduced to the output of a shared platform?
-
-From first principles, a company cannot outsource the intelligence that differentiates it and expect that differentiation to survive. Shared tools can improve execution, but shared intelligence can also compress the distance between competitors.
-
-The danger is not simply that the magic box replaces employees or threatens software companies.
-
-The deeper danger is that everyone opens the same magic box, receives increasingly similar answers, and slowly discovers that the box did not merely make them more efficient.
-
-It standardized business processes and compressed the differences between them.
-
-But for how long?
-
-Markets rarely remain equal. Once one layer of advantage becomes widely available, competition moves somewhere else. The next game is no longer simply who uses AI. It is who owns the better data, who designs the better agents, who integrates them more deeply, and who retains control over the intelligence those systems produce.
-
-Perhaps the winners will not be the companies with the largest magic box. Perhaps they will be the companies whose box does not require them to surrender the key.
-
-That raises a more difficult question: can businesses share intelligence without sharing competitive advantage?
-
-Can firms benefit from common models while preserving proprietary judgment, institutional knowledge, and strategic independence? Or does connecting every company to the same intelligence layer inevitably push them toward the same conclusions?
-
-The magic box may make companies more equal for a time.
-
-But equality is rarely the end of the game.
-
-It is usually the beginning of the next one.
+To be continued...

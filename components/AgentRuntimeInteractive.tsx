@@ -1,4 +1,4 @@
-const DEMO_SRC = '/project-assets/agent-runtime/demo/index.html';
+const DEMO_SRC = '/project-assets/agent-runtime/demo/index.html?embed=1';
 const GITHUB_URL = 'https://github.com/DanDo385/agent-runtime';
 const LLMS_URL = '/project-assets/agent-runtime/demo/llms.txt';
 const JSON_URL = '/project-assets/agent-runtime/demo/agent-runtime-map.json';
@@ -21,7 +21,7 @@ export function AgentRuntimeInteractive() {
         <div className="amd-runtime">
           <div className="amd-runtime-row">
             <span>Runtime</span>
-            <strong>Static HTML, CSS, and client-side theme toggle</strong>
+            <strong>Static HTML and CSS walkthrough</strong>
           </div>
           <div className="amd-runtime-row">
             <span>Compare</span>

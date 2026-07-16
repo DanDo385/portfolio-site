@@ -37,4 +37,5 @@ Inbound event and outbound response are the outer rails around this five-part ru
 
 ## Machine-Readable Map
 
-JSON export: ./agent-runtime-map.json
+Agent manifest: ./agent.json
+JSON runtime map: ./agent-runtime-map.json

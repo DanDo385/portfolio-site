@@ -92,6 +92,9 @@ Decide Interact from the project type. Never invent Interact by falling back to
    `/agent` for Agent Mode), register the slug in `FULLSCREEN_DEMO_SLUGS`, set
    `demoUrl` to that path. Interact → Go to Page stays on magro.dev. Optionally set
    `externalDemoUrl` to a standalone Vercel URL so Open in New Tab leaves magro.dev.
+   When embedding static HTML demos in portfolio iframes, load them with `?embed=1`
+   so the demo's own Agent Mode / Display chrome is hidden (those stay on the
+   standalone Vercel deploy).
 3. **External Vercel apps** (eth-l2, eth-tx-lifecycle) — set `demoUrl` to the
    production Vercel URL (e.g. `https://eth-l2.vercel.app`). Do **not** iframe
    those apps as the Interact destination. magro.dev project pages may explain

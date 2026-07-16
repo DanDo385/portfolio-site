@@ -1,4 +1,4 @@
-const DEMO_SRC = '/project-assets/hermes-xray/demo/index.html';
+const DEMO_SRC = '/project-assets/hermes-xray/demo/index.html?embed=1';
 const GITHUB_URL = 'https://github.com/DanDo385/hermes-xray';
 const LLMS_URL = '/project-assets/hermes-xray/demo/llms.txt';
 const JSON_URL = '/project-assets/hermes-xray/demo/hermes-xray.json';

@@ -1,0 +1,44 @@
+{
+  "schema": "https://agent-runtime-rho.vercel.app/agent.json",
+  "schemaVersion": "0.1",
+  "site": {
+    "name": "Agent Runtime",
+    "url": "https://agent-runtime-rho.vercel.app",
+    "description": "Interactive single-page walkthrough of a tool-using agent runtime across Hermes Agent and OpenClaw.",
+    "owner": {
+      "name": "Daniel Magro",
+      "email": "dan@magro.dev",
+      "role": "Builder"
+    }
+  },
+  "agentMode": {
+    "purpose": "Expose canonical, structured context for AI agents so they do not have to infer meaning from decorative HTML.",
+    "endpoints": {
+      "overview": "https://agent-runtime-rho.vercel.app/",
+      "manifest": "https://agent-runtime-rho.vercel.app/agent.json",
+      "router": "https://agent-runtime-rho.vercel.app/llms.txt",
+      "runtimeMap": "https://agent-runtime-rho.vercel.app/agent-runtime-map.json"
+    },
+    "preferredEntryPoints": [
+      "https://agent-runtime-rho.vercel.app/",
+      "https://agent-runtime-rho.vercel.app/agent.json",
+      "https://agent-runtime-rho.vercel.app/llms.txt",
+      "https://agent-runtime-rho.vercel.app/agent-runtime-map.json",
+      "https://github.com/DanDo385/agent-runtime"
+    ],
+    "principles": [
+      "Canonical product context lives on this site's Agent Mode surfaces.",
+      "Prefer /agent.json and /llms.txt over scraping decorative UI HTML.",
+      "Use agent-runtime-map.json for the structured five-part loop export."
+    ]
+  },
+  "canonicalTopics": [
+    "tool-using agents",
+    "agent runtime loop",
+    "Hermes Agent",
+    "OpenClaw",
+    "session hydration",
+    "tool dispatch",
+    "persistence"
+  ]
+}
