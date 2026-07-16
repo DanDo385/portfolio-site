@@ -40,6 +40,8 @@ function XIcon() {
 export function Contact() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const openTabLinkRef = useRef<HTMLAnchorElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const openModal = useCallback(() => {
     setResumeOpen(true);
@@ -49,6 +51,7 @@ export function Contact() {
   const closeModal = useCallback(() => {
     setResumeOpen(false);
     document.body.style.overflow = '';
+    triggerRef.current?.focus();
   }, []);
 
   useEffect(() => {
@@ -59,7 +62,25 @@ export function Contact() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && resumeOpen) closeModal();
+      if (!resumeOpen) return;
+      if (e.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      // Keep keyboard focus inside the two focusable controls in the modal
+      // (close button, open-in-new-tab fallback link) while it is open.
+      if (e.key === 'Tab') {
+        const first = closeButtonRef.current;
+        const last = openTabLinkRef.current;
+        if (!first || !last) return;
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
@@ -77,7 +98,13 @@ export function Contact() {
               <div className="resume-section" id="resume">
                 <div className="resume-label">Resume</div>
                 <div className="resume-actions">
-                  <button type="button" className="btn" aria-label="View resume" onClick={openModal}>
+                  <button
+                    ref={triggerRef}
+                    type="button"
+                    className="btn"
+                    aria-label="View resume"
+                    onClick={openModal}
+                  >
                     View
                   </button>
                   <a href={RESUME_PDF} download="Daniel-Magro-Resume.pdf" className="btn">
@@ -153,6 +180,13 @@ export function Contact() {
               </svg>
             </button>
             <iframe className="resume-modal-iframe" src={RESUME_PDF} title="Daniel Magro Resume" />
+            <p className="resume-modal-fallback">
+              Preview not loading?{' '}
+              <a ref={openTabLinkRef} href={RESUME_PDF} target="_blank" rel="noopener noreferrer">
+                Open the PDF in a new tab
+              </a>
+              .
+            </p>
           </div>
         </div>
       )}
