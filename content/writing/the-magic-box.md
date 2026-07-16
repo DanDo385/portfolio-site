@@ -62,4 +62,4 @@ This seems awful. Is it?
 
 And what's next?
 
-To be continued...
+Part II is forthcoming: it will look at what happens when the same handful of model providers sit underneath every competitor in an industry, and what a company can still control once its operational intelligence and its competitors' both run through the same box.

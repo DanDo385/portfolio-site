@@ -12,7 +12,7 @@ relatedProject: portfolio-agent-mode
 
 Just like light/dark mode for web-based user interfaces, [/llms.txt](https://llmstxt.org) and `/agent.json` are emerging proposals for giving language models a cleaner entry point into website content, not settled standards. This is a bit of a tricky situation, because many companies do not want their data scraped, so don't expect Reddit or Medium to adopt these conventions anytime soon. It's really for content that the website wants agents to reference, so it currently exists mainly in documentation pages and other open research platforms.
 
-The token usage required to reason through complex web pages is truly astounding. Cloudflare ran a study in February 2026, measuring their own blog post two ways: as HTML, it consumed 16,180 tokens; as clean markdown, 3,150 [1]. Four-fifths of the token budget went to structure the model had to decode before it could read a single word of substance. 80% is a crazy number just to get to the data you're extracting.
+The token usage required to reason through complex web pages is truly astounding. When Cloudflare announced Markdown for Agents in February 2026, they measured their own announcement post two ways: as HTML, it consumed 16,180 tokens; as clean markdown, 3,150 [1]. Four-fifths of the token budget went to structure the model had to decode before it could read a single word of substance. 80% is a crazy number just to get to the data you're extracting.
 
 As these numbers scale, it makes much more sense to use micropayments for users. But since it's an emerging proposal that isn't widely adopted, it's currently still cheaper to pay for the reasoning required to extract the data. I'd be surprised if startups don't emerge in this space offering MCPs or APIs that hand over cleaned-up data fitting these conventions.
 
@@ -22,6 +22,6 @@ Like everything else in AI, things are moving fast and furious. Not everyone agr
 
 ## References
 
-[1] "Cloudflare Markdown for Agents: Complete Technical Guide to 80% Token Reduction and SEO Implications for 2026," ALM Corp, February 18, 2026. https://almcorp.com/blog/cloudflare-markdown-for-agents-complete-guide/
+[1] Celso Martinho and Will Allen, "Introducing Markdown for Agents," The Cloudflare Blog, February 12, 2026. https://blog.cloudflare.com/markdown-for-agents/
 
 [2] John Mueller (@johnmu.com), Bluesky post, February 3, 2026. https://bsky.app/profile/johnmu.com/post/3mdxp3zkwa22o
