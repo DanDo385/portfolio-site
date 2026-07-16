@@ -3,7 +3,7 @@
   "slug": "portfolio-agent-mode",
   "date": "2026-07-02",
   "status": "complete",
-  "featured": true,
+  "featured": false,
   "tags": [
     "AI",
     "Agents",

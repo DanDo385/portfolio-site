@@ -9,22 +9,44 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects, writingBySlug }: ProjectsProps) {
+  // `projects` is already sorted featured-first (in canonical flagship order), then by
+  // date, via lib/content.ts#getProjects. Filtering here preserves that order.
   const primary = projects.filter((project) => projectTier(project) === 'primary');
   const foundations = projects.filter((project) => projectTier(project) === 'foundations');
+  const featured = primary.filter((project) => project.featured);
+  const supporting = primary.filter((project) => !project.featured);
 
   return (
     <section id="projects">
       <div className="container">
         <Reveal>
-          <div className="section-label">Projects</div>
+          <div className="section-label">Selected Projects</div>
         </Reveal>
-        {primary.map((project) => (
+        {featured.map((project) => (
           <ProjectCard
             key={project.slug}
             project={project}
             writingBySlug={writingBySlug}
+            variant="featured"
           />
         ))}
+        {supporting.length > 0 && (
+          <div className="projects-supporting">
+            <Reveal>
+              <div className="projects-supporting-label">Supporting engineering work</div>
+            </Reveal>
+            <div className="projects-supporting-list">
+              {supporting.map((project) => (
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  writingBySlug={writingBySlug}
+                  variant="compact"
+                />
+              ))}
+            </div>
+          </div>
+        )}
         {foundations.length > 0 && (
           <Reveal delay={40}>
             <details className="projects-foundations">
@@ -41,6 +63,7 @@ export function Projects({ projects, writingBySlug }: ProjectsProps) {
                     project={project}
                     writingBySlug={writingBySlug}
                     reveal={false}
+                    variant="compact"
                   />
                 ))}
               </div>

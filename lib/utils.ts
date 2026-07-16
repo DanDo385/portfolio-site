@@ -1,4 +1,4 @@
-import type { Project } from './types';
+import type { Project, ProjectCardVariant } from './types';
 
 export const RECENT_WINDOW_DAYS = 7;
 const CONTENT_TIMEZONE = 'America/New_York';
@@ -25,6 +25,11 @@ export function isWithinRecentDays(isoDate: string, days = RECENT_WINDOW_DAYS): 
 
 export function projectAnchorId(slug: string): string {
   return `project-${slug}`;
+}
+
+/** Flagship projects (`featured: true`) get the full card; everything else is compact. */
+export function projectCardVariant(project: Project): ProjectCardVariant {
+  return project.featured ? 'featured' : 'compact';
 }
 
 export function projectPath(slug: string): string {

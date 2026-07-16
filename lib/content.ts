@@ -37,6 +37,27 @@ function loadMarkdownDocuments<T extends { date: string; slug: string }>(
   });
 }
 
+/**
+ * Canonical flagship order for the recruiter-facing homepage and Agent Mode surfaces:
+ * Rollup Mechanics Lab, Ethereum Transaction Lifecycle, Agent Runtime. Any other project
+ * marked `featured` falls back to date order after these three. Non-featured projects
+ * within a tier sort by date, newest first.
+ */
+const FLAGSHIP_ORDER = ['eth-l2', 'eth-tx-lifecycle', 'agent-runtime'];
+
+function compareProjects(a: Project, b: Project): number {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  if (a.featured && b.featured) {
+    const ai = FLAGSHIP_ORDER.indexOf(a.slug);
+    const bi = FLAGSHIP_ORDER.indexOf(b.slug);
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+  }
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+}
+
 export function getProjects(): Project[] {
   const dir = path.join(CONTENT, 'projects');
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
@@ -45,11 +66,7 @@ export function getProjects(): Project[] {
     const project = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as Project;
     return { ...project, ...(generatedResources[project.slug] ?? {}) };
   });
-  return projects.sort((a, b) => {
-    if (a.featured && !b.featured) return -1;
-    if (!a.featured && b.featured) return 1;
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+  return projects.sort(compareProjects);
 }
 
 export function getListedProjects(): Project[] {

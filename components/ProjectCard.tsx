@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import type { Article, Project } from '@/lib/types';
+import type { Article, Project, ProjectCardVariant } from '@/lib/types';
 import {
   getProjectLinkSections,
   projectAnchorId,
+  projectCardVariant,
   projectPath,
   tagClass,
 } from '@/lib/utils';
@@ -14,9 +15,11 @@ interface ProjectCardProps {
   project: Project;
   writingBySlug: Record<string, Article>;
   reveal?: boolean;
+  variant?: ProjectCardVariant;
 }
 
-export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCardProps) {
+export function ProjectCard({ project, writingBySlug, reveal = true, variant }: ProjectCardProps) {
+  const resolvedVariant = variant ?? projectCardVariant(project);
   const related =
     project.relatedWriting && writingBySlug[project.relatedWriting]?.status === 'published'
       ? writingBySlug[project.relatedWriting]
@@ -24,11 +27,17 @@ export function ProjectCard({ project, writingBySlug, reveal = true }: ProjectCa
   const linkSections = getProjectLinkSections(project);
 
   const card = (
-    <article className="pcard" id={projectAnchorId(project.slug)}>
+    <article
+      className={`pcard${resolvedVariant === 'compact' ? ' pcard-compact' : ''}`}
+      id={projectAnchorId(project.slug)}
+    >
       <div className="pcard-layout">
         <div className="pcard-main">
           <div className="pcard-head">
             <div>
+              {resolvedVariant === 'featured' && (
+                <p className="pcard-kicker">Flagship project</p>
+              )}
               <h3 className="pcard-name">
                 <Link href={projectPath(project.slug)} className="pcard-name-link">
                   {project.title}

@@ -3,6 +3,8 @@ export type ArticleStatus = 'draft' | 'published';
 export type ProjectPreviewType = 'agent-json';
 /** Visual weight on the homepage. Foundations sit under primary flagships. */
 export type ProjectTier = 'primary' | 'foundations';
+/** Card rendering weight: featured (flagship) gets the full card, compact is denser. */
+export type ProjectCardVariant = 'featured' | 'compact';
 export type ProjectResourceFamily = 'gif' | 'screenshots' | 'demo' | 'llms' | 'media';
 
 export interface ProjectResourceSource {

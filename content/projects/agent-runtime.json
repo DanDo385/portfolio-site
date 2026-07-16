@@ -3,7 +3,7 @@
   "slug": "agent-runtime",
   "date": "2026-06-01",
   "status": "complete",
-  "featured": false,
+  "featured": true,
   "tags": [
     "AI",
     "Agents",

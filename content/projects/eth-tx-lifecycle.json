@@ -3,7 +3,7 @@
   "slug": "eth-tx-lifecycle",
   "date": "2025-08-20",
   "status": "complete",
-  "featured": false,
+  "featured": true,
   "tags": [
     "Infrastructure",
     "MEV",

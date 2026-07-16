@@ -596,6 +596,16 @@ section { padding-top: var(--gap-section); }
   margin-bottom: 16px;
 }
 
+.pcard-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
 .pcard-name {
   font-family: var(--font-display);
   font-size: clamp(22px, 2.5vw, 28px);
@@ -826,6 +836,42 @@ html[data-theme='light'] .tag-default {
 .pcard-related { font-size: 13px; color: var(--text-muted); margin-top: 14px; }
 .pcard-related a { color: var(--accent); text-decoration: none; }
 .pcard-related a:hover { text-decoration: underline; }
+
+/* Denser card used for supporting/foundations work; keeps the same content, smaller footprint. */
+.pcard-compact {
+  padding: 26px 24px;
+}
+
+.pcard-compact .pcard-name {
+  font-size: clamp(19px, 2.1vw, 23px);
+}
+
+.pcard-compact .pcard-summary {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.projects-supporting {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.projects-supporting-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.projects-supporting-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 .projects-foundations {
   margin-top: 48px;
