@@ -28,6 +28,7 @@ These pull from content loaders at build/request time. No manual list edits need
 - **Research** in `agent.json` / `llms.txt`: from `getPublishedResearch()` (`content/agent-research/*.md`, `status: published`)
 - **Project URLs** (canonical, github, demo, media): derived in `lib/agent.ts` → `projectUrls()`
 - **Interactive demos** in manifest: from `lib/demos.ts` when the linked project is listed
+- **Project media** in cards: generated from each card's `githubUrl` by `scripts/sync-project-resources.mjs` during `predev` and `prebuild`
 
 ## What you must update manually
 
@@ -54,6 +55,7 @@ Also update when relevant:
 Before finishing a PR or commit that touches content, navigation, projects, writing, About, Contact, or demos:
 
 - [ ] New or updated **project** → `content/projects/<slug>.json` exists; `listed` set intentionally; `demoUrl` / media paths valid.
+- [ ] Project repo publishes media → canonical `public/` or `repo-resources/` layout exists; run the sync and inspect `.source-manifest.json` before setting `resourceSource.required`.
 - [ ] New or updated **article** → `content/writing/<slug>.md` published if it should appear in manifest.
 - [ ] New or updated **research paper** → `content/agent-research/<slug>.md` published if it should appear in manifest.
 - [ ] **Nav / homepage sections** changed → `lib/agent.ts` → `navigation` matches `components/Nav.tsx`.
@@ -67,11 +69,25 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 ## Adding content (quick reference)
 
 - Projects: `content/projects/*.json` — see `CONTENT.md`
+- Repo-owned project media: `docs/project-resources.md`
 - Writing: `content/writing/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Research: `content/agent-research/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
 - Foundations projects (`"tier": "foundations"`) stay listed but render under a collapsed **Foundations** block on the homepage and are labeled in `/llms.txt`
 - Project cards show **`tags` only**. `techBadges` stay in the JSON for Agent Mode (`agent.json` / `llms.txt`) and are not rendered on the card.
+
+### Agent-operated project refresh
+
+When asked to add or refresh a project from Cursor, Hermes, Codex, Claude Code, or another CLI agent:
+
+1. Inspect live Git state in both `portfolio-site` and the source project. Do not overwrite dirty sibling worktrees.
+2. Resolve the card from `content/projects/*.json` and its `githubUrl`; never infer a different slug when the card already exists.
+3. Run `npm run sync:project-resources` for committed GitHub resources. Use `npm run sync:project-resources:local` only when explicitly testing unpublished sibling-repo work.
+4. Preserve descriptive source screenshot filenames. Never normalize them to `image1.png`, `image2.png`, or similar names.
+5. Never delete source screenshots. Generated destination screenshot mirrors may be replaced only after the source family exists.
+6. Move a portfolio-local video to macOS Trash only after its specific YouTube URL resolves and is wired to the correct card field. One URL cannot prove that two differently named recordings were uploaded.
+7. Run `npm test`, `npm run build`, route smoke checks, and inspect the scoped diff before committing or pushing.
+8. Remember that a project-repo push does not automatically trigger a new Vercel build for `portfolio-site`.
 
 ## Interact rules (project cards)
 

@@ -4,6 +4,13 @@ export type ProjectPreviewType = 'agent-json';
 /** Visual weight on the homepage. Foundations sit under primary flagships. */
 export type ProjectTier = 'primary' | 'foundations';
 
+export interface ProjectResourceSource {
+  /** Git ref fetched during predev/prebuild. Defaults to main. */
+  ref?: string;
+  /** Fail the build when the source repo does not publish canonical resources. */
+  required?: boolean;
+}
+
 export interface Project {
   title: string;
   slug: string;
@@ -16,6 +23,7 @@ export interface Project {
   summary: string;
   techBadges: string[];
   githubUrl?: string | null;
+  resourceSource?: ProjectResourceSource;
   demoUrl?: string | null;
   /** Optional standalone Vercel (or other) URL for Interact → Open in New Tab. */
   externalDemoUrl?: string | null;

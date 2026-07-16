@@ -5,6 +5,19 @@ import { isWithinRecentDays, projectPath } from './utils';
 import type { Article, Project, RecentItem, ResearchPaper, TimelineItem } from './types';
 
 const CONTENT = path.join(process.cwd(), 'content');
+const GENERATED_PROJECT_RESOURCES = path.join(
+  CONTENT,
+  'generated',
+  'project-resources.json'
+);
+
+function getGeneratedProjectResources(): Record<string, Partial<Project>> {
+  if (!fs.existsSync(GENERATED_PROJECT_RESOURCES)) return {};
+  return JSON.parse(fs.readFileSync(GENERATED_PROJECT_RESOURCES, 'utf8')) as Record<
+    string,
+    Partial<Project>
+  >;
+}
 
 function loadMarkdownDocuments<T extends { date: string; slug: string }>(
   folder: string
@@ -27,9 +40,11 @@ function loadMarkdownDocuments<T extends { date: string; slug: string }>(
 export function getProjects(): Project[] {
   const dir = path.join(CONTENT, 'projects');
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
-  const projects = files.map((f) =>
-    JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as Project
-  );
+  const generatedResources = getGeneratedProjectResources();
+  const projects = files.map((f) => {
+    const project = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as Project;
+    return { ...project, ...(generatedResources[project.slug] ?? {}) };
+  });
   return projects.sort((a, b) => {
     if (a.featured && !b.featured) return -1;
     if (!a.featured && b.featured) return 1;

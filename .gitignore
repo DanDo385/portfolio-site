@@ -8,7 +8,12 @@ out/
 !.env.example
 .playwright-mcp/
 tsconfig.tsbuildinfo
+content/generated/project-resources.json
+public/project-assets/.source-manifest.json
+public/project-assets/**/demo/
+public/project-assets/**/gif/
+public/project-assets/**/screenshots/
+public/project-assets/**/media.json
+public/project-assets/**/llms.txt
 public/project-assets/**/long-recording/
-public/project-assets/eth-tx-lifecycle/short-recording/
-
-public/project-assets/eth-l2/short-recording/
+public/project-assets/**/short-recording/

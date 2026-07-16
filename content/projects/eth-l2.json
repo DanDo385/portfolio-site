@@ -21,23 +21,18 @@
     "Cloudflare Tunnel"
   ],
   "githubUrl": "https://github.com/DanDo385/eth-l2",
+  "resourceSource": {
+    "ref": "main",
+    "required": true
+  },
   "demoUrl": "https://eth-l2.vercel.app",
   "loomUrl": null,
-  "screenshots": [
-    "/project-assets/eth-l2/screenshots/image1.png",
-    "/project-assets/eth-l2/screenshots/image2.png",
-    "/project-assets/eth-l2/screenshots/image3.png",
-    "/project-assets/eth-l2/screenshots/image4.png",
-    "/project-assets/eth-l2/screenshots/image5.png",
-    "/project-assets/eth-l2/screenshots/image6.png",
-    "/project-assets/eth-l2/screenshots/image7.png",
-    "/project-assets/eth-l2/screenshots/image8.png"
-  ],
+  "screenshots": [],
   "relatedWriting": null,
-  "youtubeUrl": "https://www.youtube.com/watch?v=IxHch1u15q0",
   "zoomUrl": null,
-  "previewGif": "/project-assets/eth-l2/gif/preview.gif",
   "previewVideo": null,
-  "shortClipUrl": "https://www.youtube.com/watch?v=IxHch1u15q0",
-  "recordingUrl": "https://www.youtube.com/watch?v=SEpEn8fTjmk"
+  "previewGif": null,
+  "youtubeUrl": null,
+  "shortClipUrl": null,
+  "recordingUrl": null
 }

@@ -2,12 +2,17 @@
   "name": "portfolio-site",
   "private": true,
   "scripts": {
+    "predev": "npm run sync:project-resources",
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",
+    "prebuild": "npm run sync:project-resources",
     "build": "next build",
     "start": "next start",
     "clean": "rm -rf .next",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --test tests/*.test.mjs",
+    "sync:project-resources": "node scripts/sync-project-resources.mjs",
+    "sync:project-resources:local": "node scripts/sync-project-resources.mjs --local-root .."
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

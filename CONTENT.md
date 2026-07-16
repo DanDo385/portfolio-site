@@ -21,6 +21,10 @@ Create `content/projects/your-slug.json`:
   "summary": "One or two lines describing the project.",
   "techBadges": ["Go", "TypeScript"],
   "githubUrl": "https://github.com/DanDo385/your-repo",
+  "resourceSource": {
+    "ref": "main",
+    "required": false
+  },
   "demoUrl": null,
   "externalDemoUrl": null,
   "loomUrl": null,
@@ -44,6 +48,7 @@ Create `content/projects/your-slug.json`:
 | `summary` | yes | Short description (1-2 lines) |
 | `techBadges` | yes | Fuller stack list for Agent Mode (`agent.json` / `llms.txt`) only. Not shown on cards. |
 | `githubUrl` | no | GitHub repo link |
+| `resourceSource` | no | Build-time repository media source. `ref` defaults to `main`; set `required: true` only after the repo publishes a verified canonical resource kit. |
 | `demoUrl` | no | In-window Interact target: `/demos/<slug>`, `/agent`, or external Vercel URL |
 | `externalDemoUrl` | no | Optional. When set, Interact → Open in New Tab uses this URL (e.g. standalone Vercel app) while Go to Page keeps `demoUrl` |
 | `loomUrl` | no | Loom walkthrough link |
@@ -61,6 +66,14 @@ Create `content/projects/your-slug.json`:
 | `listed` | no | When `false`, hidden from homepage and agent project lists |
 
 Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.
+
+### Repo-owned project media
+
+Project screenshots, GIFs, static demos, agent briefs, and YouTube metadata belong in the project repository. `npm run dev` and `npm run build` run a pre-step that fetches those resources and generates `public/project-assets/<slug>/` plus card media overrides. Generated files are ignored by Git.
+
+Canonical source folders are `public/` or `repo-resources/` at the project root. See `docs/project-resources.md` for the accepted layout, fallback behavior, strict cutover, and verification commands.
+
+Use descriptive screenshot filenames that state the captured UI state, such as `02-op-lab-start.png` or `05-verify-persist.png`. The build preserves those names. Do not use generic `image1.png` sequences for new repo-owned resources.
 
 ## Articles (My Writing)
 
@@ -218,4 +231,6 @@ lib/
   content.ts          # Content loaders
   constants.ts        # Site constants
 public/               # Static assets (resume PDF, favicon, project-assets/*/llms.txt)
+scripts/              # Build-time project resource ingestion
+docs/project-resources.md
 ```
