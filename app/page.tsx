@@ -3,10 +3,34 @@ import { Contact } from '@/components/Contact';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { AgentResearch } from '@/components/AgentResearch';
+import { JsonLd } from '@/components/JsonLd';
 import { Projects } from '@/components/Projects';
 import { SiteNav } from '@/components/SiteNav';
 import { Writing } from '@/components/Writing';
+import { SITE } from '@/lib/constants';
 import { getListedProjects, getPublishedResearch, getPublishedWriting } from '@/lib/content';
+
+const PERSON_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Daniel Magro',
+  url: SITE.url,
+  description: SITE.description,
+  sameAs: [
+    'https://github.com/DanDo385',
+    'https://linkedin.com/in/dmagro',
+    'https://twitter.com/DanQB13',
+  ],
+};
+
+const WEBSITE_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'magro.dev',
+  url: SITE.url,
+  description: SITE.description,
+  author: { '@type': 'Person', name: 'Daniel Magro', url: SITE.url },
+};
 
 export default function HomePage() {
   const projects = getListedProjects();
@@ -17,6 +41,8 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={PERSON_JSON_LD} />
+      <JsonLd data={WEBSITE_JSON_LD} />
       <SiteNav />
       <main>
         <Hero />

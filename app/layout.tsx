@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'magro.dev',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: SITE.name,
     description: SITE.description,
   },
