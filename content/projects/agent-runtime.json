@@ -37,5 +37,38 @@
   "shortClipUrl": null,
   "recordingUrl": null,
   "screenshots": [],
-  "relatedWriting": null
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "Tool-using agent runtimes, covering platform input, session hydration, an agent loop, tool dispatch, and persistence, are usually understood by reading two unrelated codebases side by side. This project maps the same five-part runtime model across two real, differently-shaped open-source agent runtimes.",
+    "ownership": [
+      "Designed the five-part runtime model (platform input, session hydration, agent loop, tool dispatch, persistence) used as the comparison frame.",
+      "Chose two reference runtimes with genuinely different shapes to compare: Hermes Agent (Python, a monolithic gateway/session/loop) and OpenClaw (TypeScript, factored into packages).",
+      "Implemented a single self-contained static HTML/CSS/JavaScript page that maps each of the five runtime parts to real source files and public APIs in both reference projects, with compact Python-shaped Hermes excerpts and TypeScript-shaped OpenClaw excerpts that preserve filenames, class and function names, and data flow while omitting product-specific branches and provider details.",
+      "Implemented agent-runtime-map.json and an llms.txt agent-readable export, plus sticky sidebar navigation and dark/light theme persistence."
+    ],
+    "architecture": [
+      "Entirely static: one index.html (HTML, CSS, and JavaScript) with no backend, no build step, and no package manager required to view it.",
+      "Content is a curated comparison table and per-section code excerpts, not a live connection to either reference repository.",
+      "agent-runtime-map.json is a machine-readable version of the same five-part mapping, exposed for Agent Mode.",
+      "On magro.dev: embedded at /demos/agent-runtime (in-site, fullscreen) via an iframe of the synced static bundle, with an externalDemoUrl pointing at the standalone Vercel copy."
+    ],
+    "decisions": [
+      "Chose two runtimes with different languages and structures (a Python monolith versus TypeScript packages) specifically so the comparison frame would have to generalize, rather than picking two similar codebases that would make the five-part model look trivial.",
+      "Chose compact, hand-curated excerpts over pulling live file contents from the two repositories, trading live accuracy for a controlled, readable walkthrough; that tradeoff is documented explicitly as a known limitation rather than hidden."
+    ],
+    "verification": [
+      "There is no backend or runtime logic to unit test; correctness here means the code excerpts and file/function names accurately reflect the real hermes-agent and openclaw source at the time of writing.",
+      "The primary verification is a source-anchor table in the README that lists the exact files each excerpt is drawn from, for example run_agent.py, agent/conversation_loop.py, and tools/registry.py for Hermes, and packages/agent-core/src/agent-loop.ts, harness/agent-harness.ts, harness/session/session.ts, and harness/session/jsonl-storage.ts for OpenClaw."
+    ],
+    "limitations": [
+      "The code excerpts are compact reconstructions, not verbatim file contents pulled live from the two repositories, and nothing executes; there is no live agent loop running inside this project.",
+      "No live connection to the reference repositories; if Hermes Agent or OpenClaw change their internals, this page can drift out of date until manually refreshed.",
+      "Excerpts intentionally omit product-specific branches and provider details, so they are illustrative rather than complete implementations.",
+      "No interactivity beyond navigation and theme toggling; it is a walkthrough, not a live sandbox."
+    ],
+    "productionDifferences": [
+      "A production agent-runtime comparison tool would pull live source from both repositories, for example via CI-synced snapshots, rather than manually curated excerpts.",
+      "It would also need a process to detect drift automatically when either upstream project changes, rather than relying on a manual refresh."
+    ]
+  }
 }

@@ -16,6 +16,17 @@ export interface ProjectResourceSource {
   families?: ProjectResourceFamily[];
 }
 
+export interface ProjectCaseStudy {
+  problem: string;
+  ownership: string[];
+  architecture: string[];
+  decisions: string[];
+  verification: string[];
+  limitations: string[];
+  productionDifferences: string[];
+  lessons?: string[];
+}
+
 export interface Project {
   title: string;
   slug: string;
@@ -43,6 +54,7 @@ export interface Project {
   previewType?: ProjectPreviewType | null;
   relatedWriting?: string | null;
   listed?: boolean;
+  caseStudy?: ProjectCaseStudy;
 }
 
 export interface Article {

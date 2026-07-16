@@ -40,5 +40,41 @@
   "shortClipUrl": null,
   "recordingUrl": null,
   "screenshots": [],
-  "relatedWriting": null
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "What actually happens between a wallet clicking send and a transaction becoming irreversible is spread across mempool mechanics, builder and searcher auctions, MEV-Boost relays, and Casper-FFG finality, each with its own vocabulary. This project makes that whole pipeline legible in one guided visualization using live chain data.",
+    "ownership": [
+      "Designed the six-step lifecycle model: wallet send, mempool, builders/searchers, relays, validators/proposers, and finality.",
+      "Designed the aggregation strategy across three upstream data sources: execution JSON-RPC, consensus REST (Beacon API), and MEV relay data.",
+      "Designed the split between a beginner-facing lifecycle guide and an advanced MEV Lab.",
+      "Implemented a Go backend that aggregates execution JSON-RPC, consensus Beacon API, and MEV relay data (for example Flashbots) with per-source timeouts, fallback behavior, and a generic TTL cache.",
+      "Implemented MEV detection logic that scans blocks for sandwiches, arbitrage, liquidations, and JIT liquidity using parallel receipt fetching, plus transaction decoding that classifies swaps, transfers, approvals, mints, claims, and contract calls.",
+      "Implemented the Next.js frontend: a synced step explainer, gas pricing explainers, and a transaction-tracking view that follows a given hash (or 'latest') through the pipeline."
+    ],
+    "architecture": [
+      "Go backend aggregates three upstream classes: execution JSON-RPC (Alchemy/Infura-style providers), consensus REST (Beacon API), and MEV relay data (e.g. Flashbots). No local node is required; the backend uses public APIs with bounded worker pools for parallel fetches.",
+      "A shared generic TTL cache sits across data sources, with health, liveness, and readiness endpoints for each upstream class.",
+      "The Next.js frontend renders the lifecycle guide (/) with a synced diagram and explainer, and an advanced MEV Lab (/mev-lab) for MEV detection and proposer-builder separation framing.",
+      "Hosted split: Vercel Next.js frontend, Cloudflare Tunnel, Go API on the Ubuntu VPS (loopback bind), kept durable via systemd."
+    ],
+    "decisions": [
+      "Chose to aggregate live public APIs rather than run a local node, so the visualization reflects real mainnet activity without requiring the visitor, or the hosted backend, to sync a full node.",
+      "Added per-source timeouts, fallback behavior, and caching specifically because the app depends on third-party API availability; a slow or unavailable upstream should degrade gracefully rather than break the page.",
+      "Kept MEV detection heuristic (pattern detection over receipts and traces) rather than claiming a cryptographically certain classification, since sandwich, arbitrage, and liquidation detection from block data is inherently probabilistic."
+    ],
+    "verification": [
+      "Go unit tests across backend packages: config/config_test.go, internal/clients/eth/eth_test.go, internal/server/server_test.go, internal/domain/snapshot_test.go, internal/domain/track_test.go, internal/pkg/cache_test.go, internal/pkg/health_test.go.",
+      "Health and readiness endpoints give an operational check that each upstream class (execution, consensus, relay) is reachable."
+    ],
+    "limitations": [
+      "Nothing about the chain data itself is simulated; the app reads real Ethereum mainnet data from public providers rather than a local chain. The 'simulation' boundary here is backend resilience (timeouts, fallback, caching), not synthetic chain state.",
+      "Depends on third-party public API availability (execution JSON-RPC, Beacon API, MEV relay endpoints); if those upstreams degrade, the app's live-data views degrade with them, mitigated by caching and fallback but not eliminated.",
+      "MEV detection is heuristic, not a cryptographically certain classification, and can mislabel or miss edge cases.",
+      "The app visualizes existing transactions and network state; it does not submit transactions or act as a wallet or relay."
+    ],
+    "productionDifferences": [
+      "A production-grade explorer or MEV dashboard would run its own indexed data pipeline rather than just live API aggregation, and would maintain historical data at scale.",
+      "A production deployment would carry SLAs and on-call operations for its data sources; this project demonstrates the aggregation and presentation layer with production-style resilience patterns (timeouts, fallback, caching, health checks), not production-scale historical indexing."
+    ]
+  }
 }

@@ -6,6 +6,7 @@ import { HermesXrayInteractive } from '@/components/HermesXrayInteractive';
 import { EthL2Interactive } from '@/components/EthL2Interactive';
 import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
 import { ProjectCard } from '@/components/ProjectCard';
+import { ProjectCaseStudy } from '@/components/ProjectCaseStudy';
 import { ProjectVideoDemos } from '@/components/ProjectVideoDemos';
 import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
@@ -48,6 +49,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <Reveal>
             <ProjectCard project={project} writingBySlug={writingBySlug} reveal={false} />
           </Reveal>
+          {project.caseStudy && (
+            <Reveal>
+              <ProjectCaseStudy project={project} />
+            </Reveal>
+          )}
           {project.slug === 'eth-l2' && (
             <Reveal>
               <EthL2Interactive />

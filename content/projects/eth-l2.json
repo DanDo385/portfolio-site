@@ -40,5 +40,45 @@
   "previewGif": null,
   "youtubeUrl": null,
   "shortClipUrl": null,
-  "recordingUrl": null
+  "recordingUrl": null,
+  "caseStudy": {
+    "problem": "Rollup fraud proofs and validity proofs are usually explained in prose or slides. This lab lets a visitor watch a lying sequencer get caught by an optimistic fraud proof, then compare that mechanism side by side with a validity-proof lane, in one interactive session.",
+    "ownership": [
+      "Designed the overall lab structure: an optimistic lab at /op and a ZK-style lab at /zk, sharing one Go backend and one Next.js frontend.",
+      "Designed the bond and challenge-window economics, and the WebSocket event vocabulary that drives the frontend visualizations.",
+      "Implemented a Go backend that spawns three local Anvil chains (L1, an optimistic L2, and a ZK-style L2) and a seeded-PRNG sequencer that occasionally posts a bad state root.",
+      "Implemented Solidity contracts for bond posting and Merkle-bisection fraud proofs with on-chain one-step re-execution (FraudProofGame, SwapStepVM), plus a separate ZkRollupMock / ZkValidityVerifier path that re-executes a batch witness on L1.",
+      "Implemented the hosted split: a Vercel frontend reached over a Cloudflare Tunnel by a Go API running on an Ubuntu VPS."
+    ],
+    "architecture": [
+      "A Go orchestration process spawns and manages three Anvil chains (L1, an optimistic L2, and a ZK-style L2); Anvil stays loopback-only and idle-stops after a session ends.",
+      "Solidity contracts: OptimisticPortalMock (batch posting, bonds, challenge window, finalization), FraudProofGame (Merkle bisection over swap-VM traces with on-chain one-step re-execution), SwapStepVM (the step machine being re-executed), and ZkValidityVerifier / ZkRollupMock (the validity-lane submission and witness re-execution).",
+      "A Go API and WebSocket service (/stream) emits typed events: block_mined, batch_posted, batch_flagged, batch_verified, batch_challenged, dispute_stage, dispute_resolved, bond_settled, zk_inspect_ready.",
+      "The Next.js frontend renders a lab chooser, then /op (batch canvas, Block Inspector, Optimistic Tracker) and /zk (proof-batch canvas, concept tour, public-input panel, validity/DA caveats).",
+      "Hosted split: Vercel Next.js frontend, same-origin API rewrites, Cloudflare Tunnel, Go API on an Ubuntu VPS (managed by systemd), loopback-only Anvil chains spawned on demand."
+    ],
+    "decisions": [
+      "Used a seeded PRNG for the fraud-injection rate (about 1 in 8 optimistic batches) and invalid-claim rate (about 1 in 16 ZK batches) so a reviewer can reliably see both the honest and dishonest path in a short live session, instead of waiting on random chance.",
+      "Required a human to click 'Verify locally' and choose to post a bond rather than auto-challenging, which mirrors real challenger economics but means the fraud path does not resolve automatically without user action.",
+      "Used L1 witness re-execution for the /zk lane instead of building or wiring in a real SNARK/STARK circuit, to demonstrate the validity-vs-optimistic mechanics tradeoff at the scope of a portfolio project rather than a research-grade cryptography implementation."
+    ],
+    "verification": [
+      "Foundry/Solidity tests per contract family: OptimisticPortal.t.sol, FraudProofGame.t.sol, ZkRollup.t.sol, ZkValidityVerifier.t.sol, DisputeGame.t.sol, SwapEngines.t.sol, TradeEngine.t.sol.",
+      "Go unit tests in the backend: internal/seed/prng_test.go, internal/sourcemap/sourcemap_test.go, internal/trace/diff_test.go, internal/watcher/honest_test.go, internal/config/ports_test.go, internal/server/security_test.go, internal/server/idle_stop_test.go.",
+      "Deterministic scenario tuning (the fraud and invalid-claim injection rates above) so both the honest and dishonest paths are observable within one short demo session."
+    ],
+    "limitations": [
+      "All three chains are local Anvil instances, not public testnets or mainnet.",
+      "The /zk lab's validity check is L1 witness re-execution inside ZkValidityVerifier, a deterministic re-run of the batch witness. It is a simplified, mock validity-verification path used as a stand-in for a succinct proof, not a real zero-knowledge proving system: there is no SNARK/STARK circuit, no succinct proof generation, and no succinct verifier.",
+      "Bond sizes (0.1 ETH), the 120-second challenge window, and the batch window (5 L2 blocks) are demo-scale values chosen for a short live session, not production economic-security parameters.",
+      "The app never auto-challenges a flagged batch; a human has to click through the verify and bond flow for the dispute path to resolve."
+    ],
+    "productionDifferences": [
+      "A production optimistic rollup runs a roughly 7-day challenge window (versus 120 seconds here), posts to a public L1, and has independently operated challenger infrastructure.",
+      "A production ZK rollup generates and verifies a real succinct zero-knowledge proof, for example a SNARK or STARK circuit compiled from the state-transition function, rather than re-executing a witness directly on L1."
+    ],
+    "lessons": [
+      "Comparing both rollup designs side by side in one app made the tradeoff between the optimistic challenge window and a validity proof's upfront verification cost far more concrete than describing either mechanism in isolation."
+    ]
+  }
 }
