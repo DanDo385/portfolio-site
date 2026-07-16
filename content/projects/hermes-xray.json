@@ -21,12 +21,12 @@
   "demoUrl": "/demos/hermes-xray",
   "externalDemoUrl": "https://hermes-xray.vercel.app",
   "loomUrl": null,
-  "youtubeUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=mmAUx7zuQaM",
   "zoomUrl": null,
-  "previewGif": null,
+  "previewGif": "/project-assets/hermes-xray/gif/preview.gif",
   "previewVideo": null,
-  "shortClipUrl": null,
-  "recordingUrl": null,
+  "shortClipUrl": "https://www.youtube.com/watch?v=mmAUx7zuQaM",
+  "recordingUrl": "https://www.youtube.com/watch?v=uBvXQIz2MS4",
   "screenshots": [],
   "relatedWriting": null
 }
