@@ -181,12 +181,15 @@ Open in New Tab agent-runtime    → https://agent-runtime-rho.vercel.app
 Open in New Tab hermes-xray      → https://hermes-xray.vercel.app
 Interact eth-l2                  → https://eth-l2.vercel.app
 Interact eth-tx-lifecycle        → https://eth-tx-lifecycle.vercel.app
-/api/demos/eth-l2/health         → https://api-staging-eth-l2.magro.dev  (MBP :8080)
-/api/demos/eth-tx/health         → https://api-staging-eth-tx.magro.dev  (MBP :8081)
+/api/demos/eth-l2/health         → https://api-staging-eth-l2.magro.dev  (Ubuntu VPS :8080)
+/api/demos/eth-tx/health         → https://api-staging-eth-tx.magro.dev  (Ubuntu VPS :8081)
 ```
 
-Each external app’s `config/ports.json` owns local binds (eth-l2 **8080**, eth-tx **8081**).
-eth-tx staging API is kept up with launchd (`com.danmagro.eth-tx-lifecycle.backend`).
+Each external app's `config/ports.json` owns local binds (eth-l2 **8080**, eth-tx **8081**)
+on the Ubuntu VPS, which is the hosted production backend source of truth. A MacBook can
+run the same stack for local or offline development, but it does not serve the public
+`api-staging-*.magro.dev` hostnames. eth-tx staging API is kept up with systemd
+(`eth-tx-lifecycle-backend.service`).
 
 Configure public staging origins with:
 
@@ -195,7 +198,7 @@ NEXT_PUBLIC_API_URL=https://api-staging-eth-l2.magro.dev
 NEXT_PUBLIC_ETH_TX_API_URL=https://api-staging-eth-tx.magro.dev
 ```
 
-Register MBP health probes in `lib/demos.ts` when the write-up shows backend status.
+Register Ubuntu VPS health probes in `lib/demos.ts` when the write-up shows backend status.
 In-site demos: add `/demos/<slug>/page.tsx`, set `demoUrl` to `/demos/<slug>`, add slug to
 `FULLSCREEN_DEMO_SLUGS`. External apps: set `demoUrl` to the Vercel production URL.
 Interact only appears for fullscreen demos or an explicit `demoUrl` (never a bare project

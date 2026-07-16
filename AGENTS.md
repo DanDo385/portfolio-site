@@ -126,16 +126,19 @@ Decide Interact from the project type. Never invent Interact by falling back to
 
 Canonical external apps today:
 
-- eth-l2 → `https://eth-l2.vercel.app` (backend: `https://api-staging-eth-l2.magro.dev` → MBP `127.0.0.1:8080`)
-- eth-tx-lifecycle → `https://eth-tx-lifecycle.vercel.app` (backend: `https://api-staging-eth-tx.magro.dev` → MBP `127.0.0.1:8081`)
+- eth-l2 → `https://eth-l2.vercel.app` (backend: `https://api-staging-eth-l2.magro.dev` → Ubuntu VPS, Go API loopback `127.0.0.1:8080`)
+- eth-tx-lifecycle → `https://eth-tx-lifecycle.vercel.app` (backend: `https://api-staging-eth-tx.magro.dev` → Ubuntu VPS, Go API loopback `127.0.0.1:8081`)
 
-Each app owns `config/ports.json` as the source of truth (frontend + backend bind). eth-tx uses **8081** so it can coexist with eth-l2 on **8080**. Cloudflare Tunnel ingress must match those binds. eth-tx keeps the Go API durable via launchd (`com.danmagro.eth-tx-lifecycle.backend`); do not put loopback ports in Agent Mode JSON or public UI copy — only the `api-staging-*.magro.dev` hostnames.
+Each app owns `config/ports.json` as the source of truth (frontend + backend bind). eth-tx uses **8081** so it can coexist with eth-l2 on **8080**. Cloudflare Tunnel ingress on the VPS must match those binds. eth-tx keeps the Go API durable via systemd (`eth-tx-lifecycle-backend.service`); do not put loopback ports in Agent Mode JSON or public UI copy — only the `api-staging-*.magro.dev` hostnames. A MacBook may still run these services locally for offline development or demonstrations, but it is not the hosted production backend.
 
-## Interactive demos and MBP backends
+## Interactive demos and the Ubuntu VPS backend
 
 Portfolio project pages (`/projects/<slug>`) are the write-up surface: card, media, and
 embedded video demos. Experiences that render entirely on magro.dev use `/demos/<slug>`.
-Full-stack apps with their own Vercel frontend link out; their Go backends stay on the MBP.
+Full-stack apps with their own Vercel frontend link out; their Go backends run on the
+Ubuntu VPS, reached through a Cloudflare Tunnel. This VPS is the hosted production
+backend source of truth; a MacBook is a local/offline development option only, not a
+production host.
 
 ### Preferred surfaces
 
@@ -145,8 +148,8 @@ Full-stack apps with their own Vercel frontend link out; their Go backends stay 
 | Project llms.txt | `/project-assets/<slug>/llms.txt` (or `.../demo/llms.txt`) | Same-domain agent brief for the project |
 | In-site fullscreen demo | `/demos/<slug>` | Minimal chrome + full-viewport interactive **on magro.dev** |
 | External hosted app | `https://<app>.vercel.app` | Separate Vercel UI (eth-l2, eth-tx-lifecycle) |
-| Same-origin health probe | `/api/demos/<slug>/health` | Optional status check for MBP-backed apps |
-| Public tunnel hostname | `https://api-staging-<name>.magro.dev` | Cloudflare Tunnel to the MBP service |
+| Same-origin health probe | `/api/demos/<slug>/health` | Optional status check for VPS-backed apps |
+| Public tunnel hostname | `https://api-staging-<name>.magro.dev` | Cloudflare Tunnel to the Ubuntu VPS service |
 
 ### Architecture (in-site demos)
 
@@ -160,7 +163,7 @@ magro.dev/demos/<slug>          ← Next.js UI on portfolio Vercel
 (optional) static assets or same-origin APIs on magro.dev
 ```
 
-### Architecture (external Vercel + MBP backend)
+### Architecture (external Vercel + Ubuntu VPS backend)
 
 ```text
 Visitor browser
@@ -173,7 +176,13 @@ Visitor browser
       api-staging-<name>.magro.dev  ← Cloudflare Tunnel
          │
          ▼
-      Go / Anvil / service on MBP
+      Ubuntu VPS
+         │
+         ▼
+      Go API and WebSocket service
+         │
+         ▼
+      loopback-only Anvil chains
 ```
 
 | Layer | Where it runs | Job |
@@ -182,7 +191,12 @@ Visitor browser
 | In-site demo UI | magro.dev `/demos/<slug>` | Fullscreen interactive that belongs on the portfolio |
 | External app UI | Separate Vercel project | Live eth-l2 / eth-tx (and similar) frontends |
 | Health probe | magro.dev `/api/demos/<slug>/health` | Optional tunnel status on the write-up |
-| Backend | MBP via Cloudflare Tunnel | Long-running compute, chain, RPC, simulation |
+| Backend | Ubuntu VPS via Cloudflare Tunnel | Long-running compute, chain, RPC, simulation (Go API/WebSocket service in front of loopback-only Anvil chains) |
+
+The MacBook may run the same stack locally for offline development or demonstrations,
+but the Ubuntu VPS is the hosted production backend source of truth. Anvil chains bind
+to loopback only on the VPS and are never exposed directly; only the Go API/WebSocket
+service is reachable, and only through the Cloudflare Tunnel's public hostname.
 
 ### Demo types
 
@@ -191,10 +205,11 @@ Visitor browser
    - Ship UI at `/demos/<slug>`; register `FULLSCREEN_DEMO_SLUGS`; `demoUrl` = `/demos/<slug>`
    - No tunnel required
 
-2. **External Vercel UI + MBP backend**
+2. **External Vercel UI + Ubuntu VPS backend**
    - Examples: eth-l2 (`eth-l2.vercel.app`), eth-tx-lifecycle (`eth-tx-lifecycle.vercel.app`)
    - UI on its own Vercel project; `demoUrl` = that production URL
-   - Backend on MBP (`localhost:PORT`) exposed as `https://api-staging-<name>.magro.dev`
+   - Backend on the Ubuntu VPS (`127.0.0.1:PORT`, Go API/WebSocket service in front of
+     loopback-only Anvil chains) exposed as `https://api-staging-<name>.magro.dev`
    - Portfolio Interact links out; do not use magro.dev `/demos/<slug>` as the primary Interact target
    - Ship `public/project-assets/<slug>/llms.txt` on magro.dev for agent search/context
    - Optional: register health in `lib/demos.ts` and show status on the project page
@@ -206,20 +221,20 @@ Visitor browser
 3. Set project `demoUrl` to `/demos/<slug>`.
 4. Confirm Agent Mode lists the demo URL when the project is listed.
 
-### Adding an external Vercel + MBP demo
+### Adding an external Vercel + Ubuntu VPS demo
 
 1. Deploy the app on its own Vercel project; document the public URL.
 2. Set project `demoUrl` to that `https://…vercel.app` URL (Interact links out).
 3. Register the tunnel in `lib/demos.ts` if the write-up shows backend health.
-4. Document the public tunnel hostname in `.env.example` (never LAN IPs).
-5. Degrade gracefully when the MBP/tunnel is offline: portfolio page still useful; live app fails closed.
+4. Document the public tunnel hostname in `.env.example` (never LAN IPs or VPS private addresses).
+5. Degrade gracefully when the VPS/tunnel is offline: portfolio page still useful; live app fails closed.
 
 ### Constraints
 
-- Do not put MBP LAN IPs, private hostnames, or secrets in frontend code or Agent Mode surfaces.
+- Do not put VPS LAN/private IPs, private hostnames, or secrets in frontend code or Agent Mode surfaces.
 - Only document public tunnel hostnames already intended for demos.
-- Vercel serverless is not the long-running backend. Anvil, websockets, and heavy Go services stay on the MBP.
-- Assume the MBP can be offline; demos must fail closed without breaking the portfolio page.
+- Vercel serverless is not the long-running backend. Anvil, WebSockets, and heavy Go services stay on the Ubuntu VPS, with Anvil bound to loopback only.
+- Assume the VPS or tunnel can be offline; demos must fail closed without breaking the portfolio page.
 - One tunnel hostname per backend service keeps ops simple.
 - When demo entry URLs change, update `demoUrl`, Interact wiring, and `agentMode.preferredEntryPoints` if the demo is a high-value agent entry.
 - Never add Interact to CLI-only projects.
@@ -241,7 +256,7 @@ app/agent/page.tsx        # Human Agent Mode page
 app/agent.json/route.ts   # Serves getAgentManifest()
 app/llms.txt/route.ts     # Serves getLlmsTxt()
 app/demos/                # In-site fullscreen demos (e.g. agent-runtime)
-app/api/demos/            # Optional health/proxy routes to MBP tunnels
+app/api/demos/            # Optional health/proxy routes to Ubuntu VPS tunnels
 lib/utils.ts              # FULLSCREEN_DEMO_SLUGS + Interact href rules
 components/AgentJsonPreview.tsx
 content/projects/portfolio-agent-mode.json
