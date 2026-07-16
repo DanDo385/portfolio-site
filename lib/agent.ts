@@ -127,6 +127,7 @@ export function getAgentManifest() {
         `${SITE.url}/agent.json`,
         `${SITE.url}/llms.txt`,
         `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
+        `${SITE.url}/agent-research/the-2050-economy/`,
         `${SITE.url}/agent-research/octopus-agentic-systems/`,
       ],
       principles: PRINCIPLES,
