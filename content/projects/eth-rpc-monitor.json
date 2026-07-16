@@ -10,7 +10,7 @@
     "JSON-RPC",
     "CLI"
   ],
-  "summary": "Production-grade Ethereum RPC monitoring CLI with block inspection, mempool snapshotting, and real-time transaction tracing.",
+  "summary": "Ethereum JSON-RPC monitoring CLI with block inspection, mempool snapshots, and real-time transaction tracing.",
   "techBadges": [
     "Go",
     "Cobra",

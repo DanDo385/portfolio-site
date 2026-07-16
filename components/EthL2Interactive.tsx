@@ -23,7 +23,8 @@ export function EthL2Interactive() {
             <a href={`${DEMO_SRC}/zk`} target="_blank" rel="noopener noreferrer">
               /zk
             </a>{' '}
-            for validity proofs. The live UI runs on its own Vercel app at{' '}
+            for a simplified, mock validity-verification path standing in for a succinct ZK
+            proof. The live UI runs on its own Vercel app at{' '}
             <a href={DEMO_SRC} target="_blank" rel="noopener noreferrer">
               eth-l2.vercel.app
             </a>
@@ -68,7 +69,7 @@ export function EthL2Interactive() {
           Optimistic lab (/op) <span>&rarr;</span>
         </a>
         <a href={`${DEMO_SRC}/zk`} target="_blank" rel="noopener noreferrer" className="amd-link">
-          ZK lab (/zk) <span>&rarr;</span>
+          Mock ZK validity lab (/zk) <span>&rarr;</span>
         </a>
         <a href={LLMS_URL} target="_blank" rel="noopener noreferrer" className="amd-link">
           Project llms.txt <span>&rarr;</span>

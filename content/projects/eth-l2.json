@@ -12,7 +12,7 @@
     "Go",
     "Interactive"
   ],
-  "summary": "One app, one backend, two focused labs: optimistic fraud proofs (/op) and ZK validity proofs (/zk). UI on Vercel at eth-l2.vercel.app; live simulation via a staging Go backend through Cloudflare Tunnel.",
+  "summary": "Interactive rollup mechanics lab comparing optimistic fraud proofs (/op) with a simplified, mock validity-verification path (/zk) that stands in for a succinct ZK proof. UI on Vercel at eth-l2.vercel.app; live simulation via a staging Go backend through Cloudflare Tunnel.",
   "techBadges": [
     "Solidity",
     "Go",
