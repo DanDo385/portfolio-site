@@ -10,16 +10,16 @@
     "Solidity",
     "Go",
     "Simulation",
-    "CLI"
+    "Interactive"
   ],
-  "summary": "AMM and EVM mechanics lab: impermanent loss under volatility regimes, fee accrual, concentrated liquidity, and fixed-point math modeled the way a rates trader would run scenarios.",
+  "summary": "AMM and EVM mechanics lab: impermanent loss under volatility regimes, fee accrual, concentrated liquidity, and fixed-point math modeled the way a rates trader would run scenarios. UI on Vercel at eth-amm-sim.vercel.app; live simulation via a staging Go backend through Cloudflare Tunnel.",
   "techBadges": [
     "Go",
     "TypeScript",
     "Solidity",
     "Fixed-Point Math",
     "Monte Carlo",
-    "CLI"
+    "Vite"
   ],
   "githubUrl": "https://github.com/DanDo385/eth-amm-sim",
   "resourceSource": {
@@ -31,7 +31,7 @@
       "media"
     ]
   },
-  "demoUrl": null,
+  "demoUrl": "https://eth-amm-sim.vercel.app",
   "loomUrl": null,
   "youtubeUrl": null,
   "zoomUrl": null,

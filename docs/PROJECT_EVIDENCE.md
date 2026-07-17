@@ -440,10 +440,9 @@ Architecture:
     Vercel SPA (`eth-amm-sim.vercel.app`) -> REST/WebSocket via
     `api-staging-eth-amm-sim.magro.dev` -> Ubuntu VPS (Go backend on a loopback port,
     Anvil on a loopback port) running `AppleToken`/`AppleAMM`.
-  - Note: this hosted Vercel/Ubuntu deployment exists in the project repository's own
-    architecture docs. The current `portfolio-site` project card does not wire up an
-    Interact target for it; see "Remaining human review" in the phase report before adding
-    one.
+  - Hosted SPA is wired on the portfolio card as Interact → Open in New Tab to
+    `https://eth-amm-sim.vercel.app`. YouTube short/full embeds come from source
+    `repo-resources/media.json` via build-time resource sync.
 
 Verification and testing: Foundry/Solidity tests exist per contract
   (`AppleAMM.t.sol`, `AppleToken.t.sol`), run via `forge test` against the local Anvil chain.
@@ -457,9 +456,8 @@ Known limitations:
     hosted Anvil instance.
   - Bot-driven trade flow is designed to make the dashboard demoable, not to model real
     market participant behavior or adversarial MEV against the pool.
-  - The current portfolio card treats this as a supporting/foundations-tier project without
-    a wired Interact target, even though the source repository already has a working hosted
-    deployment; that is a portfolio-site gap, not a project limitation.
+  - Portfolio card wires Interact → Open in New Tab to the hosted Vercel SPA and
+    embeds short/full YouTube walkthroughs from the source media kit.
 
 Production analogy: Constant-product AMMs such as Uniswap v2-style pools, and the
   operational tooling (bots, dashboards) teams use to monitor and stress-test them.
@@ -469,9 +467,10 @@ Production differences: A production AMM would face real, adversarial order flow
   operate on a public chain with real liquidity at risk, rather than a controlled Anvil
   environment with synthetic bot flow.
 
-Demo: No wired Interact target on magro.dev today. Technical reviewers can inspect the
-  Solidity contracts and Go backend directly on GitHub, or run `make up` locally per the
-  repository README to see the dashboard against a local Anvil chain.
+Demo: Interact → Open in New Tab → `https://eth-amm-sim.vercel.app`. Project page embeds
+  short and full YouTube walkthroughs from source `repo-resources/media.json`. Reviewers can
+  also inspect contracts and the Go backend on GitHub, or run `make up` locally per the
+  repository README.
 
 Repository: https://github.com/DanDo385/eth-amm-sim
 
