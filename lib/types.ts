@@ -53,6 +53,8 @@ export interface Project {
   screenshots?: string[];
   previewType?: ProjectPreviewType | null;
   relatedWriting?: string | null;
+  /** Slug of a published Agent Research paper to cross-link on the project card. */
+  relatedResearch?: string | null;
   listed?: boolean;
   caseStudy?: ProjectCaseStudy;
 }

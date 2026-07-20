@@ -60,7 +60,8 @@ Create `content/projects/your-slug.json`:
 | `recordingUrl` | no | Full project demo on YouTube or long recording; embeds on the project page |
 | `screenshots` | no | Screenshot carousel when no GIF or video preview is set |
 | `previewType` | no | Set to `agent-json` for structured JSON preview; otherwise use `screenshots`. Cards always show a preview box; empty projects display "Preview pending". |
-| `relatedWriting` | no | Slug of a published article to cross-link |
+| `relatedWriting` | no | Slug of a published article to cross-link on the project card |
+| `relatedResearch` | no | Slug of a published Agent Research paper to cross-link on the project card |
 | `featured` | no | When `true`, pins above date sort |
 | `tier` | no | `primary` (default) or `foundations`. Foundations render in a collapsed homepage tier under the flagships and are labeled in Agent Mode |
 | `listed` | no | When `false`, hidden from homepage and agent project lists |

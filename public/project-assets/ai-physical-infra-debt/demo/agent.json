@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "0.1",
+  "title": "AI Infrastructure Financing: State of the Market",
+  "kind": "interactive-research-report",
+  "verifiedThrough": "2026-07-20",
+  "urls": {
+    "live": "https://ai-physical-infra-debt-analysis.vercel.app/",
+    "github": "https://github.com/DanDo385/ai-physical-infra-debt-analysis",
+    "portfolioProject": "https://magro.dev/projects/ai-physical-infra-debt/",
+    "portfolioDemo": "https://magro.dev/demos/ai-physical-infra-debt/",
+    "research": "https://magro.dev/agent-research/ai-infrastructure-financing/",
+    "essay": "https://magro.dev/writing/ai-infrastructure-buildout-bubble/",
+    "llmsTxt": "./llms.txt"
+  },
+  "sections": [
+    "summary",
+    "market",
+    "ladder",
+    "model",
+    "contracts",
+    "funding",
+    "comparison",
+    "monitor",
+    "quality",
+    "sources"
+  ],
+  "notes": [
+    "Not investment advice.",
+    "Figures carry provenance badges in the interactive UI.",
+    "Embed mode (?embed=1) hides Agent Mode and Display chrome."
+  ]
+}

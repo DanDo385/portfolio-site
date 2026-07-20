@@ -37,6 +37,7 @@ export default function HomePage() {
   const articles = getPublishedWriting();
   const research = getPublishedResearch();
   const writingBySlug = Object.fromEntries(articles.map((a) => [a.slug, a]));
+  const researchBySlug = Object.fromEntries(research.map((p) => [p.slug, p]));
   const projectsBySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
 
   return (
@@ -47,7 +48,11 @@ export default function HomePage() {
       <main>
         <Hero />
         <Bridge />
-        <Projects projects={projects} writingBySlug={writingBySlug} />
+        <Projects
+          projects={projects}
+          writingBySlug={writingBySlug}
+          researchBySlug={researchBySlug}
+        />
         <Bridge />
         <About />
         <Bridge />

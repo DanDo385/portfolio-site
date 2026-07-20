@@ -1,0 +1,34 @@
+{
+  "title": "AI Infrastructure Financing",
+  "slug": "ai-physical-infra-debt",
+  "date": "2026-07-20",
+  "status": "complete",
+  "featured": true,
+  "listed": true,
+  "tags": [
+    "AI",
+    "Credit",
+    "Infrastructure",
+    "Interactive"
+  ],
+  "summary": "Interactive research report on GPU-backed term loans, data-center securitization, and the funding channels that turn an AI capex slowdown into a credit event. Provenance-tagged figures, recovery model, and Agent Mode exports.",
+  "techBadges": [
+    "HTML",
+    "JavaScript",
+    "Credit Analysis",
+    "Agent Mode"
+  ],
+  "githubUrl": "https://github.com/DanDo385/ai-physical-infra-debt-analysis",
+  "demoUrl": "/demos/ai-physical-infra-debt",
+  "externalDemoUrl": "https://ai-physical-infra-debt-analysis.vercel.app",
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": "ai-infrastructure-buildout-bubble",
+  "relatedResearch": "ai-infrastructure-financing"
+}

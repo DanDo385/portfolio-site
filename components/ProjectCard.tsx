@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { Article, Project, ProjectCardVariant } from '@/lib/types';
+import type { Article, Project, ProjectCardVariant, ResearchPaper } from '@/lib/types';
 import {
   getProjectLinkSections,
   projectAnchorId,
@@ -14,15 +14,26 @@ import { Reveal } from './Reveal';
 interface ProjectCardProps {
   project: Project;
   writingBySlug: Record<string, Article>;
+  researchBySlug?: Record<string, ResearchPaper>;
   reveal?: boolean;
   variant?: ProjectCardVariant;
 }
 
-export function ProjectCard({ project, writingBySlug, reveal = true, variant }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  writingBySlug,
+  researchBySlug = {},
+  reveal = true,
+  variant,
+}: ProjectCardProps) {
   const resolvedVariant = variant ?? projectCardVariant(project);
   const related =
     project.relatedWriting && writingBySlug[project.relatedWriting]?.status === 'published'
       ? writingBySlug[project.relatedWriting]
+      : null;
+  const relatedResearch =
+    project.relatedResearch && researchBySlug[project.relatedResearch]?.status === 'published'
+      ? researchBySlug[project.relatedResearch]
       : null;
   const linkSections = getProjectLinkSections(project);
 
@@ -61,6 +72,14 @@ export function ProjectCard({ project, writingBySlug, reveal = true, variant }: 
             <p className="pcard-related">
               Essay:{' '}
               <Link href={`/writing/${related.slug}`}>{related.title}</Link>
+            </p>
+          )}
+          {relatedResearch && (
+            <p className="pcard-related">
+              Research:{' '}
+              <Link href={`/agent-research/${relatedResearch.slug}`}>
+                {relatedResearch.title}
+              </Link>
             </p>
           )}
         </div>

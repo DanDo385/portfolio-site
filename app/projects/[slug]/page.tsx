@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/Footer';
 import { AgentRuntimeInteractive } from '@/components/AgentRuntimeInteractive';
+import { AiPhysicalInfraDebtInteractive } from '@/components/AiPhysicalInfraDebtInteractive';
 import { HermesXrayInteractive } from '@/components/HermesXrayInteractive';
 import { EthL2Interactive } from '@/components/EthL2Interactive';
 import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
@@ -15,6 +16,7 @@ import { SITE } from '@/lib/constants';
 import {
   getProjectBySlug,
   getProjectSlugs,
+  getPublishedResearch,
   getPublishedWriting,
 } from '@/lib/content';
 import { projectPath } from '@/lib/utils';
@@ -58,7 +60,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) notFound();
 
   const articles = getPublishedWriting();
+  const research = getPublishedResearch();
   const writingBySlug = Object.fromEntries(articles.map((a) => [a.slug, a]));
+  const researchBySlug = Object.fromEntries(research.map((p) => [p.slug, p]));
 
   const softwareJsonLd = {
     '@context': 'https://schema.org',
@@ -82,11 +86,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             &larr; Projects
           </Link>
           <Reveal>
-            <ProjectCard project={project} writingBySlug={writingBySlug} reveal={false} />
+            <ProjectCard
+              project={project}
+              writingBySlug={writingBySlug}
+              researchBySlug={researchBySlug}
+              reveal={false}
+            />
           </Reveal>
           {project.caseStudy && (
             <Reveal>
               <ProjectCaseStudy project={project} />
+            </Reveal>
+          )}
+          {project.slug === 'ai-physical-infra-debt' && (
+            <Reveal>
+              <AiPhysicalInfraDebtInteractive />
             </Reveal>
           )}
           {project.slug === 'eth-l2' && (

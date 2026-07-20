@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.ico" sizes="any">
+<script>
+(function(){
+  try{
+    var embed=new URLSearchParams(location.search).get("embed")==="1"||window.self!==window.top;
+    if(embed) document.documentElement.dataset.embed="1";
+  }catch(e){}
+})();
+</script>
+<title>AI Infrastructure Financing: State of the Market</title>
+<style>
+:root{
+  --bg:#f4f1e9;
+  --paper:#fffdf8;
+  --ink:#17202c;
+  --muted:#5b6470;
+  --line:#d8d1c2;
+  --accent:#0b5367;
+  --soft:#e4eef1;
+  --good:#286447;
+  --good-bg:#e4efe8;
+  --warn:#866718;
+  --warn-bg:#f4ecd4;
+  --bad:#9b3524;
+  --bad-bg:#f4e3de;
+  --violet:#514387;
+  --violet-bg:#ebe7f4;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+  --shadow:0 14px 35px rgba(36,40,45,.07);
+}
+[data-theme="dark"]{
+  --bg:#10161c;
+  --paper:#171f27;
+  --ink:#edf2f6;
+  --muted:#a8b2bc;
+  --line:#33404b;
+  --accent:#68b7cc;
+  --soft:#1e333d;
+  --good:#8ac7a4;
+  --good-bg:#1c3328;
+  --warn:#e0c36b;
+  --warn-bg:#332d1b;
+  --bad:#e28c78;
+  --bad-bg:#3a2421;
+  --violet:#b8a9ef;
+  --violet-bg:#2d2940;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.58}
+a{color:var(--accent);text-underline-offset:2px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.shell{max-width:1280px;margin:0 auto;padding:0 22px 90px}
+.masthead{padding:46px 0 26px;border-bottom:3px double var(--ink);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+.kicker{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+h1,h2,h3,h4{font-family:var(--serif);line-height:1.18;margin:0}
+h1{font-size:clamp(2rem,4.5vw,3.4rem);max-width:18ch}
+h2{font-size:clamp(1.45rem,3vw,2.05rem)}
+h3{font-size:1.13rem}
+p{margin:.55rem 0 .9rem}
+.lede{max-width:72ch;color:var(--muted);font-size:1.04rem}
+.meta{display:flex;flex-wrap:wrap;gap:7px 18px;color:var(--muted);font-size:.82rem;margin-top:14px}
+.meta b{color:var(--ink)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:8px 12px;font-weight:700;font-size:.8rem}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:32px}
+.toc{position:sticky;top:16px;margin-top:28px;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:14px;box-shadow:var(--shadow)}
+.toc strong{font-size:.72rem;text-transform:uppercase;letter-spacing:.11em}
+.toc a{display:block;text-decoration:none;padding:6px 7px;margin-top:3px;border-radius:6px;font-size:.82rem;color:var(--muted)}
+.toc a:hover{background:var(--soft);color:var(--accent)}
+main{min-width:0}
+section{margin-top:58px;scroll-margin-top:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:15px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.small{font-size:.83rem;color:var(--muted)}
+.note{border-left:4px solid var(--accent);background:var(--soft);padding:14px 16px;border-radius:7px;margin:15px 0}
+.note.warn{border-color:var(--warn);background:var(--warn-bg)}
+.note.bad{border-color:var(--bad);background:var(--bad-bg)}
+.note.good{border-color:var(--good);background:var(--good-bg)}
+.badge{display:inline-block;border-radius:99px;padding:2px 8px;margin-right:5px;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;vertical-align:middle}
+.badge.verified{color:var(--good);background:var(--good-bg)}
+.badge.base{color:var(--accent);background:var(--soft)}
+.badge.unverified{color:var(--warn);background:var(--warn-bg)}
+.badge.analysis{color:var(--violet);background:var(--violet-bg)}
+.rev-card{border-top:4px solid var(--accent)}
+.rev-card .num{font-family:var(--mono);font-weight:800;color:var(--accent);font-size:1.1rem}
+.rev-card h3{font-family:var(--sans);font-size:.95rem;margin-top:6px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--ink);color:var(--muted);font-size:.69rem;letter-spacing:.08em;text-transform:uppercase}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td strong{color:var(--ink)}
+.metric{border:1px solid var(--line);border-radius:10px;padding:13px;background:var(--bg)}
+.metric .label{font-size:.67rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.metric .value{font-family:var(--mono);font-size:1.28rem;font-weight:800;margin-top:3px}
+.metric .sub{font-size:.72rem;color:var(--muted);margin-top:2px}
+.chart-card{padding:18px}
+.chart-title{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:13px;flex-wrap:wrap}
+.bar-row{display:grid;grid-template-columns:minmax(160px,240px) 1fr 95px;gap:10px;align-items:center;margin:10px 0}
+.bar-label{font-size:.82rem}
+.bar-track{height:17px;border:1px solid var(--line);border-radius:99px;overflow:hidden;background:var(--bg)}
+.bar-fill{height:100%;background:var(--accent);border-radius:99px;min-width:3px;transition:width .35s ease}
+.bar-fill.good{background:var(--good)}
+.bar-fill.warn{background:var(--warn)}
+.bar-fill.violet{background:var(--violet)}
+.bar-value{text-align:right;font-family:var(--mono);font-size:.8rem}
+.scale-note{font-size:.72rem;color:var(--muted);margin-top:10px}
+.ladder{display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:10px;overflow-x:auto;padding-bottom:7px}
+.rung{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:13px;min-height:200px}
+.rung .facility{font-weight:850;font-family:var(--mono)}
+.rung .size{font-size:1.2rem;font-weight:800;margin:5px 0}
+.rung .spread{font-family:var(--mono);color:var(--accent);font-weight:800}
+.rung ul{padding-left:17px;margin:8px 0 0;font-size:.74rem;color:var(--muted)}
+.model{display:grid;grid-template-columns:minmax(300px,.95fr) minmax(360px,1.2fr);gap:22px}
+.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.control{border-bottom:1px solid var(--line);padding-bottom:11px}
+.control label{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;font-weight:750}
+.control output{font-family:var(--mono);color:var(--accent)}
+.control .hint{font-size:.68rem;color:var(--muted);margin-top:3px}
+.control select{width:100%;margin-top:5px;padding:6px;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--ink)}
+input[type="range"]{width:100%;accent-color:var(--accent)}
+.preset-bar,.lens-bar{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 8px}
+.preset-bar button,.lens-bar button{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:7px 12px;font-size:.76rem;font-weight:750}
+.preset-bar button.active,.lens-bar button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.outputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.verdict{margin-top:12px;border-radius:9px;padding:13px;border:1px solid var(--line);font-size:.86rem}
+.verdict.good{background:var(--good-bg);border-color:var(--good)}
+.verdict.mid{background:var(--warn-bg);border-color:var(--warn)}
+.verdict.bad{background:var(--bad-bg);border-color:var(--bad)}
+.formula{font-family:var(--mono);font-size:.75rem;white-space:pre-wrap;overflow:auto;background:#202a36;color:#ecf1f5;border-radius:9px;padding:14px;margin-top:15px}
+.contract-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.contract{border-top:4px solid var(--good)}
+.contract.medium{border-top-color:var(--warn)}
+.contract.weak{border-top-color:var(--bad)}
+.contract ul{padding-left:18px;margin:8px 0 0}
+.contract li{margin-bottom:7px}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+.flow-box{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--paper)}
+.arrow{align-self:center;color:var(--accent);font-size:1.5rem}
+.risk-score{display:grid;grid-template-columns:200px 1fr 78px;gap:12px;align-items:center;margin:12px 0}
+.dots{display:flex;gap:5px}
+.dot{width:16px;height:16px;border-radius:50%;border:1px solid var(--line);background:var(--bg)}
+.dot.on.low{background:var(--good)}
+.dot.on.mid{background:var(--warn)}
+.dot.on.high{background:var(--bad)}
+.score-label{font-family:var(--mono);font-size:.76rem;text-align:right}
+.monitor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.monitor-item{border-left:4px solid var(--accent);padding:12px 14px;background:var(--paper);border-radius:8px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.monitor-item b{display:block}
+.check{padding-left:20px;margin:8px 0 0;font-size:.86rem}
+.check li{margin-bottom:6px}
+.sources ol{padding-left:22px}
+.sources li{margin-bottom:11px}
+.source-meta{font-size:.73rem;color:var(--muted)}
+footer{margin-top:70px;padding-top:20px;border-top:3px double var(--ink);font-size:.77rem;color:var(--muted)}
+.bubble-wrap{position:relative}
+.bubble-wrap svg{width:100%;height:auto;display:block;color:var(--ink)}
+.bubble-wrap circle{cursor:pointer;transition:fill-opacity .15s}
+.bubble-wrap circle:hover{fill-opacity:1}
+.btip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);padding:9px 11px;border-radius:7px;font-size:.74rem;line-height:1.45;max-width:270px;opacity:0;transition:opacity .12s;z-index:6}
+.bubble-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px;font-size:.78rem}
+.bubble-legend span{display:flex;align-items:center;gap:6px}
+.bdot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none}
+@media(max-width:1020px){
+  .layout{grid-template-columns:1fr}
+  aside{display:none}
+  .model{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .shell{padding:0 14px 70px}
+  .masthead{grid-template-columns:1fr}
+  .actions{justify-content:flex-start}
+  .grid.two,.grid.three,.contract-grid,.monitor{grid-template-columns:1fr}
+  .controls{grid-template-columns:1fr}
+  .outputs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bar-row{grid-template-columns:1fr}
+  .bar-value{text-align:left}
+  .flow{grid-template-columns:1fr}
+  .arrow{transform:rotate(90deg);justify-self:center}
+  .risk-score{grid-template-columns:1fr}
+  .score-label{text-align:left}
+}
+@media print{
+  :root{--bg:#fff;--paper:#fff;--ink:#111;--muted:#444;--line:#bbb;--shadow:none}
+  body{font-size:11pt}
+  .shell{max-width:none;padding:0}
+  aside,.actions,.no-print,.preset-bar,.lens-bar{display:none!important}
+  .layout{display:block}
+  section{break-inside:avoid-page;margin-top:32px}
+  .card{box-shadow:none}
+  a{color:#111;text-decoration:none}
+}
+
+html[data-embed="1"] .top-actions{display:none!important}
+.top-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end;margin-bottom:10px}
+.agent-mode,.display-mode{display:flex;align-items:center;gap:8px}
+.agent-mode-label,.display-mode-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.agent-mode a{display:inline-flex;align-items:center;text-decoration:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:6px 10px;font-weight:700;font-size:.78rem}
+.agent-mode a:hover{border-color:var(--accent);color:var(--accent)}
+.theme-toggle{display:flex;gap:6px}
+.theme-toggle button{width:34px;height:30px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:0;line-height:1}
+.theme-toggle button:hover,.theme-toggle button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+@media (max-width:720px){
+  .agent-mode-label,.display-mode-label{display:none}
+}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="masthead">
+  <div>
+    <div class="kicker">Research Report · AI Infrastructure Credit</div>
+    <h1>AI Infrastructure Financing: State of the Market</h1>
+    <p class="lede">GPU-backed term loans, data-center securitization, project-level debt, and the channels through which an AI capex slowdown could become a credit event. Every figure carries a provenance tag.</p>
+    <div class="meta">
+      <span><b>Verified through:</b> July 20, 2026</span>
+      <span><b>Method:</b> Primary sources fetched and checked where public; paywalled and unfetched items tagged</span>
+      <span><b>Status:</b> Research framework, not investment advice</span>
+    </div>
+  </div>
+  <div class="actions no-print">
+    <div class="top-actions" aria-label="Page tools">
+      <div class="agent-mode" aria-label="Agent-readable exports">
+        <span class="agent-mode-label">Agent Mode</span>
+        <a href="llms.txt" title="Open llms.txt">llms.txt</a>
+        <a href="agent.json" title="Open agent.json">agent.json</a>
+      </div>
+      <div class="display-mode">
+        <span class="display-mode-label">Display</span>
+        <div class="theme-toggle" role="group" aria-label="Color mode">
+          <button type="button" data-theme-choice="dark" aria-label="Use night mode" title="Night mode" aria-pressed="false">☾</button>
+          <button type="button" data-theme-choice="light" aria-label="Use day mode" title="Day mode" aria-pressed="true">☀</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn" onclick="window.print()">Print / PDF</button>
+    <button class="btn" id="copyBtn">Copy summary</button>
+  </div>
+</header>
+<div class="layout">
+<aside>
+  <nav class="toc">
+    <strong>Contents</strong>
+    <a href="#summary">Executive summary</a>
+    <a href="#market">Market map</a>
+    <a href="#ladder">Financing ladder</a>
+    <a href="#model">Recovery model</a>
+    <a href="#contracts">Contract quality</a>
+    <a href="#funding">Funding transmission</a>
+    <a href="#comparison">Crisis comparison</a>
+    <a href="#monitor">What to monitor</a>
+    <a href="#quality">Assumptions &amp; checks</a>
+    <a href="#sources">Sources</a>
+  </nav>
+</aside>
+<main>
+
+<section id="summary">
+  <div class="kicker">Executive summary</div>
+  <h2>The asset class is maturing, but the evidence is structure-specific</h2>
+  <div class="card" style="margin-top:15px">
+    <p id="summaryText"><b>CoreWeave's financing history is the clearest public record of GPU credit moving from expensive private lending toward a segmented institutional market.</b> Its 2023 DDTL 1.0 still carried a 15% effective interest rate as of March 31, 2026, per the Q1 2026 10-Q. DDTL 3.0 closed at SOFR + 4.00% in July 2025 to support an OpenAI-linked contract. DDTL 4.0 closed March 30, 2026: an $8.5B facility at SOFR + 2.25% floating, maturing March 31, 2032, secured by substantially all assets of CoreWeave Compute Acquisition Co. VIII, LLC, with only a limited "bad acts" parent guarantee. Press coverage reported A3 / A(low) ratings and anchoring by Blackstone Credit &amp; Insurance; the 8-K itself names neither a rating nor the customer. Seven weeks later, DDTL 5.0 broadened distribution as the first publicly syndicated HPC-backed delayed-draw term loan, and the market drew a line: $3.1B at SOFR + 4.50%, rated Ba2 / BB+, backed by contracts with two large non-investment-grade customers. Same physical collateral, different contracts and counterparties, a different credit regime.</p>
+    <p><b>The closest historical rhyme is not "subprime again."</b> Current AI infrastructure financing has productive assets, identifiable corporate counterparties, amortization, reserve mechanics, and significant long-duration capital. It does not yet show the scale, synthetic multiplication, or pervasive overnight funding that made mortgage credit systemically explosive. The stronger analogy is a hybrid of telecom overbuild, project finance, private credit, and equipment finance. The danger appears if financing availability begins to drive construction, contracts prove less durable than their headline value, and mark-sensitive intermediaries or levered funds hold more exposure than public disclosures reveal.</p>
+    <div class="note warn"><b>Bottom line:</b> DDTL 4.0 demonstrates that one tightly structured, contract-backed GPU financing can reach investment grade. It does not establish that GPUs as a collateral class are investment grade. DDTL 5.0's below-investment-grade ratings, wider spread, and explicitly non-investment-grade customers make that distinction a matter of public record, not analyst opinion.</div>
+  </div>
+</section>
+
+<section id="market">
+  <div class="kicker">Section 1</div>
+  <h2>Market size without false equivalence</h2>
+  <p class="lede">The bubble map gives the headline size comparison: area is proportional to dollar size, and hovering or clicking any bubble shows its basis of measurement. The paired bar charts then separate stocks and commitments from annual issuance, because those are not the same kind of number. Bar widths are computed from the values; the logarithmic default keeps small categories visible, and the linear toggle shows the honest disproportion.</p>
+  <div class="card chart-card" style="margin:14px 0 4px">
+    <div class="chart-title"><h3>The size of things: six markets, one scale</h3><span class="badge unverified">not apples-to-apples</span></div>
+    <div class="bubble-wrap" id="bubbleWrap">
+      <svg id="bubbleSvg" viewBox="0 0 960 462" role="img" aria-label="Bubble chart comparing market sizes: subprime mortgages 1.3 trillion dollars outstanding at the 2007 peak, telecom and fiber buildout roughly 750 billion cumulative, AI-related debt issuance roughly 200 billion in 2025, Beignet Meta project notes 27.3 billion, CoreWeave DDTL commitment capacity 27.1 billion, data-center securitization 27 billion issued in 2025"></svg>
+      <div class="btip" id="btip"></div>
+    </div>
+    <div class="bubble-legend" id="bubbleLegend"></div>
+    <p class="small" id="bubbleDetail" style="margin:10px 0 4px">Click a bubble to pin its details here.</p>
+    <p class="scale-note">These categories mix an outstanding stock (subprime), cumulative multi-year capex (telecom), annual flows (AI debt issuance, data-center securitization), and commitment stocks (CoreWeave capacity, one Meta project). Comparing a stock with a flow understates the eventual AI number if issuance persists at current rates, and overstates it if issuance stalls. That is why the bar charts below keep the two kinds of number apart.</p>
+  </div>
+  <div style="margin:12px 0" class="no-print"><button class="btn" id="scaleBtn">Switch to linear scale</button> <span class="small" id="scaleNote">Currently: logarithmic display.</span></div>
+  <div class="grid two">
+    <div class="card chart-card">
+      <div class="chart-title"><h3>Stocks and commitment capacity</h3><span class="badge unverified">not directly comparable</span></div>
+      <div class="chart" data-max="1300">
+        <div class="bar-row">
+          <div class="bar-label"><b>Peak U.S. subprime mortgages</b><div class="small">Outstanding stock, 2007 <span class="badge unverified">unverified</span></div></div>
+          <div class="bar-track"><div class="bar-fill warn" data-val="1300"></div></div>
+          <div class="bar-value">$1.3T</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>Telecom / fiber buildout</b><div class="small">Cumulative capex + debt, 1996 to 2002, $0.5T to $1T range shown at midpoint <span class="badge base">approx</span></div></div>
+          <div class="bar-track"><div class="bar-fill warn" data-val="750"></div></div>
+          <div class="bar-value">~$750B</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>CoreWeave DDTL 1.0 to 5.0</b><div class="small">Identified commitment capacity <span class="badge verified">components verified</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-val="27.1"></div></div>
+          <div class="bar-value">$27.1B</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>CoreWeave total debt</b><div class="small">Net of discount and issuance costs, Mar. 31, 2026, 10-Q <span class="badge verified">verified</span></div></div>
+          <div class="bar-track"><div class="bar-fill good" data-val="24.9"></div></div>
+          <div class="bar-value">$24.9B</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>S&amp;P-rated U.S. DC ABS</b><div class="small">Outstanding, Mar. 31, 2026, per S&amp;P <span class="badge unverified">paywalled</span></div></div>
+          <div class="bar-track"><div class="bar-fill good" data-val="23"></div></div>
+          <div class="bar-value">&gt;$23B</div>
+        </div>
+      </div>
+      <p class="scale-note">Commitment capacity includes undrawn amounts and is not balance-sheet debt: the verified 10-Q net total of $24.9B also includes ~$5.0B of OEM and software-license financing and predates full DDTL 5.0 drawdown. Peak subprime is an economy-wide stock, shown for scale context only.</p>
+    </div>
+    <div class="card chart-card">
+      <div class="chart-title"><h3>Annual issuance, 2025, plus one project for scale</h3><span class="badge base">flows vs one stock</span></div>
+      <div class="chart" data-max="200">
+        <div class="bar-row">
+          <div class="bar-label"><b>Broad AI-related debt issuance</b><div class="small">2025, "low hundreds of billions" shown at ~$200B <span class="badge base">approx</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-val="200"></div></div>
+          <div class="bar-value">~$200B</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>Hyperscaler public bonds</b><div class="small">2025 issuance, per Reuters <span class="badge unverified">unverified</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-val="120"></div></div>
+          <div class="bar-value">~$120B</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>Data-center securitization</b><div class="small">2025 new issuance, KBRA <span class="badge verified">verified</span></div></div>
+          <div class="bar-track"><div class="bar-fill good" data-val="27"></div></div>
+          <div class="bar-value">$27B</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>Beignet / Meta project notes</b><div class="small">Single project's secured debt, a stock shown for scale only <span class="badge unverified">unverified</span></div></div>
+          <div class="bar-track"><div class="bar-fill violet" data-val="27.3"></div></div>
+          <div class="bar-value">$27.3B</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><b>S&amp;P-rated DC ABS issuance</b><div class="small">2025, narrower rated universe <span class="badge unverified">paywalled</span></div></div>
+          <div class="bar-track"><div class="bar-fill warn" data-val="9.25"></div></div>
+          <div class="bar-value">$9.25B</div>
+        </div>
+      </div>
+      <p class="scale-note">JPMorgan / Bloomberg coverage discussed data-center securitization reaching $30B to $40B per year in 2026 to 2027. The gap between KBRA's $27B and S&amp;P's $9.25B shows how "market size" moves with the measurement perimeter. One project (Beignet, purple) now equals the entire 2025 securitization market: single names are reaching systemic-attention size before the asset class does.</p>
+    </div>
+  </div>
+  <div class="note"><b>What the numbers actually say.</b> AI infrastructure credit is already large enough to matter to investment-grade, high-yield, private-credit, project-finance, and structured-finance investors, and is compounding. It remains far smaller than the mortgage complex that entered 2008. But individual projects and issuer facilities are now large enough to create concentration, syndication, and refinancing problems on their own, and the outstanding stock of the whole complex is hard to measure with confidence, which is itself a risk flag.</div>
+</section>
+
+<section id="ladder">
+  <div class="kicker">Section 2</div>
+  <h2>The CoreWeave financing ladder</h2>
+  <p class="lede">The repricing is real, but the facilities are not fungible. Read this as market segmentation by contract and counterparty quality, not as a universal decline in the risk premium on GPUs.</p>
+  <div class="ladder" style="margin-top:15px">
+    <div class="rung">
+      <div class="facility">DDTL 1.0</div><div class="size">$2.3B</div><div class="spread">~15% eff.</div>
+      <ul><li>July 2023</li><li>15% effective rate confirmed in Q1 2026 10-Q; $1.44B still outstanding</li><li>Guaranteed by CoreWeave</li><li>High-cost private credit</li></ul>
+      <span class="badge verified">rate verified</span>
+    </div>
+    <div class="rung">
+      <div class="facility">DDTL 2.0</div><div class="size">$7.6B</div><div class="spread">S + 6.0-13.0%</div>
+      <ul><li>May 2024</li><li>Pricing tiered by customer credit quality per the 2025 10-K</li><li>$4.4B carrying, 11% effective (10-Q)</li><li>Contract quality drove the loan price</li></ul>
+      <span class="badge verified">balance verified</span> <span class="badge unverified">terms unverified</span>
+    </div>
+    <div class="rung">
+      <div class="facility">DDTL 2.1</div><div class="size">$3.0B</div><div class="spread">S + 4.25%</div>
+      <ul><li>September 2025</li><li>Incremental tranche</li><li>$3.0B carrying, 9% effective (10-Q)</li><li>Same secured equipment-finance architecture</li></ul>
+      <span class="badge verified">balance verified</span> <span class="badge unverified">margin unverified</span>
+    </div>
+    <div class="rung">
+      <div class="facility">DDTL 3.0</div><div class="size">$2.6B</div><div class="spread">S + 4.00%</div>
+      <ul><li>July 2025</li><li>Supports OpenAI-linked contract</li><li>$1.7B carrying, 9% effective (10-Q)</li><li>Parent guaranteed</li></ul>
+      <span class="badge base">research base</span> <span class="badge verified">balance verified</span>
+    </div>
+    <div class="rung">
+      <div class="facility">DDTL 4.0</div><div class="size">$8.5B</div><div class="spread">S + 2.25%</div>
+      <ul><li>March 2026, matures 2032</li><li>Non-recourse with "bad acts" carve-outs; DSCR covenant 1.15x</li><li>Customer not named in 8-K</li><li>A3 / A(low) and Blackstone anchor per press coverage</li></ul>
+      <span class="badge verified">8-K verified</span>
+    </div>
+    <div class="rung">
+      <div class="facility">DDTL 5.0</div><div class="size">$3.1B</div><div class="spread">S + 4.50%</div>
+      <ul><li>May 2026, ~5.5yr</li><li>Ba2 / BB+</li><li>Two large non-investment-grade customers</li><li>First publicly syndicated HPC-backed DDTL; tightened 50 bps in syndication</li></ul>
+      <span class="badge verified">press release verified</span>
+    </div>
+  </div>
+  <div class="grid three" style="margin-top:15px">
+    <div class="card"><span class="badge verified">Observed</span><h3 style="margin-top:7px">Contract credit changes the loan</h3><p class="small">DDTL 2.0 reportedly priced from SOFR + 6.0% for specified investment-grade customers to SOFR + 13.0% for non-investment-grade contracts. The financing documents themselves reject the idea that the GPU alone sets the price. The 10-Q's verified effective rates (15%, 11%, 9%, 9%) fall monotonically with vintage and structure.</p></div>
+    <div class="card"><span class="badge verified">Observed</span><h3 style="margin-top:7px">Investment grade is structure-specific</h3><p class="small">DDTL 4.0 is non-recourse and contract-backed and reached IG. DDTL 5.0 broadened distribution and gained tradability but stayed below IG, with the press release itself citing two non-investment-grade customers. Tradability and rating quality did not arrive together.</p></div>
+    <div class="card"><span class="badge unverified">Important</span><h3 style="margin-top:7px">Capacity is not exposure</h3><p class="small">The $27.1B sum is maximum identified DDTL commitment capacity. Verified 10-Q total debt was $24.9B net at March 31, 2026, including ~$5.0B of non-DDTL OEM financing, and predates full DDTL 5.0 drawdown. Neither number alone describes lender risk.</p></div>
+  </div>
+</section>
+
+<section id="model">
+  <div class="kicker">Section 3</div>
+  <h2>Interactive recovery and required-spread model</h2>
+  <p class="lede">A transparent stress framework, not a pricing engine. Residual value is decomposed into disclosed accounting life and an explicit market discount, amortization runs before the stress date, and the verdict maps your assumptions onto real observed prints.</p>
+  <div class="card" style="margin-top:15px">
+    <div class="lens-bar no-print" role="tablist" aria-label="Analytical lens">
+      <button id="lensPF" class="active" onclick="setLens('pf')">Project finance lens</button>
+      <button id="lensABS" onclick="setLens('abs')">ABS lens</button>
+    </div>
+    <p class="small" id="lensNote" style="margin:0 0 8px"></p>
+    <div class="preset-bar no-print" aria-label="Scenario presets">
+      <button id="p_strong" onclick="applyPreset('strong')">Bull: strong contract</button>
+      <button id="p_base" class="active" onclick="applyPreset('base')">Base case</button>
+      <button id="p_weak" onclick="applyPreset('weak')">Bear: weak contract</button>
+      <button id="p_run" onclick="applyPreset('run')">2008-style funding stress</button>
+      <button onclick="resetModel()">Reset</button>
+    </div>
+    <div class="model">
+      <div class="controls">
+        <div class="control">
+          <label for="life">Accounting useful life <output id="oLife"></output></label>
+          <input id="life" type="range" min="4" max="7" step=".5" value="6">
+          <div class="hint">CoreWeave discloses six years for technology equipment; Amazon five to six years for servers (per issuer disclosures; Amazon figure not independently checked).</div>
+        </div>
+        <div class="control">
+          <label for="age">Stress date <output id="oAge"></output></label>
+          <input id="age" type="range" min="1" max="5" step=".5" value="3">
+          <div class="hint">Years after origination, straight-line book depreciation assumed.</div>
+        </div>
+        <div class="control">
+          <label for="discount">Market discount to book <output id="oDiscount"></output></label>
+          <input id="discount" type="range" min="0" max="80" step="1" value="35">
+          <div class="hint">Generation obsolescence, utilization, removal cost, secondary-market depth. This slider is the residual-value debate.</div>
+        </div>
+        <div class="control">
+          <label for="advance">Initial advance rate <output id="oAdvance"></output></label>
+          <input id="advance" type="range" min="30" max="85" step="1" value="60">
+          <div class="hint">GPU lending commonly cited at 50% to 70% of FMV; stronger structures push higher.</div>
+        </div>
+        <div class="control">
+          <label for="amort">Annual principal amortization <output id="oAmort"></output></label>
+          <input id="amort" type="range" min="0" max="30" step="1" value="12">
+          <div class="hint">Share of beginning balance repaid each year before stress. Real DDTLs amortize monthly.</div>
+        </div>
+        <div class="control">
+          <label for="pd">Cumulative default probability <output id="oPd"></output></label>
+          <input id="pd" type="range" min="1" max="45" step="1" value="10">
+          <div class="hint">User assumption over the stress horizon, not a rating-implied figure.</div>
+        </div>
+        <div class="control">
+          <label for="contract">Contract recovery credit <output id="oContract"></output></label>
+          <input id="contract" type="range" min="0" max="60" step="1" value="25">
+          <div class="hint">Recoverable share of outstanding debt from assigned contract cash flows after default. High for hard take-or-pay with a solvent counterparty, near zero for usage-based revenue.</div>
+        </div>
+        <div class="control">
+          <label for="liqCost">Liquidation cost <output id="oLiqCost"></output></label>
+          <input id="liqCost" type="range" min="5" max="40" step="1" value="15">
+          <div class="hint">Removal, transport, remarketing, downtime, legal, enforcement.</div>
+        </div>
+        <div class="control">
+          <label for="liquidity">Liquidity premium <output id="oLiquidity"></output></label>
+          <input id="liquidity" type="range" min="0" max="650" step="5" value="100">
+          <div class="hint">Spikes in funding stress even when collateral is unchanged. The 2008 lesson.</div>
+        </div>
+        <div class="control">
+          <label for="reference">Par anchor (reference print)</label>
+          <select id="reference">
+            <option value="225">DDTL 4.0 cohort, S + 225 (IG, insurer-anchored)</option>
+            <option value="400">DDTL 3.0 cohort, S + 400 (concentrated counterparty)</option>
+            <option value="450">DDTL 5.0 cohort, S + 450 (public syndication, BB)</option>
+          </select>
+          <div class="hint">Which observed print marks at par. Structural premium is fixed at 125 bps and spread duration at 2.5 to keep the model from becoming a tautology dial.</div>
+        </div>
+      </div>
+      <div>
+        <div class="outputs">
+          <div class="metric"><div class="label">Opening loan</div><div class="value" id="vLoan"></div><div class="sub">per $100 original cost</div></div>
+          <div class="metric"><div class="label">Stress-date balance</div><div class="value" id="vBalance"></div><div class="sub">after amortization</div></div>
+          <div class="metric"><div class="label">Gross book value</div><div class="value" id="vBook"></div><div class="sub">straight-line basis</div></div>
+          <div class="metric"><div class="label">Net collateral value</div><div class="value" id="vCollateral"></div><div class="sub">after market + liquidation haircuts</div></div>
+          <div class="metric"><div class="label">Recovery rate</div><div class="value" id="vRecovery"></div><div class="sub">collateral + contract credit</div></div>
+          <div class="metric"><div class="label">Annual expected loss</div><div class="value" id="vEL"></div><div class="sub">horizon average</div></div>
+          <div class="metric"><div class="label">Required spread</div><div class="value" id="vSpread"></div><div class="sub">EL + liquidity + 125 structural</div></div>
+          <div class="metric"><div class="label">Indicative price</div><div class="value" id="vPrice"></div><div class="sub">vs selected par anchor</div></div>
+          <div class="metric"><div class="label">Breakeven GPU value</div><div class="value" id="vBreakeven"></div><div class="sub">min gross resale to cover debt</div></div>
+        </div>
+        <div id="verdict" class="verdict"></div>
+      </div>
+    </div>
+    <div class="formula">Stress balance = Opening loan × (1 − annual amortization)^stress years
+Book value    = Original cost × max(0, 1 − stress years ÷ useful life)
+Net collateral = Book value × (1 − market discount) × (1 − liquidation cost)
+Recovery      = min(stress balance, net collateral + contract credit) ÷ stress balance
+Annual EL     ≈ cumulative PD × loss given default ÷ stress years
+Required spread ≈ annual EL + liquidity premium + 125 bps structural premium
+Indicative price ≈ 100 − 2.5 × (required spread − reference spread) ÷ 100</div>
+    <p class="small"><b>Limitations, stated plainly:</b> no waterfall, tax, swap, reserve account, covenant, draw schedule, construction risk, cure period, or customer-default correlation is modeled. Contract recovery is a user assumption, not a legal conclusion. Accounting life is not market value. Structural premium (125 bps) and spread duration (2.5) are fixed by design. Use this to find which assumptions dominate outcomes, not to estimate a tradable fair spread. All outputs are illustrative analysis.</p>
+  </div>
+</section>
+
+<section id="contracts">
+  <div class="kicker">Section 4</div>
+  <h2>Contract quality is a waterfall, not a label</h2>
+  <p class="lede">"Take-or-pay," "reservation," and "backlog" are starting points. Lenders need to know whether cash survives delivery failures, amendments, disputes, setoff, bankruptcy, and assignment. The market already prices the difference.</p>
+  <div class="contract-grid" style="margin-top:15px">
+    <div class="card contract">
+      <span class="badge verified">Strongest</span><h3 style="margin-top:8px">Contract-backed project credit</h3>
+      <ul class="small">
+        <li>Solvent, preferably rated counterparty</li>
+        <li>Firm minimum payment with narrow termination rights</li>
+        <li>Direct assignment to lenders and enforceable step-in rights</li>
+        <li>Delivery milestones satisfied or tightly funded</li>
+        <li>Restricted amendment, setoff, and netting rights</li>
+        <li>Debt amortizes inside the contracted term</li>
+      </ul>
+    </div>
+    <div class="card contract medium">
+      <span class="badge unverified">Middle</span><h3 style="margin-top:8px">Capacity reservation</h3>
+      <ul class="small">
+        <li>Payments may hinge on availability or acceptance tests</li>
+        <li>Renewal cliffs and volume step-downs create tail risk</li>
+        <li>Service-level credits erode cash flow</li>
+        <li>Assignment may need customer consent</li>
+        <li>Construction and interconnection risk remain material</li>
+      </ul>
+    </div>
+    <div class="card contract weak">
+      <span class="badge unverified">Weakest</span><h3 style="margin-top:8px">Usage-based or forecast backlog</h3>
+      <ul class="small">
+        <li>Revenue depends on actual consumption</li>
+        <li>Customer can optimize, migrate, or internalize workloads</li>
+        <li>Low utilization exposes lenders directly to asset value</li>
+        <li>Headline backlog can exceed legally unavoidable payments</li>
+        <li>Residual-value and refinancing assumptions become primary</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid three" style="margin-top:15px">
+    <div class="card">
+      <h3>The evidence for the hierarchy</h3>
+      <p class="small"><span class="badge verified">verified</span> The DDTL 5.0 press release itself distinguishes its two non-investment-grade customers; DDTL 4.0's 8-K conditions events of default on "certain material contracts." The 2025 10-K reportedly discloses tiered DDTL 2.0 pricing by customer credit (S + 6.0% to 13.0%, not independently checked). These are direct observations, not analogies.</p>
+    </div>
+    <div class="card">
+      <h3>What KBRA's lease research confirms</h3>
+      <p class="small"><span class="badge verified">verified</span> Power, not space, drives economics; most hyperscale leases are net leases whose cost-allocation details set margin stability; absolute triple-net structures shift life-cycle capex to tenants, aiding near-term cash flow but increasing residual risk; and expanded termination, contraction, and assignment rights reduce cash-flow visibility, especially in single-tenant assets.</p>
+    </div>
+    <div class="card">
+      <h3>Do not overstate the named counterparty</h3>
+      <p class="small"><span class="badge verified">verified</span> The DDTL 4.0 8-K describes a customer contract but names no customer, no rating, and no anchor investor. "Meta-backed" and "A3 / A(low), Blackstone-anchored" derive from press coverage and the research base. A careful reader should hold those attributions one notch looser than the filing facts.</p>
+    </div>
+  </div>
+  <div class="note bad"><b>Hidden correlation.</b> The same event can hit the customer, the borrower, and the collateral simultaneously. A sharp improvement in accelerator efficiency or a capex slowdown could compress compute prices, weaken a neocloud customer's economics, trigger contract disputes or non-renewals, and depress used-GPU values at once. Treating counterparty default and collateral loss as independent, as simple models do, understates tail risk. In the model above this appears as moving PD, market discount, and contract credit adversely together, which is exactly what the 2008-style preset does.</div>
+</section>
+
+<section id="funding">
+  <div class="kicker">Section 5</div>
+  <h2>Funding transmission: where a repricing becomes a forced sale</h2>
+  <p class="lede">Public disclosures identify arrangers, anchors, ratings, and some structures. They do not provide a holder-level map. The honest framework is functional: who originates, who warehouses, who finances the buyers, and who can hold through a mark. No percentages are offered because none can be verified.</p>
+  <div class="flow" style="margin-top:15px">
+    <div class="flow-box">
+      <h3>Asset and contract SPV</h3>
+      <p class="small">GPU servers, data-center equipment, customer contracts, reserve accounts, pledged equity. DDTL 4.0's borrower structure is disclosed in the 8-K.</p>
+      <span class="badge verified">disclosed</span>
+    </div>
+    <div class="arrow">&#10142;</div>
+    <div class="flow-box">
+      <h3>Transit balance sheets</h3>
+      <p class="small">Arranging banks (MUFG and Morgan Stanley on DDTL 4.0 and 5.0, disclosed), bridge lenders, warehouse facilities, dealer inventory, fund-finance providers.</p>
+      <span class="badge unverified">partly opaque</span>
+    </div>
+    <div class="arrow">&#10142;</div>
+    <div class="flow-box">
+      <h3>End holders</h3>
+      <p class="small">Insurers, asset managers, private-credit funds, loan investors where eligible, pensions, and other institutional accounts.</p>
+      <span class="badge unverified">shares unknown</span>
+    </div>
+  </div>
+  <div class="grid three" style="margin-top:15px">
+    <div class="card"><h3>Run risk</h3><p class="small">Highest where long assets meet short or mark-to-market liabilities: warehouse lines, repo-like arrangements, NAV loans, marginable fund leverage. These matter more than the identity of the ultimate pension or insurer beneficiary.</p></div>
+    <div class="card"><h3>Valuation risk</h3><p class="small">Private marks can delay recognition, but delayed recognition is not loss absorption. Covenant tests, borrowing bases, ratings, and refinancing can force an economic mark even while accounting stays smooth.</p></div>
+    <div class="card"><h3>Distribution risk</h3><p class="small">DDTL 5.0 created a publicly syndicated, tradable HPC-backed loan. That improves price discovery and breadth, and it also transmits any repricing faster than a private buy-and-hold facility would.</p></div>
+  </div>
+  <div class="note bad" style="margin-top:15px"><b>Why this matters.</b> Forced selling needs three ingredients: assets marked optimistically, funding that can be withdrawn quickly, and holders who cannot wait. 2008 had all three at enormous scale because repo and SIV funding rolled nightly against mismarked collateral. Today's chain has less of ingredients two and three at the end-holder level, which is real structural progress. But every dollar in a warehouse, on a dealer pad, or in a levered fund can be told to sell exactly when GPU marks are falling.</div>
+  <div class="note warn"><b>The missing dataset is itself the finding.</b> There is no public consolidated view of AI-infrastructure exposure by bank warehouse, fund leverage, insurer account, loan fund, or dealer inventory. This report states the gap rather than filling it with illustrative percentages that screenshots would turn into facts. Distributed ignorance about who holds what, at what mark, with what leverage, is precisely how small markets produce outsized damage.</div>
+</section>
+
+<section id="comparison">
+  <div class="kicker">Section 6</div>
+  <h2>Crisis comparison by transmission mechanism</h2>
+  <p class="lede">The relevant question is not whether AI infrastructure "looks like 2008." It is which crisis ingredients are present, how strong they are, and where confidence is low.</p>
+  <div class="card" style="margin-top:15px">
+    <p class="small" style="margin-top:0"><span class="badge analysis">analyst judgment</span> The scores below are qualitative judgments on the assembled evidence, not measurements. Reasonable analysts will disagree by a notch either way.</p>
+    <div class="risk-score"><b>Underlying asset overbuild</b><div class="dots"><span class="dot on mid"></span><span class="dot on mid"></span><span class="dot"></span></div><div class="score-label">Medium</div></div>
+    <div class="risk-score"><b>Collateral obsolescence</b><div class="dots"><span class="dot on high"></span><span class="dot on high"></span><span class="dot on high"></span></div><div class="score-label">High</div></div>
+    <div class="risk-score"><b>Obligor opacity</b><div class="dots"><span class="dot on low"></span><span class="dot"></span><span class="dot"></span></div><div class="score-label">Low</div></div>
+    <div class="risk-score"><b>Customer concentration</b><div class="dots"><span class="dot on high"></span><span class="dot on high"></span><span class="dot on high"></span></div><div class="score-label">High</div></div>
+    <div class="risk-score"><b>Runnable short-term funding</b><div class="dots"><span class="dot on mid"></span><span class="dot on mid"></span><span class="dot"></span></div><div class="score-label">Low-Med, unmeasured</div></div>
+    <div class="risk-score"><b>Structured-finance complexity</b><div class="dots"><span class="dot on mid"></span><span class="dot on mid"></span><span class="dot"></span></div><div class="score-label">Medium</div></div>
+    <div class="risk-score"><b>Synthetic multiplication</b><div class="dots"><span class="dot on low"></span><span class="dot"></span><span class="dot"></span></div><div class="score-label">Low</div></div>
+    <div class="risk-score"><b>System-wide scale</b><div class="dots"><span class="dot on mid"></span><span class="dot"></span><span class="dot"></span></div><div class="score-label">Low-Med</div></div>
+  </div>
+  <div class="table-wrap card" style="margin-top:15px">
+    <table>
+      <thead><tr><th>Dimension</th><th>Subprime / 2008</th><th>Telecom / fiber</th><th>AI infrastructure, July 2026</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Primary error</strong></td><td>Underwriting and correlation were mispriced.</td><td>Demand and pricing were extrapolated into overbuild.</td><td>Contract durability, utilization, build timing, and hardware economics may be extrapolated faster than they are tested.</td></tr>
+        <tr><td><strong>Collateral</strong></td><td>Homes with slow physical decay but highly leveraged prices.</td><td>Long-lived networks whose economic value collapsed under excess capacity.</td><td>Short-lived accelerators plus long-lived power and real estate. Different assets should not be modeled as one pool.</td></tr>
+        <tr><td><strong>Obligors</strong></td><td>Millions of households with weak documentation.</td><td>Carriers and startups, many speculative.</td><td>Concentrated corporate and AI-lab counterparties. Better disclosure, far higher single-name concentration.</td></tr>
+        <tr><td><strong>Funding</strong></td><td>Repo, ABCP, SIVs, dealer balance sheets, bank capital.</td><td>Corporate bonds, bank loans, vendor finance, equity.</td><td>Private credit, project finance, secured DDTLs, public loans, ABS, project bonds, equipment finance, hyperscaler corporate debt.</td></tr>
+        <tr><td><strong>Amplifier</strong></td><td>Forced deleveraging and synthetic exposure.</td><td>Capital-market closure and operating defaults.</td><td>Construction delays, contract disputes, lower utilization, collateral markdowns, refinancing gaps, leverage on holders.</td></tr>
+        <tr><td><strong>Likely first failure mode</strong></td><td>Mortgage delinquencies and warehouse failures.</td><td>Carrier defaults and dark-fiber repricing.</td><td>Project delay or counterparty deterioration forcing a financing reset, then a wider mark across comparable GPU and data-center paper.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note bad"><b>"Not the same as 2008" does not mean "not risky."</b> 2008 was not caused by mortgages; it was caused by optimistic collateral marks meeting runnable funding inside structures nobody could see through. A broad AI credit correction is more likely to resemble a telecom and private-credit repricing than the opening phase of 2008. That judgment reverses if evidence emerges of large runnable warehouse exposure, concentrated bank guarantees, synthetic overlays, or widespread leverage at end holders. The correct posture is neither panic nor comfort: insist on measured residuals, holder data, and contract-level disclosure while spreads are still tight enough to demand them.</div>
+</section>
+
+<section id="monitor">
+  <div class="kicker">Section 7</div>
+  <h2>What to monitor before spreads tell you</h2>
+  <div class="monitor" style="margin-top:15px">
+    <div class="monitor-item"><b>1. Contract conversion</b><span class="small">RPO and backlog converted to cash, by customer and delivery cohort, rather than aggregate backlog growth.</span></div>
+    <div class="monitor-item"><b>2. Delivery slippage</b><span class="small">Energization, interconnection, GPU delivery, and customer acceptance milestones.</span></div>
+    <div class="monitor-item"><b>3. Contract amendments</b><span class="small">Termination rights, price resets, capacity reductions, assignment restrictions, service-level credits.</span></div>
+    <div class="monitor-item"><b>4. Debt paydown vs asset aging</b><span class="small">Outstanding principal by GPU generation and contract term, not only total debt.</span></div>
+    <div class="monitor-item"><b>5. Secondary-market dispersion</b><span class="small">DDTL 5.0 loan prices, DC ABS spreads, project bonds, and neocloud unsecured debt moving apart or together.</span></div>
+    <div class="monitor-item"><b>6. Funding-chain leverage</b><span class="small">Warehouse utilization, NAV and subscription lines, insurer capital charges, bank risk-weighted assets, dealer inventory.</span></div>
+    <div class="monitor-item"><b>7. Used-equipment evidence</b><span class="small">Actual transaction prices by accelerator generation, configuration, location, warranty, removal cost.</span></div>
+    <div class="monitor-item"><b>8. Financing-led construction</b><span class="small">Projects launched because cheap capital is available rather than because contracted demand and power are secured. The first clear instance imports the core dotcom error.</span></div>
+  </div>
+</section>
+
+<section id="quality">
+  <div class="kicker">Section 8</div>
+  <h2>Assumptions, limitations, and verification</h2>
+  <div class="grid two" style="margin-top:15px">
+    <div class="card">
+      <h3>Assumptions and limitations</h3>
+      <ul class="check">
+        <li>The model is a single-horizon stress test; real facilities carry covenants, reserves, and cure mechanics that improve outcomes versus this framework.</li>
+        <li>FMV is assumed equal to cost at origination.</li>
+        <li>Structural premium (125 bps) and spread duration (2.5) are fixed; the par anchor is a user choice among three observed prints.</li>
+        <li>Chart categories still mix stocks, flows, and commitments across panels; each bar states its basis.</li>
+        <li>Paywalled or unfetched sources are tagged unverified throughout.</li>
+        <li>No claim is made about any issuer's solvency. This is market-structure analysis, not investment advice.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Verification checklist</h3>
+      <ul class="check">
+        <li>All ten controls update the nine outputs and verdict immediately.</li>
+        <li>Presets and Reset restore expected values; active preset highlights; moving any slider clears it.</li>
+        <li>Lens toggle adjusts contract credit, liquidity, and par anchor, and updates the note.</li>
+        <li>Base case, PF lens, prints near S + 250 against the S + 225 anchor (price ~99.4).</li>
+        <li>Bubble areas scale with the square root of dollar values; hover shows a tooltip; click pins details.</li>
+        <li>Linear/log toggle recomputes every bar width from its data value.</li>
+        <li>Dark mode, print stylesheet, and copy-summary function work; layout holds at 375 px.</li>
+        <li>Page runs offline; the only network activity is following source links.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sources" class="sources">
+  <div class="kicker">Source ledger</div>
+  <h2>Sources and verification status</h2>
+  <p class="lede"><span class="badge verified">verified</span> fetched and checked July 20, 2026 &nbsp; <span class="badge base">research base</span> supplied fact base &nbsp; <span class="badge unverified">unverified</span> not independently checked &nbsp; <span class="badge analysis">analysis</span> framework or judgment</p>
+  <div class="card" style="margin-top:15px">
+    <ol>
+      <li><span class="badge verified">verified</span> <a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000129/crwv-20260330.htm" target="_blank" rel="noopener">CoreWeave Form 8-K, DDTL 4.0 (Mar. 31, 2026)</a><div class="source-meta">$8.5B, SOFR + 2.25% floating (0% floor), fixed-rate formula, June 2027 commitment termination, March 31, 2032 maturity, CCAC VIII collateral and equity pledge, limited "bad acts" guarantee, 1.15x DSCR, MUFG and Morgan Stanley as arrangers. Names no customer, rating, or anchor investor.</div></li>
+      <li><span class="badge verified">verified</span> <a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000236/ex9912.htm" target="_blank" rel="noopener">CoreWeave DDTL 5.0 closing press release (May 18, 2026)</a><div class="source-meta">$3.1B, SOFR + 4.50% after 50 bps tightening, Ba2 / BB+, two large non-investment-grade customers, ~5.5-year maturity, CoreWeave Financing DDTL V, LLC, first publicly syndicated HPC-backed DDTL.</div></li>
+      <li><span class="badge verified">verified</span> <a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm" target="_blank" rel="noopener">CoreWeave Q1 2026 Form 10-Q</a><div class="source-meta">XBRL debt tables: total debt $24,859M net at Mar. 31, 2026; DDTL 1.0 $1,438M at 15% effective; DDTL 2.0 $4,425M at 11%; DDTL 2.1 $3,000M at 9%; DDTL 3.0 $1,700M at 9%; OEM and software-license financing $5,036M at 10%.</div></li>
+      <li><span class="badge verified">verified</span> <a href="https://www.kbra.com/publications/fCwRdVxR/kbra-releases-research-data-center-leases-variations-on-established-themes" target="_blank" rel="noopener">KBRA, Data Center Leases: Variations on Established Themes (Mar. 10, 2026)</a><div class="source-meta">$27B data-center securitization issuance in 2025; hyperscale net-lease structures; termination, contraction, and assignment rights as key credit variables; power as the economic driver.</div></li>
+      <li><span class="badge unverified">unverified</span> <a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm" target="_blank" rel="noopener">CoreWeave 2025 Form 10-K</a><div class="source-meta">Cited for DDTL 1.0 margin (9.6196%), DDTL 2.0 commitment ($7.6B, S + 6.0% to 13.0% by customer credit), DDTL 2.1 terms, and six-year equipment life. Consistent with the verified 10-Q balances but not independently fetched.</div></li>
+      <li><span class="badge base">research base</span> CoreWeave DDTL 3.0 (Jul. 2025)<div class="source-meta">$2.6B at SOFR + 4.00%, OpenAI-linked; from the supplied research base, consistent with the verified 10-Q carrying amount.</div></li>
+      <li><span class="badge base">research base</span> DDTL 4.0 ratings and anchor<div class="source-meta">A3 / A(low) ratings and Blackstone Credit &amp; Insurance anchoring, per press coverage in the research base. Not in the 8-K text.</div></li>
+      <li><span class="badge base">research base</span> Market aggregates<div class="source-meta">JPMorgan / Bloomberg coverage of data-center securitization at $30B to $40B per year potential for 2026 to 2027; 2025 AI-related debt issuance in the low hundreds of billions; GPU advance rates commonly 50% to 70% of FMV; three-year residual outcomes debated at roughly 10% to 60% of cost.</div></li>
+      <li><span class="badge unverified">unverified</span> <a href="https://www.spglobal.com/ratings/en/regulatory/article/north-america-data-center-abs-roundup-second-quarter-2026-s101688078" target="_blank" rel="noopener">S&amp;P Global Ratings, North America Data Center ABS Roundup Q2 2026</a><div class="source-meta">More than $23B outstanding S&amp;P-rated U.S. DC ABS and $9.25B of 2025 rated issuance, Registration wall prevented direct verification.</div></li>
+      <li><span class="badge unverified">unverified</span> Beignet Investor LLC (S&amp;P), Amazon 2025 10-K, NVIDIA capacity agreement 8-K, IMF GFSR Oct. 2007, Reuters hyperscaler bond coverage<div class="source-meta">$27.3B Meta / Blue Owl project notes; five-to-six-year server lives; $6.3B NVIDIA residual-capacity backstop through April 2032; ~$1.3T peak subprime estimate; ~$120B 2025 hyperscaler bond issuance. Not independently checked.</div></li>
+      <li><span class="badge analysis">analysis</span> All model outputs, the funding-transmission framework, contract-tier hierarchy, crisis scores, and comparative judgments<div class="source-meta">Analytical constructions on the fact base, not observed market data.</div></li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <p><b>AI Infrastructure Financing: State of the Market</b> · July 20, 2026. Educational market-structure analysis. Not investment advice, a valuation opinion, an offer, a solicitation, or a recommendation concerning any issuer or security. Public disclosures can be incomplete, amended, or superseded. Model outputs are illustrative.</p>
+</footer>
+
+
+
+
+</main>
+</div>
+</div>
+<script>
+"use strict";
+var $ = function (id) { return document.getElementById(id); };
+
+/* ---------- bar charts: widths computed from data, log/linear toggle ---------- */
+var logScale = true;
+function drawBars() {
+  var charts = document.querySelectorAll(".chart");
+  charts.forEach(function (chart) {
+    var max = parseFloat(chart.getAttribute("data-max"));
+    chart.querySelectorAll(".bar-fill").forEach(function (bar) {
+      var v = parseFloat(bar.getAttribute("data-val"));
+      var w;
+      if (logScale) {
+        w = 100 * Math.log10(1 + v) / Math.log10(1 + max);
+      } else {
+        w = Math.max(1.2, 100 * v / max);
+      }
+      bar.style.width = Math.min(100, w).toFixed(1) + "%";
+    });
+  });
+  $("scaleBtn").textContent = logScale ? "Switch to linear scale" : "Switch to log scale";
+  $("scaleNote").textContent = logScale
+    ? "Currently: logarithmic display. Small categories are visually inflated so they stay legible."
+    : "Currently: linear display. This is the honest disproportion.";
+}
+$("scaleBtn").addEventListener("click", function () { logScale = !logScale; drawBars(); });
+
+/* ---------- model ---------- */
+var lens = "pf";
+var LENS_NOTES = {
+  pf: "Project finance lens: the loan is underwritten to contracted cash flows first, collateral second. Assigned contracts get meaningful recovery credit, liquidity premium is moderate, and par anchors to the insurer-held DDTL 4.0 print.",
+  abs: "ABS lens: the paper is underwritten to the collateral pool and trades. Contract credit is minimal, liquidity premium is higher, and par anchors to the publicly syndicated DDTL 5.0 print. Same math, harsher inputs."
+};
+var PRESETS = {
+  strong: { life: 6, age: 3, discount: 20, advance: 60, amort: 15, pd: 5,  liqCost: 15,
+            pf: { contract: 35, liquidity: 75,  reference: 225 },
+            abs: { contract: 12, liquidity: 125, reference: 450 } },
+  base:   { life: 6, age: 3, discount: 35, advance: 60, amort: 12, pd: 10, liqCost: 15,
+            pf: { contract: 25, liquidity: 100, reference: 225 },
+            abs: { contract: 8,  liquidity: 150, reference: 450 } },
+  weak:   { life: 5, age: 3, discount: 55, advance: 65, amort: 8,  pd: 20, liqCost: 15,
+            pf: { contract: 15, liquidity: 200, reference: 400 },
+            abs: { contract: 3,  liquidity: 300, reference: 450 } },
+  run:    { life: 5, age: 3, discount: 45, advance: 65, amort: 5,  pd: 25, liqCost: 15,
+            pf: { contract: 10, liquidity: 500, reference: 400 },
+            abs: { contract: 3,  liquidity: 550, reference: 450 } }
+};
+var STRUCTURAL = 125;   // bps, fixed by design
+var DURATION = 2.5;     // spread duration, fixed by design
+var controlIds = ["life", "age", "discount", "advance", "amort", "pd", "contract", "liqCost", "liquidity"];
+
+function val(id) { return parseFloat($(id).value); }
+function money(x) { return "$" + x.toFixed(1); }
+function pct(x) { return x.toFixed(0) + "%"; }
+function bps(x) { return Math.round(x) + " bps"; }
+
+function compute() {
+  var life = val("life"), age = val("age");
+  var discount = val("discount") / 100;
+  var advance = val("advance");
+  var amort = val("amort") / 100;
+  var pd = val("pd") / 100;
+  var contract = val("contract") / 100;
+  var liqCost = val("liqCost") / 100;
+  var liquidity = val("liquidity");
+  var reference = parseFloat($("reference").value);
+
+  var openingLoan = advance;
+  var balance = openingLoan * Math.pow(1 - amort, age);
+  var book = 100 * Math.max(0, 1 - age / life);
+  var netCollateral = book * (1 - discount) * (1 - liqCost);
+  var contractCredit = balance * contract;
+  var recovery = balance > 0 ? Math.min(balance, netCollateral + contractCredit) / balance : 1;
+  var lgd = 1 - recovery;
+  var annualEL = age > 0 ? (pd * lgd / age) * 10000 : 0;
+  var spread = annualEL + liquidity + STRUCTURAL;
+  var price = Math.max(40, Math.min(105, 100 - DURATION * (spread - reference) / 100));
+  var breakeven = Math.max(0, (balance - contractCredit) / (1 - liqCost));
+  var coverage = balance > 0 ? (netCollateral + contractCredit) / balance : 99;
+
+  $("oLife").textContent = life.toFixed(1) + " yrs";
+  $("oAge").textContent = age.toFixed(1) + " yrs";
+  $("oDiscount").textContent = pct(discount * 100);
+  $("oAdvance").textContent = pct(advance);
+  $("oAmort").textContent = pct(amort * 100) + "/yr";
+  $("oPd").textContent = pct(pd * 100);
+  $("oContract").textContent = pct(contract * 100) + " of loan";
+  $("oLiqCost").textContent = pct(liqCost * 100);
+  $("oLiquidity").textContent = bps(liquidity);
+
+  $("vLoan").textContent = money(openingLoan);
+  $("vBalance").textContent = money(balance);
+  $("vBook").textContent = money(book);
+  $("vCollateral").textContent = money(netCollateral);
+  $("vRecovery").textContent = pct(recovery * 100);
+  $("vEL").textContent = bps(annualEL);
+  $("vSpread").textContent = "S + " + Math.round(spread);
+  $("vPrice").textContent = price.toFixed(1);
+  $("vBreakeven").textContent = money(breakeven);
+
+  var v = $("verdict");
+  var s = Math.round(spread);
+  if (s <= 325 && coverage >= 1) {
+    v.className = "verdict good";
+    v.innerHTML = "<b>Reads like the insurer-anchored cohort.</b> At S + " + s +
+      " with stress coverage of " + pct(coverage * 100) +
+      ", this profile is consistent with the DDTL 4.0 print at SOFR + 225: contracts and amortization repay the loan before residual value is the question. Collateral is protection, not the plan.";
+  } else if (s <= 550) {
+    v.className = "verdict mid";
+    v.innerHTML = "<b>Mixed repayment sources.</b> At S + " + s +
+      ", recovery of " + pct(recovery * 100) +
+      " depends on both contract enforcement and used-equipment value. This is the territory between the S + 225 insurer-anchored print and the S + 400 to 450 concentrated and syndicated cohort (DDTL 3.0 and 5.0). A change in customer credit, delivery performance, or the market discount moves the required spread sharply.";
+  } else if (s <= 850) {
+    v.className = "verdict bad";
+    v.innerHTML = "<b>Collateral-led stress.</b> At S + " + s +
+      " with " + pct(lgd * 100) + " loss given default, contract credit is insufficient and the balance outruns net equipment value. Indicative price near " + price.toFixed(0) +
+      " is where refinancing, margining, and warehouse pressure convert a credit problem into forced selling.";
+  } else {
+    v.className = "verdict bad";
+    v.innerHTML = "<b>Back to 2023 hard-money economics.</b> At S + " + s +
+      ", implied all-in cost approaches the 15% effective rate the 10-Q still shows on DDTL 1.0. The market would be re-underwriting the asset class from scratch, with transit balance sheets setting the marks.";
+  }
+}
+
+function clearPreset() {
+  ["p_strong", "p_base", "p_weak", "p_run"].forEach(function (id) { $(id).classList.remove("active"); });
+}
+function activePresetName() {
+  var names = ["strong", "base", "weak", "run"];
+  for (var i = 0; i < names.length; i++) {
+    if ($("p_" + names[i]).classList.contains("active")) return names[i];
+  }
+  return null;
+}
+function applyPreset(name) {
+  var p = PRESETS[name];
+  ["life", "age", "discount", "advance", "amort", "pd", "liqCost"].forEach(function (k) { $(k).value = p[k]; });
+  var l = p[lens];
+  $("contract").value = l.contract;
+  $("liquidity").value = l.liquidity;
+  $("reference").value = String(l.reference);
+  clearPreset();
+  $("p_" + name).classList.add("active");
+  compute();
+}
+function setLens(which) {
+  lens = which;
+  $("lensPF").classList.toggle("active", which === "pf");
+  $("lensABS").classList.toggle("active", which === "abs");
+  $("lensNote").textContent = LENS_NOTES[which];
+  var name = activePresetName();
+  var p = PRESETS[name || "base"];
+  var l = p[which];
+  $("contract").value = l.contract;
+  $("liquidity").value = l.liquidity;
+  $("reference").value = String(l.reference);
+  compute();
+}
+function resetModel() {
+  lens = "pf";
+  $("lensPF").classList.add("active");
+  $("lensABS").classList.remove("active");
+  $("lensNote").textContent = LENS_NOTES.pf;
+  applyPreset("base");
+}
+controlIds.forEach(function (id) {
+  $(id).addEventListener("input", function () { clearPreset(); compute(); });
+});
+$("reference").addEventListener("change", function () { clearPreset(); compute(); });
+
+/* ---------- chrome ---------- */
+function setTheme(mode){
+  var root=document.documentElement;
+  var next=mode==="dark"?"dark":"light";
+  root.setAttribute("data-theme", next==="dark"?"dark":"light");
+  document.querySelectorAll("[data-theme-choice]").forEach(function(btn){
+    btn.setAttribute("aria-pressed", btn.getAttribute("data-theme-choice")===next ? "true" : "false");
+  });
+  try{ localStorage.setItem("ai-infra-theme", next); }catch(e){}
+}
+(function initTheme(){
+  var saved=null;
+  try{ saved=localStorage.getItem("ai-infra-theme"); }catch(e){}
+  var prefersDark=window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(saved || (prefersDark ? "dark" : "light"));
+  document.querySelectorAll("[data-theme-choice]").forEach(function(btn){
+    btn.addEventListener("click", function(){ setTheme(btn.getAttribute("data-theme-choice")); });
+  });
+})();
+$("copyBtn").addEventListener("click", function () {
+  var text = $("summaryText").innerText;
+  var done = function (ok) {
+    $("copyBtn").textContent = ok ? "Copied" : "Copy failed";
+    setTimeout(function () { $("copyBtn").textContent = "Copy summary"; }, 1300);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+  } else { done(false); }
+});
+
+/* ---------- bubble map: area encodes dollar size ---------- */
+var BUBBLES = [
+  { name: "Peak U.S. subprime mortgages", short: "Subprime mortgages", v: 1300, disp: "~$1.3T", color: "#8a8fa0",
+    basis: "Outstanding stock at the 2007 peak. Widely cited estimate (IMF GFSR, Oct. 2007). Historical comparator, not independently verified.", status: "approx" },
+  { name: "Telecom / fiber buildout", short: "Telecom / fiber", v: 750, disp: "$0.5T to $1T", color: "#b0a488",
+    basis: "Cumulative capex and debt, 1996 to 2002, shown at the $750B midpoint of a widely cited range. Historical comparator.", status: "approx" },
+  { name: "AI-related debt issuance 2025", short: "AI debt 2025", v: 200, disp: "~$200B", color: "#0b5367",
+    basis: "Broad 2025 issuance, discussed in the low hundreds of billions. An annual flow, not an outstanding stock. 2026 hyperscaler funding needs are described as very large.", status: "approx" },
+  { name: "Beignet / Meta project notes", short: "", v: 27.3, disp: "$27.3B", color: "#514387",
+    basis: "Secured debt of one project (Meta / Blue Owl, Richland Parish) per S&P. A single project now equals the entire 2025 securitization market. Not independently verified.", status: "unverified" },
+  { name: "CoreWeave DDTL capacity", short: "", v: 27.1, disp: "$27.1B", color: "#9b3524",
+    basis: "Identified commitment capacity across DDTL 1.0 through 5.0. Verified 10-Q total debt was $24.9B net at Mar. 31, 2026, including non-DDTL obligations.", status: "components verified" },
+  { name: "Data-center securitization 2025", short: "", v: 27, disp: "$27B", color: "#286447",
+    basis: "2025 new issuance per KBRA, verified. JPMorgan / Bloomberg coverage discussed $30B to $40B per year potential for 2026 to 2027.", status: "verified" }
+];
+function drawBubbles() {
+  var K = 4.1, baseY = 400, gap = 13, x = 12;
+  var svg = $("bubbleSvg"), parts = [];
+  BUBBLES.forEach(function (b, i) {
+    b.r = K * Math.sqrt(b.v);
+    x += b.r; b.cx = x; b.cy = baseY - b.r; x += b.r + gap;
+    parts.push('<circle data-i="' + i + '" cx="' + b.cx.toFixed(1) + '" cy="' + b.cy.toFixed(1) + '" r="' + b.r.toFixed(1) + '" fill="' + b.color + '" fill-opacity="0.85"><title>' + b.name + ", " + b.disp + "</title></circle>");
+    if (b.r > 45) {
+      var fs = b.r > 80 ? 15 : 12, fv = b.r > 80 ? 13 : 11;
+      parts.push('<text x="' + b.cx + '" y="' + (b.cy - 6) + '" text-anchor="middle" font-size="' + fs + '" font-weight="700" fill="#fff" pointer-events="none">' + b.short + "</text>");
+      parts.push('<text x="' + b.cx + '" y="' + (b.cy + 13) + '" text-anchor="middle" font-size="' + fv + '" fill="#fff" pointer-events="none">' + b.disp + "</text>");
+    } else {
+      parts.push('<text x="' + b.cx + '" y="' + (b.cy + 5) + '" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" pointer-events="none">' + (i + 1) + "</text>");
+      parts.push('<text x="' + b.cx + '" y="' + (baseY + 22) + '" text-anchor="middle" font-size="10.5" fill="currentColor" opacity=".65" pointer-events="none">' + b.disp + "</text>");
+    }
+  });
+  parts.push('<text x="12" y="450" font-size="11" fill="currentColor" opacity=".6">Bubble area is proportional to dollar size. Hover for basis of measurement; click to pin details.</text>');
+  svg.innerHTML = parts.join("");
+  $("bubbleLegend").innerHTML = BUBBLES.map(function (b, i) {
+    return '<span><span class="bdot" style="background:' + b.color + '"></span>' + (b.r <= 45 ? (i + 1) + ". " : "") + b.name + "</span>";
+  }).join("");
+  var tip = $("btip"), wrap = $("bubbleWrap");
+  svg.addEventListener("mousemove", function (e) {
+    var c = e.target.closest("circle");
+    if (!c) { tip.style.opacity = 0; return; }
+    var b = BUBBLES[+c.getAttribute("data-i")];
+    tip.innerHTML = "<b>" + b.name + " · " + b.disp + "</b><br>" + b.basis;
+    var box = wrap.getBoundingClientRect();
+    tip.style.left = Math.max(0, Math.min(e.clientX - box.left + 14, box.width - 280)) + "px";
+    tip.style.top = (e.clientY - box.top + 14) + "px";
+    tip.style.opacity = 1;
+  });
+  svg.addEventListener("mouseleave", function () { tip.style.opacity = 0; });
+  svg.addEventListener("click", function (e) {
+    var c = e.target.closest("circle");
+    if (!c) return;
+    var b = BUBBLES[+c.getAttribute("data-i")];
+    $("bubbleDetail").innerHTML = "<b>" + b.name + " (" + b.disp + ", " + b.status + "):</b> " + b.basis;
+  });
+}
+
+drawBars();
+drawBubbles();
+resetModel();
+</script>
+</body>
+</html>

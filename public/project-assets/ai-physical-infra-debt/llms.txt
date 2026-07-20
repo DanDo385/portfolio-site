@@ -1,0 +1,30 @@
+# AI Infrastructure Financing: State of the Market
+
+> GPU-backed term loans, data-center securitization, project debt, and funding transmission. Provenance-tagged research framework through July 20, 2026. Not investment advice.
+
+## Entry points
+
+- Interactive report: https://ai-physical-infra-debt-analysis.vercel.app/
+- Agent JSON: ./agent.json
+- Portfolio project: https://magro.dev/projects/ai-physical-infra-debt/
+- Portfolio demo: https://magro.dev/demos/ai-physical-infra-debt/
+- Agent Research: https://magro.dev/agent-research/ai-infrastructure-financing/
+- Essay: https://magro.dev/writing/ai-infrastructure-buildout-bubble/
+
+## What this page is
+
+A static interactive research report with:
+
+- market size maps (stocks vs flows)
+- CoreWeave financing ladder (DDTL 1.0 to 5.0)
+- interactive recovery / required-spread model
+- contract quality waterfall
+- funding transmission channels
+- crisis comparison by mechanism
+
+## Principles
+
+- Prefer structure-specific evidence over bubble slogans.
+- Distinguish outstanding stocks from annual issuance flows.
+- Tag provenance: verified, approx, unverified, analysis.
+- Display light/dark is available in standalone mode; Agent Mode exports stay available outside embeds.

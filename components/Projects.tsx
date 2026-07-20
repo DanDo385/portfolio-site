@@ -1,4 +1,4 @@
-import type { Article, Project } from '@/lib/types';
+import type { Article, Project, ResearchPaper } from '@/lib/types';
 import { projectTier } from '@/lib/content';
 import { ProjectCard } from './ProjectCard';
 import { Reveal } from './Reveal';
@@ -6,9 +6,10 @@ import { Reveal } from './Reveal';
 interface ProjectsProps {
   projects: Project[];
   writingBySlug: Record<string, Article>;
+  researchBySlug?: Record<string, ResearchPaper>;
 }
 
-export function Projects({ projects, writingBySlug }: ProjectsProps) {
+export function Projects({ projects, writingBySlug, researchBySlug = {} }: ProjectsProps) {
   // `projects` is already sorted featured-first (in canonical flagship order), then by
   // date, via lib/content.ts#getProjects. Filtering here preserves that order.
   const primary = projects.filter((project) => projectTier(project) === 'primary');
@@ -27,6 +28,7 @@ export function Projects({ projects, writingBySlug }: ProjectsProps) {
             key={project.slug}
             project={project}
             writingBySlug={writingBySlug}
+            researchBySlug={researchBySlug}
             variant="featured"
           />
         ))}
@@ -41,6 +43,7 @@ export function Projects({ projects, writingBySlug }: ProjectsProps) {
                   key={project.slug}
                   project={project}
                   writingBySlug={writingBySlug}
+                  researchBySlug={researchBySlug}
                   variant="compact"
                 />
               ))}
@@ -62,6 +65,7 @@ export function Projects({ projects, writingBySlug }: ProjectsProps) {
                     key={project.slug}
                     project={project}
                     writingBySlug={writingBySlug}
+                    researchBySlug={researchBySlug}
                     reveal={false}
                     variant="compact"
                   />

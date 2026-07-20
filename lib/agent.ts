@@ -55,6 +55,9 @@ function projectUrls(project: Project) {
     relatedWriting: project.relatedWriting
       ? `${SITE.url}/writing/${project.relatedWriting}/`
       : null,
+    relatedResearch: project.relatedResearch
+      ? `${SITE.url}/agent-research/${project.relatedResearch}/`
+      : null,
     llmsTxt,
     media: Object.keys(media).length > 0 ? media : null,
   };
@@ -129,6 +132,10 @@ export function getAgentManifest() {
         `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
         `${SITE.url}/agent-research/the-2050-economy/`,
         `${SITE.url}/agent-research/octopus-agentic-systems/`,
+        `${SITE.url}/agent-research/ai-infrastructure-financing/`,
+        `${SITE.url}/writing/ai-infrastructure-buildout-bubble/`,
+        `${SITE.url}/projects/ai-physical-infra-debt/`,
+        `${SITE.url}/demos/ai-physical-infra-debt/`,
       ],
       principles: PRINCIPLES,
     },
