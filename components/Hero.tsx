@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { RESUME_PDF } from '@/lib/constants';
 
 export function Hero() {
   return (
@@ -29,9 +28,9 @@ export function Hero() {
           <Link href="#projects" className="btn btn-primary">
             View selected work
           </Link>
-          <a href={RESUME_PDF} target="_blank" rel="noopener noreferrer" className="btn">
+          <Link href="#resume" className="btn">
             View resume
-          </a>
+          </Link>
           <Link href="#contact" className="btn">
             Contact
           </Link>
