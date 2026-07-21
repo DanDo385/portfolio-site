@@ -19,6 +19,16 @@
     "Agent Mode"
   ],
   "githubUrl": "https://github.com/DanDo385/ai-physical-infra-debt-analysis",
+  "resourceSource": {
+    "ref": "main",
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "llms",
+      "media"
+    ]
+  },
   "demoUrl": "/demos/ai-physical-infra-debt",
   "externalDemoUrl": "https://ai-physical-infra-debt-analysis.vercel.app",
   "loomUrl": null,
