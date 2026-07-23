@@ -10,7 +10,7 @@ export function Hero() {
         <p className="hero-eyebrow">
           Institutional markets experience. Applied technical capability.
         </p>
-        <h1>Markets judgment for increasingly technical financial systems</h1>
+        <h1>Institutional market judgment, with AI agents as leverage on technical finance</h1>
         <p className="hero-identity">
           I bring 13 years across institutional fixed income sales, proprietary trading, macro
           execution, and portfolio management, now paired with public work in automation, APIs,
