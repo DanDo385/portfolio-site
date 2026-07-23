@@ -14,15 +14,18 @@ independent verification this agent could or could not perform.
 > - Claim 3 (e-commerce): "average annual profits" is now "annual profits"; same figures.
 > - Claim 5 (RAMM.ai): now "Built EVM smart contracts, the product frontend, and the public
 >   website" plus "Served as the technical translation layer across product, contracts,
->   partners, and users." No backend ownership is claimed, which resolves the resume side of
->   the scope mismatch; the site TIMELINE in `lib/content.ts` still says "shipped across the
->   stack ... backend" and still needs Daniel's confirmation.
+>   partners, and users." No backend ownership is claimed.
 > - Claim 6 (Primary Dealer): now "supported Jefferies' Primary Dealer designation process,"
 >   which is softer than the previous "contributing to" wording and stays interview-safe.
 >   The "worked with the Federal Reserve and other regulators" phrase was removed.
 > - Claim 8 (open-source language): resolved. The new resume uses "SELECTED TECHNICAL
 >   PROJECTS" and no longer describes Daniel's own repositories as "open source" work in the
 >   summary or section header.
+>
+> **Update (July 23, 2026):** Site TIMELINE and Experience copy were aligned to the resume
+> RAMM scope (contracts, frontend, public website, product/on-chain translation). The
+> unsupported "shipped across the stack ... backend" site wording was removed. Primary site
+> positioning no longer uses "Former" or intersection framing.
 
 Template used for each entry:
 
@@ -141,28 +144,24 @@ Exact wording currently used (resume): "Owned the technical and external transla
   frontend and public website end to end." / "Took the product story into the field at
   retail and Web3 conventions nationwide, explaining the marketplace model and on-chain
   value proposition to retailers, prospective partners, and users."
-Exact wording currently used (site, `lib/content.ts` TIMELINE): "Shipped across the stack
-  (smart contracts, frontend, and backend) and translated partner requirements into product,
-  API, and on-chain constraints." (role: "Product & Platform Contributor", RAMM.ai,
-  era "2024 - 2025")
-Evidence available: Employment history at RAMM.ai. The resume and site TIMELINE currently
-  describe scope slightly differently: the resume does not explicitly claim backend work or
-  API design, while the site TIMELINE does ("shipped across the stack ... backend").
-Time period: 03/2024-07/2025 (resume) / listed as "2024 - 2025" on the site.
+Exact wording currently used (site, `lib/content.ts` TIMELINE): "Built EVM smart contracts,
+  the product frontend, and the public website, while translating product requirements and
+  on-chain mechanics for prospective partners and users." (role: "Product and Web3 Platform
+  Contributor", RAMM.ai, era "Mar 2024 – Jul 2025")
+Evidence available: Employment history at RAMM.ai. Resume and site TIMELINE now describe
+  the same verified scope: contracts, frontend, public website, and product/on-chain
+  translation. Neither claims backend ownership.
+Time period: 03/2024-07/2025.
 Publicly verifiable: Employment can typically be corroborated via LinkedIn or the company;
-  the specific scope of technical ownership (contracts vs. frontend vs. backend) is not
-  independently verifiable from this repository.
-Interview-safe wording: "At RAMM.ai I was the main technical and go-to-market translator for
-  an early-stage Web3 marketplace: I wrote the EVM smart contracts and built the product
-  frontend and public website, and I worked with the team on how the API and backend
-  constraints needed to shape the product." Avoid asserting sole ownership of backend
-  systems unless Daniel can describe specific backend work he personally wrote.
-Wording that should not be used: Do not claim backend ownership more strongly on the site
-  than what Daniel can speak to specifically in an interview. If backend contribution was
-  limited, prefer "contracts, frontend, and product/API translation" over an unqualified
-  "shipped across the stack."
-Status: revise. Recommend Daniel confirm the backend scope so `lib/content.ts` TIMELINE and
-  the resume describe the same, accurate scope of work.
+  the specific scope of technical ownership (contracts vs. frontend) is not independently
+  verifiable from this repository.
+Interview-safe wording: "At RAMM.ai I wrote the EVM smart contracts and built the product
+  frontend and public website, and translated product requirements and on-chain mechanics
+  for prospective partners and users."
+Wording that should not be used: Do not claim backend ownership, API architecture, audited
+  contracts, grant-funded status, or "shipped across the stack" unless Daniel can describe
+  that work specifically in an interview.
+Status: revise (scope aligned between resume and site; keep backend claims out).
 ```
 
 ## 6. Jefferies Primary Dealer contribution

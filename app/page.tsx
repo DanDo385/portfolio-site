@@ -48,13 +48,13 @@ export default function HomePage() {
       <main>
         <Hero />
         <Bridge />
+        <About />
+        <Bridge />
         <Projects
           projects={projects}
           writingBySlug={writingBySlug}
           researchBySlug={researchBySlug}
         />
-        <Bridge />
-        <About />
         <Bridge />
         <Writing articles={articles} projectsBySlug={projectsBySlug} />
         <Bridge />

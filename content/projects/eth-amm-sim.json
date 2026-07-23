@@ -3,7 +3,7 @@
   "slug": "eth-amm-sim",
   "date": "2025-05-10",
   "status": "complete",
-  "featured": false,
+  "featured": true,
   "listed": true,
   "tags": [
     "DeFi",

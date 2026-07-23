@@ -10,7 +10,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'The portfolio is positioned around market infrastructure, programmable finance, and AI agent systems, built on thirteen years of institutional trading and portfolio management experience.',
+  'Markets judgment is the foundation. Technical fluency expands the problems that can be solved. Public work proves initiative, learning velocity, and delivery.',
 ];
 
 function siteUrl(pathOrUrl?: string | null): string | null {
@@ -114,7 +114,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'Former institutional rates and macro trader and portfolio manager building market infrastructure, programmable finance, and AI agent systems',
+        role: 'Institutional rates and macro markets professional building and publishing technical work in financial and digital infrastructure',
       },
     },
     agentMode: {
@@ -140,8 +140,8 @@ export function getAgentManifest() {
       principles: PRINCIPLES,
     },
     navigation: [
-      { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
       { id: 'about', label: 'Experience', href: `${SITE.url}/#about` },
+      { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
       { id: 'my-writing', label: 'Writing', href: `${SITE.url}/#my-writing` },
       { id: 'agent-research', label: 'Research', href: `${SITE.url}/#agent-research` },
       { id: 'contact', label: 'Contact', href: `${SITE.url}/#contact` },
@@ -150,9 +150,9 @@ export function getAgentManifest() {
       institutionalExperienceYears: 13,
       education: 'Penn State, Magna Cum Laude',
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin'],
-      buildingWith: ['Go', 'Solidity', 'EVM', 'AI', 'Hermes'],
+      buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems'],
       summary:
-        'Former institutional rates and macro trader and portfolio manager building systems at the intersection of market infrastructure, programmable finance, and AI agents. Combines thirteen years of experience in liquidity, collateral, execution, and risk with hands-on work in Go, Solidity, Ethereum infrastructure, APIs, and agent systems.',
+        'Institutional markets professional with 13 years across fixed income, rates, macro, execution, and portfolio management, paired with public technical work in financial infrastructure, Ethereum, automation, APIs, and agent systems.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -163,14 +163,14 @@ export function getAgentManifest() {
       ...(IPFS_URL ? { resumeIpfs: IPFS_URL } : {}),
     },
     canonicalTopics: [
-      'market infrastructure and execution',
-      'programmable finance and settlement',
-      'liquidity, collateral, and risk',
-      'Ethereum infrastructure and EVM tooling',
-      'rollup and validity-proof mechanics',
-      'AI agent systems',
-      'agent-readable web infrastructure',
-      'capital markets translation for technical systems',
+      'institutional rates and macro markets',
+      'fixed income and portfolio management',
+      'liquidity, execution, collateral, and risk',
+      'market structure',
+      'financial and digital infrastructure',
+      'Ethereum and EVM mechanics',
+      'technical problem solving',
+      'agent systems and structured interfaces',
     ],
     demos: Object.values(DEMO_CONFIGS)
       .filter((config) => projects.some((project) => project.slug === config.projectSlug))

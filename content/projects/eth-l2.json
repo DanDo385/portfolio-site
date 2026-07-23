@@ -3,7 +3,7 @@
   "slug": "eth-l2",
   "date": "2026-07-07",
   "status": "complete",
-  "featured": true,
+  "featured": false,
   "listed": true,
   "tags": [
     "Infrastructure",

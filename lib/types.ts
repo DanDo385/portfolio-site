@@ -88,6 +88,8 @@ export interface TimelineItem {
   role: string;
   org: string;
   note: string;
+  /** When set to builder, appears under the Experience builder timeline. */
+  track?: 'institutional' | 'builder';
 }
 
 export type RecentItemType = 'project' | 'writing' | 'research';

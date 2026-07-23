@@ -35,7 +35,7 @@ export function Projects({ projects, writingBySlug, researchBySlug = {} }: Proje
         {supporting.length > 0 && (
           <div className="projects-supporting">
             <Reveal>
-              <div className="projects-supporting-label">Supporting engineering work</div>
+              <div className="projects-supporting-label">Additional technical work</div>
             </Reveal>
             <div className="projects-supporting-list">
               {supporting.map((project) => (

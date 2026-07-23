@@ -141,7 +141,7 @@ export function Contact() {
               </div>
               <div className="sig-row">
                 <span className="sig-label">Building with</span>
-                <span className="sig-val">Go · Solidity · EVM · AI · Hermes</span>
+                <span className="sig-val">Go · Solidity · Ethereum · APIs · agent systems</span>
               </div>
               <div className="sig-row">
                 <span className="sig-label">Education</span>

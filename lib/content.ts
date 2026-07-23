@@ -39,11 +39,15 @@ function loadMarkdownDocuments<T extends { date: string; slug: string }>(
 
 /**
  * Canonical flagship order for the recruiter-facing homepage and Agent Mode surfaces:
- * Rollup Mechanics Lab, Ethereum Transaction Lifecycle, Agent Runtime. Any other project
- * marked `featured` falls back to date order after these three. Non-featured projects
- * within a tier sort by date, newest first.
+ * AI Infrastructure Financing, AMM Simulation Engine, Ethereum Transaction Lifecycle.
+ * Any other project marked `featured` falls back to date order after these three.
+ * Non-featured projects within a tier sort by date, newest first.
  */
-const FLAGSHIP_ORDER = ['eth-l2', 'eth-tx-lifecycle', 'agent-runtime'];
+const FLAGSHIP_ORDER = [
+  'ai-physical-infra-debt',
+  'eth-amm-sim',
+  'eth-tx-lifecycle',
+];
 
 function compareProjects(a: Project, b: Project): number {
   if (a.featured && !b.featured) return -1;
@@ -185,15 +189,24 @@ export function hasRecentContent(): boolean {
 
 export const TIMELINE: TimelineItem[] = [
   {
-    era: '2024 – 2025',
-    role: 'Product & Platform Contributor',
-    org: 'RAMM.ai, New York, NY',
-    note: 'Shipped across the stack (smart contracts, frontend, and backend) and translated partner requirements into product, API, and on-chain constraints.',
+    era: 'Aug 2025 – Present',
+    role: 'Independent Technical Development',
+    org: 'Independent',
+    track: 'builder',
+    note: 'Building and publishing projects in financial infrastructure, market mechanics, Ethereum systems, automation, and agent workflows, with working demos and documented limitations.',
+  },
+  {
+    era: 'Mar 2024 – Jul 2025',
+    role: 'Product and Web3 Platform Contributor',
+    org: 'RAMM.ai',
+    track: 'builder',
+    note: 'Built EVM smart contracts, the product frontend, and the public website, while translating product requirements and on-chain mechanics for prospective partners and users.',
   },
   {
     era: '2019 – 2022',
     role: 'Independent Operator',
     org: 'Self-Employed',
+    track: 'builder',
     note: 'Built Python automation to track supply-constrained retail markets and optimize execution across competitive platforms and payment rails.',
   },
   {

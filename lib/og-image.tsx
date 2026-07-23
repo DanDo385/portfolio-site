@@ -33,14 +33,13 @@ export function siteShareImageElement() {
           Daniel Magro
         </div>
         <div style={{ fontSize: 58, fontWeight: 600, lineHeight: 1.15, maxWidth: 980 }}>
-          Building at the intersection of market infrastructure, programmable finance, and AI
-          systems
+          Markets judgment for increasingly technical financial systems
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ fontSize: 26, color: '#8d9ab5', maxWidth: 940, lineHeight: 1.4 }}>
-          Former institutional rates and macro trader and portfolio manager, now building
-          inspectable systems for financial infrastructure and AI agents.
+          Institutional markets professional with practical technical capability and public proof
+          of delivery.
         </div>
         <div
           style={{

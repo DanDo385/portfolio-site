@@ -10,11 +10,11 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'Market structure',
-  'Financial infrastructure',
-  'Agent systems',
-  'APIs and automation',
-  'Technical strategy',
+  'Institutional markets',
+  'Market structure and execution',
+  'Financial and digital infrastructure',
+  'Technical problem solving',
+  'Public research and delivery',
 ];
 
 export function About() {
@@ -22,20 +22,19 @@ export function About() {
     <section id="about">
       <div className="container">
         <Reveal>
-          <div className="section-label">Experience &amp; Differentiators</div>
+          <div className="section-label">Experience</div>
         </Reveal>
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              I spent thirteen years in institutional fixed income across sales, proprietary
-              trading, macro execution, and portfolio management. Since leaving the desk, I have
-              built open-source simulations, monitoring tools, smart contracts, and agent-facing
-              systems that make complex infrastructure easier to inspect and explain.
+              I spent 13 years in institutional fixed income across sales, proprietary trading,
+              macro execution, and portfolio management. That experience was built around liquidity,
+              risk, collateral, market structure, and decision-making under pressure.
             </p>
             <p className="about-intro">
-              My advantage is not simply knowing finance or writing code. It is understanding how
-              technical architecture, liquidity, incentives, collateral, execution, and
-              operational risk interact inside a real market.
+              More recently, I have expanded that foundation through hands-on technical development.
+              I publish working projects that explore financial infrastructure, market mechanics,
+              Ethereum systems, automation, APIs, and tool-using agents.
             </p>
 
             <div className="about-track">
@@ -55,7 +54,7 @@ export function About() {
               <details className="history-details">
                 <summary>Full institutional history</summary>
                 <div className="timeline">
-                  {TIMELINE.filter((item) => item.era !== '2019 – 2022' && item.era !== '2024 – 2025').map((item) => (
+                  {TIMELINE.filter((item) => item.track !== 'builder').map((item) => (
                     <div key={item.era} className="tl-item">
                       <div className="tl-era">{item.era}</div>
                       <div className="tl-role">{item.role}</div>
@@ -68,13 +67,13 @@ export function About() {
             </div>
 
             <div className="about-track">
-              <h3 className="about-track-title">Building & operating</h3>
+              <h3 className="about-track-title">Building &amp; operating</h3>
               <p className="about-track-summary">
-                Alongside institutional work, I ran independent e-commerce operations and built Python
-                systems for supply-constrained markets with real execution pressure. I studied
-                permissionless protocols with developer communities and worked problems where
-                strategy, sentiment, APIs, and tax-aware cross-border logistics all connect back to
-                the same discipline from the desk: read the structure, then move with intent.
+                My technical work is practical and evidence-driven. I use public repositories,
+                working demos, tests, simulations, and documented limitations to turn unfamiliar
+                systems into inspectable problems. The goal is not to present a second career in
+                engineering. It is to demonstrate that I can learn technical systems, reason across
+                domain boundaries, and deliver usable work.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (
@@ -86,7 +85,7 @@ export function About() {
               <details className="history-details">
                 <summary>Builder timeline</summary>
                 <div className="timeline">
-                  {TIMELINE.filter((item) => item.era === '2019 – 2022' || item.era === '2024 – 2025').map((item) => (
+                  {TIMELINE.filter((item) => item.track === 'builder').map((item) => (
                     <div key={item.era} className="tl-item">
                       <div className="tl-era">{item.era}</div>
                       <div className="tl-role">{item.role}</div>
