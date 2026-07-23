@@ -2336,7 +2336,14 @@ html[data-theme='light'] .tag-default {
   margin-top: 56px;
 }
 
-.resume-section { margin-bottom: 28px; }
+.resume-section {
+  margin-bottom: 28px;
+  scroll-margin-top: 96px;
+}
+
+#contact {
+  scroll-margin-top: 96px;
+}
 
 .resume-label {
   font-family: var(--font-mono);

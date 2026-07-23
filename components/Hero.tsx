@@ -28,9 +28,9 @@ export function Hero() {
           <Link href="#projects" className="btn btn-primary">
             View selected work
           </Link>
-          <Link href="#resume" className="btn">
+          <a href="#resume" className="btn">
             View resume
-          </Link>
+          </a>
           <Link href="#contact" className="btn">
             Contact
           </Link>
