@@ -8,9 +8,9 @@ export function Hero() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <p className="hero-eyebrow">
-          Operating at the Intersection of Finance, Market Structure, and AI
+          Institutional market judgment. AI agents as leverage on technical finance.
         </p>
-        <h1>Institutional market judgment, with AI agents as leverage on technical finance</h1>
+        <h1>Operating at the Intersection of Finance, Market Structure, and AI</h1>
         <p className="hero-identity">
           I bring 13 years across institutional fixed income sales, proprietary trading, macro
           execution, and portfolio management, now paired with public work in automation, APIs,

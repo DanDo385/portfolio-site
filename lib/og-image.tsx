@@ -33,7 +33,7 @@ export function siteShareImageElement() {
           Daniel Magro
         </div>
         <div style={{ fontSize: 58, fontWeight: 600, lineHeight: 1.15, maxWidth: 980 }}>
-          Institutional market judgment, with AI agents as leverage on technical finance
+          Operating at the Intersection of Finance, Market Structure, and AI
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
