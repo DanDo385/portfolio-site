@@ -92,6 +92,10 @@ html[data-theme='light'] .hero-grid {
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 38%, black 10%, transparent 82%);
 }
 
+html[data-theme='light'] .hero-eyebrow {
+  color: #228b22;
+}
+
 html {
   color-scheme: dark;
 }

@@ -10,7 +10,6 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'Institutional markets',
   'Market structure and execution',
   'Financial and digital infrastructure',
   'Technical problem solving',
@@ -27,22 +26,17 @@ export function About() {
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              I spent 13 years in institutional fixed income across sales, proprietary trading,
-              macro execution, and portfolio management. That experience was built around liquidity,
-              risk, collateral, market structure, and decision-making under pressure.
-            </p>
-            <p className="about-intro">
-              More recently, I have expanded that foundation through hands-on technical development.
-              I publish working projects that explore financial infrastructure, market mechanics,
-              Ethereum systems, automation, APIs, and tool-using agents.
+              Markets judgment is the foundation. Technical fluency expands the problems I can
+              solve. Public work proves initiative, learning velocity, and delivery.
             </p>
 
             <div className="about-track">
               <h3 className="about-track-title">Institutional markets</h3>
               <p className="history-summary">
-                <strong>13 years</strong> across institutional fixed income sales, trading, and
-                portfolio management: rates, macro, and cross-asset. Merrill Lynch, Jefferies, Nomura,
-                PointState Capital, and Prudential (PGIM).
+                <strong>13 years</strong> across fixed income sales, proprietary trading, macro
+                execution, and portfolio management. Work centered on liquidity, risk, collateral,
+                market structure, and decision-making under pressure at Merrill Lynch, Jefferies,
+                Nomura, PointState Capital, and Prudential (PGIM).
               </p>
               <div className="firm-logos" aria-label="Employers">
                 {FIRMS.map((firm) => (
