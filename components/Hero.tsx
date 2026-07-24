@@ -3,12 +3,12 @@ import { RESUME_PDF } from '@/lib/constants';
 
 export function Hero() {
   return (
-    <section className="hero" id="top">
+    <section className="hero" id="top" tabIndex={-1}>
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <p className="hero-eyebrow">
-          Institutional markets experience. Applied technical capability.
+          Operating at the Intersection of Finance, Market Structure, and AI
         </p>
         <h1>Institutional market judgment, with AI agents as leverage on technical finance</h1>
         <p className="hero-identity">

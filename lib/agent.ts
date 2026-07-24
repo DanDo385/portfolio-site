@@ -130,12 +130,16 @@ export function getAgentManifest() {
         `${SITE.url}/agent.json`,
         `${SITE.url}/llms.txt`,
         `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
-        `${SITE.url}/agent-research/the-2050-economy/`,
-        `${SITE.url}/agent-research/octopus-agentic-systems/`,
         `${SITE.url}/agent-research/ai-infrastructure-financing/`,
         `${SITE.url}/writing/ai-infrastructure-buildout-bubble/`,
         `${SITE.url}/projects/ai-physical-infra-debt/`,
         `${SITE.url}/demos/ai-physical-infra-debt/`,
+        `${SITE.url}/projects/eth-amm-sim/`,
+        'https://eth-amm-sim.vercel.app',
+        `${SITE.url}/projects/eth-tx-lifecycle/`,
+        'https://eth-tx-lifecycle.vercel.app',
+        `${SITE.url}/agent-research/the-2050-economy/`,
+        `${SITE.url}/agent-research/octopus-agentic-systems/`,
       ],
       principles: PRINCIPLES,
     },
@@ -253,7 +257,10 @@ export function getLlmsTxt(): string {
 
   const siteLines = [
     llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
-    llmsLink('About', `${SITE.url}/#about`, 'Professional history and builder track'),
+    llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and builder track'),
+    llmsLink('Projects', `${SITE.url}/#projects`, 'Flagship and additional technical work'),
+    llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),
+    llmsLink('Research', `${SITE.url}/#agent-research`, 'Longer-form research papers'),
     llmsLink('Contact', `${SITE.url}/#contact`, 'Email, resume, and social links'),
   ].join('\n');
 

@@ -4,6 +4,7 @@ import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { AgentResearch } from '@/components/AgentResearch';
 import { JsonLd } from '@/components/JsonLd';
+import { MarketIntro } from '@/components/MarketIntro';
 import { Projects } from '@/components/Projects';
 import { SiteNav } from '@/components/SiteNav';
 import { Writing } from '@/components/Writing';
@@ -44,6 +45,7 @@ export default function HomePage() {
     <>
       <JsonLd data={PERSON_JSON_LD} />
       <JsonLd data={WEBSITE_JSON_LD} />
+      <MarketIntro />
       <SiteNav />
       <main>
         <Hero />

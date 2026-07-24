@@ -10,7 +10,7 @@
     "Observability",
     "Interactive"
   ],
-  "summary": "A standalone browser observability lab inspired by Agent Runtime: enter a simple prompt and inspect model-visible context, loop stages, tool events, token estimates, verification, and persistence boundaries.",
+  "summary": "Standalone browser observability lab for a Hermes-style tool-using agent: enter a simple prompt and inspect model-visible context, loop stages, tool events, token estimates, verification, and persistence boundaries.",
   "techBadges": [
     "HTML",
     "CSS",

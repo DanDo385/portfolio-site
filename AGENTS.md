@@ -128,6 +128,7 @@ Canonical external apps today:
 
 - eth-l2 → `https://eth-l2.vercel.app` (backend: `https://api-staging-eth-l2.magro.dev` → Ubuntu VPS, Go API loopback `127.0.0.1:8080`)
 - eth-tx-lifecycle → `https://eth-tx-lifecycle.vercel.app` (backend: `https://api-staging-eth-tx.magro.dev` → Ubuntu VPS, Go API loopback `127.0.0.1:8081`)
+- eth-amm-sim → `https://eth-amm-sim.vercel.app` (backend: `https://api-staging-eth-amm-sim.magro.dev` → Ubuntu VPS, Go API via Cloudflare Tunnel)
 
 Each app owns `config/ports.json` as the source of truth (frontend + backend bind). eth-tx uses **8081** so it can coexist with eth-l2 on **8080**. Cloudflare Tunnel ingress on the VPS must match those binds. eth-tx keeps the Go API durable via systemd (`eth-tx-lifecycle-backend.service`); do not put loopback ports in Agent Mode JSON or public UI copy — only the `api-staging-*.magro.dev` hostnames. A MacBook may still run these services locally for offline development or demonstrations, but it is not the hosted production backend.
 

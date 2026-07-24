@@ -14,8 +14,8 @@ export function HermesXrayInteractive() {
           <h2 id="hermes-xray-title">Send a prompt. Inspect the Hermes runtime path.</h2>
           <p>
             Explore prompt intake, context hydration, loop policy, tool dispatch, token estimates,
-            event evidence, verification, and persistence. This independent HTML/CSS/JavaScript
-            project was inspired by Agent Runtime without replacing it or sharing its portfolio slug.
+            event evidence, verification, and persistence. This HTML/CSS/JavaScript lab is a
+            separate project from Agent Runtime, with its own repository, demo route, and Vercel app.
           </p>
         </div>
         <div className="amd-runtime">
