@@ -14,7 +14,7 @@ import {
 
 type Phase = 'pending' | 'gate' | 'pass' | 'terminal' | 'exiting' | 'gone';
 
-const REPLAY_EVERY_REFRESH = process.env.NODE_ENV === 'development';
+const REPLAY_EVERY_REFRESH = true;
 
 function shouldPlayIntro(): boolean {
   if (!REPLAY_EVERY_REFRESH) {
