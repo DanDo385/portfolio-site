@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { RESUME_PDF } from '@/lib/constants';
 
 export function Hero() {
   return (
@@ -32,9 +31,9 @@ export function Hero() {
           <Link href="#projects" className="btn">
             Selected work
           </Link>
-          <a href={RESUME_PDF} className="btn" download>
-            Download resume
-          </a>
+          <Link href="#resume" className="btn">
+            Resume
+          </Link>
         </div>
       </div>
       <div className="hero-scroll" aria-hidden="true">

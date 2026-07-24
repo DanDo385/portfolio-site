@@ -512,12 +512,13 @@ html.intro-done .hero-scroll {
   letter-spacing: -0.02em;
   max-width: 18ch;
   margin: 0;
+  color: #f4f7fc;
 }
 
 .sentiment-gate-sub {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--text-muted);
+  color: #e8d9a0;
   letter-spacing: 0.04em;
   margin: 0 0 28px;
 }
@@ -535,11 +536,14 @@ html.intro-done .hero-scroll {
   align-items: flex-start;
   gap: 8px;
   padding: 28px 22px;
-  background: rgba(15, 21, 36, 0.72);
-  border: 1px solid var(--border);
+  background: #121a2c;
+  border: 1px solid #2a3d66;
   border-radius: var(--radius);
   cursor: pointer;
   text-align: left;
+  color: #f4f7fc;
+  -webkit-appearance: none;
+  appearance: none;
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
@@ -554,26 +558,34 @@ html.intro-done .hero-scroll {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-primary);
+  color: #f4f7fc;
+}
+
+.sentiment-card-bull .sentiment-card-label {
+  color: #5dffb0;
+}
+
+.sentiment-card-bear .sentiment-card-label {
+  color: #ff7a8a;
 }
 
 .sentiment-card-hint {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--text-muted);
+  color: #a8b6d0;
 }
 
 .sentiment-card-bull:hover:not(:disabled),
 .sentiment-card-bull:focus-visible {
-  border-color: rgba(45, 212, 160, 0.55);
-  background: rgba(45, 212, 160, 0.08);
+  border-color: rgba(45, 212, 160, 0.7);
+  background: #143026;
   outline: none;
 }
 
 .sentiment-card-bear:hover:not(:disabled),
 .sentiment-card-bear:focus-visible {
-  border-color: rgba(225, 29, 72, 0.5);
-  background: rgba(225, 29, 72, 0.08);
+  border-color: rgba(255, 77, 102, 0.7);
+  background: #2a1420;
   outline: none;
 }
 
@@ -582,19 +594,21 @@ html.intro-done .hero-scroll {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: var(--text-muted);
+  color: #a8b6d0;
   background: transparent;
   border: none;
   border-bottom: 1px solid transparent;
   padding: 6px 2px;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .sentiment-pass:hover:not(:disabled),
 .sentiment-pass:focus-visible {
-  color: var(--text-secondary);
-  border-bottom-color: var(--border-active);
+  color: #f4f7fc;
+  border-bottom-color: #2a3d66;
   outline: none;
 }
 
