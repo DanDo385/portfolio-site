@@ -15,19 +15,19 @@
     "sync:project-resources:local": "node scripts/sync-project-resources.mjs --local-root .."
   },
   "dependencies": {
-    "framer-motion": "^12.42.2",
     "gray-matter": "^4.0.3",
-    "lightweight-charts": "^5.2.0",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.3",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.185.1",
     "typescript": "^5.7.0"
   },
   "overrides": {
