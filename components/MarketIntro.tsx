@@ -93,11 +93,13 @@ export function MarketIntro() {
     >
       <canvas ref={canvasRef} className="market-intro-canvas" aria-hidden="true" />
       <div className="market-intro-chrome">
-        <div>
+        <div className="market-intro-brand">
+          <p className="market-intro-kicker">magro.dev</p>
           <p className="market-intro-eyebrow">{meta.eyebrow}</p>
           <p className="market-intro-scene-label">{meta.label}</p>
           <p className="market-intro-scene-detail">{meta.detail}</p>
         </div>
+        <p className="market-intro-beat" data-intro-beat aria-live="polite" />
         <button
           ref={skipRef}
           type="button"

@@ -7,22 +7,22 @@ export function Hero() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <p className="hero-eyebrow">
-          Institutional market judgment. AI agents as leverage on technical finance.
+          13 years on institutional desks. Now building and publishing technical work.
         </p>
-        <h1>Operating at the Intersection of Finance, Market Structure, and AI</h1>
+        <h1>Programmable Finance, Market Structure, and AI</h1>
         <p className="hero-identity">
-          I bring 13 years across institutional fixed income sales, proprietary trading, macro
-          execution, and portfolio management, now paired with public work in automation, APIs,
-          Ethereum infrastructure, market simulations, and agent systems.
+          The desk years covered institutional fixed income sales, proprietary trading, macro
+          execution, and portfolio management. The building years cover automation, APIs, Ethereum
+          infrastructure, market simulations, and agent systems.
         </p>
         <p className="hero-identity">
-          I build in public, test ideas through working artifacts, and carry problems from analysis
-          through delivery.
+          Everything here is checkable: repos you can read, demos you can run, and write-ups that
+          show the reasoning.
         </p>
         <p className="hero-positioning">
-          Open to market-facing and hybrid roles across trading, execution, liquidity, risk,
-          portfolio strategy, financial infrastructure, digital assets, and roles that connect
-          markets, clients, and technical systems.
+          Open to roles across trading, execution, liquidity, risk, portfolio strategy, financial
+          infrastructure, and digital assets, especially work that sits between markets, clients,
+          and technical systems.
         </p>
         <div className="hero-cta">
           <Link href="#about" className="btn btn-primary">

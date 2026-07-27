@@ -13,7 +13,7 @@ const BUILDER_THEMES = [
   'Market structure and execution',
   'Financial and digital infrastructure',
   'Technical problem solving',
-  'Public research and delivery',
+  'Public research and writing',
 ];
 
 export function About() {
@@ -26,17 +26,17 @@ export function About() {
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              Markets judgment is the foundation. Technical fluency expands the problems I can
-              solve. Public work proves initiative, learning velocity, and delivery.
+              The markets career came first, and it still anchors how I think about problems. The
+              technical work came later, and I publish it so nobody has to take my word for it.
             </p>
 
             <div className="about-track">
               <h3 className="about-track-title">Institutional markets</h3>
               <p className="history-summary">
                 <strong>13 years</strong> across fixed income sales, proprietary trading, macro
-                execution, and portfolio management. Work centered on liquidity, risk, collateral,
-                market structure, and decision-making under pressure at Merrill Lynch, Jefferies,
-                Nomura, PointState Capital, and Prudential (PGIM).
+                execution, and portfolio management. The common thread was liquidity, risk,
+                collateral, and market structure, at Merrill Lynch, Jefferies, Nomura, PointState
+                Capital, and Prudential (PGIM).
               </p>
               <div className="firm-logos" aria-label="Employers">
                 {FIRMS.map((firm) => (
@@ -63,11 +63,11 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Building &amp; operating</h3>
               <p className="about-track-summary">
-                My technical work is practical and evidence-driven. I use public repositories,
-                working demos, tests, simulations, and documented limitations to turn unfamiliar
-                systems into inspectable problems. The goal is not to present a second career in
-                engineering. It is to demonstrate that I can learn technical systems, reason across
-                domain boundaries, and deliver usable work.
+                This is not a second career in engineering, and I do not present it as one. The
+                repos, demos, tests, and simulations exist to show that I can pick up an unfamiliar
+                system, work out how it actually behaves, and ship something usable. Each project
+                documents its own limitations, because that is how I would want to read anyone
+                else&apos;s work.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

@@ -10,7 +10,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'Markets judgment is the foundation. Technical fluency expands the problems that can be solved. Public work proves initiative, learning velocity, and delivery.',
+  'Markets judgment comes first. The technical work is public so it can be checked rather than taken on faith.',
 ];
 
 function siteUrl(pathOrUrl?: string | null): string | null {

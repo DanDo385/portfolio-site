@@ -5,7 +5,7 @@ export function Footer() {
         <div className="footer-l">&copy; 2026 Daniel Magro</div>
         <div className="footer-r">
           <div className="footer-dot" />
-          Built with intention
+          Built by me and my agents
         </div>
       </div>
     </footer>

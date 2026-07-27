@@ -33,13 +33,13 @@ export function siteShareImageElement() {
           Daniel Magro
         </div>
         <div style={{ fontSize: 58, fontWeight: 600, lineHeight: 1.15, maxWidth: 980 }}>
-          Operating at the Intersection of Finance, Market Structure, and AI
+          Programmable Finance, Market Structure, and AI
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ fontSize: 26, color: '#8d9ab5', maxWidth: 940, lineHeight: 1.4 }}>
-          Institutional markets professional with practical technical capability and public proof
-          of delivery.
+          13 years on institutional desks, now building and publishing technical work in
+          Ethereum, automation, and agent systems.
         </div>
         <div
           style={{
