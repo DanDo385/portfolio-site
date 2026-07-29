@@ -1159,6 +1159,12 @@ html[data-theme='light'] .tag-default {
   margin-bottom: 16px;
 }
 
+.projects-primary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .projects-supporting {
   margin-top: 40px;
   padding-top: 24px;

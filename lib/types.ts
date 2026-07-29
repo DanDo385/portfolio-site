@@ -32,6 +32,8 @@ export interface Project {
   slug: string;
   date: string;
   status: ProjectStatus;
+  /** Optional card label when status is in-progress (e.g. Waiting on hardware). */
+  statusLabel?: string | null;
   featured?: boolean;
   /** Defaults to primary when omitted. */
   tier?: ProjectTier;

@@ -69,6 +69,7 @@ export function getAgentManifest() {
     slug: project.slug,
     date: project.date,
     status: project.status,
+    ...(project.statusLabel ? { statusLabel: project.statusLabel } : {}),
     featured: Boolean(project.featured),
     tier: projectTier(project),
     summary: project.summary,
@@ -217,13 +218,21 @@ export function getLlmsTxt(): string {
       .filter((project) => project.tier !== 'foundations')
       .map((project) => {
         const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
-        return llmsLink(project.title, href, project.summary);
+        const note =
+          project.status === 'in-progress'
+            ? `${project.statusLabel ?? 'In progress'}. ${project.summary}`
+            : project.summary;
+        return llmsLink(project.title, href, note);
       }),
     ...manifest.projects
       .filter((project) => project.tier === 'foundations')
       .map((project) => {
         const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
-        return llmsLink(`${project.title} (Foundations)`, href, project.summary);
+        const note =
+          project.status === 'in-progress'
+            ? `${project.statusLabel ?? 'In progress'}. ${project.summary}`
+            : project.summary;
+        return llmsLink(`${project.title} (Foundations)`, href, note);
       }),
   ].join('\n');
 

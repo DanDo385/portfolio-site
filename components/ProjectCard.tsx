@@ -46,16 +46,13 @@ export function ProjectCard({
         <div className="pcard-main">
           <div className="pcard-head">
             <div>
-              {resolvedVariant === 'featured' && (
-                <p className="pcard-kicker">Flagship project</p>
-              )}
               <h3 className="pcard-name">
                 <Link href={projectPath(project.slug)} className="pcard-name-link">
                   {project.title}
                 </Link>
               </h3>
               {project.status === 'in-progress' && (
-                <span className="pcard-status">In progress</span>
+                <span className="pcard-status">{project.statusLabel || 'In progress'}</span>
               )}
             </div>
             <div className="pcard-tags">

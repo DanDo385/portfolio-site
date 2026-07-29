@@ -1,0 +1,70 @@
+{
+  "title": "Air-Gap TX Signer",
+  "slug": "airgap-tx-signer",
+  "date": "2026-07-29",
+  "status": "in-progress",
+  "statusLabel": "Waiting on hardware",
+  "featured": false,
+  "listed": true,
+  "tags": [
+    "Ethereum",
+    "Hardware",
+    "Security",
+    "C",
+    "Embedded"
+  ],
+  "summary": "Air-gapped Ethereum transaction signer for Raspberry Pi Pico: host builds an unsigned Sepolia tx, the Pico holds the key and signs offline over USB after Confirm/Cancel. Desktop C crypto path (Keccak-256 + secp256k1) already passes known-answer tests; firmware and device UX wait on hardware arrival. Learning/demo signer, not a Ledger replacement.",
+  "techBadges": [
+    "C",
+    "Python",
+    "Keccak-256",
+    "secp256k1",
+    "RP2040",
+    "USB serial",
+    "Sepolia"
+  ],
+  "githubUrl": "https://github.com/DanDo385/airgap-tx-signer",
+  "demoUrl": null,
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "I want a physically confirmable, air-gapped way to sign Ethereum transactions for learning and demo use, without putting a private key on a networked host.",
+    "ownership": [
+      "Portable Keccak-256 and secp256k1 path in C, verified against Python/Ethereum reference vectors",
+      "Host tooling to build unsigned Sepolia transactions, assemble signed raw txs, and talk USB serial",
+      "Firmware protocol design for PING/PONG, GET_ADDR, and confirm-gated SIGN"
+    ],
+    "architecture": [
+      "Host builds the unsigned transaction and signing digest",
+      "Pico holds the key, shows a summary, waits for Confirm/Cancel, returns r/s/v over USB",
+      "Host attaches the signature and can broadcast to Sepolia",
+      "Pico stays offline: no Wi-Fi or networking"
+    ],
+    "decisions": [
+      "Use Ethereum Keccak-256, not NIST SHA3-256",
+      "Keep Python as the reference generator and C as the implementation under test",
+      "Scaffold firmware protocol before wiring LCD, buttons, or RP2040 secp256k1"
+    ],
+    "verification": [
+      "desktop test harness against vectors/known_answers.json: ALL PASS",
+      "Known-answer coverage for Keccak, key derivation, Ethereum address, recoverable ECDSA, and a legacy Sepolia signing hash"
+    ],
+    "limitations": [
+      "Pico firmware is a scaffold only until hardware arrives",
+      "RP2040/libsecp256k1 port is not validated yet",
+      "Demo key in vectors is public and must never be funded",
+      "Testnet/learning use only, not a mainnet-safe wallet"
+    ],
+    "productionDifferences": [
+      "Future hardware path: blink/USB hello, LCD + buttons, crypto port, confirm UX, then Sepolia end-to-end"
+    ]
+  }
+}

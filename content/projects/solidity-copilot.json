@@ -1,0 +1,74 @@
+{
+  "title": "Solidity Copilot",
+  "slug": "solidity-copilot",
+  "date": "2026-07-29",
+  "status": "in-progress",
+  "statusLabel": "In progress",
+  "featured": false,
+  "listed": true,
+  "tags": [
+    "AI",
+    "Solidity",
+    "EVM",
+    "Security",
+    "Evaluation"
+  ],
+  "summary": "Evaluation-first research for AI-assisted Solidity generation: constrained machine-readable contract tasks in, source plus Foundry tests and assumptions out, then an isolated harness scores compile, hidden tests, interfaces, and security triage. Baselines B0-B2 before any bounded LoRA. Educational only, no mainnet claims.",
+  "techBadges": [
+    "Solidity",
+    "Foundry",
+    "LLM evaluation",
+    "Retrieval",
+    "LoRA / QLoRA",
+    "Static analysis",
+    "Provenance"
+  ],
+  "githubUrl": "https://github.com/DanDo385/solidity-copilot",
+  "demoUrl": null,
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "I want a trustworthy way to measure whether a model can turn a precise contract specification into correct Solidity, without pretending that compiling equals useful or that fine-tuning is the first move.",
+    "ownership": [
+      "Constrained, machine-readable contract tasks with optional reference-contract context",
+      "Model outputs: Solidity sources, Foundry tests for claimed behavior, and assumptions where the spec is ambiguous",
+      "Isolated evaluator harness the model never sees: pinned toolchain compile, hidden tests, interface and invariant checks, static security triage",
+      "Lineage-aware train/val/test splits with immutable provenance, hashes, and license review"
+    ],
+    "architecture": [
+      "B0: structured prompt only",
+      "B1: structured prompt plus fixed few-shot examples",
+      "B2: structured prompt plus train-only retrieval and few-shot examples",
+      "Bounded LoRA or QLoRA only if baselines show a repeatable, data-addressable Solidity/Foundry failure",
+      "Hidden tests and held-out reference implementations stay out of prompts, retrieval, and training data"
+    ],
+    "decisions": [
+      "Evaluation and provenance before fine-tuning",
+      "LoRA can teach recurring patterns and constraint-following; it does not fix ambiguous specs, missing API knowledge, bad retrieval, or weak evaluation",
+      "Split by contract-family lineage, not individual files, to keep forks and near-duplicates from leaking across sets",
+      "A model that merely compiles is not a passing grade"
+    ],
+    "verification": [
+      "Pinned Solidity/Foundry compile",
+      "Evaluator-owned hidden behavioral tests",
+      "Required interfaces, access controls, events, custom errors, and invariants",
+      "Static security triage for new serious findings"
+    ],
+    "limitations": [
+      "Educational and experimental only",
+      "No private keys, no mainnet deployment, no audited or production-ready claims",
+      "No unlicensed or provenance-free training corpus"
+    ],
+    "productionDifferences": [
+      "If the harness is honest, this becomes an AI evaluation and adaptation system for verifiable financial-infrastructure code, not a generic Solidity chatbot"
+    ]
+  }
+}

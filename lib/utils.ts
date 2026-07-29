@@ -27,9 +27,9 @@ export function projectAnchorId(slug: string): string {
   return `project-${slug}`;
 }
 
-/** Flagship projects (`featured: true`) get the full card; everything else is compact. */
-export function projectCardVariant(project: Project): ProjectCardVariant {
-  return project.featured ? 'featured' : 'compact';
+/** All homepage project cards use the compact layout. Newest projects sort first by date. */
+export function projectCardVariant(_project: Project): ProjectCardVariant {
+  return 'compact';
 }
 
 export function projectPath(slug: string): string {
@@ -57,6 +57,12 @@ const TAG_CLASS: Record<string, string> = {
   CLI: 'tag-cli',
   Simulation: 'tag-simulation',
   'llms.txt': 'tag-llms',
+  Ethereum: 'tag-evm',
+  Hardware: 'tag-infra',
+  Security: 'tag-observability',
+  C: 'tag-cli',
+  Embedded: 'tag-infra',
+  Evaluation: 'tag-observability',
 };
 
 export function tagClass(tag: string): string {

@@ -38,28 +38,13 @@ function loadMarkdownDocuments<T extends { date: string; slug: string }>(
 }
 
 /**
- * Canonical flagship order for the recruiter-facing homepage and Agent Mode surfaces:
- * AI Infrastructure Financing, AMM Simulation Engine, Ethereum Transaction Lifecycle.
- * Any other project marked `featured` falls back to date order after these three.
- * Non-featured projects within a tier sort by date, newest first.
+ * Listed projects sort by date, newest first.
+ * Foundations vs primary is a separate tier filter, not a sort key.
  */
-const FLAGSHIP_ORDER = [
-  'ai-physical-infra-debt',
-  'eth-amm-sim',
-  'eth-tx-lifecycle',
-];
-
 function compareProjects(a: Project, b: Project): number {
-  if (a.featured && !b.featured) return -1;
-  if (!a.featured && b.featured) return 1;
-  if (a.featured && b.featured) {
-    const ai = FLAGSHIP_ORDER.indexOf(a.slug);
-    const bi = FLAGSHIP_ORDER.indexOf(b.slug);
-    if (ai !== -1 && bi !== -1) return ai - bi;
-    if (ai !== -1) return -1;
-    if (bi !== -1) return 1;
-  }
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
+  const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
+  if (byDate !== 0) return byDate;
+  return a.slug.localeCompare(b.slug);
 }
 
 export function getProjects(): Project[] {

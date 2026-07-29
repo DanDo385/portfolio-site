@@ -1,5 +1,5 @@
 ---
-title: "Is the AI Infrastructure Buildout a Bubble? A Fixed-Income Trader's Read"
+title: "Is the AI Infrastructure Buildout a Bubble? A Fixed-Income Trader's Read, Part I"
 slug: ai-infrastructure-buildout-bubble
 date: 2026-07-20
 status: published
@@ -71,3 +71,7 @@ So I am cautiously constructive on the financing. The paper appears to be in str
 I keep coming back to software. Better model harnesses, using the right model for the job, interoperability across memory, models, and sessions, and open source winning more use cases could change the economics faster than accountants change GPU lives. That is where more uncertainty sits.
 
 Even then, we will still need inference to run the robots.
+
+## Part II
+
+I wrote [Part II: The Subprime AI Data Center Narrative](/writing/subprime-ai-data-center-narrative/) after reading Ed Zitron's subprime-data-center comparison. Same funding lens, more of the 2005 mortgage-desk context, and why the SPV structure still does not map cleanly onto 2008.

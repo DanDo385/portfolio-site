@@ -10,12 +10,9 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects, writingBySlug, researchBySlug = {} }: ProjectsProps) {
-  // `projects` is already sorted featured-first (in canonical flagship order), then by
-  // date, via lib/content.ts#getProjects. Filtering here preserves that order.
+  // `projects` is already sorted by date, newest first, via lib/content.ts#getProjects.
   const primary = projects.filter((project) => projectTier(project) === 'primary');
   const foundations = projects.filter((project) => projectTier(project) === 'foundations');
-  const featured = primary.filter((project) => project.featured);
-  const supporting = primary.filter((project) => !project.featured);
 
   return (
     <section id="projects">
@@ -26,33 +23,17 @@ export function Projects({ projects, writingBySlug, researchBySlug = {} }: Proje
             Systems around live markets, permissionless rails, and early-stage product work.
           </p>
         </Reveal>
-        {featured.map((project) => (
-          <ProjectCard
-            key={project.slug}
-            project={project}
-            writingBySlug={writingBySlug}
-            researchBySlug={researchBySlug}
-            variant="featured"
-          />
-        ))}
-        {supporting.length > 0 && (
-          <div className="projects-supporting">
-            <Reveal>
-              <div className="projects-supporting-label">More systems and product work</div>
-            </Reveal>
-            <div className="projects-supporting-list">
-              {supporting.map((project) => (
-                <ProjectCard
-                  key={project.slug}
-                  project={project}
-                  writingBySlug={writingBySlug}
-                  researchBySlug={researchBySlug}
-                  variant="compact"
-                />
-              ))}
-            </div>
-          </div>
-        )}
+        <div className="projects-primary-list">
+          {primary.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              writingBySlug={writingBySlug}
+              researchBySlug={researchBySlug}
+              variant="compact"
+            />
+          ))}
+        </div>
         {foundations.length > 0 && (
           <Reveal delay={40}>
             <details className="projects-foundations">
