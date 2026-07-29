@@ -10,7 +10,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'Markets judgment comes first. The technical work is public so it can be checked rather than taken on faith.',
+  'Markets judgment comes first. Still trades live risk in crypto and other assets, and builds around permissionless systems with a startup product mindset.',
 ];
 
 function siteUrl(pathOrUrl?: string | null): string | null {
@@ -114,7 +114,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'Institutional rates and macro markets professional building and publishing technical work in financial and digital infrastructure',
+        role: 'Institutional markets professional who still trades, works in permissionless systems, and builds with a startup product mindset',
       },
     },
     agentMode: {
@@ -154,9 +154,9 @@ export function getAgentManifest() {
       institutionalExperienceYears: 13,
       education: 'Penn State, Magna Cum Laude',
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin'],
-      buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems'],
+      buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems', 'permissionless rails'],
       summary:
-        'Institutional markets professional with 13 years across fixed income, rates, macro, execution, and portfolio management, paired with public technical work in financial infrastructure, Ethereum, automation, APIs, and agent systems.',
+        'Institutional markets professional with 13 years across fixed income, rates, macro, execution, and portfolio management. Still trades crypto and other assets, works in permissionless systems, and has early-stage startup product experience across market structure, Ethereum, and agent workflows.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -169,11 +169,12 @@ export function getAgentManifest() {
     canonicalTopics: [
       'institutional rates and macro markets',
       'fixed income and portfolio management',
+      'active trading in crypto and other assets',
       'liquidity, execution, collateral, and risk',
       'market structure',
+      'permissionless systems and Ethereum',
+      'startup product experience',
       'financial and digital infrastructure',
-      'Ethereum and EVM mechanics',
-      'technical problem solving',
       'agent systems and structured interfaces',
     ],
     demos: Object.values(DEMO_CONFIGS)
@@ -258,7 +259,7 @@ export function getLlmsTxt(): string {
   const siteLines = [
     llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
     llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and builder track'),
-    llmsLink('Projects', `${SITE.url}/#projects`, 'Flagship and additional technical work'),
+    llmsLink('Projects', `${SITE.url}/#projects`, 'Systems around live markets, permissionless rails, and early-stage product work'),
     llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),
     llmsLink('Research', `${SITE.url}/#agent-research`, 'Longer-form research papers'),
     llmsLink('Contact', `${SITE.url}/#contact`, 'Email, resume, and social links'),

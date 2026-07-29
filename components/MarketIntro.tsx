@@ -3,7 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   createIntroScene,
+  FALLBACK_MARKET_SNAPSHOT,
   pickRandomIntroScene,
+  type IntroMarketSnapshot,
   type IntroSceneController,
 } from '@/lib/intro-3d';
 
@@ -12,6 +14,20 @@ type Phase = 'pending' | 'playing' | 'exiting' | 'gone';
 function shouldPlayIntro(): boolean {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
   return true;
+}
+
+async function loadIntroSnapshot(): Promise<IntroMarketSnapshot> {
+  try {
+    const res = await fetch('/api/intro/snapshot', {
+      signal: AbortSignal.timeout(2800),
+    });
+    if (!res.ok) return FALLBACK_MARKET_SNAPSHOT;
+    const data = (await res.json()) as IntroMarketSnapshot;
+    if (!data?.yields?.tenors?.length || !data?.eth?.mid) return FALLBACK_MARKET_SNAPSHOT;
+    return data;
+  } catch {
+    return FALLBACK_MARKET_SNAPSHOT;
+  }
 }
 
 export function MarketIntro() {
@@ -58,25 +74,34 @@ export function MarketIntro() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const controller = createIntroScene(meta.id, canvas, rootRef.current, finish);
-    controllerRef.current = controller;
-    controller.start();
+    let cancelled = false;
+    let controller: IntroSceneController | null = null;
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
-        controller.skip();
+        controller?.skip();
       }
     };
-    const onResize = () => controller.resize();
-    window.addEventListener('keydown', onKey);
-    window.addEventListener('resize', onResize);
-    requestAnimationFrame(() => skipRef.current?.focus());
+    const onResize = () => controller?.resize();
+
+    (async () => {
+      const snapshot = await loadIntroSnapshot();
+      if (cancelled) return;
+
+      controller = createIntroScene(meta.id, canvas, rootRef.current, finish, snapshot);
+      controllerRef.current = controller;
+      controller.start();
+      window.addEventListener('keydown', onKey);
+      window.addEventListener('resize', onResize);
+      requestAnimationFrame(() => skipRef.current?.focus());
+    })();
 
     return () => {
+      cancelled = true;
       window.removeEventListener('keydown', onKey);
       window.removeEventListener('resize', onResize);
-      controller.destroy();
+      controllerRef.current?.destroy();
       controllerRef.current = null;
     };
   }, [phase, meta.id, finish]);
@@ -92,6 +117,14 @@ export function MarketIntro() {
       aria-modal="true"
     >
       <canvas ref={canvasRef} className="market-intro-canvas" aria-hidden="true" />
+      <div className="market-intro-blackout" data-intro-blackout aria-hidden="true" />
+      <div className="market-intro-vignette" aria-hidden="true" />
+      <div className="market-intro-letterbox market-intro-letterbox-top" aria-hidden="true" />
+      <div className="market-intro-letterbox market-intro-letterbox-bottom" aria-hidden="true" />
+      <div className="market-intro-titlecard" data-intro-titlecard aria-hidden="true">
+        <p className="market-intro-act" data-intro-act />
+        <p className="market-intro-act-sub" data-intro-act-sub />
+      </div>
       <div className="market-intro-chrome">
         <div className="market-intro-brand">
           <p className="market-intro-kicker">magro.dev</p>

@@ -22,6 +22,9 @@ export function Projects({ projects, writingBySlug, researchBySlug = {} }: Proje
       <div className="container">
         <Reveal>
           <div className="section-label">Selected Projects</div>
+          <p className="about-intro">
+            Systems around live markets, permissionless rails, and early-stage product work.
+          </p>
         </Reveal>
         {featured.map((project) => (
           <ProjectCard
@@ -35,7 +38,7 @@ export function Projects({ projects, writingBySlug, researchBySlug = {} }: Proje
         {supporting.length > 0 && (
           <div className="projects-supporting">
             <Reveal>
-              <div className="projects-supporting-label">Additional technical work</div>
+              <div className="projects-supporting-label">More systems and product work</div>
             </Reveal>
             <div className="projects-supporting-list">
               {supporting.map((project) => (

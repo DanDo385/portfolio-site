@@ -140,8 +140,16 @@ export function Contact() {
                 <span className="sig-val">13 years</span>
               </div>
               <div className="sig-row">
+                <span className="sig-label">Markets</span>
+                <span className="sig-val">Still trading crypto and other assets</span>
+              </div>
+              <div className="sig-row">
                 <span className="sig-label">Building with</span>
                 <span className="sig-val">Go · Solidity · Ethereum · APIs · agent systems</span>
+              </div>
+              <div className="sig-row">
+                <span className="sig-label">Startup</span>
+                <span className="sig-val">Early-stage product and Web3 experience</span>
               </div>
               <div className="sig-row">
                 <span className="sig-label">Education</span>

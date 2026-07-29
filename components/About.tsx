@@ -10,10 +10,10 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
+  'Active trading and digital assets',
+  'Permissionless systems',
+  'Startup product experience',
   'Market structure and execution',
-  'Financial and digital infrastructure',
-  'Technical problem solving',
-  'Public research and writing',
 ];
 
 export function About() {
@@ -26,8 +26,8 @@ export function About() {
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              The markets career came first, and it still anchors how I think about problems. The
-              technical work came later, and I publish it so nobody has to take my word for it.
+              The institutional markets career came first. I still trade crypto and other assets,
+              and I work on product and systems in permissionless environments with a startup bent.
             </p>
 
             <div className="about-track">
@@ -63,11 +63,11 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Building &amp; operating</h3>
               <p className="about-track-summary">
-                This is not a second career in engineering, and I do not present it as one. The
-                repos, demos, tests, and simulations exist to show that I can pick up an unfamiliar
-                system, work out how it actually behaves, and ship something usable. Each project
-                documents its own limitations, because that is how I would want to read anyone
-                else&apos;s work.
+                Outside the desk years I have operated independently and inside early-stage product
+                work, including Web3. I still trade crypto and other assets, and I build around
+                permissionless rails: settlement, market structure, infrastructure, and agent
+                systems. The repos and writeups are solid artifacts that showcase how I think and
+                explain complex technical concepts.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

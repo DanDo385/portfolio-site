@@ -9,6 +9,6 @@ export const RESUME_PDF = '/resume/Daniel_Magro_Resume.pdf';
 export const SITE = {
   name: 'Daniel Magro | Institutional Markets, Financial Infrastructure, Technical Systems',
   description:
-    'Institutional markets professional with 13 years across fixed income, rates, macro, execution, and portfolio management, paired with public technical work in financial infrastructure, Ethereum, automation, APIs, and agent systems.',
+    'Institutional markets professional with 13 years across fixed income, rates, macro, execution, and portfolio management. Still trades crypto and other assets, works in permissionless systems, and brings startup product experience to programmable finance, market structure, and AI.',
   url: 'https://magro.dev',
 };

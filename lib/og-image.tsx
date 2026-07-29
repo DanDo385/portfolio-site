@@ -38,8 +38,7 @@ export function siteShareImageElement() {
       </div>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ fontSize: 26, color: '#8d9ab5', maxWidth: 940, lineHeight: 1.4 }}>
-          13 years on institutional desks, now building and publishing technical work in
-          Ethereum, automation, and agent systems.
+          13 years in institutional markets. Still trading. Building in permissionless systems.
         </div>
         <div
           style={{

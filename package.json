@@ -12,7 +12,8 @@
     "lint": "next lint",
     "test": "node --test tests/*.test.mjs",
     "sync:project-resources": "node scripts/sync-project-resources.mjs",
-    "sync:project-resources:local": "node scripts/sync-project-resources.mjs --local-root .."
+    "sync:project-resources:local": "node scripts/sync-project-resources.mjs --local-root ..",
+    "inject:intro-secrets": "bash scripts/inject-intro-secrets.sh"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

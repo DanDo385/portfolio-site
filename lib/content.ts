@@ -190,10 +190,10 @@ export function hasRecentContent(): boolean {
 export const TIMELINE: TimelineItem[] = [
   {
     era: 'Aug 2025 – Present',
-    role: 'Independent Technical Development',
+    role: 'Independent Markets and Product Work',
     org: 'Independent',
     track: 'builder',
-    note: 'Building and publishing projects in financial infrastructure, market mechanics, Ethereum systems, automation, and agent workflows, with working demos and documented limitations.',
+    note: 'Still trading crypto and other assets while building around permissionless systems, market structure, and early-stage product work. Startup mindset: ship usable systems and stay close to live market feedback.',
   },
   {
     era: 'Mar 2024 – Jul 2025',
@@ -201,6 +201,13 @@ export const TIMELINE: TimelineItem[] = [
     org: 'RAMM.ai',
     track: 'builder',
     note: 'Built EVM smart contracts, the product frontend, and the public website, while translating product requirements and on-chain mechanics for prospective partners and users.',
+  },
+  {
+    era: '2022 – 2024',
+    role: 'Independent Study & Active Markets',
+    org: 'Self-Employed',
+    track: 'builder',
+    note: 'Completed Harvard CS50, boot.dev, and Cyfrin Updraft Solidity training with multiple blockchain certifications while actively trading crypto and DeFi markets; extended travel in Europe and family caregiving in Florida.',
   },
   {
     era: '2019 – 2022',

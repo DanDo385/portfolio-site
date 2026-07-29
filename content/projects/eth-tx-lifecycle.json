@@ -11,7 +11,7 @@
     "Next.js",
     "TypeScript"
   ],
-  "summary": "Full-stack visualization of what happens between clicking send and a transaction becoming irreversible: execution and consensus layers, MEV, builder auctions, and finality. UI on Vercel at eth-tx-lifecycle.vercel.app; live data via a staging Go backend through Cloudflare Tunnel.",
+  "summary": "Full-stack visualization of what happens between clicking send and a transaction becoming irreversible: execution and consensus layers, MEV, builder auctions, and finality. Live at eth-tx-lifecycle.vercel.app with a live-data Go backend.",
   "techBadges": [
     "Go",
     "Next.js",

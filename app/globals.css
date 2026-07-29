@@ -92,8 +92,16 @@ html[data-theme='light'] .hero-grid {
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 38%, black 10%, transparent 82%);
 }
 
-html[data-theme='light'] .hero-eyebrow {
-  color: #228b22;
+html[data-theme='light'] .hero-eyebrow,
+html[data-theme='light'] .hero h1 {
+  color: var(--accent);
+}
+
+html[data-theme='light'] .about-track-title,
+html[data-theme='light'] .pcard-name,
+html[data-theme='light'] .pcard-name-link,
+html[data-theme='light'] .writing-title {
+  color: var(--accent);
 }
 
 html {
@@ -457,6 +465,97 @@ html.intro-done .hero-scroll {
   display: block;
 }
 
+.market-intro-blackout {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: #000;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.market-intro-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 45%, transparent 35%, rgba(5, 8, 16, 0.55) 100%),
+    linear-gradient(180deg, rgba(5, 8, 16, 0.35) 0%, transparent 18%, transparent 78%, rgba(5, 8, 16, 0.5) 100%);
+}
+
+.market-intro-letterbox {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: clamp(28px, 5.5vh, 52px);
+  background: #02040a;
+  pointer-events: none;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.market-intro[data-intro-act='title'] .market-intro-letterbox {
+  height: clamp(36px, 7.5vh, 64px);
+}
+
+.market-intro[data-intro-act='insert'] .market-intro-letterbox,
+.market-intro[data-intro-act='climax'] .market-intro-letterbox {
+  height: clamp(42px, 9vh, 76px);
+}
+
+.market-intro[data-intro-act='black'] .market-intro-chrome,
+.market-intro[data-intro-act='out'] .market-intro-chrome {
+  opacity: 0;
+}
+
+.market-intro-letterbox-top {
+  top: 0;
+}
+
+.market-intro-letterbox-bottom {
+  bottom: 0;
+}
+
+.market-intro-titlecard {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  background: radial-gradient(ellipse 55% 40% at 50% 48%, rgba(5, 8, 16, 0.55), transparent 70%);
+}
+
+.market-intro-act {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(22px, 4.2vw, 42px);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f0d090;
+  text-align: center;
+  text-shadow:
+    0 0 40px rgba(201, 147, 58, 0.65),
+    0 2px 18px rgba(0, 0, 0, 0.7);
+}
+
+.market-intro-act-sub {
+  margin: 14px 0 0;
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.5vw, 14px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8d9ab5;
+  text-align: center;
+}
+
 .market-intro-chrome {
   position: relative;
   z-index: 2;
@@ -467,6 +566,7 @@ html.intro-done .hero-scroll {
   height: 100%;
   padding: clamp(18px, 3vw, 36px) clamp(18px, 4vw, 48px);
   pointer-events: none;
+  transition: opacity 0.35s ease;
 }
 
 .market-intro-brand {
@@ -515,17 +615,19 @@ html.intro-done .hero-scroll {
 .market-intro-beat {
   justify-self: center;
   align-self: end;
-  margin: 0 0 clamp(28px, 6vh, 64px);
+  margin: 0 0 clamp(48px, 9vh, 88px);
   font-family: var(--font-mono);
-  font-size: clamp(14px, 2.2vw, 20px);
+  font-size: clamp(15px, 2.4vw, 22px);
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: #e0ad52;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.25s ease;
-  text-shadow: 0 0 24px rgba(201, 147, 58, 0.35);
+  transition: opacity 0.28s ease;
+  text-shadow:
+    0 0 28px rgba(201, 147, 58, 0.55),
+    0 2px 12px rgba(0, 0, 0, 0.65);
   min-height: 1.2em;
 }
 

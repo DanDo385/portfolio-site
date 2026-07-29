@@ -7,22 +7,23 @@ export function Hero() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <p className="hero-eyebrow">
-          13 years on institutional desks. Now building and publishing technical work.
+          13 years in institutional markets. Still trading. Building in permissionless systems.
         </p>
         <h1>Programmable Finance, Market Structure, and AI</h1>
         <p className="hero-identity">
-          The desk years covered institutional fixed income sales, proprietary trading, macro
-          execution, and portfolio management. The building years cover automation, APIs, Ethereum
-          infrastructure, market simulations, and agent systems.
+          Background in institutional fixed income sales, proprietary trading, macro execution, and
+          portfolio management. I still trade crypto and other assets, and most of my technical work
+          sits in permissionless markets and infrastructure.
         </p>
         <p className="hero-identity">
-          Everything here is checkable: repos you can read, demos you can run, and write-ups that
-          show the reasoning.
+          Startup experience shaped how I work: ship usable systems, stay close to the product, and
+          keep the feedback loop short. The repos and writeups are solid artifacts that showcase how
+          I think about markets, infrastructure, and complex technical concepts.
         </p>
         <p className="hero-positioning">
-          Open to roles across trading, execution, liquidity, risk, portfolio strategy, financial
-          infrastructure, and digital assets, especially work that sits between markets, clients,
-          and technical systems.
+          Best fit: markets and liquidity roles at digital-asset firms, trading and financial
+          infrastructure teams that want fluency in both rates and EVM mechanics, and research or
+          product seats at the intersection of markets and AI.
         </p>
         <div className="hero-cta">
           <Link href="#about" className="btn btn-primary">
