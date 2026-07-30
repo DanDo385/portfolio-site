@@ -133,15 +133,15 @@ export function MarketIntro() {
           <p className="market-intro-scene-detail">{meta.detail}</p>
         </div>
         <p className="market-intro-beat" data-intro-beat aria-live="polite" />
-        <button
-          ref={skipRef}
-          type="button"
-          className="market-intro-skip"
-          onClick={() => controllerRef.current?.skip()}
-        >
-          Skip
-        </button>
       </div>
+      <button
+        ref={skipRef}
+        type="button"
+        className="market-intro-skip"
+        onClick={() => controllerRef.current?.skip()}
+      >
+        Skip
+      </button>
     </div>
   );
 }
