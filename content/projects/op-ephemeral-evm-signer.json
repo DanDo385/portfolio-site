@@ -1,0 +1,40 @@
+{
+  "title": "1Password Ephemeral EVM Signer",
+  "slug": "op-ephemeral-evm-signer",
+  "date": "2026-07-30",
+  "status": "complete",
+  "featured": true,
+  "tags": [
+    "Security",
+    "Ethereum",
+    "EIP-1559",
+    "CLI"
+  ],
+  "summary": "A Sepolia transaction signer that reads key material only through a 1Password stdin pipe, previews every supported EIP-1559 field, and never broadcasts.",
+  "techBadges": [
+    "Python",
+    "1Password CLI",
+    "eth-account",
+    "Sepolia"
+  ],
+  "githubUrl": "https://github.com/DanDo385/op-ephemeral-evm-signer",
+  "resourceSource": {
+    "ref": "main",
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "media"
+    ]
+  },
+  "demoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": null
+}
