@@ -13,7 +13,8 @@
     "C",
     "Embedded"
   ],
-  "summary": "Air-gapped Ethereum transaction signer for Raspberry Pi Pico: host builds an unsigned Sepolia tx, the Pico holds the key and signs offline over USB after Confirm/Cancel. Desktop C crypto path (Keccak-256 + secp256k1) already passes known-answer tests; firmware and device UX wait on hardware arrival. Learning/demo signer, not a Ledger replacement.",
+  "summary": "Keep an Ethereum test key on a small offline signer. The computer prepares a transaction, the device asks for confirmation, and the device returns a signature without joining a network.",
+  "technicalDescription": "The host builds unsigned Sepolia transactions and signing digests; the RP2040 path uses C implementations of Keccak-256 and recoverable secp256k1 over USB serial. Desktop known-answer tests pass; firmware and device UX await hardware validation.",
   "techBadges": [
     "C",
     "Python",

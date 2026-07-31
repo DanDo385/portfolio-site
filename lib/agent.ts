@@ -73,6 +73,7 @@ export function getAgentManifest() {
     featured: Boolean(project.featured),
     tier: projectTier(project),
     summary: project.summary,
+    technicalDescription: project.technicalDescription ?? null,
     tags: project.tags,
     tech: project.techBadges,
     previewType: project.previewType ?? null,

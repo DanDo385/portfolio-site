@@ -10,7 +10,8 @@
     "JSON-RPC",
     "CLI"
   ],
-  "summary": "Ethereum JSON-RPC monitoring CLI with block inspection, mempool snapshots, and real-time transaction tracing.",
+  "summary": "Run a command-line tool that watches what an Ethereum node is reporting. It helps inspect blocks, take a look at pending transactions, and trace activity as it happens.",
+  "technicalDescription": "Go and Cobra wrap Ethereum JSON-RPC calls for block inspection, mempool snapshots, and transaction tracing; the tool stays focused on read-only node observability.",
   "techBadges": [
     "Go",
     "Cobra",

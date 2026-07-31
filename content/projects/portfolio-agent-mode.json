@@ -10,7 +10,8 @@
     "Next.js",
     "llms.txt"
   ],
-  "summary": "A minimal agent-readable layer for magro.dev: /agent for humans, /agent.json for structured context, and /llms.txt as a low-noise router for AI systems.",
+  "summary": "Give AI systems a clear way to understand this portfolio without guessing from the page design. People get an overview, while agents get structured project and research links.",
+  "technicalDescription": "Next.js serves /agent for the human contract, /agent.json for structured manifest data, and /llms.txt for compact routing; the content loaders keep published projects, writing, research, and media aligned.",
   "techBadges": [
     "Next.js",
     "TypeScript",

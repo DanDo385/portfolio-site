@@ -1,8 +1,9 @@
 {
   "title": "1Password Ephemeral EVM Signer",
   "slug": "op-ephemeral-evm-signer",
-  "date": "2026-07-30",
-  "status": "complete",
+  "date": "2026-07-31",
+  "status": "in-progress",
+  "statusLabel": "In progress",
   "featured": true,
   "tags": [
     "Security",
@@ -10,7 +11,8 @@
     "EIP-1559",
     "CLI"
   ],
-  "summary": "A Sepolia transaction signer that reads key material only through a 1Password stdin pipe, previews every supported EIP-1559 field, and never broadcasts.",
+  "summary": "Every transaction field is shown before this signing demo touches a test key. It creates a signed Ethereum payload and stops there, so the user can review the result without sending anything to the network.",
+  "technicalDescription": "Python, 1Password CLI, and eth-account build a Sepolia EIP-1559 payload through an stdin-only secret pipe; validation precedes key access and the tool records the remaining transient RAM exposure.",
   "techBadges": [
     "Python",
     "1Password CLI",

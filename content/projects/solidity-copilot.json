@@ -13,7 +13,8 @@
     "Security",
     "Evaluation"
   ],
-  "summary": "Evaluation-first research for AI-assisted Solidity generation: constrained machine-readable contract tasks in, source plus Foundry tests and assumptions out, then an isolated harness scores compile, hidden tests, interfaces, and security triage. Baselines B0-B2 before any bounded LoRA. Educational only, no mainnet claims.",
+  "summary": "Small contract tasks show whether an AI can write Solidity that behaves as promised. The project checks the output independently and treats a compile as one small signal.",
+  "technicalDescription": "An isolated evaluator runs pinned Foundry compilation, hidden behavioral tests, interface and invariant checks, and security triage against constrained contract tasks. B0 through B2 prompt and retrieval baselines precede any bounded LoRA or QLoRA experiment.",
   "techBadges": [
     "Solidity",
     "Foundry",
@@ -24,6 +25,15 @@
     "Provenance"
   ],
   "githubUrl": "https://github.com/DanDo385/solidity-copilot",
+  "resourceSource": {
+    "ref": "main",
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "media"
+    ]
+  },
   "demoUrl": null,
   "externalDemoUrl": null,
   "loomUrl": null,

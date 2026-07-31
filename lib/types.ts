@@ -39,6 +39,7 @@ export interface Project {
   tier?: ProjectTier;
   tags: string[];
   summary: string;
+  technicalDescription?: string;
   techBadges: string[];
   githubUrl?: string | null;
   resourceSource?: ProjectResourceSource;

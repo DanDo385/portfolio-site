@@ -12,7 +12,8 @@
     "Go",
     "Interactive"
   ],
-  "summary": "Interactive rollup mechanics lab comparing optimistic fraud proofs (/op) with a simplified, mock validity-verification path (/zk) that stands in for a succinct ZK proof. Live at eth-l2.vercel.app with a Go simulation backend.",
+  "summary": "Two Ethereum rollup designs handle bad transaction batches in different ways. One lets people challenge a bad claim; the other checks a simplified proof path.",
+  "technicalDescription": "A Next.js frontend and Go service coordinate loopback-only Anvil chains, optimistic batch bonds, Merkle-bisection disputes, and a mock validity lane that re-executes a batch witness. The ZK path is illustrative and does not generate succinct proofs.",
   "techBadges": [
     "Solidity",
     "Go",

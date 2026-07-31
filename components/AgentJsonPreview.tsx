@@ -16,6 +16,7 @@ function getCardPreviewManifest() {
       slug: project.slug,
       tier: project.tier,
       summary: project.summary,
+      technicalDescription: project.technicalDescription,
     })),
     writing: manifest.writing.map((article) => ({
       title: article.title,
