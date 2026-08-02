@@ -19,6 +19,7 @@ Create `content/projects/your-slug.json`:
   "tier": "primary",
   "tags": ["AI", "Go"],
   "summary": "One or two lines describing the project.",
+  "technicalDescription": "One concise technical sentence for practitioners.",
   "techBadges": ["Go", "TypeScript"],
   "githubUrl": "https://github.com/DanDo385/your-repo",
   "resourceSource": {
@@ -47,6 +48,7 @@ Create `content/projects/your-slug.json`:
 | `statusLabel` | no | Optional card badge when `in-progress` (e.g. `Waiting on hardware`). Defaults to `In progress` |
 | `tags` | yes | The only badges on the project card. Mix domain + distinctive stack (e.g. `Fraud Proofs`, `MEV`, `JSON-RPC`). Keep to ~4–5. |
 | `summary` | yes | Short description (1-2 lines) |
+| `technicalDescription` | yes for listed projects | Technical mechanism, stack, or evidence boundary shown below the plain summary and included in `agent.json` |
 | `techBadges` | yes | Fuller stack list for Agent Mode (`agent.json` / `llms.txt`) only. Not shown on cards. |
 | `githubUrl` | no | GitHub repo link |
 | `resourceSource` | no | Build-time repository media source. `ref` defaults to `main`; set `required: true` only after the repo publishes a verified canonical resource kit. |
@@ -74,6 +76,8 @@ Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...`
 Project screenshots, GIFs, static demos, agent briefs, and YouTube metadata belong in the project repository. `npm run dev` and `npm run build` run a pre-step that fetches those resources and generates `public/project-assets/<slug>/` plus card media overrides. Generated files are ignored by Git.
 
 Canonical source folders are `public/` or `repo-resources/` at the project root. See `docs/project-resources.md` for the accepted layout, fallback behavior, strict cutover, and verification commands.
+
+Write two additive layers for every listed project. `summary` explains the project in plain language for a broad audience. `technicalDescription` names the relevant mechanism, stack, or evidence boundary for practitioners. Use distinct natural openings across a set of cards. Keep the technical line concise and factual.
 
 Use descriptive screenshot filenames that state the captured UI state, such as `02-op-lab-start.png` or `05-verify-persist.png`. The build preserves those names. Do not use generic `image1.png` sequences for new repo-owned resources.
 
@@ -173,7 +177,7 @@ Follow **Interact rules** in `AGENTS.md`:
 
 | Kind | Interact |
 |------|----------|
-| CLI (e.g. eth-rpc-monitor) | No Interact — Source + YouTube only |
+| CLI (e.g. eth-rpc-monitor) | No Interact. Source + YouTube only |
 | In-site (e.g. agent-runtime, hermes-xray) | Go to Page → `/demos/<slug>` on magro.dev; Open in New Tab → `externalDemoUrl` when set |
 | External Vercel (eth-l2, eth-tx-lifecycle) | Link to `https://….vercel.app` |
 

@@ -67,6 +67,7 @@ export function ProjectCard({
           {project.technicalDescription && (
             <p className="pcard-technical">
               <span>Technical</span>
+              {' '}
               {project.technicalDescription}
             </p>
           )}

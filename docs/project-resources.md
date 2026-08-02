@@ -146,4 +146,4 @@ removing duplicate portfolio videos, run tests and npm run build, and show me
 the scoped diff. Do not touch unrelated project worktrees.
 ```
 
-The production site updates only when Vercel runs another portfolio build. A project-repo push does not, by itself, redeploy `portfolio-site`. Until a Vercel deploy hook or cross-repository dispatch is configured, finish each refresh by committing and pushing the verified portfolio change or manually triggering a Vercel rebuild.
+The production site updates only when Vercel runs another portfolio build. A project-repo push does not, by itself, redeploy `portfolio-site`. After the source resources and card wiring are verified, commit and push the portfolio change to its Vercel production branch. Vercel's Git integration then creates the production deployment automatically. Wait for the deployment and smoke-check the public project page, `/agent.json`, and `/llms.txt` before calling the refresh complete.
