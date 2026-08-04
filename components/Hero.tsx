@@ -7,18 +7,18 @@ export function Hero() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <p className="hero-eyebrow">
-          13 years in institutional markets. Still trading. Building in permissionless systems.
+          13 years in institutional rates. Still trading crypto. Building in permissionless systems.
         </p>
         <h1>Programmable Finance, Market Structure, and AI</h1>
         <p className="hero-identity">
-          Background in institutional fixed income sales, proprietary trading, macro execution, and
-          portfolio management. I still trade crypto and other assets, and most of my technical work
-          sits in permissionless markets and infrastructure.
+          Thirteen years in institutional financial sales, trading, and portfolio management, with
+          rates as the core specialty. After that: e-commerce work building Python automation and
+          tooling to cut workflow friction and latency, plus active crypto trading and yield farming
+          in permissionless markets.
         </p>
         <p className="hero-identity">
-          Startup experience shaped how I work: ship usable systems, stay close to the product, and
-          keep the feedback loop short. The repos and writeups are solid artifacts that showcase how
-          I think about markets, infrastructure, and complex technical concepts.
+          The writeups show how I work through complex problems. The projects are the artifacts:
+          visual breakdowns of technical concepts, plus interactive tools built for teaching.
         </p>
         <p className="hero-positioning">
           Best fit: markets and liquidity roles at digital-asset firms, trading and financial

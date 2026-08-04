@@ -10,9 +10,9 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'Active trading and digital assets',
+  'Active crypto trading and yield farming',
   'Permissionless systems',
-  'Startup product experience',
+  'Python automation and low-latency tooling',
   'Market structure and execution',
 ];
 
@@ -26,17 +26,17 @@ export function About() {
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              The institutional markets career came first. I still trade crypto and other assets,
-              and I work on product and systems in permissionless environments with a startup bent.
+              Institutional rates work came first. After the desk years: e-commerce automation,
+              active crypto trading and yield farming, and technical work in permissionless markets.
             </p>
 
             <div className="about-track">
               <h3 className="about-track-title">Institutional markets</h3>
               <p className="history-summary">
-                <strong>13 years</strong> across fixed income sales, proprietary trading, macro
-                execution, and portfolio management. The common thread was liquidity, risk,
-                collateral, and market structure, at Merrill Lynch, Jefferies, Nomura, PointState
-                Capital, and Prudential (PGIM).
+                <strong>13 years</strong> in financial sales, trading, and portfolio management,
+                with rates as the core specialty. Liquidity, risk, collateral, and market structure
+                ran through the work at Merrill Lynch, Jefferies, Nomura, PointState Capital, and
+                Prudential (PGIM).
               </p>
               <div className="firm-logos" aria-label="Employers">
                 {FIRMS.map((firm) => (
@@ -63,11 +63,11 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Building &amp; operating</h3>
               <p className="about-track-summary">
-                Outside the desk years I have operated independently and inside early-stage product
-                work, including Web3. I still trade crypto and other assets, and I build around
-                permissionless rails: settlement, market structure, infrastructure, and agent
-                systems. The repos and writeups are solid artifacts that showcase how I think and
-                explain complex technical concepts.
+                After the desk years I built Python automation and tooling in e-commerce to cut
+                workflow friction and latency. I still trade crypto and farm yield in permissionless
+                markets. The writeups show how I work through complex problems. The projects are the
+                artifacts: visual breakdowns of technical concepts, plus interactive tools built for
+                teaching.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

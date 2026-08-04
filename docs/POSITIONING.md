@@ -7,19 +7,21 @@ the underlying facts change.
 
 ## Primary identity
 
-> Institutional markets professional with practical technical capability and public proof of
-> delivery.
+> Institutional rates markets professional with practical technical capability and public
+> proof of delivery.
 
 ## Canonical positioning statement
 
-> Daniel is an experienced institutional markets professional who has added practical
-> technical capability, builds publicly, and can carry ambiguous problems from analysis
-> through delivery.
+> Daniel spent 13 years in institutional financial sales, trading, and portfolio management,
+> with rates as the core specialty. After the desk years: e-commerce Python automation and
+> tooling, active crypto trading and yield farming, and public writeups plus interactive
+> teaching tools around permissionless markets and financial infrastructure.
 
 Mental model:
 
-> Markets judgment is the foundation. Technical fluency expands the problems Daniel can
-> solve. Public work proves initiative, learning velocity, and delivery.
+> Markets judgment is the foundation, with rates as the specialty. Technical fluency expands
+> the problems Daniel can solve. Writeups show how he works through complex problems.
+> Projects are visual concept breakdowns and interactive teaching tools.
 
 Not:
 

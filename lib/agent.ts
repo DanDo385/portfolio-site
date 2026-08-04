@@ -10,7 +10,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'Markets judgment comes first. Still trades live risk in crypto and other assets, and builds around permissionless systems with a startup product mindset.',
+  'Markets judgment comes first. Rates specialty from institutional markets; still active in crypto trading and yield farming, with public writeups and interactive teaching tools around permissionless systems.',
 ];
 
 function siteUrl(pathOrUrl?: string | null): string | null {
@@ -116,7 +116,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'Institutional markets professional who still trades, works in permissionless systems, and builds with a startup product mindset',
+        role: 'Institutional rates markets professional; active crypto trader and yield farmer; builds public writeups and interactive teaching tools around permissionless systems',
       },
     },
     agentMode: {
@@ -158,7 +158,7 @@ export function getAgentManifest() {
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin'],
       buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems', 'permissionless rails'],
       summary:
-        'Institutional markets professional with 13 years across fixed income, rates, macro, execution, and portfolio management. Still trades crypto and other assets, works in permissionless systems, and has early-stage startup product experience across market structure, Ethereum, and agent workflows.',
+        'Institutional markets professional with 13 years in financial sales, trading, and portfolio management, rates as the core specialty. After the desk years: e-commerce Python automation and tooling for workflow and latency work, plus active crypto trading and yield farming in permissionless markets. Writeups show problem-solving approach; projects are visual concept breakdowns and interactive teaching tools.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -169,14 +169,15 @@ export function getAgentManifest() {
       ...(IPFS_URL ? { resumeIpfs: IPFS_URL } : {}),
     },
     canonicalTopics: [
-      'institutional rates and macro markets',
-      'fixed income and portfolio management',
-      'active trading in crypto and other assets',
+      'institutional rates markets',
+      'fixed income sales, trading, and portfolio management',
+      'active crypto trading and yield farming',
       'liquidity, execution, collateral, and risk',
       'market structure',
       'permissionless systems and Ethereum',
-      'startup product experience',
+      'e-commerce Python automation and low-latency tooling',
       'financial and digital infrastructure',
+      'visual technical explainers and interactive teaching tools',
       'agent systems and structured interfaces',
     ],
     demos: Object.values(DEMO_CONFIGS)
