@@ -140,12 +140,12 @@ export function Contact() {
                 <span className="sig-val">13 years</span>
               </div>
               <div className="sig-row">
-                <span className="sig-label">Markets</span>
-                <span className="sig-val">Still trading crypto and other assets</span>
+                <span className="sig-label">Technical experience</span>
+                <span className="sig-val">5 years</span>
               </div>
               <div className="sig-row">
                 <span className="sig-label">Building with</span>
-                <span className="sig-val">Go · Solidity · Ethereum · APIs · agent systems</span>
+                <span className="sig-val">Go · Solidity · Ethereum · APIs · agent systems · Hermes Agent</span>
               </div>
               <div className="sig-row">
                 <span className="sig-label">Startup</span>
@@ -157,7 +157,7 @@ export function Contact() {
               </div>
               <div className="sig-row">
                 <span className="sig-label">Technical study</span>
-                <span className="sig-val">CS50 · boot.dev · Cyfrin</span>
+                <span className="sig-val">CS50 · boot.dev · Cyfrin · deeplearning.ai · MIT OpenCourseWare</span>
               </div>
             </div>
           </Reveal>

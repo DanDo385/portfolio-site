@@ -156,9 +156,10 @@ export function getAgentManifest() {
     ],
     about: {
       institutionalExperienceYears: 13,
+      technicalExperienceYears: 5,
       education: 'Penn State, Magna Cum Laude',
-      technicalStudy: ['CS50', 'boot.dev', 'Cyfrin'],
-      buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems', 'permissionless rails'],
+      technicalStudy: ['CS50', 'boot.dev', 'Cyfrin', 'deeplearning.ai', 'MIT OpenCourseWare'],
+      buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems', 'Hermes Agent', 'permissionless rails'],
       summary:
         'Institutional markets professional with 13 years across fixed income, rates, macro, execution, and portfolio management. Still trades crypto and other assets, works in permissionless systems, and has early-stage startup product experience across market structure, Ethereum, and agent workflows.',
     },
