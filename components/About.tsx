@@ -65,9 +65,9 @@ export function About() {
               <p className="about-track-summary">
                 After the desk years I built Python automation and tooling in e-commerce to cut
                 workflow friction and latency. I still trade crypto and farm yield in permissionless
-                markets. The writeups show how I work through complex problems. The projects are the
-                artifacts: visual breakdowns of technical concepts, plus interactive tools built for
-                teaching.
+                markets. The Writing section shows how I reason through complex technical problems.
+                The Projects section is a mix of artifacts from educational tools, simulations,
+                market analysis tooling, DeFi protocols, and agentic systems.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

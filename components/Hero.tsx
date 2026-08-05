@@ -7,7 +7,7 @@ export function Hero() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <p className="hero-eyebrow">
-          Markets, financial infrastructure, and technical systems
+          Background in institutional finance &amp; technology
         </p>
         <h1>Programmable Finance, Market Structure, and AI</h1>
         <p className="hero-identity">
@@ -17,8 +17,9 @@ export function Hero() {
           in permissionless markets.
         </p>
         <p className="hero-identity">
-          The writeups show how I work through complex problems. The projects are the artifacts:
-          visual breakdowns of technical concepts, plus interactive tools built for teaching.
+          The Writing section shows how I reason through complex technical problems. The Projects
+          section is a mix of artifacts from educational tools, simulations, market analysis
+          tooling, DeFi protocols, and agentic systems.
         </p>
         <p className="hero-positioning">
           Best fit: markets and liquidity roles at digital-asset firms, trading and financial

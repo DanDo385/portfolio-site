@@ -162,7 +162,7 @@ export function getAgentManifest() {
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin', 'deeplearning.ai', 'MIT OpenCourseWare'],
       buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems', 'Hermes Agent', 'permissionless rails'],
       summary:
-        'Institutional markets professional with 13 years in financial sales, trading, and portfolio management, rates as the core specialty. After the desk years: e-commerce Python automation and tooling for workflow and latency work, plus active crypto trading and yield farming in permissionless markets. Writeups show problem-solving approach; projects are visual concept breakdowns and interactive teaching tools.',
+        'Institutional markets professional with 13 years in financial sales, trading, and portfolio management, rates as the core specialty. After the desk years: e-commerce Python automation and tooling for workflow and latency work, plus active crypto trading and yield farming in permissionless markets. Writing shows how complex technical problems get reasoned through; Projects mix educational tools, simulations, market analysis tooling, DeFi protocols, and agentic systems.',
     },
     contact: {
       email: 'dan@magro.dev',
