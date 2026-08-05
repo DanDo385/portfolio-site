@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer';
 import { AgentRuntimeInteractive } from '@/components/AgentRuntimeInteractive';
 import { AiPhysicalInfraDebtInteractive } from '@/components/AiPhysicalInfraDebtInteractive';
 import { HermesXrayInteractive } from '@/components/HermesXrayInteractive';
+import { SpaceTimeInteractive } from '@/components/SpaceTimeInteractive';
 import { EthL2Interactive } from '@/components/EthL2Interactive';
 import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractive';
 import { JsonLd } from '@/components/JsonLd';
@@ -116,6 +117,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {project.slug === 'hermes-xray' && (
             <Reveal>
               <HermesXrayInteractive />
+            </Reveal>
+          )}
+          {project.slug === 'space-time' && (
+            <Reveal>
+              <SpaceTimeInteractive />
             </Reveal>
           )}
           {project.slug === 'eth-tx-lifecycle' && (

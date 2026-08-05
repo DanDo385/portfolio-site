@@ -105,6 +105,7 @@ const FULLSCREEN_DEMO_SLUGS = new Set([
   'agent-runtime',
   'hermes-xray',
   'ai-physical-infra-debt',
+  'space-time',
 ]);
 
 /** Projects that mount an interactive / launch panel on /projects/<slug>. */
@@ -114,6 +115,7 @@ const PROJECT_PAGE_INTERACTIVE_SLUGS = new Set([
   'ai-physical-infra-debt',
   'eth-tx-lifecycle',
   'eth-l2',
+  'space-time',
 ]);
 
 export function projectDemoPath(slug: string): string {

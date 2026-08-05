@@ -12,9 +12,10 @@ export function Hero() {
         <h1>Programmable Finance, Market Structure, and AI</h1>
         <p className="hero-identity">
           Thirteen years in institutional financial sales, trading, and portfolio management, with
-          rates as the core specialty. After that: e-commerce work building Python automation and
-          tooling to cut workflow friction and latency, plus active crypto trading and yield farming
-          in permissionless markets.
+          rates as the core specialty. After leaving institutional market-based roles, I took a
+          break due to some medical issues and then began working in the e-commerce space, doing
+          freelance web development, actively trading crypto, and building my technical skills in
+          blockchain and AI.
         </p>
         <p className="hero-identity">
           The Writing section shows how I reason through complex technical problems. The Projects

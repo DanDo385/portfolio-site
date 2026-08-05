@@ -26,8 +26,10 @@ export function About() {
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              Institutional rates work came first. After the desk years: e-commerce automation,
-              active crypto trading and yield farming, and technical work in permissionless markets.
+              After leaving institutional market-based roles, I took a break due to some medical
+              issues and then began working in the e-commerce space, doing freelance web
+              development, actively trading crypto, and building my technical skills in blockchain
+              and AI.
             </p>
 
             <div className="about-track">
@@ -63,11 +65,9 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Building &amp; operating</h3>
               <p className="about-track-summary">
-                After the desk years I built Python automation and tooling in e-commerce to cut
-                workflow friction and latency. I still trade crypto and farm yield in permissionless
-                markets. The Writing section shows how I reason through complex technical problems.
-                The Projects section is a mix of artifacts from educational tools, simulations,
-                market analysis tooling, DeFi protocols, and agentic systems.
+                The Writing section shows how I reason through complex technical problems. The
+                Projects section is a mix of artifacts from educational tools, simulations, market
+                analysis tooling, DeFi protocols, and agentic systems.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

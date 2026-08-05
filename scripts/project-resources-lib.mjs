@@ -193,6 +193,7 @@ function mediaOverrides(media) {
     media?.longClip?.youtubeUrl ||
       media?.detailedClip?.youtubeUrl ||
       media?.detailed?.youtubeUrl ||
+      media?.recording?.youtubeUrl ||
       media?.recordingUrl ||
       null,
     'long clip',

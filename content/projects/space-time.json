@@ -1,0 +1,76 @@
+{
+  "title": "Space-time Twin Lab",
+  "slug": "space-time",
+  "date": "2026-08-05",
+  "status": "complete",
+  "featured": false,
+  "listed": true,
+  "tags": [
+    "Physics",
+    "Relativity",
+    "Interactive",
+    "Education",
+    "Spacetime"
+  ],
+  "summary": "An interactive special-relativity lab for the twin paradox. Change cruise speed and trip length, then read the worldlines, Lorentz factor, proper time, and reunion age gap together.",
+  "technicalDescription": "A self-contained HTML, CSS, and JavaScript spacetime diagram models constant-speed flat-spacetime round trips with interactive beta and duration controls, pointer probes, wheel zoom, and linked first-principles calculation walkthroughs.",
+  "techBadges": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Special relativity",
+    "Spacetime diagrams"
+  ],
+  "githubUrl": "https://github.com/DanDo385/space-time",
+  "resourceSource": {
+    "ref": "main",
+    "required": true,
+    "families": [
+      "gif",
+      "screenshots",
+      "demo",
+      "media"
+    ]
+  },
+  "demoUrl": "/demos/space-time",
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=xeK4Jb5RMfM",
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": "https://www.youtube.com/watch?v=2QvhhfM--Og",
+  "recordingUrl": "https://www.youtube.com/watch?v=xeK4Jb5RMfM",
+  "screenshots": [],
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "I want a visual, interactive way to show why a traveler can return younger than an identical twin who stayed on Earth, without burying the geometry in pure algebra.",
+    "ownership": [
+      "Self-contained browser lab with Earth, ship, and light worldlines",
+      "Interactive cruise-speed and Earth-frame duration controls",
+      "Proper-time readout with Lorentz factor and reunion age gap",
+      "Screenshot, GIF, and YouTube media kit for portfolio sync"
+    ],
+    "architecture": [
+      "Static HTML/CSS/JavaScript served as a same-origin demo under /demos/space-time",
+      "Graph hover probes for Earth-frame time and distance",
+      "Wheel zoom with reset, plus lesson tabs for calculation walkthrough"
+    ],
+    "decisions": [
+      "Treat outbound and inbound legs as constant-speed motion with instantaneous turnaround for teaching clarity",
+      "Include present-day speed anchors so atmospheric and orbital regimes stay distinct from idealized deep-space cruise"
+    ],
+    "verification": [
+      "Browser-driven capture provenance in public/media.json",
+      "Six live UI screenshots covering default, hover, near-c, longer journey, zoom, and calculation states",
+      "Short and detailed YouTube walkthroughs of the running lab"
+    ],
+    "limitations": [
+      "Teaching model only: no gravity, finite thrust, radiation, energy budget, or biology",
+      "At realistic launch and orbital speeds the aging difference is tiny; the twin example uses a high fraction of c for legibility"
+    ],
+    "productionDifferences": [
+      "A mission design tool would need finite thrust, gravity, and engineering constraints that this lab deliberately excludes"
+    ]
+  }
+}
