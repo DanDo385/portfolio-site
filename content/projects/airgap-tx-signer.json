@@ -13,7 +13,8 @@
     "C",
     "Embedded"
   ],
-  "summary": "Air-gapped Ethereum transaction signer on a Raspberry Pi Pico: host builds an unsigned Sepolia tx, the Pico holds the key and signs offline over USB after Confirm/Cancel. Desktop C crypto KATs pass; Phase 2 firmware (USB serial PING/PONG, LED heartbeat) builds and waits for physical validation on a LAFVIN Pico starter kit. Learning and demo use only.",
+  "summary": "Keep an Ethereum test key on a small offline signer. The computer prepares a transaction, the device asks for confirmation, and the device returns a signature without joining a network.",
+  "technicalDescription": "The host builds unsigned Sepolia transactions and signing digests; the RP2040 path uses C implementations of Keccak-256 and recoverable secp256k1 over USB serial. Desktop known-answer tests pass; Phase 2 firmware (USB serial PING/PONG, LED heartbeat) builds and waits for physical validation on a LAFVIN Pico starter kit.",
   "techBadges": [
     "C",
     "Python",

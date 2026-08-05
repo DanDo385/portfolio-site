@@ -64,6 +64,13 @@ export function ProjectCard({
             </div>
           </div>
           <p className="pcard-summary">{project.summary}</p>
+          {project.technicalDescription && (
+            <p className="pcard-technical">
+              <span>Technical</span>
+              {' '}
+              {project.technicalDescription}
+            </p>
+          )}
           <ProjectCardLinks sections={linkSections} />
           {related && (
             <p className="pcard-related">

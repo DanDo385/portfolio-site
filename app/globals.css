@@ -1103,7 +1103,24 @@ html[data-theme='light'] .tag-default {
   color: var(--text-secondary);
   font-size: 15px;
   line-height: 1.75;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+}
+
+.pcard-technical {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.pcard-technical span {
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-right: 8px;
+  text-transform: uppercase;
 }
 
 .pcard-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; }

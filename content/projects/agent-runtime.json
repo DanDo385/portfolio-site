@@ -10,7 +10,8 @@
     "LLM Systems",
     "Interactive"
   ],
-  "summary": "An interactive single-page walkthrough of a tool-using agent runtime: platform input, session hydration, the agent loop, tool dispatch, and persistence, made observable step by step with ASCII art diagrams.",
+  "summary": "Trace how a tool-using AI agent works. Readers can follow a request from input and memory through tool calls and saved state.",
+  "technicalDescription": "Static HTML, CSS, and JavaScript compare Hermes Agent and OpenClaw across platform input, session hydration, agent loop, tool dispatch, and persistence; source anchors and an agent-readable map record the comparison.",
   "techBadges": [
     "HTML",
     "CSS",

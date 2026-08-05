@@ -1,0 +1,72 @@
+{
+  "title": "Solana Treasury Vault",
+  "slug": "solana-treasury-vault",
+  "date": "2026-07-31",
+  "status": "in-progress",
+  "statusLabel": "Devnet upgrade pending",
+  "featured": false,
+  "listed": true,
+  "tags": [
+    "Solana",
+    "Anchor",
+    "Treasury Controls",
+    "Rust",
+    "CLI"
+  ],
+  "summary": "Require two people before a small Solana treasury can move funds. One person proposes a payment, another approves it, and a short waiting period gives both sides time to review the decision.",
+  "technicalDescription": "Anchor manages a treasury PDA and proposal PDAs with separate owner and approver roles, recipient and amount binding, one-time approval, and slot-based cooldowns. Local lifecycle tests and a plan-and-confirm CLI pass; Devnet still needs the latest program upgrade.",
+  "techBadges": [
+    "Anchor 1.1.2",
+    "Rust",
+    "Solana Devnet",
+    "PDA state machine",
+    "Node.js",
+    "@solana/web3.js"
+  ],
+  "githubUrl": "https://github.com/DanDo385/solana-treasury-vault",
+  "demoUrl": null,
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "A treasury withdrawal needs separation of duties, immutable intent, and a delay between approval and execution.",
+    "ownership": [
+      "Anchor program for a treasury PDA and per-proposal PDAs",
+      "Role constraints for a distinct owner and approver",
+      "Plan/confirm CLI commands for treasury inspection and lifecycle operations",
+      "Lifecycle documentation, threat model, and security boundaries"
+    ],
+    "architecture": [
+      "The treasury PDA records owner, approver, cooldown slots, and the next proposal id",
+      "Each proposal PDA binds a recipient, amount, lifecycle flags, and proposal and approval slots",
+      "The approver authorizes once, then the owner may execute only after approved_slot plus cooldown_slots",
+      "Transition events support off-chain indexing and evidence capture"
+    ],
+    "decisions": [
+      "Measure the cooldown from approval to preserve the intended review window",
+      "Keep native SOL only and one treasury PDA in v1 for a focused control-plane demonstration",
+      "Require a plan before signing and reject mainnet in the CLI client",
+      "Reserve rent-exempt lamports during balance checks and execution"
+    ],
+    "verification": [
+      "Local-validator lifecycle suite covers role separation, self-approval denial, insufficient funds, terminal cancellation, and replay protection",
+      "Client unit tests cover read-only inspection and plan/confirm command behavior",
+      "Anchor constraints bind proposal accounts to their treasury and enforce seeded PDA relationships"
+    ],
+    "limitations": [
+      "Devnet only, unaudited, and unsuitable for material funds",
+      "Latest program layout and event changes await a Devnet upgrade",
+      "No MPC, HSM, multi-tenant treasury factory, or on-chain proposal enumeration"
+    ],
+    "productionDifferences": [
+      "A production treasury would require an audit, governed upgrade authority, stronger operator key controls, policy configuration, and deployed-binary verification"
+    ]
+  }
+}

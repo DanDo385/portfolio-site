@@ -11,7 +11,8 @@
     "Infrastructure",
     "Interactive"
   ],
-  "summary": "Interactive research report on GPU-backed term loans, data-center securitization, and the funding channels that turn an AI capex slowdown into a credit event. Provenance-tagged figures, recovery model, and Agent Mode exports.",
+  "summary": "AI data-center financing can create credit risk when spending slows. The research tool follows the loans, collateral, and recovery assumptions that matter.",
+  "technicalDescription": "Interactive credit work on GPU-backed term loans and data-center securitization; provenance-tagged figures, recovery scenarios, and Agent Mode exports support inspection of the underwriting chain.",
   "techBadges": [
     "HTML",
     "JavaScript",

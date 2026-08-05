@@ -10,7 +10,8 @@
     "Observability",
     "Interactive"
   ],
-  "summary": "Standalone browser observability lab for a Hermes-style tool-using agent: enter a simple prompt and inspect model-visible context, loop stages, tool events, token estimates, verification, and persistence boundaries.",
+  "summary": "See the moving parts behind a tool-using AI agent. A simple prompt reveals what the model receives, which tools it calls, how it checks work, and what it saves for later.",
+  "technicalDescription": "A standalone HTML, CSS, and JavaScript observability lab exposes model-visible context, loop stages, tool events, token estimates, verification gates, and persistence boundaries for a Hermes-style agent.",
   "techBadges": [
     "HTML",
     "CSS",

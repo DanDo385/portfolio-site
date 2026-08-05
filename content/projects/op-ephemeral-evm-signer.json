@@ -12,18 +12,20 @@
     "Sepolia",
     "CLI"
   ],
-  "summary": "Local Sepolia EIP-1559 signing demo: 1Password releases a testnet key over stdin only, the signer reviews destination/value/fees/calldata before touch, then emits address, raw tx, and hash with no plaintext keyfile and no broadcast.",
+  "summary": "Every transaction field is shown before this signing demo touches a test key. It creates a signed Ethereum payload and stops there, so the user can review the result without sending anything to the network.",
+  "technicalDescription": "Python, 1Password CLI, and eth-account build a Sepolia EIP-1559 payload through an stdin-only secret pipe; validation precedes key access and the tool records the remaining transient RAM exposure.",
   "techBadges": [
     "Python",
     "1Password CLI",
     "EIP-1559",
+    "eth-account",
     "Sepolia",
     "stdin key pipe"
   ],
   "githubUrl": "https://github.com/DanDo385/op-ephemeral-evm-signer",
   "resourceSource": {
     "ref": "main",
-    "required": false,
+    "required": true,
     "families": [
       "gif",
       "screenshots",
