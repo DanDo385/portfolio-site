@@ -1,9 +1,9 @@
 {
   "title": "Air-Gap TX Signer",
   "slug": "airgap-tx-signer",
-  "date": "2026-07-29",
+  "date": "2026-07-31",
   "status": "in-progress",
-  "statusLabel": "Waiting on hardware",
+  "statusLabel": "Hardware arriving",
   "featured": false,
   "listed": true,
   "tags": [
@@ -13,7 +13,7 @@
     "C",
     "Embedded"
   ],
-  "summary": "Air-gapped Ethereum transaction signer for Raspberry Pi Pico: host builds an unsigned Sepolia tx, the Pico holds the key and signs offline over USB after Confirm/Cancel. Desktop C crypto path (Keccak-256 + secp256k1) already passes known-answer tests; firmware and device UX wait on hardware arrival. Learning/demo signer, not a Ledger replacement.",
+  "summary": "Air-gapped Ethereum transaction signer on a Raspberry Pi Pico: host builds an unsigned Sepolia tx, the Pico holds the key and signs offline over USB after Confirm/Cancel. Desktop C crypto KATs pass; Phase 2 firmware (USB serial PING/PONG, LED heartbeat) builds and waits for physical validation on a LAFVIN Pico starter kit. Learning and demo use only.",
   "techBadges": [
     "C",
     "Python",
@@ -24,6 +24,13 @@
     "Sepolia"
   ],
   "githubUrl": "https://github.com/DanDo385/airgap-tx-signer",
+  "resourceSource": {
+    "ref": "main",
+    "required": false,
+    "families": [
+      "screenshots"
+    ]
+  },
   "demoUrl": null,
   "externalDemoUrl": null,
   "loomUrl": null,
@@ -40,7 +47,8 @@
     "ownership": [
       "Portable Keccak-256 and secp256k1 path in C, verified against Python/Ethereum reference vectors",
       "Host tooling to build unsigned Sepolia transactions, assemble signed raw txs, and talk USB serial",
-      "Firmware protocol design for PING/PONG, GET_ADDR, and confirm-gated SIGN"
+      "Firmware protocol for PING/PONG, VERSION, GET_ADDR, and confirm-gated SIGN",
+      "Phase 2 Pico bring-up firmware that builds via make firmware-build"
     ],
     "architecture": [
       "Host builds the unsigned transaction and signing digest",
@@ -51,20 +59,21 @@
     "decisions": [
       "Use Ethereum Keccak-256, not NIST SHA3-256",
       "Keep Python as the reference generator and C as the implementation under test",
-      "Scaffold firmware protocol before wiring LCD, buttons, or RP2040 secp256k1"
+      "Ship USB serial bring-up before LCD, buttons, and on-device secp256k1"
     ],
     "verification": [
       "desktop test harness against vectors/known_answers.json: ALL PASS",
-      "Known-answer coverage for Keccak, key derivation, Ethereum address, recoverable ECDSA, and a legacy Sepolia signing hash"
+      "Known-answer coverage for Keccak, key derivation, Ethereum address, recoverable ECDSA, and a legacy Sepolia signing hash",
+      "Firmware builds with make firmware-build; physical Pico validation still pending"
     ],
     "limitations": [
-      "Pico firmware is a scaffold only until hardware arrives",
-      "RP2040/libsecp256k1 port is not validated yet",
+      "Physical hardware validation checklist still open",
+      "RP2040/libsecp256k1 on-device path is not validated yet",
       "Demo key in vectors is public and must never be funded",
       "Testnet/learning use only, not a mainnet-safe wallet"
     ],
     "productionDifferences": [
-      "Future hardware path: blink/USB hello, LCD + buttons, crypto port, confirm UX, then Sepolia end-to-end"
+      "Next hardware path: USB hello on device, LCD + buttons, crypto port, confirm UX, then Sepolia end-to-end"
     ]
   }
 }

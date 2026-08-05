@@ -1,0 +1,77 @@
+{
+  "title": "1Password Ephemeral EVM Signer",
+  "slug": "op-ephemeral-evm-signer",
+  "date": "2026-08-01",
+  "status": "complete",
+  "featured": false,
+  "listed": true,
+  "tags": [
+    "Ethereum",
+    "Security",
+    "1Password",
+    "Sepolia",
+    "CLI"
+  ],
+  "summary": "Local Sepolia EIP-1559 signing demo: 1Password releases a testnet key over stdin only, the signer reviews destination/value/fees/calldata before touch, then emits address, raw tx, and hash with no plaintext keyfile and no broadcast.",
+  "techBadges": [
+    "Python",
+    "1Password CLI",
+    "EIP-1559",
+    "Sepolia",
+    "stdin key pipe"
+  ],
+  "githubUrl": "https://github.com/DanDo385/op-ephemeral-evm-signer",
+  "resourceSource": {
+    "ref": "main",
+    "required": false,
+    "families": [
+      "gif",
+      "screenshots",
+      "media"
+    ]
+  },
+  "demoUrl": "https://op-ephemeral-evm-signer.vercel.app",
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=WluddGimj2k",
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": "https://www.youtube.com/watch?v=DSN4aAzx74M",
+  "recordingUrl": "https://www.youtube.com/watch?v=WluddGimj2k",
+  "screenshots": [],
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "I want a demoable signing path that keeps private keys out of the repo, .env files, and CLI argv, while still making the review surface explicit before any key material is read.",
+    "ownership": [
+      "1Password reference + op read stdin pipe into a local Python signer",
+      "Pre-key review of Sepolia type-2 fields: destination, value, nonce, gas, fee caps, calldata, access list",
+      "Reject unsupported fields before any key access",
+      "Static project page on Vercel with walkthrough media"
+    ],
+    "architecture": [
+      "op read resolves a vault reference to stdout",
+      "sign-with-1password pipes that stream into op-evm-sign",
+      "Signer validates the reviewed EIP-1559 schema, then signs in process RAM",
+      "Output is from address, rawTransaction, and transactionHash only; no RPC broadcast"
+    ],
+    "decisions": [
+      "Demonstrate no plaintext private-key file on the host, not non-exportable custody",
+      "Keep the key reference Git-ignored so vault/item identifiers stay private",
+      "Pair with airgap-tx-signer for the hardware path where key material never reaches host memory"
+    ],
+    "verification": [
+      "Regression suite via make test",
+      "Deterministic screenshot kit for review, rejection, and release states",
+      "Published short and detailed YouTube walkthroughs"
+    ],
+    "limitations": [
+      "Compromised host, memory inspection, swap, and crash dumps are out of scope",
+      "Not a hardware wallet or KMS-backed custody solution",
+      "Demo Sepolia key only; never fund meaningful value"
+    ],
+    "productionDifferences": [
+      "Production custody would use hardware confirmation or cloud HSM keys that never enter application RAM"
+    ]
+  }
+}

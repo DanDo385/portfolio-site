@@ -7,7 +7,7 @@ export function Hero() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
         <p className="hero-eyebrow">
-          13 years in institutional markets. Still trading. Building in permissionless systems.
+          Markets, financial infrastructure, and technical systems
         </p>
         <h1>Programmable Finance, Market Structure, and AI</h1>
         <p className="hero-identity">

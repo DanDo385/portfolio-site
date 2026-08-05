@@ -24,7 +24,7 @@ Banks routinely funded those CDOs through off-balance-sheet SIVs that money mark
 
 By 2007, investment banks were sitting on these vehicles and running around 25x leverage in the ordinary course of business. There was a direct asset-liability mismatch at the dealer level: banks were warehousing and facilitating the paper on short-term balance sheet. When the SIV commercial paper market dried up, the leverage cascade hit. The most leveraged players with the thinnest capital cushions, the non-commercial investment banks, were wiped out overnight.
 
-I am not raising this for cheap déjà vu. Leverage and funding mismatches are still the scariest part of any bubble. Back then you also had outright fraud, junk collateral, and falling home prices, all multiplied by a thick web of shadow derivatives.
+I am raising this because leverage and funding mismatches are still the scariest part of any bubble. Back then you also had outright fraud, junk collateral, and falling home prices, all multiplied by a thick web of shadow derivatives.
 
 ## Why the bank comparison does not travel cleanly
 
@@ -38,28 +38,28 @@ Zitron writes:
 
 Reading that actually made me more comfortable with my original stance. How else do you finance a multi-trillion-dollar infrastructure project without putting the whole thing on one balance sheet?
 
-These SPVs are funded by large private equity and private credit pools. That capital is there because investors believe in the buildout, and they believe in it because hard contracts with large tech companies sit behind a lot of the demand. Who else would you rather have buying the compute? Amazon, Apple, Meta, Alphabet, and Microsoft are sitting on nearly $750 billion in cash and liquid assets after spending hard. They keep buying because falling behind competitors is existential for the core business, not a quarterly lifestyle choice.
+These SPVs are funded by large private equity and private credit pools. Investors put capital in because hard contracts with large tech companies sit behind a lot of the demand. Who else would you rather have buying the compute? Amazon, Apple, Meta, Alphabet, and Microsoft are sitting on nearly $750 billion in cash and liquid assets after spending hard. They keep buying because falling behind competitors is existential for the core business.
 
 The SPV separation isolates risk. If a project fails or GPUs depreciate faster than expected, more of the damage stays inside that box. Lenders are already haircutting the hardware up front, usually advancing something like 60 cents on the dollar against the chips. That is the same conservatism I flagged in Part I.
 
-This is not dealers warehousing data center debt on overnight repo and praying money markets stay calm. A lot of this paper sits with long-term institutional investors who want the duration and can take write-downs without forcing a funding run the next morning.
+A lot of this paper sits with long-term institutional investors who want the duration and can take write-downs without forcing a funding run the next morning.
 
-It feels odd to say this with 2008 as the reference frame, but the structure is doing a lot of what you want a credit structure to do: draw cash as needed, ring-fence risk in SPVs, and haircut hardware values before the loan goes out. That keeps more of the risk in private credit hands instead of parking it on bank balance sheets overnight.
+It feels odd to say this with 2008 as the reference frame, but the structure is doing a lot of what you want a credit structure to do: draw cash as needed, ring-fence risk in SPVs, and haircut hardware values before the loan goes out. That keeps more of the risk in private credit hands.
 
 ## Why hyperscalers keep buying
 
 A fair question is whether hyperscalers can justify what they pay for compute against what they get back. The economics look coherent to me for a few direct reasons.
 
-**Demand is already here.** OpenAI and Anthropic are not waiting around for theoretical users. Subscription revenue scaled hard, and Anthropic's enterprise growth has been among the fastest anyone has seen in software. People are paying for this compute now.
+**Demand is already here.** OpenAI and Anthropic already have paying users. Subscription revenue scaled hard, and Anthropic's enterprise growth has been among the fastest anyone has seen in software. People are paying for this compute now.
 
-**Training versus inference.** Frontier training burns capital at an absurd rate. Over the next couple of years, more of the stack shifts toward running the models. As models get better at the job, the cost to serve a basic query should fall while subscription and API revenue can stay sticky. Margins do not have to look like training forever.
+**Training versus inference.** Frontier training burns capital at an absurd rate. Over the next couple of years, more of the stack shifts toward running the models. As models get better at the job, the cost to serve a basic query should fall while subscription and API revenue can stay sticky. Margins get better as inference takes a larger share of the stack.
 
-**The cost of doing nothing.** For Big Tech, overspending on data centers bruises margins for a few quarters. Underspending means losing cloud, search, or software share to a competitor. When you throw off tens of billions in annual cash flow, you take the margin hit.
+**The cost of doing nothing.** For Big Tech, losing cloud, search, or software share is worse than a few quarters of thinner margins from overspend. With tens of billions in annual cash flow, they keep buying.
 
 ## Where that leaves me
 
 If the data center buildout comes under pressure, investors still have to answer a practical question: what else is the growth trade?
 
-I am not arguing that every SPV is clean, or that equity valuations are sane, or that every GPU loan will pencil. Parts of this market can lose a lot of money and still leave the financing architecture looking less dangerous than 2007. Frustration that AI has not rewritten every workflow overnight is also not a reason to scrap the physical buildout. Wiring agents into real companies takes coordination, safety checks, and risk management. Slow is not the same as fake.
+Some SPVs will be messy. Some equity valuations will look wrong. Some GPU loans will not pencil. Parts of this market can lose a lot of money and still leave the financing architecture looking less dangerous than 2007. Frustration that AI has moved slowly through real companies is no reason to scrap the physical buildout. Wiring agents into real workflows takes coordination, safety checks, and risk management. That work is underway.
 
-So Zitron's SPV description does not change my core read from [Part I](/writing/ai-infrastructure-buildout-bubble/). I still care most about who owns the paper and how they fund it. On that score, this still looks more like long-duration private credit risk than a dealer-balance-sheet rerun of subprime. If the ownership or funding picture changes, my view changes with it.
+So Zitron's SPV description does not change my core read from [Part I](/writing/ai-infrastructure-buildout-bubble/). I still care most about who owns the paper and how they fund it. On that score, this still looks like long-duration private credit risk. If the ownership or funding picture changes, my view changes with it.

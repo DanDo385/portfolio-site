@@ -1,7 +1,7 @@
 {
   "title": "Solidity Copilot",
   "slug": "solidity-copilot",
-  "date": "2026-07-29",
+  "date": "2026-07-31",
   "status": "in-progress",
   "statusLabel": "In progress",
   "featured": false,
@@ -24,15 +24,24 @@
     "Provenance"
   ],
   "githubUrl": "https://github.com/DanDo385/solidity-copilot",
+  "resourceSource": {
+    "ref": "main",
+    "required": false,
+    "families": [
+      "gif",
+      "screenshots",
+      "media"
+    ]
+  },
   "demoUrl": null,
   "externalDemoUrl": null,
   "loomUrl": null,
-  "youtubeUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=hutz7hgIflE",
   "zoomUrl": null,
   "previewGif": null,
   "previewVideo": null,
-  "shortClipUrl": null,
-  "recordingUrl": null,
+  "shortClipUrl": "https://www.youtube.com/watch?v=EHUMwDOO9IU",
+  "recordingUrl": "https://www.youtube.com/watch?v=hutz7hgIflE",
   "screenshots": [],
   "relatedWriting": null,
   "caseStudy": {
@@ -60,7 +69,8 @@
       "Pinned Solidity/Foundry compile",
       "Evaluator-owned hidden behavioral tests",
       "Required interfaces, access controls, events, custom errors, and invariants",
-      "Static security triage for new serious findings"
+      "Static security triage for new serious findings",
+      "Reproducible media kit under public/ with smoke-report screenshots and walkthrough clips"
     ],
     "limitations": [
       "Educational and experimental only",
@@ -68,7 +78,7 @@
       "No unlicensed or provenance-free training corpus"
     ],
     "productionDifferences": [
-      "If the harness is honest, this becomes an AI evaluation and adaptation system for verifiable financial-infrastructure code, not a generic Solidity chatbot"
+      "If the harness is honest, it becomes an AI evaluation and adaptation system for verifiable financial-infrastructure code."
     ]
   }
 }
