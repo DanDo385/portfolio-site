@@ -10,10 +10,11 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'Active crypto trading and yield farming',
-  'Permissionless systems',
-  'Python automation and low-latency tooling',
-  'Market structure and execution',
+  'Full-stack, AI agents, and Web3',
+  'Hermes workflows and open-source tooling',
+  'EVM contracts and product frontends',
+  'Active crypto trading and DeFi research',
+  'E-commerce automation and execution',
 ];
 
 export function About() {
@@ -26,10 +27,11 @@ export function About() {
         <Reveal delay={60}>
           <div className="about-block">
             <p className="about-intro">
-              After leaving institutional market-based roles, I took a break due to some medical
-              issues and then began working in the e-commerce space, doing freelance web
-              development, actively trading crypto, and building my technical skills in blockchain
-              and AI.
+              After leaving institutional market-based roles, I built and operated an independent
+              e-commerce business, then took medical leave for recovery while retraining in
+              computer science, Solidity, blockchain, and AI. Since 2024 I have been doing
+              full-stack, agent, and Web3 product work, including at RAMM.ai and as a freelancer,
+              alongside active crypto trading.
             </p>
 
             <div className="about-track">
@@ -65,9 +67,13 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Building &amp; operating</h3>
               <p className="about-track-summary">
-                The Writing section shows how I reason through complex technical problems. The
-                Projects section is a mix of artifacts from educational tools, simulations, market
-                analysis tooling, DeFi protocols, and agentic systems.
+                Full-stack, AI, and Web3 development since 2024: freelance product ventures and
+                open-source tooling, plus EVM marketplace contracts and product work at RAMM.ai.
+                Before that, medical leave with intensive technical retraining, and earlier
+                independent e-commerce operations built on Python automation. Active crypto trading
+                and protocol research feed the software design. The Writing section shows how I
+                reason through complex technical problems; Projects mix educational tools,
+                simulations, market analysis tooling, DeFi protocols, and agentic systems.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

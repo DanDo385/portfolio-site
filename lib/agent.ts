@@ -164,7 +164,7 @@ export function getAgentManifest() {
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin', 'deeplearning.ai', 'MIT OpenCourseWare'],
       buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems', 'Hermes Agent', 'permissionless rails'],
       summary:
-        'Institutional markets professional with 13 years in financial sales, trading, and portfolio management, rates as the core specialty. After leaving institutional market-based roles, took a medical break, then moved into e-commerce, freelance web development, active crypto trading, and building technical skills in blockchain and AI. Writing shows how complex technical problems get reasoned through; Projects mix educational tools, simulations, market analysis tooling, DeFi protocols, and agentic systems.',
+        'Institutional markets professional with 13 years in financial sales, trading, and portfolio management, rates as the core specialty. After institutional roles: independent e-commerce operator (2019–2022), medical leave with CS/Solidity/blockchain/AI retraining (2022–2024), then full-stack, AI agent, and Web3 product work including RAMM.ai and freelance ventures (2024–present), alongside active crypto trading. Writing shows how complex technical problems get reasoned through; Projects mix educational tools, simulations, market analysis tooling, DeFi protocols, and agentic systems.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -177,11 +177,12 @@ export function getAgentManifest() {
     canonicalTopics: [
       'institutional rates markets',
       'fixed income sales, trading, and portfolio management',
-      'active crypto trading and yield farming',
+      'active crypto trading and DeFi research',
       'liquidity, execution, collateral, and risk',
       'market structure',
-      'permissionless systems and Ethereum',
-      'e-commerce Python automation and low-latency tooling',
+      'full-stack, AI agents, and Web3',
+      'Hermes agent workflows and open-source tooling',
+      'e-commerce automation and execution',
       'financial and digital infrastructure',
       'visual technical explainers and interactive teaching tools',
       'agent systems and structured interfaces',
