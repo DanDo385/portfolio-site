@@ -43,7 +43,8 @@ Create `content/projects/your-slug.json`:
 |-------|----------|-------|
 | `title` | yes | Display name |
 | `slug` | yes | URL-safe identifier |
-| `date` | yes | ISO date (`YYYY-MM-DD`). Drives sort order |
+| `date` | yes | ISO date (`YYYY-MM-DD`). Default sort key (newest first) when `sortOrder` is unset |
+| `sortOrder` | no | Optional 1-based homepage rank. Ranked projects occupy that slot; others fill remaining slots by `date` |
 | `status` | yes | `complete` or `in-progress` |
 | `statusLabel` | no | Optional card badge when `in-progress` (e.g. `Waiting on hardware`). Defaults to `In progress` |
 | `tags` | yes | The only badges on the project card. Mix domain + distinctive stack (e.g. `Fraud Proofs`, `MEV`, `JSON-RPC`). Keep to ~4–5. |

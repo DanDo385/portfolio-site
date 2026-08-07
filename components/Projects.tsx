@@ -10,7 +10,7 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects, writingBySlug, researchBySlug = {} }: ProjectsProps) {
-  // `projects` is already sorted by date, newest first, via lib/content.ts#getProjects.
+  // `projects` is already ordered via lib/content.ts#getProjects (sortOrder slots, then date).
   const primary = projects.filter((project) => projectTier(project) === 'primary');
   const foundations = projects.filter((project) => projectTier(project) === 'foundations');
 

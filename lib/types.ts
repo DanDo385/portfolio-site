@@ -35,6 +35,11 @@ export interface Project {
   /** Optional card label when status is in-progress (e.g. Waiting on hardware). */
   statusLabel?: string | null;
   featured?: boolean;
+  /**
+   * Optional 1-based homepage rank. When set, the project is placed at that
+   * slot; projects without sortOrder fill the remaining slots by date.
+   */
+  sortOrder?: number;
   /** Defaults to primary when omitted. */
   tier?: ProjectTier;
   tags: string[];

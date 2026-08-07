@@ -151,9 +151,9 @@ export function getAgentManifest() {
       principles: PRINCIPLES,
     },
     navigation: [
-      { id: 'about', label: 'Experience', href: `${SITE.url}/#about` },
       { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
       { id: 'my-writing', label: 'Writing', href: `${SITE.url}/#my-writing` },
+      { id: 'about', label: 'Experience', href: `${SITE.url}/#about` },
       { id: 'agent-research', label: 'Research', href: `${SITE.url}/#agent-research` },
       { id: 'contact', label: 'Contact', href: `${SITE.url}/#contact` },
     ],
@@ -276,9 +276,9 @@ export function getLlmsTxt(): string {
 
   const siteLines = [
     llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
-    llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and builder track'),
     llmsLink('Projects', `${SITE.url}/#projects`, 'Systems around live markets, permissionless rails, and early-stage product work'),
     llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),
+    llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and builder track'),
     llmsLink('Research', `${SITE.url}/#agent-research`, 'Longer-form research papers'),
     llmsLink('Contact', `${SITE.url}/#contact`, 'Email, resume, and social links'),
   ].join('\n');

@@ -26,14 +26,6 @@ export function About() {
         </Reveal>
         <Reveal delay={60}>
           <div className="about-block">
-            <p className="about-intro">
-              After leaving institutional market-based roles, I built and operated an independent
-              e-commerce business, then took medical leave for recovery while retraining in
-              computer science, Solidity, blockchain, and AI. Since 2024 I have been doing
-              full-stack, agent, and Web3 product work, including at RAMM.ai and as a freelancer,
-              alongside active crypto trading.
-            </p>
-
             <div className="about-track">
               <h3 className="about-track-title">Institutional markets</h3>
               <p className="history-summary">

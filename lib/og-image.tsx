@@ -36,23 +36,17 @@ export function siteShareImageElement() {
           Programmable Finance, Market Structure, and AI
         </div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ fontSize: 26, color: '#8d9ab5', maxWidth: 940, lineHeight: 1.4 }}>
-          Background in institutional finance & technology
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
-            marginTop: 36,
-            fontSize: 22,
-            color: '#e0ad52',
-            letterSpacing: '0.04em',
-          }}
-        >
-          {SITE.url.replace('https://', '')}
-        </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12,
+          fontSize: 22,
+          color: '#e0ad52',
+          letterSpacing: '0.04em',
+        }}
+      >
+        {SITE.url.replace('https://', '')}
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 {
-  "title": "Agent Runtime",
+  "title": "Agent Runtime: Hermes versus Openclaw",
   "slug": "agent-runtime",
   "date": "2026-06-01",
   "status": "complete",
+  "sortOrder": 2,
   "featured": false,
   "tags": [
     "AI",

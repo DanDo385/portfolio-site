@@ -38,13 +38,58 @@ function loadMarkdownDocuments<T extends { date: string; slug: string }>(
 }
 
 /**
- * Listed projects sort by date, newest first.
+ * Listed projects sort by date, newest first, unless `sortOrder` pins a slot.
+ * Ranked projects occupy their 1-based slots; everyone else fills gaps by date.
  * Foundations vs primary is a separate tier filter, not a sort key.
  */
-function compareProjects(a: Project, b: Project): number {
+function compareProjectsByDate(a: Project, b: Project): number {
   const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
   if (byDate !== 0) return byDate;
   return a.slug.localeCompare(b.slug);
+}
+
+function orderProjects(projects: Project[]): Project[] {
+  const ranked = projects.filter((project) => typeof project.sortOrder === 'number');
+  const unranked = projects
+    .filter((project) => typeof project.sortOrder !== 'number')
+    .sort(compareProjectsByDate);
+
+  if (ranked.length === 0) return unranked;
+
+  const bySlot = new Map<number, Project>();
+  for (const project of ranked.sort(
+    (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0) || compareProjectsByDate(a, b)
+  )) {
+    bySlot.set(project.sortOrder as number, project);
+  }
+
+  const result: Project[] = [];
+  let unrankedIndex = 0;
+  const maxSlot = Math.max(
+    projects.length,
+    ...ranked.map((project) => project.sortOrder as number)
+  );
+
+  for (let slot = 1; slot <= maxSlot; slot += 1) {
+    const pinned = bySlot.get(slot);
+    if (pinned) {
+      result.push(pinned);
+      bySlot.delete(slot);
+    } else if (unrankedIndex < unranked.length) {
+      result.push(unranked[unrankedIndex]);
+      unrankedIndex += 1;
+    }
+  }
+
+  for (const [, project] of [...bySlot.entries()].sort((a, b) => a[0] - b[0])) {
+    result.push(project);
+  }
+  while (unrankedIndex < unranked.length) {
+    result.push(unranked[unrankedIndex]);
+    unrankedIndex += 1;
+  }
+
+  return result;
 }
 
 export function getProjects(): Project[] {
@@ -55,7 +100,7 @@ export function getProjects(): Project[] {
     const project = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as Project;
     return { ...project, ...(generatedResources[project.slug] ?? {}) };
   });
-  return projects.sort(compareProjects);
+  return orderProjects(projects);
 }
 
 export function getListedProjects(): Project[] {

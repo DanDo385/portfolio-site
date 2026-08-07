@@ -63,6 +63,17 @@ const TAG_CLASS: Record<string, string> = {
   C: 'tag-cli',
   Embedded: 'tag-infra',
   Evaluation: 'tag-observability',
+  Physics: 'tag-physics',
+  Relativity: 'tag-relativity',
+  Education: 'tag-education',
+  Spacetime: 'tag-spacetime',
+  Rust: 'tag-rust',
+  Solana: 'tag-solana',
+  Anchor: 'tag-anchor',
+  Credit: 'tag-credit',
+  'Treasury Controls': 'tag-treasury',
+  Sepolia: 'tag-sepolia',
+  '1Password': 'tag-1password',
 };
 
 export function tagClass(tag: string): string {

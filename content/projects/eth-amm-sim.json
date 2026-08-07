@@ -3,6 +3,7 @@
   "slug": "eth-amm-sim",
   "date": "2025-05-10",
   "status": "complete",
+  "sortOrder": 3,
   "featured": false,
   "listed": true,
   "tags": [

@@ -42,27 +42,27 @@ export function ProjectCard({
       className={`pcard${resolvedVariant === 'compact' ? ' pcard-compact' : ''}`}
       id={projectAnchorId(project.slug)}
     >
+      <div className="pcard-head">
+        <div className="pcard-title-block">
+          <h3 className="pcard-name">
+            <Link href={projectPath(project.slug)} className="pcard-name-link">
+              {project.title}
+            </Link>
+          </h3>
+          {project.status === 'in-progress' && (
+            <span className="pcard-status">{project.statusLabel || 'In progress'}</span>
+          )}
+        </div>
+        <div className="pcard-tags">
+          {project.tags.map((tag) => (
+            <span key={tag} className={`tag ${tagClass(tag)}`}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
       <div className="pcard-layout">
         <div className="pcard-main">
-          <div className="pcard-head">
-            <div>
-              <h3 className="pcard-name">
-                <Link href={projectPath(project.slug)} className="pcard-name-link">
-                  {project.title}
-                </Link>
-              </h3>
-              {project.status === 'in-progress' && (
-                <span className="pcard-status">{project.statusLabel || 'In progress'}</span>
-              )}
-            </div>
-            <div className="pcard-tags">
-              {project.tags.map((tag) => (
-                <span key={tag} className={`tag ${tagClass(tag)}`}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
           <p className="pcard-summary">{project.summary}</p>
           {project.technicalDescription && (
             <p className="pcard-technical">

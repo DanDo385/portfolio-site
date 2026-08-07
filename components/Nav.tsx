@@ -6,9 +6,9 @@ import { useEffect, useState, type MouseEvent } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const NAV_SECTIONS = [
-  { id: 'about', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'my-writing', label: 'Writing' },
+  { id: 'about', label: 'Experience' },
   { id: 'agent-research', label: 'Research' },
   { id: 'contact', label: 'Contact' },
 ];
