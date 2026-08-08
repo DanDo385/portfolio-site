@@ -40,29 +40,29 @@ export function projectPath(slug: string): string {
 const TAG_CLASS: Record<string, string> = {
   AI: 'tag-ai',
   Agents: 'tag-agents',
-  'LLM Systems': 'tag-llm',
+  'LLM Systems': 'tag-llm-systems',
   Observability: 'tag-observability',
   Interactive: 'tag-interactive',
-  Infrastructure: 'tag-infra',
+  Infrastructure: 'tag-infrastructure',
   Solidity: 'tag-solidity',
   EVM: 'tag-evm',
   L2: 'tag-l2',
-  'Fraud Proofs': 'tag-fraud',
+  'Fraud Proofs': 'tag-fraud-proofs',
   DeFi: 'tag-defi',
   MEV: 'tag-mev',
   Go: 'tag-go',
-  TypeScript: 'tag-ts',
-  'Next.js': 'tag-next',
-  'JSON-RPC': 'tag-rpc',
+  TypeScript: 'tag-typescript',
+  'Next.js': 'tag-next-js',
+  'JSON-RPC': 'tag-json-rpc',
   CLI: 'tag-cli',
   Simulation: 'tag-simulation',
-  'llms.txt': 'tag-llms',
-  Ethereum: 'tag-evm',
-  Hardware: 'tag-infra',
-  Security: 'tag-observability',
-  C: 'tag-cli',
-  Embedded: 'tag-infra',
-  Evaluation: 'tag-observability',
+  'llms.txt': 'tag-llms-txt',
+  Ethereum: 'tag-ethereum',
+  Hardware: 'tag-hardware',
+  Security: 'tag-security',
+  C: 'tag-c',
+  Embedded: 'tag-embedded',
+  Evaluation: 'tag-evaluation',
   Physics: 'tag-physics',
   Relativity: 'tag-relativity',
   Education: 'tag-education',
@@ -71,13 +71,21 @@ const TAG_CLASS: Record<string, string> = {
   Solana: 'tag-solana',
   Anchor: 'tag-anchor',
   Credit: 'tag-credit',
-  'Treasury Controls': 'tag-treasury',
+  'Treasury Controls': 'tag-treasury-controls',
   Sepolia: 'tag-sepolia',
   '1Password': 'tag-1password',
 };
 
+/** Stable CSS class for a project tag label. Same label always maps to the same class. */
 export function tagClass(tag: string): string {
-  return TAG_CLASS[tag] ?? 'tag-default';
+  if (TAG_CLASS[tag]) return TAG_CLASS[tag];
+  const slug = tag
+    .trim()
+    .toLowerCase()
+    .replace(/\.txt\b/g, '-txt')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return slug ? `tag-${slug}` : 'tag-default';
 }
 
 export function categoryClass(category: string): string {
