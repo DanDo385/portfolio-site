@@ -40,10 +40,10 @@ const CLUSTERS: Array<{
 
 const CLUSTER_PRIORITY: Partial<Record<ProjectCluster, string[]>> = {
   custody: [
-    'treasury-policy-engine',
     'op-ephemeral-evm-signer',
     'airgap-tx-signer',
     'solana-treasury-vault',
+    'treasury-policy-engine',
   ],
   agentic: ['portfolio-agent-mode', 'agent-runtime', 'hermes-xray'],
   'market-structure': ['funding-rate-basis-benchmark'],
