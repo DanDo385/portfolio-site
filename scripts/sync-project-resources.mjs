@@ -17,6 +17,14 @@ function argumentValue(name) {
   return index >= 0 ? process.argv[index + 1] : null;
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isTransientGitHubStatus(status) {
+  return status === 429 || status === 502 || status === 503 || status === 504;
+}
+
 async function downloadGitHubSource({ owner, repo, ref, temporaryRoot }) {
   const key = `${owner}-${repo}-${ref}`.replace(/[^a-zA-Z0-9._-]+/g, '-');
   const archivePath = path.join(temporaryRoot, `${key}.tar.gz`);
@@ -30,12 +38,25 @@ async function downloadGitHubSource({ owner, repo, ref, temporaryRoot }) {
   };
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
-  const response = await fetch(githubArchiveUrl({ owner, repo, ref }), {
-    headers,
-    redirect: 'follow',
-  });
-  if (!response.ok || !response.body) {
-    throw new Error(`GitHub archive fetch failed for ${owner}/${repo}@${ref}: HTTP ${response.status}`);
+  const maxAttempts = 5;
+  let response;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    response = await fetch(githubArchiveUrl({ owner, repo, ref }), {
+      headers,
+      redirect: 'follow',
+    });
+    if (response.ok && response.body) break;
+    if (!isTransientGitHubStatus(response.status) || attempt === maxAttempts) {
+      throw new Error(`GitHub archive fetch failed for ${owner}/${repo}@${ref}: HTTP ${response.status}`);
+    }
+    const retryAfter = Number(response.headers.get('retry-after'));
+    const delayMs = Number.isFinite(retryAfter) && retryAfter > 0
+      ? retryAfter * 1000
+      : Math.min(30_000, 1000 * 2 ** (attempt - 1));
+    console.warn(
+      `GitHub archive rate-limited for ${owner}/${repo}@${ref} (HTTP ${response.status}); retry ${attempt}/${maxAttempts} in ${Math.round(delayMs / 1000)}s`,
+    );
+    await sleep(delayMs);
   }
   await pipeline(Readable.fromWeb(response.body), createWriteStream(archivePath));
   await execFileAsync('tar', ['-xzf', archivePath, '-C', extractionPath]);

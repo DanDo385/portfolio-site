@@ -397,14 +397,24 @@ export async function syncPortfolioResources({
       const sourceRoot = await resolveSource({ ...repository, ref, project });
       result = await syncProjectResources({ project, sourceRoot, destinationRoot });
     } catch (error) {
-      if (project.resourceSource?.required) throw error;
-      if (Object.keys(previous).length > 0) overrides[slug] = previous;
+      const message = error instanceof Error ? error.message : String(error);
+      const isTransientGitHub = /HTTP (429|502|503|504)\b/.test(message);
+      const canReuseCachedOverrides = Object.keys(previous).length > 0;
+      // Required syncs still hard-fail on cold builds, but reuse Vercel/local cache
+      // when GitHub rate-limits archive fetches for already-synced projects.
+      if (project.resourceSource?.required && !(isTransientGitHub && canReuseCachedOverrides)) {
+        throw error;
+      }
+      if (canReuseCachedOverrides) overrides[slug] = previous;
       fallback += 1;
+      if (isTransientGitHub && project.resourceSource?.required) {
+        console.warn(`Reusing cached resources for ${slug} after transient GitHub error: ${message}`);
+      }
       provenance.projects[slug] = {
         repository: `${repository.owner}/${repository.repo}`,
         ref,
         ownership: [],
-        error: error instanceof Error ? error.message : String(error),
+        error: message,
       };
       continue;
     }
