@@ -68,5 +68,6 @@
     "productionDifferences": [
       "A production treasury would require an audit, governed upgrade authority, stronger operator key controls, policy configuration, and deployed-binary verification"
     ]
-  }
+  },
+  "cluster": "custody"
 }

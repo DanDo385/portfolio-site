@@ -15,6 +15,7 @@ function getCardPreviewManifest() {
       title: project.title,
       slug: project.slug,
       tier: project.tier,
+      cluster: project.cluster,
       summary: project.summary,
       technicalDescription: project.technicalDescription,
     })),

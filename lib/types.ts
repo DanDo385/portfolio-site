@@ -3,6 +3,8 @@ export type ArticleStatus = 'draft' | 'published';
 export type ProjectPreviewType = 'agent-json';
 /** Visual weight on the homepage. Foundations sit under primary flagships. */
 export type ProjectTier = 'primary' | 'foundations';
+/** Homepage cluster for institutional positioning. Defaults to labs when omitted. */
+export type ProjectCluster = 'custody' | 'market-structure' | 'agentic' | 'labs';
 /** Card rendering weight: featured (flagship) gets the full card, compact is denser. */
 export type ProjectCardVariant = 'featured' | 'compact';
 export type ProjectResourceFamily = 'gif' | 'screenshots' | 'demo' | 'llms' | 'media';
@@ -42,6 +44,8 @@ export interface Project {
   sortOrder?: number;
   /** Defaults to primary when omitted. */
   tier?: ProjectTier;
+  /** Homepage cluster. Defaults to labs when omitted. */
+  cluster?: ProjectCluster;
   tags: string[];
   summary: string;
   technicalDescription?: string;
@@ -63,6 +67,8 @@ export interface Project {
   relatedWriting?: string | null;
   /** Slug of a published Agent Research paper to cross-link on the project card. */
   relatedResearch?: string | null;
+  /** Related project slugs for hub / narrative pages. */
+  relatedProjects?: string[];
   listed?: boolean;
   caseStudy?: ProjectCaseStudy;
 }

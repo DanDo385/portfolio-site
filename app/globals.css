@@ -1378,6 +1378,108 @@ html[data-theme='light'] .tag-default {
   gap: 20px;
 }
 
+.projects-cluster {
+  margin-top: 40px;
+}
+
+.projects-cluster:first-of-type {
+  margin-top: 28px;
+}
+
+.projects-cluster-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.projects-cluster-note {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 42rem;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+.projects-cluster-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.projects-cluster-collapsed {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.projects-cluster-collapsed > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  user-select: none;
+}
+
+.projects-cluster-collapsed > summary::-webkit-details-marker {
+  display: none;
+}
+
+.projects-cluster-collapsed .projects-cluster-label::after {
+  content: '+';
+  font-size: 15px;
+  opacity: 0.7;
+  color: var(--accent);
+}
+
+.projects-cluster-collapsed[open] .projects-cluster-label::after {
+  content: '−';
+}
+
+.projects-cluster-collapsed .projects-cluster-list {
+  margin-top: 24px;
+  opacity: 0.88;
+}
+
+.related-projects {
+  margin-top: 36px;
+}
+
+.related-projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.related-projects-link {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.related-projects-link:hover {
+  text-decoration: underline;
+}
+
+.related-projects-summary {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 48rem;
+}
+
 .projects-supporting {
   margin-top: 40px;
   padding-top: 24px;

@@ -73,5 +73,6 @@
     "productionDifferences": [
       "A mission design tool would need finite thrust, gravity, and engineering constraints that this lab deliberately excludes"
     ]
-  }
+  },
+  "cluster": "labs"
 }

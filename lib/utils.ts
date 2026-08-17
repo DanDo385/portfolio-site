@@ -74,6 +74,15 @@ const TAG_CLASS: Record<string, string> = {
   'Treasury Controls': 'tag-treasury-controls',
   Sepolia: 'tag-sepolia',
   '1Password': 'tag-1password',
+  Rates: 'tag-rates',
+  Funding: 'tag-funding',
+  Basis: 'tag-basis',
+  Crypto: 'tag-crypto',
+  'Market Structure': 'tag-market-structure',
+  Custody: 'tag-custody',
+  Policy: 'tag-policy',
+  Quorum: 'tag-quorum',
+  Treasury: 'tag-treasury',
 };
 
 /** Stable CSS class for a project tag label. Same label always maps to the same class. */

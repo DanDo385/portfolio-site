@@ -77,5 +77,6 @@
       "A production-grade explorer or MEV dashboard would run its own indexed data pipeline rather than just live API aggregation, and would maintain historical data at scale.",
       "A production deployment would carry SLAs and on-call operations for its data sources; this project demonstrates the aggregation and presentation layer with production-style resilience patterns (timeouts, fallback, caching, health checks), not production-scale historical indexing."
     ]
-  }
+  },
+  "cluster": "market-structure"
 }

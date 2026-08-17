@@ -24,5 +24,6 @@
   "loomUrl": null,
   "screenshots": [],
   "previewType": "agent-json",
-  "relatedWriting": "agent-mode-and-the-inference-tax"
+  "relatedWriting": "agent-mode-and-the-inference-tax",
+  "cluster": "labs"
 }

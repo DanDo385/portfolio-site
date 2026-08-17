@@ -10,6 +10,7 @@ import { EthTxLifecycleInteractive } from '@/components/EthTxLifecycleInteractiv
 import { JsonLd } from '@/components/JsonLd';
 import { ProjectCard } from '@/components/ProjectCard';
 import { ProjectCaseStudy } from '@/components/ProjectCaseStudy';
+import { ProjectRelatedProjects } from '@/components/ProjectRelatedProjects';
 import { ProjectVideoDemos } from '@/components/ProjectVideoDemos';
 import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
@@ -97,6 +98,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {project.caseStudy && (
             <Reveal>
               <ProjectCaseStudy project={project} />
+            </Reveal>
+          )}
+          {project.relatedProjects && project.relatedProjects.length > 0 && (
+            <Reveal>
+              <ProjectRelatedProjects slugs={project.relatedProjects} />
             </Reveal>
           )}
           {project.slug === 'ai-physical-infra-debt' && (

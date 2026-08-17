@@ -76,5 +76,6 @@
     "productionDifferences": [
       "Next hardware path: USB hello on device, LCD + buttons, crypto port, confirm UX, then Sepolia end-to-end"
     ]
-  }
+  },
+  "cluster": "custody"
 }

@@ -57,10 +57,16 @@ function orderProjects(projects: Project[]): Project[] {
   if (ranked.length === 0) return unranked;
 
   const bySlot = new Map<number, Project>();
+  const overflowRanked: Project[] = [];
   for (const project of ranked.sort(
     (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0) || compareProjectsByDate(a, b)
   )) {
-    bySlot.set(project.sortOrder as number, project);
+    const slot = project.sortOrder as number;
+    if (bySlot.has(slot)) {
+      overflowRanked.push(project);
+    } else {
+      bySlot.set(slot, project);
+    }
   }
 
   const result: Project[] = [];
@@ -84,6 +90,7 @@ function orderProjects(projects: Project[]): Project[] {
   for (const [, project] of [...bySlot.entries()].sort((a, b) => a[0] - b[0])) {
     result.push(project);
   }
+  result.push(...overflowRanked);
   while (unrankedIndex < unranked.length) {
     result.push(unranked[unrankedIndex]);
     unrankedIndex += 1;
@@ -109,6 +116,12 @@ export function getListedProjects(): Project[] {
 
 export function projectTier(project: Project): 'primary' | 'foundations' {
   return project.tier === 'foundations' ? 'foundations' : 'primary';
+}
+
+export function projectCluster(
+  project: Project
+): 'custody' | 'market-structure' | 'agentic' | 'labs' {
+  return project.cluster ?? 'labs';
 }
 
 export function getPrimaryProjects(): Project[] {

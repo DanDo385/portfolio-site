@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { IPFS_URL, RESUME_PDF, SITE } from './constants';
-import { getListedProjects, getPublishedResearch, getPublishedWriting, projectTier } from './content';
+import { getListedProjects, getPublishedResearch, getPublishedWriting, projectCluster, projectTier } from './content';
 import { isValidUrl, projectPath } from './utils';
 import { DEMO_CONFIGS } from './demos';
 import type { Project } from './types';
@@ -10,7 +10,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'Markets judgment comes first. Rates specialty from institutional markets; still active in crypto trading and yield farming, with public writeups and interactive teaching tools around permissionless systems.',
+  'Thesis: institutional rates background applied to custody, settlement, and agent-driven ops tooling for digital-asset adoption.',
 ];
 
 function siteUrl(pathOrUrl?: string | null): string | null {
@@ -72,11 +72,13 @@ export function getAgentManifest() {
     ...(project.statusLabel ? { statusLabel: project.statusLabel } : {}),
     featured: Boolean(project.featured),
     tier: projectTier(project),
+    cluster: projectCluster(project),
     summary: project.summary,
     technicalDescription: project.technicalDescription ?? null,
     tags: project.tags,
     tech: project.techBadges,
     previewType: project.previewType ?? null,
+    relatedProjects: project.relatedProjects ?? [],
     urls: projectUrls(project),
   }));
 
@@ -116,7 +118,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'Institutional rates markets professional; active crypto trader and yield farmer; builds public writeups and interactive teaching tools around permissionless systems',
+        role: 'Institutional rates professional building custody, settlement, and agent-driven ops tooling for digital-asset adoption',
       },
     },
     agentMode: {
@@ -131,22 +133,23 @@ export function getAgentManifest() {
         `${SITE.url}/agent/`,
         `${SITE.url}/agent.json`,
         `${SITE.url}/llms.txt`,
-        `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
-        `${SITE.url}/agent-research/ai-infrastructure-financing/`,
-        `${SITE.url}/writing/ai-infrastructure-buildout-bubble/`,
+        `${SITE.url}/projects/treasury-policy-engine/`,
+        `${SITE.url}/projects/funding-rate-basis-benchmark/`,
         `${SITE.url}/projects/ai-physical-infra-debt/`,
         `${SITE.url}/demos/ai-physical-infra-debt/`,
-        `${SITE.url}/projects/eth-amm-sim/`,
-        'https://eth-amm-sim.vercel.app',
-        `${SITE.url}/projects/eth-tx-lifecycle/`,
-        'https://eth-tx-lifecycle.vercel.app',
+        `${SITE.url}/writing/ai-infrastructure-buildout-bubble/`,
+        `${SITE.url}/writing/subprime-ai-data-center-narrative/`,
+        `${SITE.url}/agent-research/ai-infrastructure-financing/`,
         `${SITE.url}/projects/op-ephemeral-evm-signer/`,
         'https://op-ephemeral-evm-signer.vercel.app',
         `${SITE.url}/projects/airgap-tx-signer/`,
-        `${SITE.url}/projects/space-time/`,
-        `${SITE.url}/demos/space-time/`,
-        `${SITE.url}/agent-research/the-2050-economy/`,
-        `${SITE.url}/agent-research/octopus-agentic-systems/`,
+        `${SITE.url}/projects/solana-treasury-vault/`,
+        `${SITE.url}/projects/eth-tx-lifecycle/`,
+        'https://eth-tx-lifecycle.vercel.app',
+        `${SITE.url}/projects/eth-amm-sim/`,
+        'https://eth-amm-sim.vercel.app',
+        `${SITE.url}/projects/hermes-xray/`,
+        `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
       ],
       principles: PRINCIPLES,
     },
@@ -162,9 +165,29 @@ export function getAgentManifest() {
       technicalExperienceYears: 5,
       education: 'Penn State, Magna Cum Laude',
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin', 'deeplearning.ai', 'MIT OpenCourseWare'],
-      buildingWith: ['Go', 'Solidity', 'Ethereum', 'APIs', 'agent systems', 'Hermes Agent', 'permissionless rails'],
+      buildingWith: [
+        'Go',
+        'Solidity',
+        'Ethereum',
+        'Solana',
+        'custody and signing controls',
+        'agent systems',
+        'Hermes Agent',
+      ],
+      targetRoles: [
+        'Solutions',
+        'Forward Deployed Engineer',
+        'Relationships',
+        'Sales',
+        'Implementation',
+      ],
+      targetDomains: [
+        'custody',
+        'tokenization',
+        'institutional trading infrastructure',
+      ],
       summary:
-        'Institutional markets professional with 13 years in financial sales, trading, and portfolio management, rates as the core specialty. After institutional roles: independent e-commerce operator (2019–2022), medical leave with CS/Solidity/blockchain/AI retraining (2022–2024), then full-stack, AI agent, and Web3 product work including RAMM.ai and freelance ventures (2024–present), alongside active crypto trading. Writing shows how complex technical problems get reasoned through; Projects mix educational tools, simulations, market analysis tooling, DeFi protocols, and agentic systems.',
+        'Thirteen years in institutional rates sales, trading, and portfolio management at firms including PGIM, PointState, and Nomura. Builds custody, settlement, and agent-driven operational tooling for institutions adopting digital assets. Post-desk path includes e-commerce operations, medical leave with CS/Solidity/blockchain/AI retraining, then full-stack and Web3 product work including RAMM.ai and freelance ventures, alongside active crypto trading.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -175,17 +198,16 @@ export function getAgentManifest() {
       ...(IPFS_URL ? { resumeIpfs: IPFS_URL } : {}),
     },
     canonicalTopics: [
+      'institutional digital-asset adoption',
+      'custody, policy, quorum, and signing controls',
+      'tokenized assets and settlement',
       'institutional rates markets',
-      'fixed income sales, trading, and portfolio management',
-      'active crypto trading and DeFi research',
-      'liquidity, execution, collateral, and risk',
+      'funding rates, basis, and relative value',
+      'liquidity, collateral, and risk',
       'market structure',
-      'full-stack, AI agents, and Web3',
-      'Hermes agent workflows and open-source tooling',
-      'e-commerce automation and execution',
-      'financial and digital infrastructure',
-      'visual technical explainers and interactive teaching tools',
-      'agent systems and structured interfaces',
+      'agentic operations for finance workflows',
+      'AI infrastructure credit analysis',
+      'EVM and Solana treasury controls',
     ],
     demos: Object.values(DEMO_CONFIGS)
       .filter((config) => projects.some((project) => project.slug === config.projectSlug))
@@ -222,28 +244,33 @@ export function getLlmsTxt(): string {
     ),
   ].join('\n');
 
-  const projectLines = [
-    ...manifest.projects
-      .filter((project) => project.tier !== 'foundations')
-      .map((project) => {
-        const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
-        const note =
-          project.status === 'in-progress'
-            ? `${project.statusLabel ?? 'In progress'}. ${project.summary}`
-            : project.summary;
-        return llmsLink(project.title, href, note);
-      }),
-    ...manifest.projects
-      .filter((project) => project.tier === 'foundations')
-      .map((project) => {
-        const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
-        const note =
-          project.status === 'in-progress'
-            ? `${project.statusLabel ?? 'In progress'}. ${project.summary}`
-            : project.summary;
-        return llmsLink(`${project.title} (Foundations)`, href, note);
-      }),
-  ].join('\n');
+  const CLUSTER_LABELS: Record<string, string> = {
+    custody: 'Institutional custody & controls',
+    'market-structure': 'Market structure & rates',
+    agentic: 'Agentic operations',
+    labs: 'Other / labs',
+  };
+
+  const projectLines = (['custody', 'market-structure', 'agentic', 'labs'] as const)
+    .flatMap((clusterId) => {
+      const clusterProjects = manifest.projects.filter((project) => project.cluster === clusterId);
+      if (clusterProjects.length === 0) return [];
+      return [
+        `### ${CLUSTER_LABELS[clusterId]}`,
+        '',
+        ...clusterProjects.map((project) => {
+          const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
+          const note =
+            project.status === 'in-progress'
+              ? `${project.statusLabel ?? 'In progress'}. ${project.summary}`
+              : project.summary;
+          return llmsLink(project.title, href, note);
+        }),
+        '',
+      ];
+    })
+    .join('\n')
+    .trim();
 
   const projectLlmsLines = manifest.projects
     .filter((project) => project.urls.llmsTxt)
@@ -276,7 +303,11 @@ export function getLlmsTxt(): string {
 
   const siteLines = [
     llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
-    llmsLink('Projects', `${SITE.url}/#projects`, 'Systems around live markets, permissionless rails, and early-stage product work'),
+    llmsLink(
+      'Projects',
+      `${SITE.url}/#projects`,
+      'Custody controls, market-structure tooling, and agentic operations for institutional digital-asset adoption'
+    ),
     llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),
     llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and builder track'),
     llmsLink('Research', `${SITE.url}/#agent-research`, 'Longer-form research papers'),

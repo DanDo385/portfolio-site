@@ -75,5 +75,6 @@
     "productionDifferences": [
       "Production custody would use hardware confirmation or cloud HSM keys that never enter application RAM"
     ]
-  }
+  },
+  "cluster": "custody"
 }

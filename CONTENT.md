@@ -66,8 +66,10 @@ Create `content/projects/your-slug.json`:
 | `previewType` | no | Set to `agent-json` for structured JSON preview; otherwise use `screenshots`. Cards always show a preview box; empty projects display "Preview pending". |
 | `relatedWriting` | no | Slug of a published article to cross-link on the project card |
 | `relatedResearch` | no | Slug of a published Agent Research paper to cross-link on the project card |
+| `relatedProjects` | no | Related project slugs for hub / narrative pages (rendered as Linked demos) |
 | `featured` | no | Reserved; homepage no longer pins featured projects above date sort |
-| `tier` | no | `primary` (default) or `foundations`. Foundations render in a collapsed homepage tier under the flagships and are labeled in Agent Mode |
+| `tier` | no | `primary` (default) or `foundations`. Foundations remain available for legacy collapsed tiers |
+| `cluster` | no | Homepage cluster: `custody`, `market-structure`, `agentic`, or `labs` (default). Labs render collapsed |
 | `listed` | no | When `false`, hidden from homepage and agent project lists |
 
 Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.

@@ -72,5 +72,6 @@
       "A production agent-runtime comparison tool would pull live source from both repositories, for example via CI-synced snapshots, rather than manually curated excerpts.",
       "It would also need a process to detect drift automatically when either upstream project changes, rather than relying on a manual refresh."
     ]
-  }
+  },
+  "cluster": "agentic"
 }

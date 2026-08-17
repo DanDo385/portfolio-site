@@ -1,0 +1,72 @@
+{
+  "title": "Treasury Policy Engine",
+  "slug": "treasury-policy-engine",
+  "date": "2026-08-17",
+  "status": "in-progress",
+  "statusLabel": "Narrative hub",
+  "featured": false,
+  "listed": true,
+  "cluster": "custody",
+  "tags": [
+    "Custody",
+    "Policy",
+    "Quorum",
+    "Treasury",
+    "Security"
+  ],
+  "summary": "One custody story across three working demos: ephemeral signing, air-gapped confirmation, and dual-approval treasury controls with cooldowns. Policy, quorum, and approval language for institutional digital-asset operations.",
+  "technicalDescription": "Narrative hub linking the 1Password ephemeral EVM signer, air-gap Pico signer, and Solana treasury vault into a single treasury-policy walkthrough: whitelist, limits, dual approval, cooldown, and offline or ephemeral signed transactions.",
+  "techBadges": [
+    "Policy controls",
+    "Quorum approval",
+    "Ephemeral signing",
+    "Air-gap confirm",
+    "Treasury PDA"
+  ],
+  "githubUrl": null,
+  "demoUrl": null,
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": null,
+  "relatedProjects": [
+    "op-ephemeral-evm-signer",
+    "airgap-tx-signer",
+    "solana-treasury-vault"
+  ],
+  "caseStudy": {
+    "problem": "Institutional digital-asset treasuries need enforceable policy before funds move: who can propose, who must approve, what counterparties and sizes are allowed, how long to wait, and how keys stay out of always-on hosts.",
+    "ownership": [
+      "Unified narrative across three existing demos",
+      "Policy vocabulary mapped to signing, quorum, and approval controls",
+      "Walkthrough of whitelist, limits, dual approval, cooldown, and offline or ephemeral signing"
+    ],
+    "architecture": [
+      "Ephemeral host signing with full field review before a test key is touched (1Password Ephemeral EVM Signer)",
+      "Offline device confirmation for transaction digests over USB with no network on the signer (Air-Gap TX Signer)",
+      "On-chain dual approval, recipient binding, and cooldown before treasury execution (Solana Treasury Vault)"
+    ],
+    "decisions": [
+      "Tell one custody story instead of three disconnected cards",
+      "Use institutional language: policy, quorum, approval, cooldown",
+      "Keep each repo independent so demos stay focused"
+    ],
+    "verification": [
+      "Each linked project carries its own tests and demos",
+      "This hub is narrative packaging; runtime verification lives in the child projects"
+    ],
+    "limitations": [
+      "Learning and demo controls, not a production custody platform",
+      "No claim of Fireblocks, Anchorage, or Safe feature parity"
+    ],
+    "productionDifferences": [
+      "Production custody adds HSM or MPC key ceremonies, formal policy engines, audit export, and regulated operating procedures"
+    ]
+  }
+}

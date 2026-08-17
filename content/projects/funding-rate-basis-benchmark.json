@@ -1,0 +1,66 @@
+{
+  "title": "Funding-Rate Basis Benchmark",
+  "slug": "funding-rate-basis-benchmark",
+  "date": "2026-08-17",
+  "status": "in-progress",
+  "statusLabel": "Placeholder",
+  "featured": false,
+  "listed": true,
+  "cluster": "market-structure",
+  "tags": [
+    "Rates",
+    "Funding",
+    "Basis",
+    "Crypto",
+    "Market Structure"
+  ],
+  "summary": "Placeholder for a cross-venue perpetual funding-rate and basis benchmark framed like a rates product: methodology, history, and a mock fund structure. Build incoming.",
+  "technicalDescription": "Planned deliverable: SOFR-analogy framing for crypto funding, cross-venue normalization, historical basis series, and a term-sheet style fund structure page. Repo and demo not published yet.",
+  "techBadges": [
+    "Funding rates",
+    "Basis",
+    "Cross-venue data",
+    "Term sheet",
+    "Python"
+  ],
+  "githubUrl": null,
+  "demoUrl": null,
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "relatedWriting": null,
+  "caseStudy": {
+    "problem": "Institutional desks need a rates-native way to read perpetual funding and basis across venues, with a clear methodology and a fund-structure view of how the exposure could be run.",
+    "ownership": [
+      "Cross-venue funding-rate methodology (placeholder)",
+      "Historical basis series and SOFR-analogy framing (placeholder)",
+      "Mock term sheet / basis-fund structure (placeholder)"
+    ],
+    "architecture": [
+      "Venue funding and mark inputs normalized to a common tenor",
+      "Published methodology page with assumptions and failure modes",
+      "Fund-structure view for carry / basis exposure"
+    ],
+    "decisions": [
+      "Ship the portfolio card and write-up shell first so the thesis is visible while the product is built",
+      "Keep demoUrl and githubUrl null until the first demoable surface exists"
+    ],
+    "verification": [
+      "TODO: known-answer checks against venue reference prints",
+      "TODO: methodology review against rates-desk conventions"
+    ],
+    "limitations": [
+      "Placeholder card only. No live data feed or demo yet.",
+      "Educational framing until the benchmark ships"
+    ],
+    "productionDifferences": [
+      "Production version would include live venue feeds, audited methodology, and a durable research page with provenance"
+    ]
+  }
+}
