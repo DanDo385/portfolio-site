@@ -29,10 +29,10 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Institutional markets</h3>
               <p className="history-summary">
-                <strong>13 years</strong> in financial sales, trading, and portfolio management,
-                with rates as the core specialty. Liquidity, risk, collateral, and market structure
-                ran through the work at Merrill Lynch, Jefferies, Nomura, PointState Capital, and
-                Prudential (PGIM).
+                <strong>13 years</strong> in institutional rates sales, trading execution, and
+                portfolio management. Liquidity, risk, collateral, and market structure ran through
+                the work at Merrill Lynch, Jefferies, Nomura, PointState Capital, and Prudential
+                (PGIM).
               </p>
               <div className="firm-logos" aria-label="Employers">
                 {FIRMS.map((firm) => (
@@ -59,13 +59,14 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Building &amp; operating</h3>
               <p className="about-track-summary">
-                Full-stack, AI, and Web3 development since 2024: freelance product ventures and
-                open-source tooling, plus EVM marketplace contracts and product work at RAMM.ai.
-                Before that, medical leave with intensive technical retraining, and earlier
-                independent e-commerce operations built on Python automation. Active crypto trading
-                and protocol research feed the software design. The Writing section shows how I
-                reason through complex technical problems; Projects mix educational tools,
-                simulations, market analysis tooling, DeFi protocols, and agentic systems.
+                Freelance Web2 developer specializing in e-commerce, open-source contributor, and
+                product launches in development. Full-stack, AI, and Web3 work since 2024 includes
+                freelance ventures, Hermes tooling, and EVM marketplace contracts at RAMM.ai. Earlier
+                independent e-commerce operations used Python automation; medical leave included
+                intensive CS, Solidity, blockchain, and AI retraining. Active crypto trading and
+                protocol research feed the software design. Writing shows how I reason through
+                technical problems; Projects cover custody controls, agentic operations, and
+                market-structure tooling.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

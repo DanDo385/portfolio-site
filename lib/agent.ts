@@ -149,6 +149,7 @@ export function getAgentManifest() {
         `${SITE.url}/projects/eth-amm-sim/`,
         'https://eth-amm-sim.vercel.app',
         `${SITE.url}/projects/hermes-xray/`,
+        `${SITE.url}/projects/portfolio-agent-mode/`,
         `${SITE.url}/writing/agent-mode-and-the-inference-tax/`,
       ],
       principles: PRINCIPLES,
@@ -187,7 +188,7 @@ export function getAgentManifest() {
         'institutional trading infrastructure',
       ],
       summary:
-        'Thirteen years in institutional rates sales, trading, and portfolio management at firms including PGIM, PointState, and Nomura. Builds custody, settlement, and agent-driven operational tooling for institutions adopting digital assets. Post-desk path includes e-commerce operations, medical leave with CS/Solidity/blockchain/AI retraining, then full-stack and Web3 product work including RAMM.ai and freelance ventures, alongside active crypto trading.',
+        'Thirteen years in institutional rates sales, trading execution, and portfolio management at firms including PGIM, PointState, and Nomura. Builds custody, settlement, and agent-driven operational tooling for institutions adopting digital assets. Today: freelance Web2 developer specializing in e-commerce, open-source contributor, and product launches in development.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -251,7 +252,7 @@ export function getLlmsTxt(): string {
     labs: 'Other / labs',
   };
 
-  const projectLines = (['custody', 'market-structure', 'agentic', 'labs'] as const)
+  const projectLines = (['custody', 'agentic', 'market-structure', 'labs'] as const)
     .flatMap((clusterId) => {
       const clusterProjects = manifest.projects.filter((project) => project.cluster === clusterId);
       if (clusterProjects.length === 0) return [];

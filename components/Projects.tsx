@@ -21,25 +21,31 @@ const CLUSTERS: Array<{
     note: 'Signing policy, approval workflows, and treasury controls for digital-asset operations.',
   },
   {
-    id: 'market-structure',
-    label: 'Market structure & rates',
-    note: 'Funding, basis, credit, and on-chain market mechanics through a rates lens.',
-  },
-  {
     id: 'agentic',
     label: 'Agentic operations',
     note: 'Agent observability and runtime tooling for operational workflows.',
   },
   {
+    id: 'market-structure',
+    label: 'Market structure & rates',
+    note: 'Funding, basis, credit, settlement mechanics, and on-chain market infrastructure.',
+  },
+  {
     id: 'labs',
     label: 'Other / labs',
-    note: 'Teaching labs, site infrastructure, and earlier EVM tooling.',
+    note: 'Teaching demos outside the core institutional thesis.',
     collapsed: true,
   },
 ];
 
 const CLUSTER_PRIORITY: Partial<Record<ProjectCluster, string[]>> = {
-  custody: ['treasury-policy-engine'],
+  custody: [
+    'treasury-policy-engine',
+    'op-ephemeral-evm-signer',
+    'airgap-tx-signer',
+    'solana-treasury-vault',
+  ],
+  agentic: ['portfolio-agent-mode', 'agent-runtime', 'hermes-xray'],
   'market-structure': ['funding-rate-basis-benchmark'],
 };
 
@@ -66,7 +72,7 @@ export function Projects({ projects, writingBySlug, researchBySlug = {} }: Proje
         <Reveal>
           <div className="section-label">Selected Projects</div>
           <p className="about-intro">
-            Custody controls, market-structure tooling, and agentic operations for institutional
+            Custody controls, agentic operations, and market-structure tooling for institutional
             digital-asset adoption.
           </p>
         </Reveal>

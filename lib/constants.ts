@@ -9,6 +9,6 @@ export const RESUME_PDF = '/resume/Daniel_Magro_Resume.pdf';
 export const SITE = {
   name: 'Daniel Magro | Institutional Digital Assets and Market Structure',
   description:
-    'Thirteen years in institutional rates sales, trading, and portfolio management. Building custody, settlement, and agent-driven operational tooling for institutions adopting digital assets.',
+    'Thirteen years in institutional rates sales, trading execution, and portfolio management. Freelance Web2 e-commerce developer and open-source contributor building custody, settlement, and agent-driven ops tooling for institutional digital-asset adoption.',
   url: 'https://magro.dev',
 };

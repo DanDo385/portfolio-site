@@ -82,5 +82,5 @@
       "Comparing both rollup designs side by side in one app made the tradeoff between the optimistic challenge window and a validity proof's upfront verification cost far more concrete than describing either mechanism in isolation."
     ]
   },
-  "cluster": "labs"
+  "cluster": "market-structure"
 }
