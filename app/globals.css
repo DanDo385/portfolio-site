@@ -76,7 +76,7 @@
   --signal-aqua: #2dd4bf;
   --signal-aqua-dim: rgba(45, 212, 191, 0.1);
   --max-w: 1080px;
-  --gap-section: 128px;
+  --gap-section: 80px;
   --radius: 12px;
   --radius-sm: 8px;
   --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 24px 48px -24px rgba(0, 0, 0, 0.45);
@@ -380,7 +380,7 @@ section { padding-top: var(--gap-section); }
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--accent);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -398,9 +398,17 @@ section { padding-top: var(--gap-section); }
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  margin: 64px 0 0;
+  height: 28px;
+  margin: 32px 0 0;
   position: relative;
+}
+
+.hero + .bridge {
+  margin-top: 16px;
+}
+
+#projects {
+  padding-top: 48px;
 }
 
 .bridge::before {
@@ -731,12 +739,11 @@ html.intro-done .hero-scroll {
 
 /* ═══════ HERO ═══════ */
 .hero {
-  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 96px;
-  padding-bottom: 72px;
+  padding-bottom: 32px;
   position: relative;
   isolation: isolate;
 }
@@ -838,20 +845,7 @@ html.intro-done .hero-scroll {
 }
 
 .hero-scroll {
-  position: absolute;
-  bottom: 32px;
-  left: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  animation: fadeUp 0.6s ease forwards 0.8s;
-  opacity: 0;
-  z-index: 2;
+  display: none;
 }
 
 .hero-scroll .bar {
@@ -1055,6 +1049,15 @@ html.intro-done .hero-scroll {
 .tag-treasury-controls { background: rgba(224, 173, 82, 0.12); color: #e0ad52; border-color: rgba(224, 173, 82, 0.28); }
 .tag-sepolia { background: rgba(216, 180, 254, 0.12); color: #d8b4fe; border-color: rgba(216, 180, 254, 0.28); }
 .tag-1password { background: rgba(125, 211, 252, 0.12); color: #7dd3fc; border-color: rgba(125, 211, 252, 0.28); }
+.tag-custody { background: rgba(110, 231, 183, 0.12); color: #6ee7b7; border-color: rgba(110, 231, 183, 0.28); }
+.tag-policy { background: rgba(99, 102, 241, 0.12); color: #6366f1; border-color: rgba(99, 102, 241, 0.28); }
+.tag-quorum { background: rgba(244, 114, 182, 0.12); color: #f472b6; border-color: rgba(244, 114, 182, 0.28); }
+.tag-treasury { background: rgba(252, 211, 77, 0.12); color: #fcd34d; border-color: rgba(252, 211, 77, 0.28); }
+.tag-rates { background: rgba(212, 163, 115, 0.12); color: #d4a373; border-color: rgba(212, 163, 115, 0.28); }
+.tag-funding { background: rgba(103, 232, 249, 0.12); color: #67e8f9; border-color: rgba(103, 232, 249, 0.28); }
+.tag-basis { background: rgba(132, 204, 22, 0.12); color: #84cc16; border-color: rgba(132, 204, 22, 0.28); }
+.tag-crypto { background: rgba(245, 158, 11, 0.12); color: #f59e0b; border-color: rgba(245, 158, 11, 0.28); }
+.tag-market-structure { background: rgba(148, 163, 184, 0.14); color: #cbd5e1; border-color: rgba(148, 163, 184, 0.32); }
 .tag-default { background: rgba(100, 116, 139, 0.12); color: #64748b; border-color: rgba(100, 116, 139, 0.28); }
 
 html[data-theme='light'] .tag-ai {
@@ -1273,6 +1276,60 @@ html[data-theme='light'] .tag-1password {
   border-color: rgba(2, 132, 199, 0.22);
 }
 
+html[data-theme='light'] .tag-custody {
+  background: rgba(4, 120, 87, 0.1);
+  color: #047857;
+  border-color: rgba(4, 120, 87, 0.22);
+}
+
+html[data-theme='light'] .tag-policy {
+  background: rgba(67, 56, 202, 0.1);
+  color: #4338ca;
+  border-color: rgba(67, 56, 202, 0.22);
+}
+
+html[data-theme='light'] .tag-quorum {
+  background: rgba(190, 24, 93, 0.1);
+  color: #be185d;
+  border-color: rgba(190, 24, 93, 0.22);
+}
+
+html[data-theme='light'] .tag-treasury {
+  background: rgba(161, 98, 7, 0.1);
+  color: #a16207;
+  border-color: rgba(161, 98, 7, 0.22);
+}
+
+html[data-theme='light'] .tag-rates {
+  background: rgba(146, 104, 34, 0.1);
+  color: #926822;
+  border-color: rgba(146, 104, 34, 0.22);
+}
+
+html[data-theme='light'] .tag-funding {
+  background: rgba(14, 116, 144, 0.1);
+  color: #0e7490;
+  border-color: rgba(14, 116, 144, 0.22);
+}
+
+html[data-theme='light'] .tag-basis {
+  background: rgba(77, 124, 15, 0.1);
+  color: #4d7c0f;
+  border-color: rgba(77, 124, 15, 0.22);
+}
+
+html[data-theme='light'] .tag-crypto {
+  background: rgba(180, 83, 9, 0.1);
+  color: #b45309;
+  border-color: rgba(180, 83, 9, 0.22);
+}
+
+html[data-theme='light'] .tag-market-structure {
+  background: rgba(51, 65, 85, 0.1);
+  color: #334155;
+  border-color: rgba(51, 65, 85, 0.22);
+}
+
 html[data-theme='light'] .tag-default {
   background: rgba(100, 116, 139, 0.1);
   color: #64748b;
@@ -1379,11 +1436,11 @@ html[data-theme='light'] .tag-default {
 }
 
 .projects-cluster {
-  margin-top: 40px;
+  margin-top: 28px;
 }
 
 .projects-cluster:first-of-type {
-  margin-top: 28px;
+  margin-top: 20px;
 }
 
 .projects-cluster-label {
@@ -1404,7 +1461,7 @@ html[data-theme='light'] .tag-default {
   color: var(--text-muted);
   max-width: 42rem;
   line-height: 1.5;
-  margin: 0 0 20px;
+  margin: 0 0 14px;
 }
 
 .projects-cluster-list {
@@ -2811,8 +2868,8 @@ html[data-theme='light'] .tag-default {
 }
 
 .about-track + .about-track {
-  margin-top: 36px;
-  padding-top: 36px;
+  margin-top: 28px;
+  padding-top: 28px;
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -3806,8 +3863,33 @@ footer {
 
 /* ═══════ RESPONSIVE ═══════ */
 @media (max-width: 920px) {
-  :root { --gap-section: 96px; }
+  :root { --gap-section: 72px; }
   nav { padding: 0 20px; }
+
+  .bridge {
+    height: 28px;
+    margin: 40px 0 0;
+  }
+
+  .hero + .bridge {
+    margin-top: 20px;
+  }
+
+  .hero {
+    padding-bottom: 28px;
+  }
+
+  #projects {
+    padding-top: 40px;
+  }
+
+  .projects-cluster {
+    margin-top: 32px;
+  }
+
+  .projects-cluster:first-of-type {
+    margin-top: 24px;
+  }
 
   .nav-links {
     display: none;
