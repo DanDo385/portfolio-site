@@ -13,7 +13,7 @@
     "Rust",
     "CLI"
   ],
-  "summary": "Require two people before a small Solana treasury can move funds. One person proposes a payment, another approves it, and a short waiting period gives both sides time to review the decision.",
+  "summary": "Two-person approval flow for a small Solana treasury, with a waiting period for review. Treasury controls as infrastructure literacy for digital-asset operations.",
   "technicalDescription": "Anchor manages a treasury PDA and proposal PDAs with separate owner and approver roles, recipient and amount binding, one-time approval, and slot-based cooldowns. Local lifecycle tests and a plan-and-confirm CLI pass; Devnet still needs the latest program upgrade.",
   "techBadges": [
     "Anchor 1.1.2",
@@ -69,5 +69,5 @@
       "A production treasury would require an audit, governed upgrade authority, stronger operator key controls, policy configuration, and deployed-binary verification"
     ]
   },
-  "cluster": "custody"
+  "cluster": "infra"
 }

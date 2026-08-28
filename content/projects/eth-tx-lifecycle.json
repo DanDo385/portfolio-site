@@ -11,7 +11,7 @@
     "Next.js",
     "TypeScript"
   ],
-  "summary": "Follow an Ethereum transaction from the moment someone clicks send to the point where the network treats it as final. The visualizer explains the queue, block builders, validators, and the costs and delays along the way.",
+  "summary": "Maps an Ethereum transaction from broadcast to finality: mempool, builders, validators, inclusion costs, and delay. Useful for understanding execution quality and MEV-aware market microstructure.",
   "technicalDescription": "A Next.js frontend and Go backend combine execution JSON-RPC, Beacon API, and MEV relay data with TTL caching, health checks, transaction decoding, and heuristic sandwich, arbitrage, liquidation, and JIT-liquidity detection.",
   "techBadges": [
     "Go",

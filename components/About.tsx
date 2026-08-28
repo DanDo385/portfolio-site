@@ -10,11 +10,11 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'Full-stack, AI agents, and Web3',
-  'Hermes workflows and open-source tooling',
-  'EVM contracts and product frontends',
-  'Active crypto trading and DeFi research',
-  'E-commerce automation and execution',
+  'Systematic crypto and DeFi research',
+  'Market structure and execution tooling',
+  'Agent orchestration and observability',
+  'Blockchain infrastructure and signing controls',
+  'Full-stack product engineering',
 ];
 
 export function About() {
@@ -23,6 +23,12 @@ export function About() {
       <div className="container">
         <Reveal>
           <div className="section-label">Experience</div>
+          <p className="about-intro">
+            Roughly 13 years in institutional financial markets, then deep work in software
+            engineering, blockchain systems, and AI agents. Those paths have converged on
+            systematic digital-asset research, market structure, execution, DeFi, and
+            agent-assisted trading systems.
+          </p>
         </Reveal>
         <Reveal delay={60}>
           <div className="about-block">
@@ -57,16 +63,14 @@ export function About() {
             </div>
 
             <div className="about-track">
-              <h3 className="about-track-title">Building &amp; operating</h3>
+              <h3 className="about-track-title">Engineering transition</h3>
               <p className="about-track-summary">
-                Freelance Web2 developer specializing in e-commerce, open-source contributor, and
-                product launches in development. Full-stack, AI, and Web3 work since 2024 includes
-                freelance ventures, Hermes tooling, and EVM marketplace contracts at RAMM.ai. Earlier
+                Since 2024: full-stack, AI, and Web3 engineering, including Hermes tooling, EVM
+                marketplace contracts at RAMM.ai, and open-source agent infrastructure. Earlier
                 independent e-commerce operations used Python automation; medical leave included
                 intensive CS, Solidity, blockchain, and AI retraining. Active crypto trading and
-                protocol research feed the software design. Writing shows how I reason through
-                technical problems; Projects cover custody controls, agentic operations, and
-                market-structure tooling.
+                protocol research feed the software design. Freelance product work continues, but
+                the north star is markets plus engineering plus agents.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

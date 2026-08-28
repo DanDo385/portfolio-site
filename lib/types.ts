@@ -3,8 +3,42 @@ export type ArticleStatus = 'draft' | 'published';
 export type ProjectPreviewType = 'agent-json';
 /** Visual weight on the homepage. Foundations sit under primary flagships. */
 export type ProjectTier = 'primary' | 'foundations';
-/** Homepage cluster for institutional positioning. Defaults to labs when omitted. */
-export type ProjectCluster = 'custody' | 'market-structure' | 'agentic' | 'labs';
+/** Homepage cluster for markets/trading positioning. Defaults to labs when omitted. */
+export type ProjectCluster =
+  | 'trading-research'
+  | 'market-structure'
+  | 'agentic'
+  | 'infra'
+  | 'labs'
+  /** @deprecated Migrated to infra. Kept for older cards during transition. */
+  | 'custody';
+
+/** Trading Lab research publication status. Never invent results. */
+export type TradingResearchStatus =
+  | 'idea'
+  | 'researching'
+  | 'backtested'
+  | 'paper-trading'
+  | 'experimental-live'
+  | 'archived';
+
+export interface TradingResearch {
+  title: string;
+  slug: string;
+  date: string;
+  status: TradingResearchStatus;
+  statusLabel?: string | null;
+  category: string;
+  excerpt: string;
+  researchQuestion?: string | null;
+  hypothesis?: string | null;
+  market?: string | null;
+  methodology?: string | null;
+  relatedProject?: string | null;
+  githubUrl?: string | null;
+  notebookUrl?: string | null;
+  body: string;
+}
 /** Card rendering weight: featured (flagship) gets the full card, compact is denser. */
 export type ProjectCardVariant = 'featured' | 'compact';
 export type ProjectResourceFamily = 'gif' | 'screenshots' | 'demo' | 'llms' | 'media';

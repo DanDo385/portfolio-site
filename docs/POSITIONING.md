@@ -7,104 +7,87 @@ the underlying facts change.
 
 ## Primary identity
 
-> Institutional rates markets professional with practical technical capability and public
-> proof of delivery.
+> Institutional trader → engineer → systematic/agentic digital-asset trader
+
+This is a trajectory, not a claim that the transition is already complete as a professional
+systematic crypto trading track record.
 
 ## Canonical positioning statement
 
-> Daniel spent 13 years in institutional financial sales, trading, and portfolio management,
-> with rates as the core specialty. After the desk years: e-commerce Python automation and
-> tooling, active crypto trading and yield farming, and public writeups plus interactive
-> teaching tools around permissionless markets and financial infrastructure.
+> Thirteen years in institutional rates trading, execution, and portfolio management. Now
+> applying software engineering, quantitative research, blockchain infrastructure, and AI
+> agents to crypto, DeFi, market structure, and systematic trading.
 
 Mental model:
 
-> Markets judgment is the foundation, with rates as the specialty. Technical fluency expands
-> the problems Daniel can solve. Writeups show how he works through complex problems.
-> Projects are visual concept breakdowns and interactive teaching tools.
+```text
+institutional markets experience
+            +
+software engineering
+            +
+crypto / DeFi systems knowledge
+            +
+quantitative research
+            +
+agent infrastructure
+            ↓
+systematic / agentic digital-asset trading
+```
+
+Agents are a research/orchestration layer. Deterministic systems retain control of risk and
+execution.
 
 Not:
 
-- Former trader attempting to become an AI and blockchain engineer.
-- Engineer who happens to have worked in finance.
+- Generic junior developer.
+- Primary crypto sales / relationships / solutions / custody implementation candidate.
+- Someone with fabricated live trading returns or professional systematic crypto employment
+  that is not documented.
 
-## Supported role clusters
+## Focus areas
 
-### Markets and investment
+Current focus:
 
-- Trading
-- Portfolio management
-- Execution
-- Liquidity
-- Market structure
-- Risk
-- Investment and market strategy
+- Funding & basis
+- Liquidity & market making
+- CEX/DEX execution
+- MEV & onchain market structure
+- Systematic research
+- Agent-assisted trading workflows
 
-### Hybrid finance and technology
+Interested in:
 
-- Financial infrastructure
-- Digital-asset strategy
-- Domain-heavy solutions architecture
-- Technical strategy
-- Technical business development
-- Product or partnerships roles requiring market fluency
+- Digital-asset trading
+- Quantitative research
+- Systematic trading
+- Execution / market structure
+- DeFi trading
+- Trading systems
+- Agentic quantitative research
 
-## Explicitly unsupported positioning
+## Project hierarchy
 
-Do not market Daniel primarily as any of the following unless evidence and role fit change:
+1. Trading Research (flagship: Funding-Rate / Basis Benchmark; research in progress)
+2. Market Structure & Execution
+3. Agentic Trading Systems
+4. Digital-Asset Infrastructure (supports the trading story; does not define hiring pitch)
+5. Other Engineering Labs (collapsed)
 
-- Production AI engineer
-- Machine-learning engineer
-- Blockchain security auditor
-- Smart-contract auditor
-- Senior production software architect
-- Senior backend engineer
-- Quant researcher based primarily on software credentials
+## Trading Lab
 
-## Homepage messaging hierarchy
+`/trading` is the research publication surface. Status labels must stay honest:
 
-1. **Hero** — markets-led identity, applied technical capability, and open role aperture
-   (market-facing and hybrid).
-2. **Experience** — thirteen-year institutional track record first, then independent
-   technical development chronology. Seniority before projects.
-3. **Selected projects** — exactly three flagship projects, then additional technical work.
-4. **Selected writing** — pieces that support markets, infrastructure, or systems thinking.
-5. **Research** — longer-form research after writing.
-6. **Contact** — one master resume, email, and links.
+- Idea / Researching / Backtested / Paper Trading / Experimental Live / Archived
 
-One shared homepage for markets and hybrid roles. No separate landing pages by role in this
-pass. Recent-content utilities may remain in the codebase, but Recent is not a primary nav
-item.
+Never invent Sharpe ratios, AUM, live PnL, or client counts.
 
-## The three flagship projects
+## Experience framing
 
-1. **AI Infrastructure Financing** (`ai-physical-infra-debt`) — financial judgment, research
-   discipline, credit framing, and communication.
-2. **AMM Simulation Engine** (`eth-amm-sim`) — bridge between market mechanics and technical
-   implementation.
-3. **Ethereum Transaction Lifecycle Visualizer** (`eth-tx-lifecycle`) — technical delivery and
-   infrastructure understanding without implying protocol-security expertise.
+Institutional markets remain central. Engineering is the second chapter. Freelance
+e-commerce and product work may appear in the builder timeline as factual history, but they
+do not define the homepage.
 
-Rollup Mechanics Lab (`eth-l2`) and Agent Runtime (`agent-runtime`) remain listed under
-additional technical work. They are not removed; they simply do not define the primary hiring
-identity.
+## Agent Mode
 
-## Language that must not be used
-
-- Never use em dashes (—) in any published copy (homepage, `/agent`, `agent.json` prose
-  fields intended for display, resume-adjacent copy, writing, research).
-- Do not use "Former" in primary positioning.
-- Do not use intersection framing ("at the intersection of…").
-- Do not use "now building financial and AI infrastructure" or put "AI Systems" in the page
-  title.
-- Do not put standalone "AI" or "Hermes" in headline skill lists. Hermes belongs in project
-  titles, methodology notes, and source references only.
-- Do not imply blockchain-security or smart-contract auditing expertise.
-- Do not claim backend ownership, API architecture, audited contracts, or "shipped across the
-  stack" for RAMM unless each claim can be defended precisely in an interview.
-- Do not call simulated or staging systems "production" without qualification.
-- Do not call `/llms.txt`, `/agent.json`, or similar surfaces an established standard.
-- Do not invent metrics, users, production deployments, external validation, or open-source
-  contributions that are not backed by repository evidence or `docs/CLAIMS_LEDGER.md`.
-- Do not promote multiple résumé variants on the homepage. Keep one master résumé; create
-  targeted variants only for specific applications later.
+Keep `/agent`, `/agent.json`, and `/llms.txt` aligned with this document. Prefer Trading Lab
+and markets/execution projects in preferred entry points.

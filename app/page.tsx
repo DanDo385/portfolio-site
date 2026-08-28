@@ -3,10 +3,12 @@ import { Contact } from '@/components/Contact';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { AgentResearch } from '@/components/AgentResearch';
+import { CurrentlyResearching } from '@/components/CurrentlyResearching';
 import { JsonLd } from '@/components/JsonLd';
 import { MarketIntro } from '@/components/MarketIntro';
 import { Projects } from '@/components/Projects';
 import { SiteNav } from '@/components/SiteNav';
+import { WhyCombination } from '@/components/WhyCombination';
 import { Writing } from '@/components/Writing';
 import { SITE } from '@/lib/constants';
 import { getListedProjects, getPublishedResearch, getPublishedWriting } from '@/lib/content';
@@ -50,15 +52,19 @@ export default function HomePage() {
       <main>
         <Hero />
         <Bridge />
+        <CurrentlyResearching />
+        <Bridge />
         <Projects
           projects={projects}
           writingBySlug={writingBySlug}
           researchBySlug={researchBySlug}
         />
         <Bridge />
-        <Writing articles={articles} projectsBySlug={projectsBySlug} />
-        <Bridge />
         <About />
+        <Bridge />
+        <WhyCombination />
+        <Bridge />
+        <Writing articles={articles} projectsBySlug={projectsBySlug} />
         <Bridge />
         <AgentResearch papers={research} />
         <Bridge />

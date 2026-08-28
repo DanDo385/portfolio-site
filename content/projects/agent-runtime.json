@@ -11,7 +11,7 @@
     "LLM Systems",
     "Interactive"
   ],
-  "summary": "Trace how a tool-using AI agent works. Readers can follow a request from input and memory through tool calls and saved state.",
+  "summary": "Walkthrough of agent runtime loops (Hermes vs OpenClaw): input, memory, tool dispatch, and saved state. Shows how orchestration can support research workflows while deterministic systems keep risk and execution control.",
   "technicalDescription": "Static HTML, CSS, and JavaScript compare Hermes Agent and OpenClaw across platform input, session hydration, agent loop, tool dispatch, and persistence; source anchors and an agent-readable map record the comparison.",
   "techBadges": [
     "HTML",

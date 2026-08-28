@@ -6,7 +6,7 @@
   "statusLabel": "Narrative hub",
   "featured": false,
   "listed": true,
-  "cluster": "custody",
+  "cluster": "infra",
   "tags": [
     "Custody",
     "Policy",
@@ -14,7 +14,7 @@
     "Treasury",
     "Security"
   ],
-  "summary": "One custody story across three working demos: ephemeral signing, air-gapped confirmation, and dual-approval treasury controls with cooldowns. Policy, quorum, and approval language for institutional digital-asset operations.",
+  "summary": "Narrative hub linking ephemeral signing, air-gapped confirmation, and quorum treasury flows. Framing for how policy and controls sit under digital-asset movement, not a finished production custody product.",
   "technicalDescription": "Narrative hub linking the 1Password ephemeral EVM signer, air-gap Pico signer, and Solana treasury vault into a single treasury-policy walkthrough: whitelist, limits, dual approval, cooldown, and offline or ephemeral signed transactions.",
   "techBadges": [
     "Policy controls",

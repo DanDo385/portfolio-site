@@ -16,37 +16,50 @@ const CLUSTERS: Array<{
   collapsed?: boolean;
 }> = [
   {
-    id: 'custody',
-    label: 'Institutional custody & controls',
-    note: 'Signing policy, approval workflows, and treasury controls for digital-asset operations.',
-  },
-  {
-    id: 'agentic',
-    label: 'Agentic operations',
-    note: 'Agent observability and runtime tooling for operational workflows.',
+    id: 'trading-research',
+    label: 'Trading Research',
+    note: 'Funding, basis, carry, and systematic research frameworks for digital-asset markets.',
   },
   {
     id: 'market-structure',
-    label: 'Market structure & rates',
-    note: 'Funding, basis, credit, settlement mechanics, and on-chain market infrastructure.',
+    label: 'Market Structure & Execution',
+    note: 'Liquidity, AMM economics, transaction mechanics, MEV-aware infrastructure, and credit risk through a markets lens.',
+  },
+  {
+    id: 'agentic',
+    label: 'Agentic Trading Systems',
+    note: 'Agent orchestration and observability as a research layer. Deterministic systems retain control of risk and execution.',
+  },
+  {
+    id: 'infra',
+    label: 'Digital-Asset Infrastructure',
+    note: 'Signing, policy, and treasury controls that show how digital assets actually move. Support for the trading story, not the primary hiring pitch.',
   },
   {
     id: 'labs',
-    label: 'Other / labs',
-    note: 'Teaching demos outside the core institutional thesis.',
+    label: 'Other Engineering Labs',
+    note: 'Technically useful work that does not lead the markets thesis.',
     collapsed: true,
   },
 ];
 
 const CLUSTER_PRIORITY: Partial<Record<ProjectCluster, string[]>> = {
-  custody: [
+  'trading-research': ['funding-rate-basis-benchmark'],
+  'market-structure': [
+    'eth-amm-sim',
+    'eth-tx-lifecycle',
+    'ai-physical-infra-debt',
+    'eth-rpc-monitor',
+    'eth-l2',
+  ],
+  agentic: ['hermes-xray', 'agent-runtime', 'portfolio-agent-mode'],
+  infra: [
     'op-ephemeral-evm-signer',
     'airgap-tx-signer',
     'solana-treasury-vault',
     'treasury-policy-engine',
   ],
-  agentic: ['portfolio-agent-mode', 'agent-runtime', 'hermes-xray'],
-  'market-structure': ['funding-rate-basis-benchmark'],
+  labs: ['solidity-copilot', 'space-time'],
 };
 
 function projectsForCluster(projects: Project[], clusterId: ProjectCluster): Project[] {
@@ -72,8 +85,8 @@ export function Projects({ projects, writingBySlug, researchBySlug = {} }: Proje
         <Reveal>
           <div className="section-label">Selected Projects</div>
           <p className="about-intro">
-            Custody controls, agentic operations, and market-structure tooling for institutional
-            digital-asset adoption.
+            Trading research first, then market structure, agent systems, and the infrastructure
+            that moves digital assets. Evidence over job-title claims.
           </p>
         </Reveal>
         {CLUSTERS.map((cluster) => {
@@ -89,7 +102,7 @@ export function Projects({ projects, writingBySlug, researchBySlug = {} }: Proje
                   writingBySlug={writingBySlug}
                   researchBySlug={researchBySlug}
                   reveal={!cluster.collapsed}
-                  variant="compact"
+                  variant={cluster.id === 'trading-research' ? 'featured' : 'compact'}
                 />
               ))}
             </div>

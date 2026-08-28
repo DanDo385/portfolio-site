@@ -13,7 +13,7 @@
     "C",
     "Embedded"
   ],
-  "summary": "Keep an Ethereum test key on a small offline signer. The computer prepares a transaction, the device asks for confirmation, and the device returns a signature without joining a network.",
+  "summary": "Keeps an Ethereum test key on a small offline signer. The computer prepares a transaction; the device confirms and returns a signature without joining a network.",
   "technicalDescription": "The host builds unsigned Sepolia transactions and signing digests; the RP2040 path uses C implementations of Keccak-256 and recoverable secp256k1 over USB serial. Desktop known-answer tests pass; Phase 2 firmware (USB serial PING/PONG, LED heartbeat) builds and waits for physical validation on a LAFVIN Pico starter kit.",
   "techBadges": [
     "C",
@@ -77,5 +77,5 @@
       "Next hardware path: USB hello on device, LCD + buttons, crypto port, confirm UX, then Sepolia end-to-end"
     ]
   },
-  "cluster": "custody"
+  "cluster": "infra"
 }

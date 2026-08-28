@@ -12,7 +12,7 @@
     "Go",
     "Interactive"
   ],
-  "summary": "Two Ethereum rollup designs handle bad transaction batches in different ways. One lets people challenge a bad claim; the other checks a simplified proof path.",
+  "summary": "Side-by-side lab for optimistic vs validity rollup dispute paths. Clarifies settlement guarantees and challenge windows that matter when capital sits on L2.",
   "technicalDescription": "A Next.js frontend and Go service coordinate loopback-only Anvil chains, optimistic batch bonds, Merkle-bisection disputes, and a mock validity lane that re-executes a batch witness. The ZK path is illustrative and does not generate succinct proofs.",
   "techBadges": [
     "Solidity",

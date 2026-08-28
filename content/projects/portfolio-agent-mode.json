@@ -11,7 +11,7 @@
     "Next.js",
     "llms.txt"
   ],
-  "summary": "Give AI systems a clear way to understand this portfolio without guessing from the page design. People get an overview, while agents get structured project and research links.",
+  "summary": "Structured surfaces so AI systems can read this portfolio without scraping decorative HTML. Demonstrates citation-aware agent context design that also applies to research and trading-ops documentation.",
   "technicalDescription": "Next.js serves /agent for the human contract, /agent.json for structured manifest data, and /llms.txt for compact routing; the content loaders keep published projects, writing, research, and media aligned.",
   "techBadges": [
     "Next.js",

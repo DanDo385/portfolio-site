@@ -5,10 +5,11 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState, type MouseEvent } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
-const NAV_SECTIONS = [
+const NAV_SECTIONS: Array<{ id: string; label: string; href?: string }> = [
+  { id: 'trading', label: 'Trading Lab', href: '/trading' },
   { id: 'projects', label: 'Projects' },
-  { id: 'my-writing', label: 'Writing' },
   { id: 'about', label: 'Experience' },
+  { id: 'my-writing', label: 'Writing' },
   { id: 'agent-research', label: 'Research' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -66,7 +67,10 @@ export function Nav() {
     router.push('/agent');
   };
 
-  const sectionHref = (id: string) => (onHome ? `#${id}` : `/#${id}`);
+  const sectionHref = (id: string, href?: string) => {
+    if (href) return href;
+    return onHome ? `#${id}` : `/#${id}`;
+  };
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
@@ -76,9 +80,13 @@ export function Nav() {
       </Link>
 
       <ul className={`nav-links${open ? ' mobile-open' : ''}`} id="navMenu">
-        {NAV_SECTIONS.map(({ id, label }) => (
+        {NAV_SECTIONS.map(({ id, label, href }) => (
           <li key={id}>
-            <Link href={sectionHref(id)} className="nav-scroll" onClick={handleNavClick}>
+            <Link
+              href={sectionHref(id, href)}
+              className={`nav-scroll${href === '/trading' && pathname.startsWith('/trading') ? ' active' : ''}`}
+              onClick={handleNavClick}
+            >
               {label}
             </Link>
           </li>

@@ -12,7 +12,7 @@
     "Sepolia",
     "CLI"
   ],
-  "summary": "Every transaction field is shown before this signing demo touches a test key. It creates a signed Ethereum payload and stops there, so the user can review the result without sending anything to the network.",
+  "summary": "Shows every transaction field before a test key signs an Ethereum payload, then stops without broadcasting. Demonstrates policy-shaped signing controls relevant to how digital assets actually move.",
   "technicalDescription": "Python, 1Password CLI, and eth-account build a Sepolia EIP-1559 payload through an stdin-only secret pipe; validation precedes key access and the tool records the remaining transient RAM exposure.",
   "techBadges": [
     "Python",
@@ -76,5 +76,5 @@
       "Production custody would use hardware confirmation or cloud HSM keys that never enter application RAM"
     ]
   },
-  "cluster": "custody"
+  "cluster": "infra"
 }

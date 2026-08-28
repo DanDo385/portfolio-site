@@ -1,12 +1,12 @@
 {
-  "title": "Funding-Rate Basis Benchmark",
+  "title": "Perpetual Funding & Basis Benchmark",
   "slug": "funding-rate-basis-benchmark",
   "date": "2026-08-17",
   "status": "in-progress",
-  "statusLabel": "Placeholder",
-  "featured": false,
+  "statusLabel": "Research in progress",
+  "featured": true,
   "listed": true,
-  "cluster": "market-structure",
+  "cluster": "trading-research",
   "tags": [
     "Rates",
     "Funding",
@@ -14,13 +14,13 @@
     "Crypto",
     "Market Structure"
   ],
-  "summary": "Placeholder for a cross-venue perpetual funding-rate and basis benchmark framed like a rates product: methodology, history, and a mock fund structure. Build incoming.",
-  "technicalDescription": "Planned deliverable: SOFR-analogy framing for crypto funding, cross-venue normalization, historical basis series, and a term-sheet style fund structure page. Repo and demo not published yet.",
+  "summary": "A quantitative research framework for analyzing perpetual funding, futures basis, cross-venue dislocations, carry, execution costs, and regime behavior across digital-asset markets. Research in progress: no backtests or performance figures published yet.",
+  "technicalDescription": "Rates-desk framing for crypto funding and basis: normalize venue prints, state assumptions, and test whether apparent carry survives fees, slippage, collateral, and execution constraints. Planned stack: Python research notebooks, cross-venue data, methodology page. Repo and demo not published yet.",
   "techBadges": [
     "Funding rates",
     "Basis",
     "Cross-venue data",
-    "Term sheet",
+    "Quantitative research",
     "Python"
   ],
   "githubUrl": null,
@@ -36,31 +36,32 @@
   "screenshots": [],
   "relatedWriting": null,
   "caseStudy": {
-    "problem": "Institutional desks need a rates-native way to read perpetual funding and basis across venues, with a clear methodology and a fund-structure view of how the exposure could be run.",
+    "problem": "Apparent funding and basis carry across crypto venues is often overstated until fees, slippage, collateral, leverage, and regime changes are normalized the way a rates desk would demand.",
     "ownership": [
-      "Cross-venue funding-rate methodology (placeholder)",
-      "Historical basis series and SOFR-analogy framing (placeholder)",
-      "Mock term sheet / basis-fund structure (placeholder)"
+      "Cross-venue funding-rate methodology (in progress)",
+      "Historical basis series and rates-analogy framing (in progress)",
+      "Research publication surface in Trading Lab (published shell)"
     ],
     "architecture": [
       "Venue funding and mark inputs normalized to a common tenor",
-      "Published methodology page with assumptions and failure modes",
-      "Fund-structure view for carry / basis exposure"
+      "Published methodology with assumptions and failure modes",
+      "Future notebook / backtest layer with known-answer checks"
     ],
     "decisions": [
-      "Ship the portfolio card and write-up shell first so the thesis is visible while the product is built",
-      "Keep demoUrl and githubUrl null until the first demoable surface exists"
+      "Publish the research architecture and status labels before inventing results",
+      "Keep demoUrl and githubUrl null until the first demoable surface exists",
+      "Connect the project card to /trading/perpetual-funding-basis/"
     ],
     "verification": [
       "TODO: known-answer checks against venue reference prints",
       "TODO: methodology review against rates-desk conventions"
     ],
     "limitations": [
-      "Placeholder card only. No live data feed or demo yet.",
-      "Educational framing until the benchmark ships"
+      "Research in progress. No live data feed, backtest, or performance figures yet.",
+      "Independent research, not a professional trading track record."
     ],
     "productionDifferences": [
-      "Production version would include live venue feeds, audited methodology, and a durable research page with provenance"
+      "A production research system would include durable data provenance, audited methodology, and transparent transaction-cost assumptions."
     ]
   }
 }

@@ -120,8 +120,10 @@ export function projectTier(project: Project): 'primary' | 'foundations' {
 
 export function projectCluster(
   project: Project
-): 'custody' | 'market-structure' | 'agentic' | 'labs' {
-  return project.cluster ?? 'labs';
+): 'trading-research' | 'market-structure' | 'agentic' | 'infra' | 'labs' {
+  const cluster = project.cluster ?? 'labs';
+  if (cluster === 'custody') return 'infra';
+  return cluster;
 }
 
 export function getPrimaryProjects(): Project[] {
@@ -233,10 +235,10 @@ export function hasRecentContent(): boolean {
 export const TIMELINE: TimelineItem[] = [
   {
     era: 'Aug 2025 – Present',
-    role: 'Freelance Full-Stack Development & Product Ventures',
+    role: 'Independent Research & Engineering',
     org: 'Independent',
     track: 'builder',
-    note: 'Build and maintain e-commerce websites and custom software for clients; develop Hermes-based agentic workflows and open-source tooling; and prototype software-enabled business concepts progressing toward launch. Active crypto trading and protocol research inform the software design, with focus on liquidity, AMMs, execution, DeFi mechanics, market infrastructure, and risk.',
+    note: 'Independent research and engineering across crypto market structure, DeFi, agent systems, and full-stack product work. Client e-commerce and product launches continue alongside open-source tooling, with focus on liquidity, AMMs, execution, funding/basis, and agent-assisted research workflows.',
   },
   {
     era: 'Mar 2024 – Jul 2025',

@@ -33,7 +33,7 @@ export function siteShareImageElement() {
           Daniel Magro
         </div>
         <div style={{ fontSize: 58, fontWeight: 600, lineHeight: 1.15, maxWidth: 980 }}>
-          Institutional Digital Assets and Market Structure
+          Systematic and Agentic Digital-Asset Trading
         </div>
       </div>
       <div

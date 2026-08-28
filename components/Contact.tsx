@@ -95,6 +95,15 @@ export function Contact() {
           </Reveal>
           <div className="contact-main">
             <Reveal className="contact-text">
+              <h2 className="contact-headline">
+                Building at the intersection of markets, crypto, and autonomous systems?
+              </h2>
+              <p className="contact-lead">
+                Particularly interested in speaking with small teams working on systematic
+                digital-asset trading, quantitative research, market structure, execution, DeFi,
+                market making, or agentic trading systems. Collaboration, research discussion, and
+                technically ambitious opportunities welcome.
+              </p>
               <div className="resume-section" id="resume">
                 <div className="resume-label">Resume</div>
                 <div className="resume-actions">
@@ -145,11 +154,15 @@ export function Contact() {
               </div>
               <div className="sig-row">
                 <span className="sig-label">Building with</span>
-                <span className="sig-val">Go · Solidity · Ethereum · APIs · agent systems · Hermes Agent</span>
+                <span className="sig-val">
+                  Python · TypeScript · Go · Solidity · Ethereum · Solana · agent systems · Hermes
+                </span>
               </div>
               <div className="sig-row">
-                <span className="sig-label">Startup</span>
-                <span className="sig-val">Early-stage product and Web3 experience</span>
+                <span className="sig-label">Focus</span>
+                <span className="sig-val">
+                  Systematic digital-asset research, market structure, execution, DeFi, agents
+                </span>
               </div>
               <div className="sig-row">
                 <span className="sig-label">Education</span>

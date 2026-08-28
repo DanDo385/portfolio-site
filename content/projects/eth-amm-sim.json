@@ -13,7 +13,7 @@
     "Simulation",
     "Interactive"
   ],
-  "summary": "Explore how liquidity providers earn fees and take risk in an automated market maker. The lab lets users see how price moves, trading volume, and liquidity ranges change the result.",
+  "summary": "Simulates liquidity, price impact, LP economics, and execution behavior across AMM market conditions. Built to reason about fees, impermanent loss, and concentrated liquidity the way a trading desk studies inventory risk.",
   "technicalDescription": "A Go simulation backend and TypeScript frontend model impermanent loss, fee accrual, concentrated liquidity, and EVM fixed-point arithmetic across volatility scenarios; the live app runs at eth-amm-sim.vercel.app.",
   "techBadges": [
     "Go",

@@ -1,4 +1,9 @@
 import Link from 'next/link';
+import {
+  CURRENT_FOCUS,
+  INTERESTED_IN,
+  TRAJECTORY,
+} from '@/lib/site-focus';
 
 export function Hero() {
   return (
@@ -6,27 +11,52 @@ export function Hero() {
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
-        <h1>Institutional Digital Assets and Market Structure</h1>
+        <p className="hero-name">Daniel Magro</p>
+        <h1>Building systematic and agentic trading systems for digital-asset markets</h1>
+        <p className="hero-trajectory" aria-label="Career trajectory">
+          {TRAJECTORY}
+        </p>
         <p className="hero-identity">
-          Thirteen years in institutional rates sales, trading execution, and portfolio management
-          at PGIM, PointState, and Nomura. I build custody, settlement, and agent-driven operational
-          tooling for institutions adopting digital assets.
+          Thirteen years in institutional rates trading, execution, and portfolio management.
+          Now applying software engineering, quantitative research, blockchain infrastructure, and
+          AI agents to crypto, DeFi, market structure, and systematic trading.
         </p>
-        <p className="hero-positioning">
-          Today: freelance Web2 developer specializing in e-commerce, open-source contributor, and
-          product launches in development. Target roles: Solutions, Forward Deployed Engineer,
-          Relationships, Sales, and Implementation at custody, tokenization, and institutional
-          trading infrastructure firms.
-        </p>
+        <div className="hero-focus-block">
+          <div className="hero-focus-label">Current focus</div>
+          <ul className="hero-focus-list">
+            {CURRENT_FOCUS.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="hero-focus-block">
+          <div className="hero-focus-label">Interested in</div>
+          <ul className="hero-focus-list">
+            {INTERESTED_IN.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
         <div className="hero-cta">
+          <Link href="/trading" className="btn btn-primary">
+            Trading Lab
+          </Link>
           <Link href="#projects" className="btn btn-primary">
-            Selected work
+            View Projects
           </Link>
-          <Link href="#about" className="btn btn-primary">
-            View experience
-          </Link>
+          <a
+            href="https://github.com/DanDo385"
+            className="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
           <Link href="#resume" className="btn btn-primary">
             Resume
+          </Link>
+          <Link href="#contact" className="btn btn-primary">
+            Contact
           </Link>
         </div>
       </div>

@@ -69,7 +69,7 @@ Create `content/projects/your-slug.json`:
 | `relatedProjects` | no | Related project slugs for hub / narrative pages (rendered as Linked demos) |
 | `featured` | no | Reserved; homepage no longer pins featured projects above date sort |
 | `tier` | no | `primary` (default) or `foundations`. Foundations remain available for legacy collapsed tiers |
-| `cluster` | no | Homepage cluster: `custody`, `agentic`, `market-structure`, or `labs` (default). Labs render collapsed |
+| `cluster` | no | Homepage cluster: `trading-research`, `market-structure`, `agentic`, `infra`, or `labs` (default). Labs render collapsed |
 | `listed` | no | When `false`, hidden from homepage and agent project lists |
 
 Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.
