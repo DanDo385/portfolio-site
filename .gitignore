@@ -18,3 +18,11 @@ public/project-assets/**/llms.txt
 public/project-assets/**/long-recording/
 public/project-assets/**/short-recording/
 tmp-project-clones/
+
+# Personal / internal career docs (local only; not for public GitHub)
+docs/RESUME_REWRITE.md
+docs/CLAIMS_LEDGER.md
+docs/PROJECT_EVIDENCE.md
+docs/POSITIONING.md
+docs/private/
+private/
