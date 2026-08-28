@@ -37,7 +37,7 @@ const CLUSTERS: Array<{
   },
   {
     id: 'labs',
-    label: 'Other Engineering Labs',
+    label: 'Other Technical Labs',
     note: 'Technically useful work that does not lead the markets thesis.',
     collapsed: true,
   },

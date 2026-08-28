@@ -3,7 +3,7 @@
  * across Hero / CurrentlyResearching / Contact.
  */
 export const TRAJECTORY =
-  'Institutional trader → engineer → systematic/agentic digital-asset trader';
+  'Institutional trader → technical builder → systematic/agentic digital-asset trader';
 
 export const CURRENT_FOCUS = [
   'Funding & basis',

@@ -14,7 +14,7 @@ const BUILDER_THEMES = [
   'Market structure and execution tooling',
   'Agent orchestration and observability',
   'Blockchain infrastructure and signing controls',
-  'Full-stack product engineering',
+  'Full-stack product systems',
 ];
 
 export function About() {
@@ -25,7 +25,7 @@ export function About() {
           <div className="section-label">Experience</div>
           <p className="about-intro">
             Roughly 13 years in institutional financial markets, then deep work in software
-            engineering, blockchain systems, and AI agents. Those paths have converged on
+            systems, blockchain infrastructure, and AI agents. Those paths have converged on
             systematic digital-asset research, market structure, execution, DeFi, and
             agent-assisted trading systems.
           </p>
@@ -63,14 +63,14 @@ export function About() {
             </div>
 
             <div className="about-track">
-              <h3 className="about-track-title">Engineering transition</h3>
+              <h3 className="about-track-title">Technical building</h3>
               <p className="about-track-summary">
-                Since 2024: full-stack, AI, and Web3 engineering, including Hermes tooling, EVM
+                Since 2024: full-stack, AI, and Web3 systems work, including Hermes tooling, EVM
                 marketplace contracts at RAMM.ai, and open-source agent infrastructure. Earlier
                 independent e-commerce operations used Python automation; medical leave included
                 intensive CS, Solidity, blockchain, and AI retraining. Active crypto trading and
                 protocol research feed the software design. Freelance product work continues, but
-                the north star is markets plus engineering plus agents.
+                the north star is markets plus systems plus agents.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

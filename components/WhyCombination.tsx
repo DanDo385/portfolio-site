@@ -6,8 +6,8 @@ const PILLARS = [
     body: 'Institutional trading, execution, liquidity, portfolio management, and risk.',
   },
   {
-    title: 'Engineering',
-    body: 'Python, TypeScript, Go, blockchain systems, APIs, data, and infrastructure.',
+    title: 'Systems',
+    body: 'Python, TypeScript, Go, blockchain infrastructure, APIs, data, and product systems.',
   },
   {
     title: 'Agents',

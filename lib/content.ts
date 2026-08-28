@@ -238,7 +238,7 @@ export const TIMELINE: TimelineItem[] = [
     role: 'Independent Research & Engineering',
     org: 'Independent',
     track: 'builder',
-    note: 'Independent research and engineering across crypto market structure, DeFi, agent systems, and full-stack product work. Client e-commerce and product launches continue alongside open-source tooling, with focus on liquidity, AMMs, execution, funding/basis, and agent-assisted research workflows.',
+    note: 'Independent research and systems work across crypto market structure, DeFi, agent systems, and full-stack product work. Client e-commerce and product launches continue alongside open-source tooling, with focus on liquidity, AMMs, execution, funding/basis, and agent-assisted research workflows.',
   },
   {
     era: 'Mar 2024 – Jul 2025',

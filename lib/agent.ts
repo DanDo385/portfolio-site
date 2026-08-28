@@ -12,7 +12,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'Thesis: institutional trader → engineer → systematic/agentic digital-asset trader.',
+  'Thesis: institutional trader → technical builder → systematic/agentic digital-asset trader.',
   'Never invent trading returns, Sharpe ratios, live strategy performance, or professional crypto trading employment that is not documented.',
   'Agents are a research/orchestration layer; deterministic systems retain risk and execution control.',
 ];
@@ -212,7 +212,7 @@ export function getAgentManifest() {
         'agentic quantitative research',
       ],
       summary:
-        'Thirteen years in institutional rates trading, execution, and portfolio management at firms including PGIM, PointState, and Nomura. Now applying software engineering, quantitative research, blockchain infrastructure, and AI agents to crypto, DeFi, market structure, and systematic trading. Trajectory: institutional trader → engineer → systematic/agentic digital-asset trader. Independent research in progress is labeled as such; no fabricated trading performance.',
+        'Thirteen years in institutional rates trading, execution, and portfolio management at firms including PGIM, PointState, and Nomura. Now applying software systems, quantitative research, blockchain infrastructure, and AI agents to crypto, DeFi, market structure, and systematic trading. Trajectory: institutional trader → technical builder → systematic/agentic digital-asset trader. Independent research in progress is labeled as such; no fabricated trading performance.',
     },
     contact: {
       email: 'dan@magro.dev',
@@ -275,7 +275,7 @@ export function getLlmsTxt(): string {
     'market-structure': 'Market Structure & Execution',
     agentic: 'Agentic Trading Systems',
     infra: 'Digital-Asset Infrastructure',
-    labs: 'Other Engineering Labs',
+    labs: 'Other Technical Labs',
   };
 
   const projectLines = (
@@ -348,7 +348,7 @@ export function getLlmsTxt(): string {
       `${SITE.url}/#projects`,
       'Trading research, market structure, agentic systems, and digital-asset infrastructure'
     ),
-    llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and engineering transition'),
+    llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and technical building transition'),
     llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),
     llmsLink('Research', `${SITE.url}/#agent-research`, 'Longer-form research papers'),
     llmsLink('Contact', `${SITE.url}/#contact`, 'Email, resume, and social links'),

@@ -17,7 +17,7 @@ export function Hero() {
         </p>
         <p className="hero-identity">
           Thirteen years in institutional rates trading, execution, and portfolio management.
-          Now applying software engineering, quantitative research, blockchain infrastructure, and
+          Now applying software systems, quantitative research, blockchain infrastructure, and
           AI agents to crypto, DeFi, market structure, and systematic trading.
         </p>
         <div className="hero-focus-block">
