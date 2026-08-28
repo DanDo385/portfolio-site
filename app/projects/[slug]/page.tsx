@@ -35,22 +35,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = `${project.title} | Daniel Magro`;
   const canonicalPath = projectPath(project.slug);
   const shareImage = project.screenshots?.[0];
+  const description = project.hook ? `${project.hook} ${project.summary}` : project.summary;
 
   return {
     title,
-    description: project.summary,
+    description,
     alternates: { canonical: canonicalPath },
     openGraph: {
       type: 'website',
       url: canonicalPath,
       title,
-      description: project.summary,
+      description,
       images: shareImage ? [{ url: shareImage }] : undefined,
     },
     twitter: {
       card: shareImage ? 'summary_large_image' : 'summary',
       title,
-      description: project.summary,
+      description,
       images: shareImage ? [shareImage] : undefined,
     },
   };
@@ -70,7 +71,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     name: project.title,
-    description: project.summary,
+    description: project.hook ? `${project.hook} ${project.summary}` : project.summary,
     url: `${SITE.url}${projectPath(project.slug)}`,
     ...(project.githubUrl ? { codeRepository: project.githubUrl } : {}),
     ...(project.techBadges.length ? { programmingLanguage: project.techBadges } : {}),

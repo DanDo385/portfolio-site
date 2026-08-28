@@ -10,7 +10,7 @@
     "JSON-RPC",
     "CLI"
   ],
-  "summary": "Command-line monitor for what an Ethereum node is reporting: blocks, pending transactions, and live activity. Infrastructure literacy for anyone studying execution and settlement paths.",
+  "summary": "A command-line monitor for what an Ethereum node is reporting: blocks, pending transactions, and live activity. CLI only: there is no hosted UI.",
   "technicalDescription": "Go and Cobra wrap Ethereum JSON-RPC calls for block inspection, mempool snapshots, and transaction tracing; the tool stays focused on read-only node observability.",
   "techBadges": [
     "Go",
@@ -38,5 +38,5 @@
   "recordingUrl": null,
   "screenshots": [],
   "relatedWriting": null,
-  "cluster": "market-structure"
+  "cluster": "labs"
 }

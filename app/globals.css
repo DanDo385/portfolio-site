@@ -1093,6 +1093,8 @@ html.intro-done .hero-scroll {
 .tag-llm-systems { background: rgba(129, 140, 248, 0.12); color: #818cf8; border-color: rgba(129, 140, 248, 0.28); }
 .tag-observability { background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-color: rgba(148, 163, 184, 0.28); }
 .tag-interactive { background: rgba(34, 211, 238, 0.12); color: #22d3ee; border-color: rgba(34, 211, 238, 0.28); }
+.tag-walkthrough { background: rgba(165, 180, 252, 0.12); color: #a5b4fc; border-color: rgba(165, 180, 252, 0.28); }
+.tag-hosted { background: rgba(52, 211, 153, 0.12); color: #34d399; border-color: rgba(52, 211, 153, 0.28); }
 .tag-infrastructure { background: rgba(201, 147, 58, 0.12); color: #c9933a; border-color: rgba(201, 147, 58, 0.28); }
 .tag-solidity { background: rgba(251, 146, 60, 0.12); color: #fb923c; border-color: rgba(251, 146, 60, 0.28); }
 .tag-evm { background: rgba(163, 230, 53, 0.12); color: #a3e635; border-color: rgba(163, 230, 53, 0.28); }
@@ -1163,6 +1165,18 @@ html[data-theme='light'] .tag-interactive {
   background: rgba(14, 116, 144, 0.1);
   color: #0e7490;
   border-color: rgba(14, 116, 144, 0.22);
+}
+
+html[data-theme='light'] .tag-walkthrough {
+  background: rgba(67, 56, 202, 0.1);
+  color: #4338ca;
+  border-color: rgba(67, 56, 202, 0.22);
+}
+
+html[data-theme='light'] .tag-hosted {
+  background: rgba(4, 120, 87, 0.1);
+  color: #047857;
+  border-color: rgba(4, 120, 87, 0.22);
 }
 
 html[data-theme='light'] .tag-infrastructure {
@@ -1418,6 +1432,14 @@ html[data-theme='light'] .tag-default {
   margin-bottom: 12px;
 }
 
+.pcard-hook {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
 .pcard-technical {
   color: var(--text-muted);
   font-family: var(--font-mono);
@@ -1502,6 +1524,10 @@ html[data-theme='light'] .tag-default {
 .pcard-compact .pcard-summary {
   font-size: 14px;
   margin-bottom: 16px;
+}
+
+.pcard-compact .pcard-hook {
+  font-size: 15px;
 }
 
 .projects-primary-list {
@@ -3059,57 +3085,6 @@ html[data-theme='light'] .tag-default {
   color: var(--text-secondary);
 }
 
-/* ═══════ WHY COMBINATION ═══════ */
-.why-pillars {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.why-pillar,
-.why-merge {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  padding: 22px 20px;
-  box-shadow: var(--shadow-card);
-}
-
-.why-pillar h3,
-.why-merge h3 {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 400;
-  margin: 0 0 10px;
-  color: var(--text-primary);
-}
-
-.why-pillar p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-.why-merge ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-}
-
-.why-merge li {
-  font-size: 12px;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-  background: var(--surface-muted);
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-}
-
 /* ═══════ TRADING LAB ═══════ */
 .trading-lab-page {
   padding: 120px 0 80px;
@@ -4160,8 +4135,7 @@ footer {
   .agent-grid { grid-template-columns: 1fr; }
   .agent-context { grid-template-columns: 1fr; padding: 26px; }
   .agent-hero h1 { font-size: 40px; }
-  .currently-researching .researching-grid,
-  .why-pillars {
+  .currently-researching .researching-grid {
     grid-template-columns: 1fr;
   }
 

@@ -14,7 +14,8 @@
     "Crypto",
     "Market Structure"
   ],
-  "summary": "A quantitative research framework for analyzing perpetual funding, futures basis, cross-venue dislocations, carry, execution costs, and regime behavior across digital-asset markets. Research in progress: no backtests or performance figures published yet.",
+  "hook": "Is apparent funding carry still there after fees and slippage?",
+  "summary": "A quantitative research framework for perpetual funding, futures basis, cross-venue dislocations, and carry after execution costs. Research in progress: no backtests or performance figures published yet.",
   "technicalDescription": "Rates-desk framing for crypto funding and basis: normalize venue prints, state assumptions, and test whether apparent carry survives fees, slippage, collateral, and execution constraints. Planned stack: Python research notebooks, cross-venue data, methodology page. Repo and demo not published yet.",
   "techBadges": [
     "Funding rates",

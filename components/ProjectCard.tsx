@@ -63,6 +63,7 @@ export function ProjectCard({
       </div>
       <div className="pcard-layout">
         <div className="pcard-main">
+          {project.hook && <p className="pcard-hook">{project.hook}</p>}
           <p className="pcard-summary">{project.summary}</p>
           {project.technicalDescription && (
             <p className="pcard-technical">

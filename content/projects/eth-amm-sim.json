@@ -3,7 +3,7 @@
   "slug": "eth-amm-sim",
   "date": "2025-05-10",
   "status": "complete",
-  "sortOrder": 3,
+  "sortOrder": 1,
   "featured": false,
   "listed": true,
   "tags": [
@@ -11,10 +11,11 @@
     "Solidity",
     "Go",
     "Simulation",
-    "Interactive"
+    "Hosted"
   ],
-  "summary": "Simulates liquidity, price impact, LP economics, and execution behavior across AMM market conditions. Built to reason about fees, impermanent loss, and concentrated liquidity the way a trading desk studies inventory risk.",
-  "technicalDescription": "A Go simulation backend and TypeScript frontend model impermanent loss, fee accrual, concentrated liquidity, and EVM fixed-point arithmetic across volatility scenarios; the live app runs at eth-amm-sim.vercel.app.",
+  "hook": "What actually happens to LPs when volatility spikes?",
+  "summary": "This is a hosted AMM simulator with a Go backend. You can change fees, volatility, and concentrated liquidity, then watch price impact, fee accrual, and impermanent loss the way a desk studies inventory risk.",
+  "technicalDescription": "A Go simulation backend and TypeScript frontend model impermanent loss, fee accrual, concentrated liquidity, and EVM fixed-point arithmetic across volatility scenarios. The live app runs at eth-amm-sim.vercel.app.",
   "techBadges": [
     "Go",
     "TypeScript",

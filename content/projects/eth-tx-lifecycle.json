@@ -3,16 +3,18 @@
   "slug": "eth-tx-lifecycle",
   "date": "2025-08-20",
   "status": "complete",
+  "sortOrder": 3,
   "featured": false,
   "tags": [
     "Infrastructure",
     "MEV",
     "Go",
     "Next.js",
-    "TypeScript"
+    "Hosted"
   ],
-  "summary": "Maps an Ethereum transaction from broadcast to finality: mempool, builders, validators, inclusion costs, and delay. Useful for understanding execution quality and MEV-aware market microstructure.",
-  "technicalDescription": "A Next.js frontend and Go backend combine execution JSON-RPC, Beacon API, and MEV relay data with TTL caching, health checks, transaction decoding, and heuristic sandwich, arbitrage, liquidation, and JIT-liquidity detection.",
+  "hook": "What happens between clicking send and a transaction becoming irreversible?",
+  "summary": "This is a hosted visualizer backed by live Ethereum data. It follows a transaction through mempool, builders, relays, validators, and finality, then adds a heuristic MEV lab for sandwiches and related patterns.",
+  "technicalDescription": "A Next.js frontend and Go backend combine execution JSON-RPC, Beacon API, and MEV relay data with TTL caching, health checks, transaction decoding, and heuristic sandwich, arbitrage, liquidation, and JIT-liquidity detection. Hosted at eth-tx-lifecycle.vercel.app.",
   "techBadges": [
     "Go",
     "Next.js",

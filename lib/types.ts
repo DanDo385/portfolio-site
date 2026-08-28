@@ -3,10 +3,11 @@ export type ArticleStatus = 'draft' | 'published';
 export type ProjectPreviewType = 'agent-json';
 /** Visual weight on the homepage. Foundations sit under primary flagships. */
 export type ProjectTier = 'primary' | 'foundations';
-/** Homepage cluster for markets/trading positioning. Defaults to labs when omitted. */
+/** Homepage cluster. Defaults to labs when omitted. */
 export type ProjectCluster =
   | 'trading-research'
   | 'market-structure'
+  | 'walkthroughs'
   | 'agentic'
   | 'infra'
   | 'labs'
@@ -81,6 +82,8 @@ export interface Project {
   /** Homepage cluster. Defaults to labs when omitted. */
   cluster?: ProjectCluster;
   tags: string[];
+  /** Optional question that leads the card. Summary then states what the visitor is looking at. */
+  hook?: string | null;
   summary: string;
   technicalDescription?: string;
   techBadges: string[];

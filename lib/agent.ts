@@ -6,6 +6,7 @@ import { CURRENT_FOCUS, INTERESTED_IN, TRAJECTORY } from './site-focus';
 import { getListedTradingResearch, tradingResearchStatusLabel } from './trading-research';
 import { isValidUrl, projectPath } from './utils';
 import { DEMO_CONFIGS } from './demos';
+import { CLUSTER_LABELS, PROJECT_CLUSTERS, projectsForCluster, sortByClusterPriority } from './project-clusters';
 import type { Project } from './types';
 
 const PRINCIPLES = [
@@ -68,7 +69,11 @@ function projectUrls(project: Project) {
 }
 
 export function getAgentManifest() {
-  const projects = getListedProjects().map((project) => ({
+  const listed = getListedProjects();
+  const ordered = PROJECT_CLUSTERS.flatMap((cluster) =>
+    projectsForCluster(listed, cluster.id)
+  );
+  const projects = ordered.map((project) => ({
     title: project.title,
     slug: project.slug,
     date: project.date,
@@ -77,6 +82,7 @@ export function getAgentManifest() {
     featured: Boolean(project.featured),
     tier: projectTier(project),
     cluster: projectCluster(project),
+    hook: project.hook ?? null,
     summary: project.summary,
     technicalDescription: project.technicalDescription ?? null,
     tags: project.tags,
@@ -163,6 +169,8 @@ export function getAgentManifest() {
         `${SITE.url}/projects/funding-rate-basis-benchmark/`,
         `${SITE.url}/projects/eth-amm-sim/`,
         'https://eth-amm-sim.vercel.app',
+        `${SITE.url}/projects/eth-l2/`,
+        'https://eth-l2.vercel.app',
         `${SITE.url}/projects/eth-tx-lifecycle/`,
         'https://eth-tx-lifecycle.vercel.app',
         `${SITE.url}/projects/ai-physical-infra-debt/`,
@@ -270,30 +278,26 @@ export function getLlmsTxt(): string {
     ),
   ].join('\n');
 
-  const CLUSTER_LABELS: Record<string, string> = {
-    'trading-research': 'Trading Research',
-    'market-structure': 'Market Structure & Execution',
-    agentic: 'Agentic Trading Systems',
-    infra: 'Digital-Asset Infrastructure',
-    labs: 'Other Technical Labs',
-  };
+  const CLUSTER_ORDER = PROJECT_CLUSTERS.map((cluster) => cluster.id);
 
-  const projectLines = (
-    ['trading-research', 'market-structure', 'agentic', 'infra', 'labs'] as const
-  )
+  const projectLines = CLUSTER_ORDER
     .flatMap((clusterId) => {
-      const clusterProjects = manifest.projects.filter((project) => project.cluster === clusterId);
+      const clusterProjects = sortByClusterPriority(
+        manifest.projects.filter((project) => project.cluster === clusterId),
+        clusterId
+      );
       if (clusterProjects.length === 0) return [];
       return [
         `### ${CLUSTER_LABELS[clusterId]}`,
         '',
         ...clusterProjects.map((project) => {
           const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
-          const note =
-            project.status === 'in-progress'
-              ? `${project.statusLabel ?? 'In progress'}. ${project.summary}`
-              : project.summary;
-          return llmsLink(project.title, href, note);
+          const parts = [
+            project.status === 'in-progress' ? `${project.statusLabel ?? 'In progress'}.` : null,
+            project.hook,
+            project.summary,
+          ].filter(Boolean);
+          return llmsLink(project.title, href, parts.join(' '));
         }),
         '',
       ];
@@ -346,7 +350,7 @@ export function getLlmsTxt(): string {
     llmsLink(
       'Projects',
       `${SITE.url}/#projects`,
-      'Trading research, market structure, agentic systems, and digital-asset infrastructure'
+      'Protocol labs, trading research, interactive walkthroughs, and digital-asset infrastructure'
     ),
     llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and technical building transition'),
     llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),

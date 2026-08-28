@@ -8,10 +8,11 @@
     "AI",
     "Agents",
     "Observability",
-    "Interactive"
+    "Walkthrough"
   ],
-  "summary": "Observability lab for tool-using agents: model context, tool calls, verification gates, and persistence. Infrastructure for agent-assisted market research, not a trading bot with claimed PnL.",
-  "technicalDescription": "A standalone HTML, CSS, and JavaScript observability lab exposes model-visible context, loop stages, tool events, token estimates, verification gates, and persistence boundaries for a Hermes-style agent.",
+  "hook": "What does a tool-using agent actually see on each loop?",
+  "summary": "This is an observability walkthrough of a Hermes-style agent: model-visible context, tool calls, verification gates, and persistence. It is a teaching lab for agent-assisted research, not a live model and not a trading bot.",
+  "technicalDescription": "A standalone HTML, CSS, and JavaScript lab with no backend. It exposes model-visible context, loop stages, tool events, token estimates, verification gates, and persistence boundaries for a Hermes-style agent.",
   "techBadges": [
     "HTML",
     "CSS",
@@ -40,5 +41,5 @@
   "recordingUrl": null,
   "screenshots": [],
   "relatedWriting": null,
-  "cluster": "agentic"
+  "cluster": "walkthroughs"
 }

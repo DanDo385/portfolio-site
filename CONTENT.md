@@ -18,7 +18,8 @@ Create `content/projects/your-slug.json`:
   "listed": true,
   "tier": "primary",
   "tags": ["AI", "Go"],
-  "summary": "One or two lines describing the project.",
+  "hook": "Optional question that leads the card.",
+  "summary": "One or two lines describing what the visitor is looking at.",
   "technicalDescription": "One concise technical sentence for practitioners.",
   "techBadges": ["Go", "TypeScript"],
   "githubUrl": "https://github.com/DanDo385/your-repo",
@@ -47,8 +48,9 @@ Create `content/projects/your-slug.json`:
 | `sortOrder` | no | Optional 1-based homepage rank. Ranked projects occupy that slot; others fill remaining slots by `date` |
 | `status` | yes | `complete` or `in-progress` |
 | `statusLabel` | no | Optional card badge when `in-progress` (e.g. `Waiting on hardware`). Defaults to `In progress` |
-| `tags` | yes | The only badges on the project card. Mix domain + distinctive stack (e.g. `Fraud Proofs`, `MEV`, `JSON-RPC`). Keep to ~4–5. |
-| `summary` | yes | Short description (1-2 lines) |
+| `tags` | yes | The only badges on the project card. Mix domain + distinctive stack (e.g. `Fraud Proofs`, `MEV`, `JSON-RPC`). Use `Hosted` for backend apps and `Walkthrough` for static teaching labs. Keep to ~4–5. |
+| `hook` | no | Short question that leads the card. Use it when a concrete question is a better entry than a noun phrase. |
+| `summary` | yes | What the visitor is looking at (hosted backend app, static walkthrough, CLI, research note). 1-2 lines. |
 | `technicalDescription` | yes for listed projects | Technical mechanism, stack, or evidence boundary shown below the plain summary and included in `agent.json` |
 | `techBadges` | yes | Fuller stack list for Agent Mode (`agent.json` / `llms.txt`) only. Not shown on cards. |
 | `githubUrl` | no | GitHub repo link |
@@ -69,7 +71,7 @@ Create `content/projects/your-slug.json`:
 | `relatedProjects` | no | Related project slugs for hub / narrative pages (rendered as Linked demos) |
 | `featured` | no | Reserved; homepage no longer pins featured projects above date sort |
 | `tier` | no | `primary` (default) or `foundations`. Foundations remain available for legacy collapsed tiers |
-| `cluster` | no | Homepage cluster: `trading-research`, `market-structure`, `agentic`, `infra`, or `labs` (default). Labs render collapsed |
+| `cluster` | no | Homepage cluster: `market-structure` (Protocol Labs), `trading-research`, `walkthroughs`, `agentic`, `infra`, or `labs` (default). Labs render collapsed. Labels and order live in `lib/project-clusters.ts`. |
 | `listed` | no | When `false`, hidden from homepage and agent project lists |
 
 Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.
@@ -80,7 +82,7 @@ Project screenshots, GIFs, static demos, agent briefs, and YouTube metadata belo
 
 Canonical source folders are `public/` or `repo-resources/` at the project root. See `docs/project-resources.md` for the accepted layout, fallback behavior, strict cutover, and verification commands.
 
-Write two additive layers for every listed project. `summary` explains the project in plain language for a broad audience. `technicalDescription` names the relevant mechanism, stack, or evidence boundary for practitioners. Use distinct natural openings across a set of cards. Keep the technical line concise and factual.
+Write two additive layers for every listed project, plus an optional hook. `hook` is a short question that leads the card. `summary` states what the visitor is actually looking at: a hosted app with a backend, a static walkthrough, a CLI, or a research note. `technicalDescription` names the relevant mechanism, stack, or evidence boundary for practitioners. Use distinct natural openings across a set of cards. Keep the technical line concise and factual. Never use em dashes.
 
 Use descriptive screenshot filenames that state the captured UI state, such as `02-op-lab-start.png` or `05-verify-persist.png`. The build preserves those names. Do not use generic `image1.png` sequences for new repo-owned resources.
 

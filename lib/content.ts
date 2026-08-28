@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { Article, Project, ResearchPaper, TimelineItem } from './types';
+import type { Article, Project, ProjectCluster, ResearchPaper, TimelineItem } from './types';
 
 const CONTENT = path.join(process.cwd(), 'content');
 const GENERATED_PROJECT_RESOURCES = path.join(
@@ -117,9 +117,7 @@ export function projectTier(project: Project): 'primary' | 'foundations' {
   return project.tier === 'foundations' ? 'foundations' : 'primary';
 }
 
-export function projectCluster(
-  project: Project
-): 'trading-research' | 'market-structure' | 'agentic' | 'infra' | 'labs' {
+export function projectCluster(project: Project): Exclude<ProjectCluster, 'custody'> {
   const cluster = project.cluster ?? 'labs';
   if (cluster === 'custody') return 'infra';
   return cluster;

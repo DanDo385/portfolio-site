@@ -25,6 +25,8 @@ const TAG_CLASS: Record<string, string> = {
   'LLM Systems': 'tag-llm-systems',
   Observability: 'tag-observability',
   Interactive: 'tag-interactive',
+  Walkthrough: 'tag-walkthrough',
+  Hosted: 'tag-hosted',
   Infrastructure: 'tag-infrastructure',
   Solidity: 'tag-solidity',
   EVM: 'tag-evm',

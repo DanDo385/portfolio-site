@@ -1,18 +1,18 @@
 {
-  "title": "Agent Runtime: Hermes versus Openclaw",
+  "title": "Agent Runtime: Hermes versus OpenClaw",
   "slug": "agent-runtime",
   "date": "2026-06-01",
   "status": "complete",
-  "sortOrder": 2,
   "featured": false,
   "tags": [
     "AI",
     "Agents",
     "LLM Systems",
-    "Interactive"
+    "Walkthrough"
   ],
-  "summary": "Walkthrough of agent runtime loops (Hermes vs OpenClaw): input, memory, tool dispatch, and saved state. Shows how orchestration can support research workflows while deterministic systems keep risk and execution control.",
-  "technicalDescription": "Static HTML, CSS, and JavaScript compare Hermes Agent and OpenClaw across platform input, session hydration, agent loop, tool dispatch, and persistence; source anchors and an agent-readable map record the comparison.",
+  "hook": "Did you ever wonder how Hermes and OpenClaw differ?",
+  "summary": "This is a static, side-by-side walkthrough of two open-source agent runtimes. It maps the same loop (input, memory, tool dispatch, saved state) onto real files in both codebases. Nothing executes: you are reading a comparison, not running an agent.",
+  "technicalDescription": "Static HTML, CSS, and JavaScript with no backend. The page compares Hermes Agent and OpenClaw across platform input, session hydration, agent loop, tool dispatch, and persistence. Source anchors and an agent-readable map record the comparison.",
   "techBadges": [
     "HTML",
     "CSS",
@@ -73,5 +73,5 @@
       "It would also need a process to detect drift automatically when either upstream project changes, rather than relying on a manual refresh."
     ]
   },
-  "cluster": "agentic"
+  "cluster": "walkthroughs"
 }

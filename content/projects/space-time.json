@@ -3,17 +3,17 @@
   "slug": "space-time",
   "date": "2026-08-05",
   "status": "complete",
-  "sortOrder": 7,
   "featured": false,
   "listed": true,
   "tags": [
     "Physics",
     "Relativity",
-    "Interactive",
+    "Walkthrough",
     "Education",
     "Spacetime"
   ],
-  "summary": "An interactive special-relativity lab for the twin paradox. Change cruise speed and trip length, then read the worldlines, Lorentz factor, proper time, and reunion age gap together.",
+  "hook": "Why can a traveler return younger than the twin who stayed home?",
+  "summary": "This is an in-browser special-relativity lab. You set cruise speed and trip length, then read worldlines, Lorentz factor, proper time, and the reunion age gap together. Teaching model only: no gravity and no thrust curve.",
   "technicalDescription": "A self-contained HTML, CSS, and JavaScript spacetime diagram models constant-speed flat-spacetime round trips with interactive beta and duration controls, pointer probes, wheel zoom, and linked first-principles calculation walkthroughs.",
   "techBadges": [
     "HTML",
@@ -74,5 +74,5 @@
       "A mission design tool would need finite thrust, gravity, and engineering constraints that this lab deliberately excludes"
     ]
   },
-  "cluster": "labs"
+  "cluster": "walkthroughs"
 }

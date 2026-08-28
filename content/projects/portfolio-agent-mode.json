@@ -3,7 +3,6 @@
   "slug": "portfolio-agent-mode",
   "date": "2026-07-02",
   "status": "complete",
-  "sortOrder": 1,
   "featured": false,
   "tags": [
     "AI",
@@ -11,7 +10,8 @@
     "Next.js",
     "llms.txt"
   ],
-  "summary": "Structured surfaces so AI systems can read this portfolio without scraping decorative HTML. Demonstrates citation-aware agent context design that also applies to research and trading-ops documentation.",
+  "hook": "How should an AI read this site without scraping the chrome?",
+  "summary": "Structured surfaces so language models can load projects, writing, and research as data. A human page, a JSON manifest, and an LLM router: citation-aware context, not a chatbot.",
   "technicalDescription": "Next.js serves /agent for the human contract, /agent.json for structured manifest data, and /llms.txt for compact routing; the content loaders keep published projects, writing, research, and media aligned.",
   "techBadges": [
     "Next.js",

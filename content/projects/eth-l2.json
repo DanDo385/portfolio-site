@@ -3,6 +3,7 @@
   "slug": "eth-l2",
   "date": "2026-07-07",
   "status": "complete",
+  "sortOrder": 2,
   "featured": false,
   "listed": true,
   "tags": [
@@ -10,10 +11,11 @@
     "L2",
     "Fraud Proofs",
     "Go",
-    "Interactive"
+    "Hosted"
   ],
-  "summary": "Side-by-side lab for optimistic vs validity rollup dispute paths. Clarifies settlement guarantees and challenge windows that matter when capital sits on L2.",
-  "technicalDescription": "A Next.js frontend and Go service coordinate loopback-only Anvil chains, optimistic batch bonds, Merkle-bisection disputes, and a mock validity lane that re-executes a batch witness. The ZK path is illustrative and does not generate succinct proofs.",
+  "hook": "How does an optimistic rollup catch a lying sequencer?",
+  "summary": "This is a hosted lab with a Go backend and local Anvil chains. You watch an optimistic dispute next to a mock validity path, including bonds, challenge windows, and what the ZK lane does not prove.",
+  "technicalDescription": "A Next.js frontend and Go service coordinate loopback-only Anvil chains, optimistic batch bonds, Merkle-bisection disputes, and a mock validity lane that re-executes a batch witness. Hosted at eth-l2.vercel.app. The ZK path is illustrative and does not generate succinct proofs.",
   "techBadges": [
     "Solidity",
     "Go",

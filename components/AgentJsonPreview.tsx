@@ -16,6 +16,7 @@ function getCardPreviewManifest() {
       slug: project.slug,
       tier: project.tier,
       cluster: project.cluster,
+      ...(project.hook ? { hook: project.hook } : {}),
       summary: project.summary,
       technicalDescription: project.technicalDescription,
     })),

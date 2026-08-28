@@ -8,7 +8,6 @@ import { JsonLd } from '@/components/JsonLd';
 import { MarketIntro } from '@/components/MarketIntro';
 import { Projects } from '@/components/Projects';
 import { SiteNav } from '@/components/SiteNav';
-import { WhyCombination } from '@/components/WhyCombination';
 import { Writing } from '@/components/Writing';
 import { SITE } from '@/lib/constants';
 import { getListedProjects, getPublishedResearch, getPublishedWriting } from '@/lib/content';
@@ -61,8 +60,6 @@ export default function HomePage() {
         />
         <Bridge />
         <About />
-        <Bridge />
-        <WhyCombination />
         <Bridge />
         <Writing articles={articles} projectsBySlug={projectsBySlug} />
         <Bridge />

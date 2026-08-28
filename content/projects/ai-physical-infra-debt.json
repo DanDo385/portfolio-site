@@ -9,9 +9,10 @@
     "AI",
     "Credit",
     "Infrastructure",
-    "Interactive"
+    "Walkthrough"
   ],
-  "summary": "Credit research on AI data-center financing: loans, collateral, and recovery assumptions when spend slows. Applies an institutional rates and credit lens to a crypto-adjacent financing boom.",
+  "hook": "If AI data-center loans go bad, who holds the bag?",
+  "summary": "This is an interactive credit memo on GPU-backed loans and data-center securitization. You inspect recovery assumptions and provenance-tagged figures. It is research you can click through, not a live underwriting system.",
   "technicalDescription": "Interactive credit work on GPU-backed term loans and data-center securitization; provenance-tagged figures, recovery scenarios, and Agent Mode exports support inspection of the underwriting chain.",
   "techBadges": [
     "HTML",
@@ -42,5 +43,5 @@
   "screenshots": [],
   "relatedWriting": "ai-infrastructure-buildout-bubble",
   "relatedResearch": "ai-infrastructure-financing",
-  "cluster": "market-structure"
+  "cluster": "walkthroughs"
 }

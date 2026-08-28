@@ -40,10 +40,11 @@ When the site changes, check and update these in **`lib/agent.ts`** (and related
 4. **`canonicalTopics`** — when positioning or focus areas change.
 5. **`PRINCIPLES`** — when Agent Mode guidelines or site positioning change.
 6. **`agentMode.preferredEntryPoints`** — when new high-value agent entry URLs are added.
-7. **`getLlmsTxt()`** — section structure and link notes if new manifest sections are added (e.g. new demo types).
+7. **`getLlmsTxt()`** — section structure and link notes if new manifest sections are added (e.g. new demo types). Project cluster headings come from `lib/project-clusters.ts`.
 
 Also update when relevant:
 
+- **`lib/project-clusters.ts`** — homepage and Agent Mode cluster order, labels, and within-cluster priority.
 - **`lib/constants.ts`** — `SITE.name`, `SITE.description`, `SITE.url` flow into manifest and `llms.txt`.
 - **`app/agent/page.tsx`** — human-readable Agent Mode page if endpoints, principles, or explanation change.
 - **`content/projects/portfolio-agent-mode.json`** — summary, tags, tech badges (Agent Mode only), `relatedWriting`, `demoUrl` (`/agent`) if the feature scope changes.
@@ -59,6 +60,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 - [ ] New or updated **article** → `content/writing/<slug>.md` published if it should appear in manifest.
 - [ ] New or updated **research paper** → `content/agent-research/<slug>.md` published if it should appear in manifest.
 - [ ] **Nav / homepage sections** changed → `lib/agent.ts` → `navigation` matches `components/Nav.tsx`.
+- [ ] **Project clusters** changed → `lib/project-clusters.ts` labels/order match the homepage; each card has the intended `cluster`.
 - [ ] **About or Contact** changed → `lib/agent.ts` → `about` and `contact` blocks reviewed.
 - [ ] **Interactive demo** added → follow **Interact rules** below (CLI = no Interact; in-site = `/demos/<slug>`; hosted apps = external Vercel `demoUrl`).
 - [ ] **`portfolio-agent-mode.json`** still accurately describes Agent Mode endpoints and purpose.
@@ -74,6 +76,8 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 - Research: `content/agent-research/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
 - Foundations projects (`"tier": "foundations"`) stay listed but render under a collapsed **Foundations** block on the homepage and are labeled in `/llms.txt`
+- Homepage clusters (order, labels, featured vs compact) live in `lib/project-clusters.ts`. Protocol Labs (`market-structure`) are hosted apps with backends. Walkthroughs (`walkthroughs`) are static in-browser teaching labs. Do not keep a second cluster-label list in `lib/agent.ts`.
+- Optional card `hook` is a short question. `summary` then states what the visitor is looking at (hosted backend, static walkthrough, CLI, research note).
 - Project cards show **`tags` only**. `techBadges` stay in the JSON for Agent Mode (`agent.json` / `llms.txt`) and are not rendered on the card.
 
 ### Agent-operated project refresh
@@ -251,6 +255,7 @@ service is reachable, and only through the Cloudflare Tunnel's public hostname.
 
 ```
 lib/agent.ts              # Manifest + llms.txt generator (primary)
+lib/project-clusters.ts   # Homepage and Agent Mode cluster order, labels, priority
 lib/demos.ts              # Interactive demo registry
 lib/constants.ts          # Site URL, description, resume
 app/agent/page.tsx        # Human Agent Mode page
