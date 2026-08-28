@@ -11,7 +11,6 @@ export function Hero() {
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
-        <p className="hero-name">Daniel Magro</p>
         <h1>Building systematic and agentic trading systems for digital-asset markets</h1>
         <p className="hero-trajectory" aria-label="Career trajectory">
           {TRAJECTORY}
