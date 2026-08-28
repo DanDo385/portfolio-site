@@ -73,5 +73,5 @@
       "It would also need a process to detect drift automatically when either upstream project changes, rather than relying on a manual refresh."
     ]
   },
-  "cluster": "walkthroughs"
+  "cluster": "interactive-ai"
 }

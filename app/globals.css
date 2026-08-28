@@ -1115,10 +1115,6 @@ html.intro-done .hero-scroll {
 .tag-c { background: rgba(214, 176, 124, 0.12); color: #d6b07c; border-color: rgba(214, 176, 124, 0.28); }
 .tag-embedded { background: rgba(74, 222, 128, 0.12); color: #4ade80; border-color: rgba(74, 222, 128, 0.28); }
 .tag-evaluation { background: rgba(225, 29, 72, 0.12); color: #e11d48; border-color: rgba(225, 29, 72, 0.28); }
-.tag-physics { background: rgba(45, 212, 191, 0.12); color: #2dd4bf; border-color: rgba(45, 212, 191, 0.28); }
-.tag-relativity { background: rgba(249, 168, 212, 0.12); color: #f9a8d4; border-color: rgba(249, 168, 212, 0.28); }
-.tag-education { background: rgba(52, 211, 153, 0.12); color: #34d399; border-color: rgba(52, 211, 153, 0.28); }
-.tag-spacetime { background: rgba(165, 180, 252, 0.12); color: #a5b4fc; border-color: rgba(165, 180, 252, 0.28); }
 .tag-rust { background: rgba(251, 113, 133, 0.12); color: #fb7185; border-color: rgba(251, 113, 133, 0.28); }
 .tag-solana { background: rgba(94, 234, 212, 0.12); color: #5eead4; border-color: rgba(94, 234, 212, 0.28); }
 .tag-anchor { background: rgba(250, 204, 21, 0.12); color: #facc15; border-color: rgba(250, 204, 21, 0.28); }
@@ -1297,30 +1293,6 @@ html[data-theme='light'] .tag-evaluation {
   background: rgba(159, 18, 57, 0.1);
   color: #9f1239;
   border-color: rgba(159, 18, 57, 0.22);
-}
-
-html[data-theme='light'] .tag-physics {
-  background: rgba(21, 94, 117, 0.1);
-  color: #155e75;
-  border-color: rgba(21, 94, 117, 0.22);
-}
-
-html[data-theme='light'] .tag-relativity {
-  background: rgba(157, 23, 77, 0.1);
-  color: #9d174d;
-  border-color: rgba(157, 23, 77, 0.22);
-}
-
-html[data-theme='light'] .tag-education {
-  background: rgba(6, 95, 70, 0.1);
-  color: #065f46;
-  border-color: rgba(6, 95, 70, 0.22);
-}
-
-html[data-theme='light'] .tag-spacetime {
-  background: rgba(67, 56, 202, 0.1);
-  color: #4338ca;
-  border-color: rgba(67, 56, 202, 0.22);
 }
 
 html[data-theme='light'] .tag-rust {
@@ -3046,45 +3018,6 @@ html[data-theme='light'] .tag-default {
 .tl-org { font-size: 13.5px; color: var(--text-secondary); margin-bottom: 4px; }
 .tl-note { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
 
-/* ═══════ CURRENTLY RESEARCHING ═══════ */
-.currently-researching .researching-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.researching-card {
-  display: block;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  padding: 22px 20px;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  box-shadow: var(--shadow-card);
-}
-
-.researching-card:hover {
-  border-color: var(--border-active);
-  transform: translateY(-2px);
-}
-
-.researching-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin: 0 0 10px;
-  color: var(--text-primary);
-}
-
-.researching-card p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
 /* ═══════ TRADING LAB ═══════ */
 .trading-lab-page {
   padding: 120px 0 80px;
@@ -3205,23 +3138,6 @@ html[data-theme='light'] .tag-default {
 
 /* ═══════ CONTACT ═══════ */
 .contact-section { padding-bottom: 100px; }
-
-.contact-headline {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 36px);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--text-primary);
-  margin: 0 0 14px;
-}
-
-.contact-lead {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin: 0 0 28px;
-  max-width: 42rem;
-}
 
 .contact-main {
   max-width: 640px;
@@ -4135,9 +4051,6 @@ footer {
   .agent-grid { grid-template-columns: 1fr; }
   .agent-context { grid-template-columns: 1fr; padding: 26px; }
   .agent-hero h1 { font-size: 40px; }
-  .currently-researching .researching-grid {
-    grid-template-columns: 1fr;
-  }
 
   .contact-glance { margin-top: 40px; }
   .reading-modal-body { grid-template-columns: 1fr; height: 94vh; }

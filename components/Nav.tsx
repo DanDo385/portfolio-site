@@ -6,7 +6,6 @@ import { useEffect, useState, type MouseEvent } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const NAV_SECTIONS: Array<{ id: string; label: string; href?: string }> = [
-  { id: 'trading', label: 'Trading Lab', href: '/trading' },
   { id: 'projects', label: 'Projects' },
   { id: 'about', label: 'Experience' },
   { id: 'my-writing', label: 'Writing' },
@@ -84,7 +83,7 @@ export function Nav() {
           <li key={id}>
             <Link
               href={sectionHref(id, href)}
-              className={`nav-scroll${href === '/trading' && pathname.startsWith('/trading') ? ' active' : ''}`}
+              className="nav-scroll"
               onClick={handleNavClick}
             >
               {label}

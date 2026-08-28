@@ -6,7 +6,13 @@ import { CURRENT_FOCUS, INTERESTED_IN, TRAJECTORY } from './site-focus';
 import { getListedTradingResearch, tradingResearchStatusLabel } from './trading-research';
 import { isValidUrl, projectPath } from './utils';
 import { DEMO_CONFIGS } from './demos';
-import { CLUSTER_LABELS, PROJECT_CLUSTERS, projectsForCluster, sortByClusterPriority } from './project-clusters';
+import {
+  CLUSTER_LABELS,
+  PROJECT_CLUSTERS,
+  projectsForCluster,
+  projectsInProgress,
+  sortByClusterPriority,
+} from './project-clusters';
 import type { Project } from './types';
 
 const PRINCIPLES = [
@@ -70,10 +76,17 @@ function projectUrls(project: Project) {
 
 export function getAgentManifest() {
   const listed = getListedProjects();
-  const ordered = PROJECT_CLUSTERS.flatMap((cluster) =>
-    projectsForCluster(listed, cluster.id)
-  );
+  const ordered = [
+    ...PROJECT_CLUSTERS.filter((cluster) => !cluster.collapsed).flatMap((cluster) =>
+      projectsForCluster(listed, cluster.id)
+    ),
+    ...projectsInProgress(listed),
+    ...PROJECT_CLUSTERS.filter((cluster) => cluster.collapsed).flatMap((cluster) =>
+      projectsForCluster(listed, cluster.id)
+    ),
+  ];
   const projects = ordered.map((project) => ({
+
     title: project.title,
     slug: project.slug,
     date: project.date,
@@ -187,7 +200,6 @@ export function getAgentManifest() {
       principles: PRINCIPLES,
     },
     navigation: [
-      { id: 'trading', label: 'Trading Lab', href: `${SITE.url}/trading/` },
       { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
       { id: 'about', label: 'Experience', href: `${SITE.url}/#about` },
       { id: 'my-writing', label: 'Writing', href: `${SITE.url}/#my-writing` },
@@ -279,29 +291,50 @@ export function getLlmsTxt(): string {
   ].join('\n');
 
   const CLUSTER_ORDER = PROJECT_CLUSTERS.map((cluster) => cluster.id);
+  const openClusterIds = PROJECT_CLUSTERS.filter((cluster) => !cluster.collapsed).map(
+    (cluster) => cluster.id
+  );
+  const collapsedClusterIds = PROJECT_CLUSTERS.filter((cluster) => cluster.collapsed).map(
+    (cluster) => cluster.id
+  );
 
-  const projectLines = CLUSTER_ORDER
-    .flatMap((clusterId) => {
-      const clusterProjects = sortByClusterPriority(
-        manifest.projects.filter((project) => project.cluster === clusterId),
-        clusterId
-      );
-      if (clusterProjects.length === 0) return [];
-      return [
-        `### ${CLUSTER_LABELS[clusterId]}`,
-        '',
-        ...clusterProjects.map((project) => {
-          const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
-          const parts = [
-            project.status === 'in-progress' ? `${project.statusLabel ?? 'In progress'}.` : null,
-            project.hook,
-            project.summary,
-          ].filter(Boolean);
-          return llmsLink(project.title, href, parts.join(' '));
-        }),
-        '',
-      ];
-    })
+  const formatProjectLine = (project: (typeof manifest.projects)[number]) => {
+    const href = project.urls.demo ?? project.urls.github ?? project.urls.canonical;
+    const parts = [
+      project.status === 'in-progress' ? `${project.statusLabel ?? 'In progress'}.` : null,
+      project.hook,
+      project.summary,
+    ].filter(Boolean);
+    return llmsLink(project.title, href, parts.join(' '));
+  };
+
+  const clusterSection = (clusterId: (typeof CLUSTER_ORDER)[number]) => {
+    const clusterProjects = sortByClusterPriority(
+      manifest.projects.filter(
+        (project) => project.status !== 'in-progress' && project.cluster === clusterId
+      ),
+      clusterId
+    );
+    if (clusterProjects.length === 0) return [];
+    return [
+      `### ${CLUSTER_LABELS[clusterId]}`,
+      '',
+      ...clusterProjects.map(formatProjectLine),
+      '',
+    ];
+  };
+
+  const inProgressSection = () => {
+    const rows = manifest.projects.filter((project) => project.status === 'in-progress');
+    if (rows.length === 0) return [];
+    return ['### In Progress', '', ...rows.map(formatProjectLine), ''];
+  };
+
+  const projectLines = [
+    ...openClusterIds.flatMap(clusterSection),
+    ...inProgressSection(),
+    ...collapsedClusterIds.flatMap(clusterSection),
+  ]
     .join('\n')
     .trim();
 
@@ -350,7 +383,7 @@ export function getLlmsTxt(): string {
     llmsLink(
       'Projects',
       `${SITE.url}/#projects`,
-      'Protocol labs, trading research, interactive walkthroughs, and digital-asset infrastructure'
+      'Protocol labs, interactive AI, walkthroughs, infrastructure, and in-progress work'
     ),
     llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and technical building transition'),
     llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),

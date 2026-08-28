@@ -47,10 +47,6 @@ const TAG_CLASS: Record<string, string> = {
   C: 'tag-c',
   Embedded: 'tag-embedded',
   Evaluation: 'tag-evaluation',
-  Physics: 'tag-physics',
-  Relativity: 'tag-relativity',
-  Education: 'tag-education',
-  Spacetime: 'tag-spacetime',
   Rust: 'tag-rust',
   Solana: 'tag-solana',
   Anchor: 'tag-anchor',
@@ -117,7 +113,6 @@ const FULLSCREEN_DEMO_SLUGS = new Set([
   'agent-runtime',
   'hermes-xray',
   'ai-physical-infra-debt',
-  'space-time',
 ]);
 
 /** Projects that mount an interactive / launch panel on /projects/<slug>. */
@@ -127,7 +122,6 @@ const PROJECT_PAGE_INTERACTIVE_SLUGS = new Set([
   'ai-physical-infra-debt',
   'eth-tx-lifecycle',
   'eth-l2',
-  'space-time',
 ]);
 
 export function projectDemoPath(slug: string): string {

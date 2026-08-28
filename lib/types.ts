@@ -8,9 +8,11 @@ export type ProjectCluster =
   | 'trading-research'
   | 'market-structure'
   | 'walkthroughs'
-  | 'agentic'
+  | 'interactive-ai'
   | 'infra'
   | 'labs'
+  /** @deprecated Migrated to interactive-ai. */
+  | 'agentic'
   /** @deprecated Migrated to infra. Kept for older cards during transition. */
   | 'custody';
 

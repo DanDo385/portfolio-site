@@ -117,9 +117,12 @@ export function projectTier(project: Project): 'primary' | 'foundations' {
   return project.tier === 'foundations' ? 'foundations' : 'primary';
 }
 
-export function projectCluster(project: Project): Exclude<ProjectCluster, 'custody'> {
+export function projectCluster(
+  project: Project
+): Exclude<ProjectCluster, 'custody' | 'agentic'> {
   const cluster = project.cluster ?? 'labs';
   if (cluster === 'custody') return 'infra';
+  if (cluster === 'agentic') return 'interactive-ai';
   return cluster;
 }
 

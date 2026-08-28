@@ -3,7 +3,6 @@ import { Contact } from '@/components/Contact';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { AgentResearch } from '@/components/AgentResearch';
-import { CurrentlyResearching } from '@/components/CurrentlyResearching';
 import { JsonLd } from '@/components/JsonLd';
 import { MarketIntro } from '@/components/MarketIntro';
 import { Projects } from '@/components/Projects';
@@ -50,8 +49,6 @@ export default function HomePage() {
       <SiteNav />
       <main>
         <Hero />
-        <Bridge />
-        <CurrentlyResearching />
         <Bridge />
         <Projects
           projects={projects}

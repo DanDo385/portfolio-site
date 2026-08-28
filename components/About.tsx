@@ -23,12 +23,6 @@ export function About() {
       <div className="container">
         <Reveal>
           <div className="section-label">Experience</div>
-          <p className="about-intro">
-            Roughly 13 years in institutional financial markets, then deep work in software
-            systems, blockchain infrastructure, and AI agents. Those paths have converged on
-            systematic digital-asset research, market structure, execution, DeFi, and
-            agent-assisted trading systems.
-          </p>
         </Reveal>
         <Reveal delay={60}>
           <div className="about-block">
@@ -65,12 +59,12 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Technical building</h3>
               <p className="about-track-summary">
-                Since 2024: full-stack, AI, and Web3 systems work, including Hermes tooling, EVM
-                marketplace contracts at RAMM.ai, and open-source agent infrastructure. Earlier
-                independent e-commerce operations used Python automation; medical leave included
-                intensive CS, Solidity, blockchain, and AI retraining. Active crypto trading and
-                protocol research feed the software design. Freelance product work continues, but
-                the north star is markets plus systems plus agents.
+                Since May 2019: independent e-commerce operations built on Python automation;
+                medical leave with intensive CS, Solidity, blockchain, and AI retraining; then
+                full-stack, AI, and Web3 systems work including Hermes tooling, EVM marketplace
+                contracts at RAMM.ai, and open-source agent infrastructure. Active crypto trading
+                and protocol research feed the software design. Freelance product work continues,
+                but the north star is markets plus systems plus agents.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

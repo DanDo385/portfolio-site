@@ -95,15 +95,6 @@ export function Contact() {
           </Reveal>
           <div className="contact-main">
             <Reveal className="contact-text">
-              <h2 className="contact-headline">
-                Building at the intersection of markets, crypto, and autonomous systems?
-              </h2>
-              <p className="contact-lead">
-                Particularly interested in speaking with small teams working on systematic
-                digital-asset trading, quantitative research, market structure, execution, DeFi,
-                market making, or agentic trading systems. Collaboration, research discussion, and
-                technically ambitious opportunities welcome.
-              </p>
               <div className="resume-section" id="resume">
                 <div className="resume-label">Resume</div>
                 <div className="resume-actions">

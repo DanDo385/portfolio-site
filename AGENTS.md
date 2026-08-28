@@ -34,7 +34,7 @@ These pull from content loaders at build/request time. No manual list edits need
 
 When the site changes, check and update these in **`lib/agent.ts`** (and related files if copy/UI changed):
 
-1. **`navigation`** — must match `components/Nav.tsx` section ids and labels (including Trading Lab).
+1. **`navigation`** — must match `components/Nav.tsx` section ids and labels. Trading Lab is temporarily omitted from the navbar.
 2. **`about`** — education, technical study, building stack, summary if About section copy changes.
 3. **`contact`** — email, social links, resume paths if Contact or `lib/constants.ts` changes.
 4. **`canonicalTopics`** — when positioning or focus areas change.
@@ -76,7 +76,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 - Research: `content/agent-research/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
 - Foundations projects (`"tier": "foundations"`) stay listed but render under a collapsed **Foundations** block on the homepage and are labeled in `/llms.txt`
-- Homepage clusters (order, labels, featured vs compact) live in `lib/project-clusters.ts`. Protocol Labs (`market-structure`) are hosted apps with backends. Walkthroughs (`walkthroughs`) are static in-browser teaching labs. Do not keep a second cluster-label list in `lib/agent.ts`.
+- Homepage clusters (order, labels, featured vs compact) live in `lib/project-clusters.ts`. Protocol Labs (`market-structure`) are hosted apps with backends. Interactive AI (`interactive-ai`) covers Agent Mode, Hermes X-Ray, and Agent Runtime. Walkthroughs (`walkthroughs`) are static in-browser teaching labs. In-progress cards render in a separate **In Progress** section (status-based), not under their thematic cluster. Do not keep a second cluster-label list in `lib/agent.ts`.
 - Optional card `hook` is a short question. `summary` then states what the visitor is looking at (hosted backend, static walkthrough, CLI, research note).
 - Project cards show **`tags` only**. `techBadges` stay in the JSON for Agent Mode (`agent.json` / `llms.txt`) and are not rendered on the card.
 

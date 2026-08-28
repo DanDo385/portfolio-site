@@ -71,7 +71,7 @@ Create `content/projects/your-slug.json`:
 | `relatedProjects` | no | Related project slugs for hub / narrative pages (rendered as Linked demos) |
 | `featured` | no | Reserved; homepage no longer pins featured projects above date sort |
 | `tier` | no | `primary` (default) or `foundations`. Foundations remain available for legacy collapsed tiers |
-| `cluster` | no | Homepage cluster: `market-structure` (Protocol Labs), `trading-research`, `walkthroughs`, `agentic`, `infra`, or `labs` (default). Labs render collapsed. Labels and order live in `lib/project-clusters.ts`. |
+| `cluster` | no | Homepage cluster: `market-structure` (Protocol Labs), `trading-research`, `interactive-ai`, `walkthroughs`, `infra`, or `labs` (default). Labs render collapsed. In-progress projects render in a separate **In Progress** section regardless of cluster. Labels and order live in `lib/project-clusters.ts`. |
 | `listed` | no | When `false`, hidden from homepage and agent project lists |
 
 Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...` are fine in text fields.

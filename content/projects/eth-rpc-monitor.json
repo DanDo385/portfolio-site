@@ -2,8 +2,9 @@
   "title": "Ethereum RPC Monitor",
   "slug": "eth-rpc-monitor",
   "date": "2026-06-15",
-  "status": "complete",
+  "status": "in-progress",
   "featured": false,
+  "listed": true,
   "tags": [
     "Infrastructure",
     "Go",
