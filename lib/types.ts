@@ -139,15 +139,3 @@ export interface TimelineItem {
   /** When set to builder, appears under the Experience builder timeline. */
   track?: 'institutional' | 'builder';
 }
-
-export type RecentItemType = 'project' | 'writing' | 'research';
-
-export interface RecentItem {
-  type: RecentItemType;
-  title: string;
-  slug: string;
-  date: string;
-  summary: string;
-  href: string;
-  category?: string;
-}

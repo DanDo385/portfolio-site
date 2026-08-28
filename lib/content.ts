@@ -1,8 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { isWithinRecentDays, projectPath } from './utils';
-import type { Article, Project, RecentItem, ResearchPaper, TimelineItem } from './types';
+import type { Article, Project, ResearchPaper, TimelineItem } from './types';
 
 const CONTENT = path.join(process.cwd(), 'content');
 const GENERATED_PROJECT_RESOURCES = path.join(
@@ -185,51 +184,6 @@ export function getResearchSlugs(): string[] {
 
 export function getProjectSlugs(): string[] {
   return getProjects().map((p) => p.slug);
-}
-
-export function getRecentItems(): RecentItem[] {
-  const projects: RecentItem[] = getListedProjects()
-    .filter((project) => isWithinRecentDays(project.date))
-    .map((project) => ({
-      type: 'project',
-      title: project.title,
-      slug: project.slug,
-      date: project.date,
-      summary: project.summary,
-      href: projectPath(project.slug),
-    }));
-
-  const writing: RecentItem[] = getPublishedWriting()
-    .filter((article) => isWithinRecentDays(article.date))
-    .map((article) => ({
-      type: 'writing',
-      title: article.title,
-      slug: article.slug,
-      date: article.date,
-      summary: article.excerpt,
-      href: `/writing/${article.slug}`,
-      category: article.category,
-    }));
-
-  const research: RecentItem[] = getPublishedResearch()
-    .filter((paper) => isWithinRecentDays(paper.date))
-    .map((paper) => ({
-      type: 'research',
-      title: paper.title,
-      slug: paper.slug,
-      date: paper.date,
-      summary: paper.excerpt,
-      href: `/agent-research/${paper.slug}`,
-      category: paper.category,
-    }));
-
-  return [...projects, ...writing, ...research].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-}
-
-export function hasRecentContent(): boolean {
-  return getRecentItems().length > 0;
 }
 
 export const TIMELINE: TimelineItem[] = [
