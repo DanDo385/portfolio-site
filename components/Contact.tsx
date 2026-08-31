@@ -146,13 +146,13 @@ export function Contact() {
               <div className="sig-row">
                 <span className="sig-label">Building with</span>
                 <span className="sig-val">
-                  Python · TypeScript · Go · Solidity · Ethereum · Solana · agent systems · Hermes
+                  Python · TypeScript · Go · Solidity · Ethereum · Solana · trading systems · agent systems · Hermes
                 </span>
               </div>
               <div className="sig-row">
                 <span className="sig-label">Focus</span>
                 <span className="sig-val">
-                  Systematic digital-asset research, market structure, execution, DeFi, agents
+                  Digital-asset trading, market structure, execution, DeFi, systems
                 </span>
               </div>
               <div className="sig-row">

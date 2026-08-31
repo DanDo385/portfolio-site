@@ -10,7 +10,7 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'Systematic crypto and DeFi research',
+  'Crypto trading and DeFi',
   'Market structure and execution tooling',
   'Agent orchestration and observability',
   'Blockchain infrastructure and signing controls',
@@ -59,12 +59,10 @@ export function About() {
             <div className="about-track">
               <h3 className="about-track-title">Technical building</h3>
               <p className="about-track-summary">
-                Since May 2019: independent e-commerce operations built on Python automation;
-                medical leave with intensive CS, Solidity, blockchain, and AI retraining; then
+                Since May 2019: independent e-commerce operations built on Python automation, then
                 full-stack, AI, and Web3 systems work including Hermes tooling, EVM marketplace
-                contracts at RAMM.ai, and open-source agent infrastructure. Active crypto trading
-                and protocol research feed the software design. Freelance product work continues,
-                but the north star is markets plus systems plus agents.
+                contracts at RAMM.ai, and open-source agent infrastructure. Freelance product work
+                continues. I still trade crypto, follow protocols, and build tools around both.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

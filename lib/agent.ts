@@ -19,7 +19,7 @@ const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
   'Agent-facing context should be structured, stable, citation-aware, and low-noise.',
   'GitHub/code links are attached only when they make the argument stronger.',
-  'Thesis: institutional trader → technical builder → systematic/agentic digital-asset trader.',
+  `Thesis: ${TRAJECTORY}.`,
   'Never invent trading returns, Sharpe ratios, live strategy performance, or professional crypto trading employment that is not documented.',
   'Agents are a research/orchestration layer; deterministic systems retain risk and execution control.',
 ];
@@ -161,7 +161,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'Institutional markets professional building systematic and agentic digital-asset trading research',
+        role: 'Institutional trader building software systems for digital-asset markets',
         trajectory: TRAJECTORY,
       },
     },
@@ -218,21 +218,21 @@ export function getAgentManifest() {
         'Solidity',
         'Ethereum',
         'Solana',
-        'quantitative research',
+        'trading systems',
         'agent systems',
         'Hermes Agent',
       ],
       currentFocus: [...CURRENT_FOCUS],
       interestedIn: [...INTERESTED_IN],
       targetDomains: [
-        'systematic digital-asset trading',
-        'quantitative research',
+        'digital-asset trading',
+        'trading systems',
         'market structure and execution',
         'DeFi trading',
-        'agentic quantitative research',
+        'agent-assisted trading workflows',
       ],
       summary:
-        'Thirteen years in institutional rates trading, execution, and portfolio management at firms including PGIM, PointState, and Nomura. Now applying software systems, quantitative research, blockchain infrastructure, and AI agents to crypto, DeFi, market structure, and systematic trading. Trajectory: institutional trader → technical builder → systematic/agentic digital-asset trader. Independent research in progress is labeled as such; no fabricated trading performance.',
+        `Thirteen years in institutional rates trading, execution, and portfolio management at firms including PGIM, PointState, and Nomura. Now trading digital assets and building software systems, market tools, and AI-assisted workflows for crypto, DeFi, and market structure. Trajectory: ${TRAJECTORY}. Independent work in progress is labeled as such; no fabricated trading performance.`,
     },
     contact: {
       email: 'dan@magro.dev',
@@ -243,14 +243,14 @@ export function getAgentManifest() {
       ...(IPFS_URL ? { resumeIpfs: IPFS_URL } : {}),
     },
     canonicalTopics: [
-      'systematic digital-asset trading',
+      'digital-asset trading',
       'institutional rates markets',
       'funding rates, basis, and relative value',
       'liquidity, market making, and execution',
       'CEX/DEX market structure',
       'MEV and onchain microstructure',
       'DeFi trading systems',
-      'agentic quantitative research',
+      'trading systems and agent-assisted workflows',
       'AI infrastructure credit analysis',
       'digital-asset signing and treasury controls',
     ],
@@ -379,7 +379,7 @@ export function getLlmsTxt(): string {
 
   const siteLines = [
     llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
-    llmsLink('Trading Lab', `${SITE.url}/trading/`, 'Systematic digital-asset research notes'),
+    llmsLink('Trading Lab', `${SITE.url}/trading/`, 'Digital-asset trading notes'),
     llmsLink(
       'Projects',
       `${SITE.url}/#projects`,

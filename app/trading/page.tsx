@@ -10,7 +10,7 @@ import {
 export const metadata = {
   title: `Trading Lab | ${SITE.name}`,
   description:
-    'Independent quantitative research on digital-asset funding, basis, market structure, and agent-assisted trading workflows. Research in progress is labeled as such.',
+    'Independent notes on digital-asset funding, basis, market structure, and agent-assisted trading workflows. Work in progress is labeled as such.',
   alternates: { canonical: '/trading' },
 };
 
@@ -27,11 +27,10 @@ export default function TradingLabPage() {
           </Link>
           <header className="trading-lab-header">
             <div className="section-label">Trading Lab</div>
-            <h1>Systematic digital-asset research</h1>
+            <h1>Digital-asset trading notes</h1>
             <p>
-              Independent research architecture for funding, basis, market structure, and
-              agent-assisted trading workflows. Status labels are honest: unfinished work stays
-              unfinished. No fabricated returns.
+              Notes on funding, basis, market structure, and agent-assisted trading workflows.
+              Status labels are honest: unfinished work stays unfinished. No fabricated returns.
             </p>
           </header>
           <div className="trading-lab-list">
@@ -53,7 +52,7 @@ export default function TradingLabPage() {
                   </p>
                 ) : null}
                 <Link href={`/trading/${entry.slug}`} className="trading-lab-link">
-                  Open research note →
+                  Open note →
                 </Link>
               </article>
             ))}

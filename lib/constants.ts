@@ -7,8 +7,8 @@ export const IPFS_URL: string | null = null;
 export const RESUME_PDF = '/resume/Daniel_Magro_Resume.pdf';
 
 export const SITE = {
-  name: 'Daniel Magro | Systematic & Agentic Digital-Asset Trading',
+  name: 'Daniel Magro | Digital-Asset Trading and Systems',
   description:
-    'Thirteen years in institutional rates trading, execution, and portfolio management. Now applying software systems, quantitative research, blockchain infrastructure, and AI agents to crypto, DeFi, market structure, and systematic trading.',
+    'Thirteen years in institutional rates trading, execution, and portfolio management. Now trading digital assets and building software systems, market tools, and AI-assisted workflows for crypto, DeFi, and market structure.',
   url: 'https://magro.dev',
 };

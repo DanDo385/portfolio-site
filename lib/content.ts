@@ -190,10 +190,10 @@ export function getProjectSlugs(): string[] {
 export const TIMELINE: TimelineItem[] = [
   {
     era: 'Aug 2025 – Present',
-    role: 'Independent Research & Engineering',
+    role: 'Independent Trading & Engineering',
     org: 'Independent',
     track: 'builder',
-    note: 'Independent research and systems work across crypto market structure, DeFi, agent systems, and full-stack product work. Client e-commerce and product launches continue alongside open-source tooling, with focus on liquidity, AMMs, execution, funding/basis, and agent-assisted research workflows.',
+    note: 'Independent trading and systems work across crypto market structure, DeFi, agent tooling, and full-stack product work. Client e-commerce and product launches continue alongside open-source tooling, with focus on liquidity, AMMs, execution, funding/basis, and agent-assisted trading workflows.',
   },
   {
     era: 'Mar 2024 – Jul 2025',
@@ -201,13 +201,6 @@ export const TIMELINE: TimelineItem[] = [
     org: 'RAMM.ai',
     track: 'builder',
     note: 'Developed EVM marketplace contracts, the product frontend, and the public website for an early-stage Web3 startup; translated on-chain mechanics into product requirements and presented the platform to retailers, partners, and users.',
-  },
-  {
-    era: 'Aug 2022 – Feb 2024',
-    role: 'Medical Leave, Recovery & Technical Retraining',
-    org: 'Remote',
-    track: 'builder',
-    note: 'Medical leave after a severe injury requiring hospitalization and reconstructive surgeries, with an extended recovery that included travel and family caregiving. Used the period for intensive computer science, Solidity, blockchain, and AI study through Harvard CS50, Boot.dev, Cyfrin Updraft, independent protocol research, and active crypto and DeFi trading.',
   },
   {
     era: 'May 2019 – Jul 2022',

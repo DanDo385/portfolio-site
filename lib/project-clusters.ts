@@ -18,8 +18,8 @@ export const PROJECT_CLUSTERS: Array<{
   },
   {
     id: 'trading-research',
-    label: 'Trading Research',
-    note: 'Funding, basis, carry, and systematic research frameworks for digital-asset markets.',
+    label: 'Trading Lab',
+    note: 'Funding, basis, carry, and market-structure notes for digital-asset markets.',
     featured: true,
   },
   {

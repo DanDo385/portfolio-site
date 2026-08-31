@@ -15,13 +15,13 @@
     "Market Structure"
   ],
   "hook": "Is apparent funding carry still there after fees and slippage?",
-  "summary": "A quantitative research framework for perpetual funding, futures basis, cross-venue dislocations, and carry after execution costs. Research in progress: no backtests or performance figures published yet.",
-  "technicalDescription": "Rates-desk framing for crypto funding and basis: normalize venue prints, state assumptions, and test whether apparent carry survives fees, slippage, collateral, and execution constraints. Planned stack: Python research notebooks, cross-venue data, methodology page. Repo and demo not published yet.",
+  "summary": "Work in progress on perpetual funding, futures basis, cross-venue dislocations, and whether carry survives execution costs. No backtests or performance figures published yet.",
+  "technicalDescription": "Rates-desk framing for crypto funding and basis: normalize venue prints, state assumptions, and test whether apparent carry survives fees, slippage, collateral, and execution constraints. Planned stack: Python notebooks, cross-venue data, methodology page. Repo and demo not published yet.",
   "techBadges": [
     "Funding rates",
     "Basis",
     "Cross-venue data",
-    "Quantitative research",
+    "Rates-desk framing",
     "Python"
   ],
   "githubUrl": null,
@@ -49,7 +49,7 @@
       "Future notebook / backtest layer with known-answer checks"
     ],
     "decisions": [
-      "Publish the research architecture and status labels before inventing results",
+      "Publish the notes and status labels before inventing results",
       "Keep demoUrl and githubUrl null until the first demoable surface exists",
       "Connect the project card to /trading/perpetual-funding-basis/"
     ],

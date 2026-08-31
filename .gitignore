@@ -6,7 +6,6 @@ out/
 .vercel
 .env*
 !.env.example
-.playwright-mcp/
 tsconfig.tsbuildinfo
 content/generated/project-resources.json
 public/project-assets/.source-manifest.json

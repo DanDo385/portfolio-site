@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SITE } from '@/lib/constants';
 import {
   CURRENT_FOCUS,
   INTERESTED_IN,
@@ -11,15 +12,11 @@ export function Hero() {
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
       <div className="container hero-content">
-        <h1>Building systematic and agentic trading systems for digital-asset markets</h1>
+        <h1>Trading digital assets and building the systems around them</h1>
         <p className="hero-trajectory" aria-label="Career trajectory">
           {TRAJECTORY}
         </p>
-        <p className="hero-identity">
-          Thirteen years in institutional rates trading, execution, and portfolio management.
-          Now applying software systems, quantitative research, blockchain infrastructure, and
-          AI agents to crypto, DeFi, market structure, and systematic trading.
-        </p>
+        <p className="hero-identity">{SITE.description}</p>
         <div className="hero-focus-block">
           <div className="hero-focus-label">Current focus</div>
           <ul className="hero-focus-list">

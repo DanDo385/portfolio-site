@@ -5,7 +5,7 @@ date: 2026-08-17
 status: researching
 statusLabel: Research in progress
 category: Trading Research
-excerpt: A quantitative research framework for analyzing perpetual funding, futures basis, cross-venue dislocations, carry, execution costs, and regime behavior across digital-asset markets.
+excerpt: Notes on perpetual funding, futures basis, cross-venue dislocations, carry after costs, and regime behavior in digital-asset markets.
 researchQuestion: When does apparent funding or basis carry survive fees, slippage, collateral, and execution constraints across venues?
 hypothesis: Cross-venue funding and basis dislocations are often overstated once transaction costs, margin, and regime changes are normalized.
 market: Crypto perpetual futures, dated futures, and spot across major CEXs
@@ -17,7 +17,7 @@ notebookUrl: null
 
 # Perpetual Funding & Basis Benchmark
 
-A quantitative research framework for analyzing perpetual funding, futures basis, cross-venue dislocations, carry, execution costs, and regime behavior across digital-asset markets.
+Notes on perpetual funding, futures basis, cross-venue dislocations, carry after costs, and regime behavior in digital-asset markets.
 
 This entry is **research in progress**. No backtest results, Sharpe ratios, or live performance figures are published here.
 
@@ -58,4 +58,4 @@ Thirteen years in institutional rates sales, trading execution, and portfolio ma
 
 ## Next experiment
 
-Publish a transparent methodology page and a first historical series with known-answer checks against venue reference prints. Until then, treat this as independent research architecture, not a finished product.
+Publish a transparent methodology page and a first historical series with known-answer checks against venue reference prints. Until then, treat this as independent trading notes, not a finished product.

@@ -3,23 +3,22 @@
  * across Hero / Contact.
  */
 export const TRAJECTORY =
-  'Institutional trader → technical builder → systematic/agentic digital-asset trader';
+  'Institutional trader → technical builder → digital-asset trader';
 
 export const CURRENT_FOCUS = [
   'Funding & basis',
   'Liquidity & market making',
   'CEX/DEX execution',
   'MEV & onchain market structure',
-  'Systematic research',
+  'Trading systems',
   'Agent-assisted trading workflows',
 ] as const;
 
 export const INTERESTED_IN = [
   'Digital-asset trading',
-  'Quantitative research',
-  'Systematic trading',
+  'Trading systems',
   'Execution / market structure',
   'DeFi trading',
-  'Trading systems',
-  'Agentic quantitative research',
+  'Liquidity and market making',
+  'Agent-assisted workflows',
 ] as const;
