@@ -108,42 +108,73 @@ npm run sync:project-resources:local
 npm run build
 ```
 
-The default sync fetches GitHub archives for reproducible local and Vercel behavior. The explicit local command reads sibling repositories under `../<repo>` and is intended only for testing unpublished resource work.
+## How sync works in this environment
 
-If `GITHUB_TOKEN` is present, the fetch uses it to avoid anonymous API rate limits. The token is never written to generated files or logs.
+This machine keeps `portfolio-site` and the project repos as siblings under `~/Code/`:
 
-## Cursor and CLI operator loop
-
-Keep `/Users/danmagro/Code/portfolio-site` open in Cursor. Cursor automatically notices files changed by Hermes, Codex, Claude Code, or another CLI agent in the same checkout.
-
-Use one writer at a time. Cursor can remain open while a CLI agent works, but do not let two agents edit the same card or synchronizer concurrently.
-
-Start the local site from the repository root:
-
-```bash
-npm run dev
+```text
+~/Code/
+  portfolio-site/          # magro.dev (this repo)
+  eth-amm-sim/
+  eth-l2/
+  hermes-xray/
+  ...
 ```
 
-`predev` fetches the latest GitHub resources once before Next.js starts. If a project repository changes while the dev server remains open, refresh explicitly:
+Cards in `content/projects/<slug>.json` point at each project's `githubUrl`. The synchronizer resolves that URL, reads the published media kit from the project repo, and writes a local mirror under `public/project-assets/<slug>/` plus a card overlay at `content/generated/project-resources.json`. `lib/content.ts` merges that overlay onto each card at request/build time, so homepage cards and `/projects/<slug>` pages show GIFs, screenshots, and YouTube demos without committing those bytes into `portfolio-site`.
 
-```bash
-npm run sync:project-resources
-```
+### Why the default GitHub sync fits Cursor and Vercel
 
-For unpublished sibling-repo changes on the iMac, use the explicit local source mode:
+`npm run sync:project-resources` is the default for local Cursor sessions, CLI agents, and Vercel. It downloads each project's GitHub archive for `resourceSource.ref` (default `main`), extracts it to a temp directory, copies the canonical families, then deletes the temp tree.
+
+That path works well here because:
+
+1. **Same behavior locally and in production.** Cursor agents and Vercel both fetch committed GitHub state. A preview on `localhost` matches what a Vercel build will ingest.
+2. **No dirty sibling surprises.** Local project checkouts often have uncommitted notes, `.DS_Store`, or WIP files. GitHub sync ignores those and only takes what is on the remote ref.
+3. **Network is available.** Cursor shells and Vercel builds can reach `api.github.com`. The sync retries transient `429` / `502` / `503` / `504` responses. If `GITHUB_TOKEN` is set in the environment, authenticated fetches avoid anonymous rate limits. The token is never written into generated files or logs.
+4. **Generated output is gitignored.** Screenshots, GIFs, demos, `media.json`, `llms.txt`, `.source-manifest.json`, and `content/generated/project-resources.json` stay out of Git. Agents can re-run the sync freely without creating a noisy media commit.
+5. **Atomic JSON publish.** Overlay and provenance files are renamed into place, so a running `next dev` does not briefly see a half-written overlay.
+6. **Self-repo skip.** The portfolio's own card (`portfolio-agent-mode`) is skipped so `portfolio-site` never recursively imports itself.
+
+Hooks that run the sync automatically:
+
+| Command | When | Source |
+|---------|------|--------|
+| `npm run dev` | `predev` | GitHub archives |
+| `npm run build` | `prebuild` | GitHub archives |
+| `npm run sync:project-resources` | on demand | GitHub archives |
+| `npm run sync:project-resources:local` | on demand only | sibling dirs under `../<repo>` |
+
+### Local sibling sync (exception, not default)
 
 ```bash
 npm run sync:project-resources:local
 ```
+
+This is `node scripts/sync-project-resources.mjs --local-root ..`. It reads `~/Code/<repo>` instead of GitHub. Use it only when you are explicitly testing **unpublished** resource work that has not been pushed yet. Do not use it for routine Cursor refreshes or for Vercel-facing verification. If a sibling worktree is dirty, inspect Git status first and do not overwrite unrelated WIP.
+
+### Typical Cursor / agent loop
+
+1. Keep `~/Code/portfolio-site` open in Cursor. One writer at a time for a given card or the synchronizer.
+2. Confirm the project repo has published the media kit on `main` (or the card's `resourceSource.ref`).
+3. From `portfolio-site`, run `npm run sync:project-resources`.
+4. Inspect:
+   - `public/project-assets/.source-manifest.json` (ownership per slug)
+   - `content/generated/project-resources.json` (card overlay: `previewGif`, `screenshots`, YouTube fields)
+   - the matching files under `public/project-assets/<slug>/`
+5. Start or refresh the site with `npm run dev`. `predev` already syncs once; if a project repo changes while the server is open, re-run the sync command and reload the page.
+6. Smoke-check the homepage card and `/projects/<slug>` for GIF, screenshots, and video demos.
+7. Remember: pushing a project repo does **not** redeploy magro.dev. Production updates only when Vercel builds `portfolio-site` again (usually after a portfolio push, or a manual redeploy).
 
 Recommended agent request:
 
 ```text
 Add or refresh project <repo> in portfolio-site. Follow AGENTS.md and
 docs/project-resources.md. Inspect the project repo, preserve descriptive
-screenshot filenames, ingest repo-owned resources, verify YouTube URLs before
-removing duplicate portfolio videos, run tests and npm run build, and show me
-the scoped diff. Do not touch unrelated project worktrees.
+screenshot filenames, ingest repo-owned resources with
+npm run sync:project-resources, verify YouTube URLs before removing duplicate
+portfolio videos, run tests and npm run build, and show me the scoped diff.
+Do not touch unrelated project worktrees.
 ```
 
-The production site updates only when Vercel runs another portfolio build. A project-repo push does not, by itself, redeploy `portfolio-site`. After the source resources and card wiring are verified, commit and push the portfolio change to its Vercel production branch. Vercel's Git integration then creates the production deployment automatically. Wait for the deployment and smoke-check the public project page, `/agent.json`, and `/llms.txt` before calling the refresh complete.
+After the source resources and card wiring are verified, commit and push the portfolio change (card JSON / docs / wiring only; generated media stays ignored). Wait for the Vercel deployment, then smoke-check the public project page, `/agent.json`, and `/llms.txt`.

@@ -80,7 +80,7 @@ Use `null` or `[]` when a field is not ready. Placeholders like `TODO(dan): ...`
 
 Project screenshots, GIFs, static demos, agent briefs, and YouTube metadata belong in the project repository. `npm run dev` and `npm run build` run a pre-step that fetches those resources and generates `public/project-assets/<slug>/` plus card media overrides. Generated files are ignored by Git.
 
-Canonical source folders are `public/` or `repo-resources/` at the project root. See `docs/project-resources.md` for the accepted layout, fallback behavior, strict cutover, and verification commands.
+Canonical source folders are `public/` or `repo-resources/` at the project root. See `docs/project-resources.md` for the accepted layout, fallback behavior, strict cutover, verification commands, and how `sync:project-resources` works in this Cursor / sibling-repo / Vercel environment.
 
 Write two additive layers for every listed project, plus an optional hook. `hook` is a short question that leads the card. `summary` states what the visitor is actually looking at: a hosted app with a backend, a static walkthrough, a CLI, or a research note. `technicalDescription` names the relevant mechanism, stack, or evidence boundary for practitioners. Use distinct natural openings across a set of cards. Keep the technical line concise and factual. Never use em dashes.
 

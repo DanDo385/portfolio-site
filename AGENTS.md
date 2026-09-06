@@ -71,7 +71,7 @@ Before finishing a PR or commit that touches content, navigation, projects, writ
 ## Adding content (quick reference)
 
 - Projects: `content/projects/*.json` — see `CONTENT.md`
-- Repo-owned project media: `docs/project-resources.md`
+- Repo-owned project media: `docs/project-resources.md` (layout, ownership, and how sync works in this environment)
 - Writing: `content/writing/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Research: `content/agent-research/*.md` — drafts (`status: draft`) are excluded from Agent Mode
 - Unlisted projects (`"listed": false`) are hidden from homepage and agent manifest project lists
@@ -86,7 +86,7 @@ When asked to add or refresh a project from Cursor, Hermes, Codex, Claude Code, 
 
 1. Inspect live Git state in both `portfolio-site` and the source project. Do not overwrite dirty sibling worktrees.
 2. Resolve the card from `content/projects/*.json` and its `githubUrl`; never infer a different slug when the card already exists.
-3. Run `npm run sync:project-resources` for committed GitHub resources. Use `npm run sync:project-resources:local` only when explicitly testing unpublished sibling-repo work.
+3. Run `npm run sync:project-resources` for committed GitHub resources. Use `npm run sync:project-resources:local` only when explicitly testing unpublished sibling-repo work. See **How sync works in this environment** in `docs/project-resources.md` for why the GitHub path is the default in Cursor and on Vercel.
 4. Preserve descriptive source screenshot filenames. Never normalize them to `image1.png`, `image2.png`, or similar names.
 5. Never delete source screenshots. Generated destination screenshot mirrors may be replaced only after the source family exists.
 6. Move a portfolio-local video to macOS Trash only after its specific YouTube URL resolves and is wired to the correct card field. One URL cannot prove that two differently named recordings were uploaded.
