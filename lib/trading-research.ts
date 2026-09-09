@@ -46,7 +46,9 @@ export function getAllTradingResearch(): TradingResearch[] {
 }
 
 export function getListedTradingResearch(): TradingResearch[] {
-  return getAllTradingResearch().filter((entry) => entry.status !== 'archived');
+  return getAllTradingResearch().filter(
+    (entry) => entry.status !== 'archived' && entry.listed !== false
+  );
 }
 
 export function getTradingResearchBySlug(slug: string): TradingResearch | undefined {

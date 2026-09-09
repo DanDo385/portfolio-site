@@ -31,6 +31,8 @@ export interface TradingResearch {
   date: string;
   status: TradingResearchStatus;
   statusLabel?: string | null;
+  /** When false, hidden from Trading Lab index and Agent Mode until ready. */
+  listed?: boolean;
   category: string;
   excerpt: string;
   researchQuestion?: string | null;

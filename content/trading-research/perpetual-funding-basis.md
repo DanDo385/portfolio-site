@@ -4,6 +4,7 @@ slug: perpetual-funding-basis
 date: 2026-08-17
 status: researching
 statusLabel: Research in progress
+listed: false
 category: Trading Research
 excerpt: Notes on perpetual funding, futures basis, cross-venue dislocations, carry after costs, and regime behavior in digital-asset markets.
 researchQuestion: When does apparent funding or basis carry survive fees, slippage, collateral, and execution constraints across venues?

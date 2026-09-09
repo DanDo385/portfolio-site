@@ -5,7 +5,7 @@
   "status": "in-progress",
   "statusLabel": "Research in progress",
   "featured": true,
-  "listed": true,
+  "listed": false,
   "cluster": "trading-research",
   "tags": [
     "Rates",

@@ -177,9 +177,6 @@ export function getAgentManifest() {
         `${SITE.url}/agent/`,
         `${SITE.url}/agent.json`,
         `${SITE.url}/llms.txt`,
-        `${SITE.url}/trading/`,
-        `${SITE.url}/trading/perpetual-funding-basis/`,
-        `${SITE.url}/projects/funding-rate-basis-benchmark/`,
         `${SITE.url}/projects/eth-amm-sim/`,
         'https://eth-amm-sim.vercel.app',
         `${SITE.url}/projects/eth-l2/`,
@@ -379,7 +376,6 @@ export function getLlmsTxt(): string {
 
   const siteLines = [
     llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
-    llmsLink('Trading Lab', `${SITE.url}/trading/`, 'Digital-asset trading notes'),
     llmsLink(
       'Projects',
       `${SITE.url}/#projects`,
@@ -427,11 +423,9 @@ export function getLlmsTxt(): string {
     '',
     projectLines,
     '',
-    '## Trading Lab',
-    '',
-    tradingResearchLines ||
-      '- Trading research notes appear at /trading/<slug>/ when published.',
-    '',
+    ...(tradingResearchLines
+      ? ['## Trading Lab', '', tradingResearchLines, '']
+      : []),
     '## Project llms.txt',
     '',
     projectLlmsLines ||

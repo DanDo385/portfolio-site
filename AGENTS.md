@@ -34,7 +34,7 @@ These pull from content loaders at build/request time. No manual list edits need
 
 When the site changes, check and update these in **`lib/agent.ts`** (and related files if copy/UI changed):
 
-1. **`navigation`** — must match `components/Nav.tsx` section ids and labels. Trading Lab is temporarily omitted from the navbar.
+1. **`navigation`** — must match `components/Nav.tsx` section ids and labels. Trading Lab is paused (unlisted) until the Perpetual Funding & Basis Benchmark ships; do not add it to the navbar or hero until then.
 2. **`about`** — education, technical study, building stack, summary if About section copy changes.
 3. **`contact`** — email, social links, resume paths if Contact or `lib/constants.ts` changes.
 4. **`canonicalTopics`** — when positioning or focus areas change.

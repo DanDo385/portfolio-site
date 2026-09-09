@@ -68,7 +68,6 @@ test('listed projects use a known cluster and protocol labs stay hosted backends
     inProgress,
     [
       'airgap-tx-signer',
-      'funding-rate-basis-benchmark',
       'op-ephemeral-evm-signer',
       'solana-treasury-vault',
       'solidity-copilot',

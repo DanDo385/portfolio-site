@@ -41,12 +41,12 @@ Copy `.env.example` for optional public tunnel hostnames and `FRED_API_KEY`. Sec
 | Projects | `content/projects/*.json` | Cards, clusters, Interact rules |
 | Writing | `content/writing/*.md` | `status: published` to appear |
 | Research | `content/agent-research/*.md` | Longer papers |
-| Trading Lab | `content/trading-research/*.md` | Market notes; honest status labels |
+| Trading Lab | `content/trading-research/*.md` | Market notes; honest status labels. Currently paused (`listed: false`) until the funding/basis benchmark ships. |
 | Site copy / focus | `lib/constants.ts`, `lib/site-focus.ts` | Title, description, focus lists |
 
 Authoring details: [`CONTENT.md`](./CONTENT.md). Agent and Interact rules: [`AGENTS.md`](./AGENTS.md). Media sync: [`docs/project-resources.md`](./docs/project-resources.md).
 
-Homepage clusters (Protocol Labs, Trading Lab, Interactive AI, walkthroughs, infra, in-progress) are defined in `lib/project-clusters.ts`.
+Homepage clusters (Protocol Labs, Interactive AI, walkthroughs, infra, in-progress) are defined in `lib/project-clusters.ts`. Trading Lab stays in the cluster config but is unlisted until the funding/basis benchmark is ready.
 
 ## Agent Mode
 

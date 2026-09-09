@@ -34,9 +34,6 @@ export function Hero() {
           </ul>
         </div>
         <div className="hero-cta">
-          <Link href="/trading" className="btn btn-primary">
-            Trading Lab
-          </Link>
           <Link href="#projects" className="btn btn-primary">
             View Projects
           </Link>

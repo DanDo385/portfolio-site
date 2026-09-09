@@ -19,7 +19,7 @@ export const PROJECT_CLUSTERS: Array<{
   {
     id: 'trading-research',
     label: 'Trading Lab',
-    note: 'Funding, basis, carry, and market-structure notes for digital-asset markets.',
+    note: 'Funding, basis, carry, and market-structure notes for digital-asset markets. Hidden until the funding/basis benchmark ships.',
     featured: true,
   },
   {
