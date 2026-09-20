@@ -4,8 +4,8 @@ export function Footer() {
       <div className="container footer-inner">
         <div className="footer-l">&copy; 2026 Daniel Magro</div>
         <div className="footer-r">
-          <div className="footer-dot" />
-          Built by me and my agents
+          <a href="/agent">Agent-readable portfolio</a>
+          <a href="/?intro=1">Market visualization</a>
         </div>
       </div>
     </footer>

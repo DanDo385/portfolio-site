@@ -12,9 +12,9 @@ export function siteShareImageElement() {
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '72px 80px',
-        background: '#050810',
+        background: '#101419',
         backgroundImage:
-          'radial-gradient(circle at 18% 12%, rgba(201,147,58,0.22), rgba(5,8,16,0) 55%)',
+          'radial-gradient(circle at 18% 12%, rgba(90,153,255,0.12), rgba(16,20,25,0) 55%)',
         color: '#e8ecf4',
         fontFamily: 'sans-serif',
       }}
@@ -26,14 +26,14 @@ export function siteShareImageElement() {
             fontWeight: 600,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            color: '#c9933a',
+            color: '#86b5ff',
             marginBottom: 28,
           }}
         >
           Daniel Magro
         </div>
         <div style={{ fontSize: 58, fontWeight: 600, lineHeight: 1.15, maxWidth: 980 }}>
-          Digital-Asset Trading and Systems
+          AI Engineering & Financial Systems
         </div>
       </div>
       <div
@@ -42,7 +42,7 @@ export function siteShareImageElement() {
           alignItems: 'center',
           gap: 12,
           fontSize: 22,
-          color: '#e0ad52',
+          color: '#86b5ff',
           letterSpacing: '0.04em',
         }}
       >

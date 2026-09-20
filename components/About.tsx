@@ -10,8 +10,8 @@ const FIRMS = [
 ];
 
 const BUILDER_THEMES = [
-  'Crypto trading and DeFi',
-  'Market structure and execution tooling',
+  'Financial software and DeFi',
+  'Data integration and market tooling',
   'Agent orchestration and observability',
   'Blockchain infrastructure and signing controls',
   'Full-stack product systems',
@@ -22,7 +22,7 @@ export function About() {
     <section id="about">
       <div className="container">
         <Reveal>
-          <div className="section-label">Experience</div>
+          <div className="section-heading"><div><p className="eyebrow">03 / Experience</p><h2>Domain depth.<br />Hands-on engineering.</h2></div><p>Institutional markets taught me to understand the decision behind the interface. Building software gives me a way to improve it.</p></div>
         </Reveal>
         <Reveal delay={60}>
           <div className="about-block">
@@ -62,7 +62,8 @@ export function About() {
                 Since May 2019: independent e-commerce operations built on Python automation, then
                 full-stack, AI, and Web3 systems work including Hermes tooling, EVM marketplace
                 contracts at RAMM.ai, and open-source agent infrastructure. Freelance product work
-                continues. I still trade crypto, follow protocols, and build tools around both.
+                continues, with a focus on connecting domain problems to working interfaces,
+                integrations, and reliable systems.
               </p>
               <div className="about-themes" aria-label="Builder themes">
                 {BUILDER_THEMES.map((theme) => (

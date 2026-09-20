@@ -7,8 +7,8 @@ export const IPFS_URL: string | null = null;
 export const RESUME_PDF = '/resume/Daniel_Magro_Resume.pdf';
 
 export const SITE = {
-  name: 'Daniel Magro | Digital-Asset Trading and Systems',
+  name: 'Daniel Magro | AI Engineering & Financial Systems',
   description:
-    'Thirteen years in institutional rates trading, execution, and portfolio management. Now trading digital assets and building software systems, market tools, and AI-assisted workflows for crypto, DeFi, and market structure.',
+    'I build agent tooling, data integrations, and interactive financial software, informed by 13 years in institutional rates trading, execution, and portfolio management.',
   url: 'https://magro.dev',
 };

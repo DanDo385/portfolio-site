@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { JetBrains_Mono, Newsreader, Source_Sans_3 } from 'next/font/google';
 import { SITE } from '@/lib/constants';
 import './globals.css';
+import './portfolio.css';
 
 const display = Newsreader({
   subsets: ['latin'],
@@ -52,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('magro-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}}catch(e){}try{var r=document.documentElement;if(location.pathname==='/'&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('intro-active');}else{r.classList.add('intro-skipped');}}catch(e){document.documentElement.classList.add('intro-skipped');}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('magro-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}}catch(e){}document.documentElement.classList.add('intro-skipped');})();`,
           }}
         />
       </head>

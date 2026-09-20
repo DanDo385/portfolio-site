@@ -12,7 +12,7 @@ export function AgentResearch({ papers }: AgentResearchProps) {
     <section id="agent-research">
       <div className="container">
         <Reveal>
-          <div className="section-label">Agent Research</div>
+          <div className="section-heading"><div><p className="eyebrow">05 / Research</p><h2>A closer look.</h2></div><p>Longer investigations into AI infrastructure, markets, and systems design.</p></div>
         </Reveal>
         <div className="writing-list">
           {papers.length === 0 ? (
