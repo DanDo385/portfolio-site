@@ -13,7 +13,7 @@ export function Writing({ articles, projectsBySlug }: WritingProps) {
     <section id="my-writing">
       <div className="container">
         <Reveal>
-          <div className="section-label">My Writing</div>
+          <div className="section-heading"><div><p className="eyebrow">04 / Writing</p><h2>Thinking in public.</h2></div><p>Notes on financial markets, AI systems, and the assumptions beneath them.</p></div>
         </Reveal>
         <div className="writing-list">
           {articles.length === 0 ? (

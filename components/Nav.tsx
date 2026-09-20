@@ -6,7 +6,8 @@ import { useEffect, useState, type MouseEvent } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const NAV_SECTIONS: Array<{ id: string; label: string; href?: string }> = [
-  { id: 'projects', label: 'Projects' },
+  { id: 'projects', label: 'Work' },
+  { id: 'approach', label: 'Approach' },
   { id: 'about', label: 'Experience' },
   { id: 'my-writing', label: 'Writing' },
   { id: 'agent-research', label: 'Research' },
@@ -72,10 +73,10 @@ export function Nav() {
   };
 
   return (
-    <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
+    <nav id="navbar" className={scrolled ? 'scrolled' : ''} aria-label="Main navigation" onKeyDown={(event) => { if (event.key === 'Escape') setOpen(false); }}>
       <Link href="/" className="nav-id" onClick={handleNavClick}>
-        <span className="indicator" />
-        daniel magro
+        <span className="nav-monogram" aria-hidden="true">dm.</span>
+        <span>Daniel Magro</span>
       </Link>
 
       <ul className={`nav-links${open ? ' mobile-open' : ''}`} id="navMenu">
@@ -97,13 +98,12 @@ export function Nav() {
           href={onAgent ? agentReturnTo : '/agent'}
           className={`nav-agent-link${onAgent ? ' active' : ''}`}
           aria-label={onAgent ? 'Exit Agent Mode' : 'View the agent-readable version of this site'}
-          aria-pressed={onAgent}
+          aria-current={onAgent ? 'page' : undefined}
           onClick={handleAgentModeClick}
         >
           Agent view
         </Link>
         <div className="nav-control" role="group" aria-label="Display">
-          <span className="nav-control-label">Display</span>
           <ThemeToggle />
         </div>
         <button
@@ -112,6 +112,8 @@ export function Nav() {
           id="hamburgerBtn"
           aria-label="Toggle menu"
           aria-expanded={open}
+          aria-controls="navMenu"
+          onKeyDown={(event) => { if (event.key === 'Escape') setOpen(false); }}
           onClick={() => setOpen((v) => !v)}
         >
           <span />

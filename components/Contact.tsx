@@ -91,7 +91,7 @@ export function Contact() {
       <section id="contact" className="contact-section">
         <div className="container">
           <Reveal>
-            <div className="section-label">Contact</div>
+            <div className="section-heading"><div><p className="eyebrow">06 / Contact</p><h2>Let’s build something useful.</h2></div><p>I’m interested in forward-deployed engineering, applied AI, and financial systems roles. Bring a workflow, a technical problem, or a team looking for domain depth.</p></div>
           </Reveal>
           <div className="contact-main">
             <Reveal className="contact-text">
@@ -140,8 +140,8 @@ export function Contact() {
                 <span className="sig-val">13 years</span>
               </div>
               <div className="sig-row">
-                <span className="sig-label">Technical experience</span>
-                <span className="sig-val">5 years</span>
+                <span className="sig-label">Engineering focus</span>
+                <span className="sig-val">AI tooling, data integration, financial systems</span>
               </div>
               <div className="sig-row">
                 <span className="sig-label">Building with</span>
@@ -152,7 +152,7 @@ export function Contact() {
               <div className="sig-row">
                 <span className="sig-label">Focus</span>
                 <span className="sig-val">
-                  Digital-asset trading, market structure, execution, DeFi, systems
+                  Applied AI, finance, fintech, and crypto infrastructure
                 </span>
               </div>
               <div className="sig-row">

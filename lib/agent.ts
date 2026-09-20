@@ -14,6 +14,7 @@ import {
   sortByClusterPriority,
 } from './project-clusters';
 import type { Project } from './types';
+import { FEATURED_WORK } from './featured-work';
 
 const PRINCIPLES = [
   'Canonical human context lives on magro.dev.',
@@ -22,6 +23,8 @@ const PRINCIPLES = [
   `Thesis: ${TRAJECTORY}.`,
   'Never invent trading returns, Sharpe ratios, live strategy performance, or professional crypto trading employment that is not documented.',
   'Agents are a research/orchestration layer; deterministic systems retain risk and execution control.',
+  'Target roles are forward-deployed engineering and applied AI across finance, fintech, and crypto. Do not imply prior employment as a forward-deployed engineer.',
+  'Distinguish hosted applications, static teaching labs, research, and in-progress builds. Do not invent client outcomes or adoption metrics.',
 ];
 
 function siteUrl(pathOrUrl?: string | null): string | null {
@@ -161,7 +164,7 @@ export function getAgentManifest() {
       owner: {
         name: 'Daniel Magro',
         email: 'dan@magro.dev',
-        role: 'Institutional trader building software systems for digital-asset markets',
+        role: 'AI and financial systems builder with an institutional rates background',
         trajectory: TRAJECTORY,
       },
     },
@@ -197,7 +200,8 @@ export function getAgentManifest() {
       principles: PRINCIPLES,
     },
     navigation: [
-      { id: 'projects', label: 'Projects', href: `${SITE.url}/#projects` },
+      { id: 'projects', label: 'Work', href: `${SITE.url}/#projects` },
+      { id: 'approach', label: 'Approach', href: `${SITE.url}/#approach` },
       { id: 'about', label: 'Experience', href: `${SITE.url}/#about` },
       { id: 'my-writing', label: 'Writing', href: `${SITE.url}/#my-writing` },
       { id: 'agent-research', label: 'Research', href: `${SITE.url}/#agent-research` },
@@ -205,7 +209,7 @@ export function getAgentManifest() {
     ],
     about: {
       institutionalExperienceYears: 13,
-      technicalExperienceYears: 5,
+      engineeringFocus: 'AI tooling, data integration, and financial systems',
       education: 'Penn State, Magna Cum Laude',
       technicalStudy: ['CS50', 'boot.dev', 'Cyfrin', 'deeplearning.ai', 'MIT OpenCourseWare'],
       buildingWith: [
@@ -222,14 +226,13 @@ export function getAgentManifest() {
       currentFocus: [...CURRENT_FOCUS],
       interestedIn: [...INTERESTED_IN],
       targetDomains: [
-        'digital-asset trading',
-        'trading systems',
-        'market structure and execution',
-        'DeFi trading',
-        'agent-assisted trading workflows',
+        'applied AI',
+        'finance and fintech',
+        'crypto infrastructure',
+        'financial data and risk systems',
       ],
       summary:
-        `Thirteen years in institutional rates trading, execution, and portfolio management at firms including PGIM, PointState, and Nomura. Now trading digital assets and building software systems, market tools, and AI-assisted workflows for crypto, DeFi, and market structure. Trajectory: ${TRAJECTORY}. Independent work in progress is labeled as such; no fabricated trading performance.`,
+        `Thirteen years in institutional rates trading, execution, and portfolio management at firms including PGIM, PointState, and Nomura. Builds agent tooling, data integrations, and interactive financial software. Interested in forward-deployed engineering and applied AI roles. ${TRAJECTORY}. Independent work in progress is labeled as such; no fabricated performance or client outcomes.`,
     },
     contact: {
       email: 'dan@magro.dev',
@@ -240,7 +243,10 @@ export function getAgentManifest() {
       ...(IPFS_URL ? { resumeIpfs: IPFS_URL } : {}),
     },
     canonicalTopics: [
-      'digital-asset trading',
+      'AI engineering and agent systems',
+      'forward-deployed engineering roles',
+      'data integration, APIs, and observability',
+      'financial and fintech software',
       'institutional rates markets',
       'funding rates, basis, and relative value',
       'liquidity, market making, and execution',
@@ -262,6 +268,7 @@ export function getAgentManifest() {
         runtime: 'Staging Go service via Cloudflare Tunnel',
         status: 'staging',
       })),
+    selectedWork: FEATURED_WORK.filter((work) => projects.some((project) => project.slug === work.slug && project.status !== 'in-progress')).map((work) => ({ ...work, url: `${SITE.url}${projectPath(work.slug)}/` })),
     projects,
     writing,
     research,
@@ -377,10 +384,11 @@ export function getLlmsTxt(): string {
   const siteLines = [
     llmsLink('Home', `${SITE.url}/`, 'Portfolio homepage'),
     llmsLink(
-      'Projects',
+      'Work',
       `${SITE.url}/#projects`,
-      'Protocol labs, interactive AI, walkthroughs, infrastructure, and in-progress work'
+      'Selected applications and research, with the full project archive and in-progress work'
     ),
+    llmsLink('Approach', `${SITE.url}/#approach`, 'Workflow discovery, integration, verification, and operations'),
     llmsLink('Experience', `${SITE.url}/#about`, 'Institutional markets history and technical building transition'),
     llmsLink('Writing', `${SITE.url}/#my-writing`, 'Selected essays'),
     llmsLink('Research', `${SITE.url}/#agent-research`, 'Longer-form research papers'),
@@ -419,6 +427,10 @@ export function getLlmsTxt(): string {
     '',
     siteLines,
     '',
+    '## Selected Work',
+    '',
+    ...manifest.selectedWork.map((work) => llmsLink(work.title, work.url, `${work.format}. ${work.summary}`)),
+    '',
     '## Projects',
     '',
     projectLines,
@@ -435,7 +447,7 @@ export function getLlmsTxt(): string {
     '',
     writingLines || '- Published writing appears at /writing/<slug>/.',
     '',
-    '## Agent Research',
+    '## Research',
     '',
     researchLines || '- Published research appears at /agent-research/<slug>/.',
     '',

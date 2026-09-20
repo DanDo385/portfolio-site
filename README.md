@@ -1,8 +1,8 @@
 # magro.dev
 
-Personal portfolio for [Daniel Magro](https://magro.dev): institutional markets background, digital-asset trading, and the software systems built around both.
+Personal portfolio for [Daniel Magro](https://magro.dev): AI engineering and financial systems, informed by an institutional markets background.
 
-**Trajectory:** institutional trader → technical builder → digital-asset trader
+**Positioning:** institutional markets experience applied to AI engineering and financial systems. Target roles include forward-deployed engineering and applied AI across finance, fintech, and crypto.
 
 This is a Next.js site with a human homepage and a first-class **Agent Mode** so language models can load structured context instead of scraping decorative HTML.
 
@@ -46,7 +46,9 @@ Copy `.env.example` for optional public tunnel hostnames and `FRED_API_KEY`. Sec
 
 Authoring details: [`CONTENT.md`](./CONTENT.md). Agent and Interact rules: [`AGENTS.md`](./AGENTS.md). Media sync: [`docs/project-resources.md`](./docs/project-resources.md).
 
-Homepage clusters (Protocol Labs, Interactive AI, walkthroughs, infra, in-progress) are defined in `lib/project-clusters.ts`. Trading Lab stays in the cluster config but is unlisted until the funding/basis benchmark is ready.
+The homepage selection is defined in `lib/featured-work.ts` and shared with Agent Mode. Remaining complete projects are grouped in an expandable archive using `lib/project-clusters.ts`; in-progress work has a separate expandable section. Trading Lab stays unlisted until the funding/basis benchmark is ready.
+
+The homepage opens directly. The optional market visualization is available at `/?intro=1`, loads separately, respects reduced motion, and exits if WebGL fails. Visual overrides for the portfolio live in `app/portfolio.css`; existing article and demo styles remain in `app/globals.css`.
 
 ## Agent Mode
 
