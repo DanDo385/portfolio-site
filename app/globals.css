@@ -4080,7 +4080,7 @@ footer {
   --text-primary: var(--rp-text);
   --text-secondary: var(--rp-subtle);
   --text-muted: var(--rp-muted);
-  --accent: var(--rp-iris);
+  --accent: var(--rp-gold);
   --accent-light: var(--rp-gold);
   --accent-dim: rgba(196, 167, 231, 0.14);
   --accent-glow: rgba(196, 167, 231, 0.45);
