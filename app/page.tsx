@@ -46,9 +46,11 @@ export default function HomePage() {
       <JsonLd data={PERSON_JSON_LD} />
       <JsonLd data={WEBSITE_JSON_LD} />
       <MarketIntro />
-      <SiteNav />
-      <main>
+      <div className="desktop">
+        <SiteNav appearance="desktop" />
         <Hero />
+      </div>
+      <main>
         <Bridge />
         <Projects
           projects={projects}
