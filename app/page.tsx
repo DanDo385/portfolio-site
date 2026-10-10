@@ -5,6 +5,7 @@ import { About } from '@/components/About';
 import { AgentResearch } from '@/components/AgentResearch';
 import { JsonLd } from '@/components/JsonLd';
 import { MarketIntro } from '@/components/MarketIntro';
+import { ProjectWindow } from '@/components/ProjectWindow';
 import { Projects } from '@/components/Projects';
 import { SiteNav } from '@/components/SiteNav';
 import { Writing } from '@/components/Writing';
@@ -48,7 +49,19 @@ export default function HomePage() {
       <MarketIntro />
       <div className="desktop">
         <SiteNav appearance="desktop" />
-        <Hero />
+        <Hero>
+          {projects[0] ? (
+            <ProjectWindow
+              project={{
+                title: projects[0].title,
+                slug: projects[0].slug,
+                hook: projects[0].hook ?? null,
+                summary: projects[0].summary,
+                tags: projects[0].tags,
+              }}
+            />
+          ) : null}
+        </Hero>
       </div>
       <main>
         <Bridge />

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { SITE } from '@/lib/constants';
 import {
@@ -6,7 +7,7 @@ import {
   TRAJECTORY,
 } from '@/lib/site-focus';
 
-export function Hero() {
+export function Hero({ children }: { children?: ReactNode }) {
   return (
     <section className="hero" id="top" tabIndex={-1}>
       <div className="hero-glow" aria-hidden="true" />
@@ -51,6 +52,7 @@ export function Hero() {
           <Link href="#contact" className="btn btn-primary">
             Contact
           </Link>
+          {children}
         </div>
       </div>
       <div className="hero-scroll" aria-hidden="true">
