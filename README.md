@@ -77,3 +77,12 @@ Never invent trading returns, Sharpe ratios, live strategy performance, or profe
 ## Deploy
 
 Vercel builds from this repository. `prebuild` syncs project resources before `next build`. Set `FRED_API_KEY` in the Vercel project env if the homepage intro should use live FRED yields; without it, the intro still uses prior-close public sources.
+
+## License
+
+The source code is MIT licensed. See [LICENSE](./LICENSE).
+
+The MIT license does not cover the site's content: the writing and research
+under `content/`, the resume, and the images and videos under `public/`. That
+content is copyright Dan Magro, all rights reserved. Company logos in
+`public/company-logos/` belong to their respective owners.
