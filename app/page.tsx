@@ -1,10 +1,11 @@
-import { Bridge } from '@/components/Bridge';
+import { EngineeringApproach } from '@/components/EngineeringApproach';
+import { Footer } from '@/components/Footer';
 import { Contact } from '@/components/Contact';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { AgentResearch } from '@/components/AgentResearch';
 import { JsonLd } from '@/components/JsonLd';
-import { MarketIntro } from '@/components/MarketIntro';
+import { OptionalMarketIntro } from '@/components/OptionalMarketIntro';
 import { Projects } from '@/components/Projects';
 import { SiteNav } from '@/components/SiteNav';
 import { Writing } from '@/components/Writing';
@@ -45,25 +46,22 @@ export default function HomePage() {
     <>
       <JsonLd data={PERSON_JSON_LD} />
       <JsonLd data={WEBSITE_JSON_LD} />
-      <MarketIntro />
+      <OptionalMarketIntro />
       <SiteNav />
-      <main>
+      <main id="main-content" className="portfolio-home">
         <Hero />
-        <Bridge />
         <Projects
           projects={projects}
           writingBySlug={writingBySlug}
           researchBySlug={researchBySlug}
         />
-        <Bridge />
+        <EngineeringApproach />
         <About />
-        <Bridge />
         <Writing articles={articles} projectsBySlug={projectsBySlug} />
-        <Bridge />
         <AgentResearch papers={research} />
-        <Bridge />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }

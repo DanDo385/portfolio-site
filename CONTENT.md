@@ -248,3 +248,8 @@ public/               # Static assets (resume PDF, favicon, project-assets/*/llm
 scripts/              # Build-time project resource ingestion
 docs/project-resources.md
 ```
+# Homepage selection and engineering positioning
+
+`lib/featured-work.ts` defines the curated homepage projects and their short reader-facing framing. Only listed, complete projects qualify. The same selection appears in `agent.json` as `selectedWork` and in `llms.txt`. Original project records remain canonical for technical descriptions, case studies, status, source links, and media. Keep teaching labs, hosted applications, simulations, and research accurately labeled.
+
+Other complete projects remain discoverable through the expandable project archive; in-progress projects retain their own section. Update `lib/site-focus.ts`, `lib/constants.ts`, and `lib/agent.ts` together when positioning changes. Do not imply professional FDE employment, customer deployments, adoption, or performance without supporting evidence.

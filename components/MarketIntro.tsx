@@ -13,7 +13,7 @@ type Phase = 'pending' | 'playing' | 'exiting' | 'gone';
 
 function shouldPlayIntro(): boolean {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-  return true;
+  return new URLSearchParams(window.location.search).get('intro') === '1';
 }
 
 async function loadIntroSnapshot(): Promise<IntroMarketSnapshot> {
@@ -80,7 +80,7 @@ export function MarketIntro() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
-        controller?.skip();
+        finish();
       }
     };
     const onResize = () => controller?.resize();
@@ -89,16 +89,24 @@ export function MarketIntro() {
       const snapshot = await loadIntroSnapshot();
       if (cancelled) return;
 
-      controller = createIntroScene(meta.id, canvas, rootRef.current, finish, snapshot);
-      controllerRef.current = controller;
-      controller.start();
-      window.addEventListener('keydown', onKey);
-      window.addEventListener('resize', onResize);
-      requestAnimationFrame(() => skipRef.current?.focus());
+      try {
+        controller = createIntroScene(meta.id, canvas, rootRef.current, finish, snapshot);
+        controllerRef.current = controller;
+        controller.start();
+        window.addEventListener('resize', onResize);
+      } catch {
+        // WebGL is optional. A renderer failure must never block the portfolio.
+        finish();
+      }
     })();
+
+    window.addEventListener('keydown', onKey);
+    skipRef.current?.focus();
+    const fallback = window.setTimeout(finish, 18000);
 
     return () => {
       cancelled = true;
+      window.clearTimeout(fallback);
       window.removeEventListener('keydown', onKey);
       window.removeEventListener('resize', onResize);
       controllerRef.current?.destroy();
@@ -138,7 +146,7 @@ export function MarketIntro() {
         ref={skipRef}
         type="button"
         className="market-intro-skip"
-        onClick={() => controllerRef.current?.skip()}
+        onClick={finish}
       >
         Skip
       </button>

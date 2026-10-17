@@ -3,22 +3,19 @@
  * across Hero / Contact.
  */
 export const TRAJECTORY =
-  'Institutional trader → technical builder → digital-asset trader';
+  'Institutional markets experience applied to AI engineering and financial systems';
 
 export const CURRENT_FOCUS = [
-  'Funding & basis',
-  'Liquidity & market making',
-  'CEX/DEX execution',
-  'MEV & onchain market structure',
-  'Trading systems',
-  'Agent-assisted trading workflows',
+  'AI agents and tool integration',
+  'Evaluation and observability',
+  'Data pipelines and APIs',
+  'Financial software and risk',
+  'Programmable finance',
 ] as const;
 
 export const INTERESTED_IN = [
-  'Digital-asset trading',
-  'Trading systems',
-  'Execution / market structure',
-  'DeFi trading',
-  'Liquidity and market making',
-  'Agent-assisted workflows',
+  'Forward-deployed engineering',
+  'Applied AI engineering',
+  'Financial and fintech systems',
+  'Crypto infrastructure',
 ] as const;

@@ -1,11 +1,8 @@
+import Link from 'next/link';
 import type { Article, Project, ResearchPaper } from '@/lib/types';
-import {
-  PROJECT_CLUSTERS,
-  projectsForCluster,
-  projectsInProgress,
-} from '@/lib/project-clusters';
-import { ProjectCard } from './ProjectCard';
-import { Reveal } from './Reveal';
+import { FEATURED_WORK } from '@/lib/featured-work';
+import { PROJECT_CLUSTERS, projectsForCluster, projectsInProgress } from '@/lib/project-clusters';
+import { getProjectLinkSections, projectAnchorId, projectPath } from '@/lib/utils';
 
 interface ProjectsProps {
   projects: Project[];
@@ -13,102 +10,47 @@ interface ProjectsProps {
   researchBySlug?: Record<string, ResearchPaper>;
 }
 
-function renderProjectList(
-  clusterProjects: Project[],
-  writingBySlug: Record<string, Article>,
-  researchBySlug: Record<string, ResearchPaper>,
-  options: { reveal: boolean; featured?: boolean }
-) {
-  return (
-    <div className="projects-cluster-list">
-      {clusterProjects.map((project) => (
-        <ProjectCard
-          key={project.slug}
-          project={project}
-          writingBySlug={writingBySlug}
-          researchBySlug={researchBySlug}
-          reveal={options.reveal}
-          variant={options.featured ? 'featured' : 'compact'}
-        />
-      ))}
-    </div>
-  );
+function ProjectRow({ project }: { project: Project }) {
+  return <Link href={projectPath(project.slug)} className="work-row" id={projectAnchorId(project.slug)}>
+    <span><strong>{project.title}</strong><small>{project.summary}</small></span>
+    <span className="work-row-status">{project.status === 'in-progress' ? (project.statusLabel || 'In progress') : 'View project'} <span aria-hidden="true">↗</span></span>
+  </Link>;
 }
 
-export function Projects({ projects, writingBySlug, researchBySlug = {} }: ProjectsProps) {
+export function Projects({ projects }: ProjectsProps) {
+  const selected = FEATURED_WORK.flatMap((work) => {
+    const project = projects.find((p) => p.slug === work.slug && p.status !== 'in-progress');
+    return project ? [{ work, project }] : [];
+  });
+  const selectedSlugs = new Set(selected.map(({ project }) => project.slug));
+  const remaining = projects.filter((p) => !selectedSlugs.has(p.slug));
   const inProgress = projectsInProgress(projects);
-  const openClusters = PROJECT_CLUSTERS.filter((cluster) => !cluster.collapsed);
-  const collapsedClusters = PROJECT_CLUSTERS.filter((cluster) => cluster.collapsed);
 
-  function renderCluster(
-    cluster: (typeof PROJECT_CLUSTERS)[number],
-    clusterProjects: Project[]
-  ) {
-    const list = renderProjectList(clusterProjects, writingBySlug, researchBySlug, {
-      reveal: !cluster.collapsed,
-      featured: cluster.featured,
-    });
-
-    if (cluster.collapsed) {
-      return (
-        <Reveal key={cluster.id} delay={40}>
-          <details className="projects-cluster projects-cluster-collapsed">
-            <summary>
-              <span className="projects-cluster-label">{cluster.label}</span>
-              <span className="projects-cluster-note">{cluster.note}</span>
-            </summary>
-            {list}
-          </details>
-        </Reveal>
-      );
-    }
-
-    return (
-      <div key={cluster.id} className="projects-cluster">
-        <Reveal>
-          <div className="projects-cluster-label">{cluster.label}</div>
-          <p className="projects-cluster-note">{cluster.note}</p>
-        </Reveal>
-        {list}
-      </div>
-    );
-  }
-
-  return (
-    <section id="projects">
-      <div className="container">
-        <Reveal>
-          <div className="section-label">Selected Projects</div>
-          <p className="about-intro">
-            Hosted protocol labs, interactive AI surfaces, and market walkthroughs. In-progress
-            work sits in its own section so status stays clear.
-          </p>
-        </Reveal>
-        {openClusters.map((cluster) => {
-          const clusterProjects = projectsForCluster(projects, cluster.id);
-          if (clusterProjects.length === 0) return null;
-          return renderCluster(cluster, clusterProjects);
-        })}
-
-        {inProgress.length > 0 ? (
-          <div className="projects-cluster">
-            <Reveal>
-              <div className="projects-cluster-label">In Progress</div>
-              <p className="projects-cluster-note">
-                Active builds and research. Status labels stay honest; nothing here is finished
-                work presented as complete.
-              </p>
-            </Reveal>
-            {renderProjectList(inProgress, writingBySlug, researchBySlug, { reveal: true })}
-          </div>
-        ) : null}
-
-        {collapsedClusters.map((cluster) => {
-          const clusterProjects = projectsForCluster(projects, cluster.id);
-          if (clusterProjects.length === 0) return null;
-          return renderCluster(cluster, clusterProjects);
-        })}
-      </div>
-    </section>
-  );
+  return <section id="projects" className="selected-work-section"><div className="container">
+    <div className="section-heading"><div><p className="eyebrow">01 / Selected work</p><h2>Built to be explored.</h2></div><p>Working software, interactive labs, and research at the intersection of AI and finance.</p></div>
+    <div className="selected-work-grid">
+      {selected.map(({ work, project }, index) => {
+        const preview = project.screenshots?.[0] || project.previewGif;
+        const demo = getProjectLinkSections(project).find((section) => section.title === 'Interact')?.links[0];
+        return <article className="work-card" key={project.slug} id={projectAnchorId(project.slug)}>
+          <Link href={projectPath(project.slug)} className="work-preview" aria-label={`Read about ${project.title}`}>
+            <div className="work-preview-bar"><span>{String(index + 1).padStart(2, '0')} / {work.discipline}</span><span aria-hidden="true">↗</span></div>
+            {preview ? <img src={preview} alt={`${project.title} interface`} loading="lazy" width="1200" height="750" /> : <div className="work-preview-fallback"><span>{project.title}</span></div>}
+          </Link>
+          <div className="work-card-body"><p className="work-format">{work.format}</p><h3><Link href={projectPath(project.slug)}>{work.title}</Link></h3><p>{work.summary}</p><p className="work-evidence">{work.evidence}</p><div className="work-card-links">
+            <Link href={projectPath(project.slug)}>View project <span aria-hidden="true">↗</span></Link>
+            {demo && <a href={demo.href} target={!demo.internal ? '_blank' : undefined} rel={!demo.internal ? 'noopener noreferrer' : undefined}>Explore demo</a>}
+            {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source</a>}
+          </div></div>
+        </article>;
+      })}
+    </div>
+    <details className="work-archive"><summary><span>More projects & technical labs</span><span>{remaining.filter((p) => p.status !== 'in-progress').length} projects</span></summary><div>
+      {PROJECT_CLUSTERS.map((cluster) => {
+        const items = projectsForCluster(remaining, cluster.id);
+        return items.length ? <div className="work-archive-group" key={cluster.id}><h3>{cluster.label}</h3>{items.map((project) => <ProjectRow project={project} key={project.slug} />)}</div> : null;
+      })}
+    </div></details>
+    {inProgress.length > 0 && <details className="work-archive"><summary><span>In progress</span><span>{inProgress.length} explorations</span></summary><div>{inProgress.map((project) => <ProjectRow project={project} key={project.slug} />)}</div></details>}
+  </div></section>;
 }
