@@ -1,0 +1,486 @@
+.desktop {
+  position: relative;
+  height: 78vh;
+  min-height: 560px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(1000px 500px at 80% -10%, rgba(96, 165, 250, 0.25), transparent 60%),
+    radial-gradient(800px 500px at 10% 110%, rgba(52, 211, 153, 0.18), transparent 60%),
+    linear-gradient(160deg, #0b1220 0%, #111c33 55%, #0a0f1e 100%);
+  color: #e5eaf3;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif;
+  user-select: none;
+}
+
+.embedded {
+  height: 560px;
+  min-height: 560px;
+}
+
+.menuBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 14px;
+  font-size: 12px;
+  background: rgba(10, 14, 24, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 5000;
+}
+
+.menuBar .logo {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.menuBar .name {
+  font-weight: 650;
+}
+
+.menuBar nav {
+  display: flex;
+  gap: 12px;
+  color: rgba(229, 234, 243, 0.75);
+}
+
+.menuBar nav button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.menuBar nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.menuRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(229, 234, 243, 0.8);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  padding: 34px 24px 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.heroKicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(229, 234, 243, 0.6);
+  margin: 0 0 10px;
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: clamp(34px, 6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  pointer-events: auto;
+}
+
+.heroTitle span {
+  display: inline-block;
+  font-weight: 400;
+  will-change: font-weight;
+}
+
+.heroSub {
+  margin: 12px auto 0;
+  max-width: 560px;
+  font-size: 13px;
+  color: rgba(229, 234, 243, 0.7);
+}
+
+.folders {
+  position: absolute;
+  top: 250px;
+  right: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 10;
+}
+
+.folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: #e5eaf3;
+  font-size: 11px;
+  width: 76px;
+  padding: 6px 4px;
+  border-radius: 8px;
+}
+
+.folder:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.folderIcon {
+  font-size: 34px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+.windows {
+  position: absolute;
+  inset: 32px 0 76px;
+  pointer-events: none;
+}
+
+.window {
+  position: absolute;
+  width: min(430px, 82%);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(17, 24, 39, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  pointer-events: auto;
+  animation: win-in 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+@keyframes win-in {
+  from {
+    transform: scale(0.92) translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: grab;
+  touch-action: none;
+}
+
+.titleBar:active {
+  cursor: grabbing;
+}
+
+.controls {
+  display: flex;
+  gap: 7px;
+}
+
+.controls button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close {
+  background: #ff5f57;
+}
+
+.min {
+  background: #febc2e;
+}
+
+.max {
+  background: #28c840;
+}
+
+.winTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(229, 234, 243, 0.9);
+}
+
+.winBody {
+  padding: 14px;
+  font-size: 13px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.winBody a {
+  color: #7dd3fc;
+}
+
+.finderGrid {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+}
+
+.finderSide {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: rgba(229, 234, 243, 0.7);
+}
+
+.finderSide button {
+  text-align: left;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 6px;
+}
+
+.finderSide button:hover,
+.finderSide button[data-active='true'] {
+  background: rgba(125, 211, 252, 0.15);
+  color: #fff;
+}
+
+.fileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: 8px;
+}
+
+.fileGrid button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 0;
+  color: #e5eaf3;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 8px 4px;
+  border-radius: 8px;
+}
+
+.fileGrid button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.fileIcon {
+  font-size: 26px;
+}
+
+.terminal {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  background: #05080f;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 0;
+  white-space: pre-wrap;
+  color: #a7f3d0;
+}
+
+.prompt {
+  color: #7dd3fc;
+}
+
+.safariBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: rgba(229, 234, 243, 0.85);
+}
+
+.card {
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  border-color: rgba(125, 211, 252, 0.4);
+}
+
+.card strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: #fff;
+}
+
+.card small {
+  color: rgba(229, 234, 243, 0.65);
+  font-size: 12px;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #60a5fa, #34d399);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #06121f;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pdf {
+  width: 100%;
+  height: 260px;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.dock {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  z-index: 5000;
+}
+
+.dockApp {
+  position: relative;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  transform-origin: bottom center;
+  will-change: transform;
+}
+
+.dockIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.dockApp[data-open='true']::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(-50%);
+}
+
+.dockApp:hover::before {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 14, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.hint {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  font-size: 11px;
+  color: rgba(229, 234, 243, 0.55);
+  font-family: var(--font-mono);
+  z-index: 5;
+}
+
+@media (max-width: 640px) {
+  .folders {
+    top: auto;
+    bottom: 86px;
+    right: 12px;
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .folder {
+    width: 60px;
+  }
+
+  .menuBar nav {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 22px;
+  }
+}

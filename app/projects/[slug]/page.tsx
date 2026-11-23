@@ -11,6 +11,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { ProjectCard } from '@/components/ProjectCard';
 import { ProjectCaseStudy } from '@/components/ProjectCaseStudy';
 import { ProjectVideoDemos } from '@/components/ProjectVideoDemos';
+import { MacOsDesktopInteractive } from '@/components/MacOsDesktopInteractive';
 import { SiteNav } from '@/components/SiteNav';
 import { Reveal } from '@/components/Reveal';
 import { SITE } from '@/lib/constants';
@@ -122,6 +123,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {project.slug === 'space-time' && (
             <Reveal>
               <SpaceTimeInteractive />
+            </Reveal>
+          )}
+          {project.slug === 'macos-desktop' && (
+            <Reveal>
+              <MacOsDesktopInteractive />
             </Reveal>
           )}
           {project.slug === 'eth-tx-lifecycle' && (

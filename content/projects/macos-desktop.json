@@ -1,0 +1,60 @@
+{
+  "title": "macOS Desktop Portfolio",
+  "slug": "macos-desktop",
+  "date": "2026-10-09",
+  "status": "complete",
+  "featured": false,
+  "tags": [
+    "Interactive",
+    "Next.js",
+    "TypeScript"
+  ],
+  "summary": "A macOS-style desktop that opens this portfolio as draggable Finder, Terminal, Safari, and Resume windows above a magnifying dock.",
+  "technicalDescription": "Native React client component with pointer-drag windows, z-index focus store, proximity-weighted hero type, and cursor-distance dock magnification; no backend, no new dependencies.",
+  "techBadges": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "CSS Modules"
+  ],
+  "githubUrl": null,
+  "demoUrl": "/demos/macos-desktop",
+  "externalDemoUrl": null,
+  "loomUrl": null,
+  "youtubeUrl": null,
+  "zoomUrl": null,
+  "previewGif": null,
+  "previewVideo": null,
+  "shortClipUrl": null,
+  "recordingUrl": null,
+  "screenshots": [],
+  "previewType": null,
+  "relatedWriting": "agent-mode-and-the-inference-tax",
+  "caseStudy": {
+    "problem": "Portfolio content usually lives behind scroll navigation. A desktop shell lets visitors open the same projects, writing, and contact paths as windows, folders, and dock apps.",
+    "ownership": [
+      "Ported a Vite plus GSAP plus Zustand macOS desktop spec to native Next.js App Router idioms so the demo ships with zero new dependencies.",
+      "Built menu bar, hero, folders, draggable windows, and magnifying dock as one client component with embedded and fullscreen modes."
+    ],
+    "architecture": [
+      "Single client component (components/MacOsDesktop.tsx) with CSS Module styling; window open, focus, and z-index state in React useState.",
+      "Window dragging via pointer events on title bars; dock magnification and hero variable-weight type via cursor-distance weighting with requestAnimationFrame-free inline updates.",
+      "Fullscreen route at /demos/macos-desktop inside DemoShell; embedded preview on this project page via MacOsDesktopInteractive."
+    ],
+    "decisions": [
+      "Skipped zustand, immer, GSAP, react-pdf, react-tooltip, and dayjs from the source spec: React state plus pointer events plus native Date cover the same interactions without dependency churn on Next 15 and React 19.",
+      "Resume opens as an embedded PDF iframe with a download action instead of a react-pdf bundle."
+    ],
+    "verification": [
+      "npm test passes; npm run build passes; /demos/macos-desktop opens, windows drag and focus, dock magnifies on hover.",
+      "Spot-checked /agent.json and /llms.txt for the new project and demo entries."
+    ],
+    "limitations": [
+      "No minimized-to-dock restore animation yet; minimize hides the window and the dock badge marks it open.",
+      "Finder covers curated portfolio locations, not the full site file tree."
+    ],
+    "productionDifferences": [
+      "A standalone Vite build of the original spec would code-split each window; here the shell ships as one route bundle on magro.dev."
+    ]
+  }
+}

@@ -142,6 +142,8 @@ export function getAgentManifest() {
         'https://eth-tx-lifecycle.vercel.app',
         `${SITE.url}/projects/op-ephemeral-evm-signer/`,
         'https://op-ephemeral-evm-signer.vercel.app',
+        `${SITE.url}/projects/macos-desktop/`,
+        `${SITE.url}/demos/macos-desktop/`,
         `${SITE.url}/projects/airgap-tx-signer/`,
         `${SITE.url}/projects/space-time/`,
         `${SITE.url}/demos/space-time/`,
