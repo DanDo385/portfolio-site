@@ -3,7 +3,10 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState, type MouseEvent } from 'react';
+import { MenuClock } from './MenuClock';
 import { ThemeToggle } from './ThemeToggle';
+
+export type NavAppearance = 'site' | 'desktop';
 
 const NAV_SECTIONS: Array<{ id: string; label: string; href?: string }> = [
   { id: 'projects', label: 'Projects' },
@@ -23,7 +26,7 @@ function currentLocation() {
   return `${window.location.pathname}${window.location.search}${window.location.hash}`;
 }
 
-export function Nav() {
+export function Nav({ appearance = 'site' }: { appearance?: NavAppearance }) {
   const pathname = usePathname();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
@@ -71,8 +74,12 @@ export function Nav() {
     return onHome ? `#${id}` : `/#${id}`;
   };
 
+  const barClass = [appearance === 'desktop' ? 'desktop-bar' : '', scrolled ? 'scrolled' : '']
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
+    <nav id="navbar" className={barClass}>
       <Link href="/" className="nav-id" onClick={handleNavClick}>
         <span className="indicator" />
         daniel magro
@@ -118,6 +125,7 @@ export function Nav() {
           <span />
           <span />
         </button>
+        {appearance === 'desktop' ? <MenuClock /> : null}
       </div>
     </nav>
   );

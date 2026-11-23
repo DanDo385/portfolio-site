@@ -4064,6 +4064,187 @@ footer {
   .history-block { padding: 28px 24px; }
 }
 
+/* Rose Pine Moon desktop. Hex values match ~/dotfiles/home/.config/nvim/lua/themes/rosepine-moon.lua */
+.desktop {
+  --rp-base: #232136;
+  --rp-surface: #2a273f;
+  --rp-overlay: #393552;
+  --rp-muted: #6e6a86;
+  --rp-subtle: #908caa;
+  --rp-text: #e0def4;
+  --rp-iris: #c4a7e7;
+  --rp-gold: #f6c177;
+  --rp-love: #eb6f92;
+  --rp-pine: #3e8fb0;
+  --bg-deep: var(--rp-base);
+  --bg-primary: var(--rp-base);
+  --text-primary: var(--rp-text);
+  --text-secondary: var(--rp-subtle);
+  --text-muted: var(--rp-muted);
+  --accent: var(--rp-gold);
+  --accent-light: var(--rp-gold);
+  --accent-dim: rgba(196, 167, 231, 0.14);
+  --accent-glow: rgba(196, 167, 231, 0.45);
+  --border: var(--rp-overlay);
+  --border-subtle: rgba(224, 222, 244, 0.14);
+  --border-active: var(--rp-muted);
+  --nav-bg: rgba(35, 33, 54, 0.72);
+  --nav-bg-scrolled: rgba(35, 33, 54, 0.94);
+  --nav-mobile-bg: rgba(35, 33, 54, 0.97);
+  --surface-muted: rgba(42, 39, 63, 0.72);
+  --bg-card-hover: var(--rp-surface);
+  min-height: 100dvh;
+  background-color: var(--rp-base);
+  background-image:
+    radial-gradient(ellipse 90% 70% at 12% 0%, rgba(196, 167, 231, 0.22), transparent 58%),
+    radial-gradient(ellipse 70% 60% at 100% 100%, rgba(62, 143, 176, 0.22), transparent 55%),
+    radial-gradient(ellipse 40% 32% at 72% 18%, rgba(246, 193, 119, 0.1), transparent 62%);
+  color: var(--rp-text);
+}
+
+.desktop .hero {
+  min-height: 100dvh;
+  box-sizing: border-box;
+  justify-content: center;
+  padding-top: 56px;
+  padding-bottom: 40px;
+}
+
+.desktop .hero-glow,
+.desktop .hero-grid {
+  display: none;
+}
+
+.desktop .btn-primary:hover {
+  background: var(--accent-dim);
+}
+
+.project-window {
+  width: min(460px, calc(100vw - 32px));
+  max-height: min(560px, calc(100dvh - 48px));
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--rp-surface);
+  color: var(--text-primary);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.project-window::backdrop {
+  background: rgba(35, 33, 54, 0.62);
+}
+
+.project-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--rp-overlay);
+}
+
+.project-window-close {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--rp-love);
+  color: transparent;
+  cursor: pointer;
+}
+
+.project-window-close:focus-visible,
+.project-window:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.project-window-caption {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.project-window-body {
+  padding: 18px 18px 16px;
+}
+
+.project-window-body h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 28px;
+  line-height: 1.15;
+  color: var(--accent);
+}
+
+.project-window-hook,
+.project-window-summary {
+  margin: 0 0 12px;
+  color: var(--text-secondary);
+}
+
+.project-window-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.project-window-tags li {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.project-window-link {
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+}
+
+nav.desktop-bar {
+  height: 40px;
+  color: var(--rp-text, #e0def4);
+}
+
+.menu-clock {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  white-space: nowrap;
+  min-width: 12ch;
+  text-align: right;
+}
+
+@media (max-width: 920px) {
+  nav.desktop-bar .nav-links {
+    top: 40px;
+  }
+
+  .menu-clock {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop .hero,
+  .desktop .hero h1,
+  .desktop .hero-trajectory,
+  .desktop .hero-identity,
+  .desktop .hero-focus-block,
+  .desktop .hero-cta {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 @media (max-width: 600px) {
   .container { padding: 0 18px; }
   nav { padding: 0 16px; }
